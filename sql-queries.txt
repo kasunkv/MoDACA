@@ -1,2 +1,3 @@
 SQL Queries for Database Creation
 ----------------------------------
+CREATE DATABASE modaca_db;
