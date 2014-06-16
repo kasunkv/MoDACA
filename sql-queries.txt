@@ -219,3 +219,66 @@ CREATE TABLE IF NOT EXISTS `field_communitys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
+-- Table structure for table `babys`
+
+CREATE TABLE IF NOT EXISTS `babys` (
+  `baby_household_id` varchar(255) NOT NULL,
+  `baby_name` varchar(255) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `no_of_sibling` int(2) NOT NULL,
+  `profile_photo` varchar(255) NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `weight` float NOT NULL,
+  `height` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`baby_household_id`,`baby_name`),
+  KEY `baby_name` (`baby_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `child_growths`
+
+CREATE TABLE IF NOT EXISTS `child_growths` (
+  `child_growth_household_id` varchar(255) NOT NULL,
+  `child_growth_baby_name` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `weight` float NOT NULL,
+  `height` float NOT NULL,
+  `age` int(3) NOT NULL,
+  `vision` tinyint(1) NOT NULL,
+  `hearing` tinyint(1) NOT NULL,
+  `sensitivity` tinyint(1) NOT NULL,
+  `smell` tinyint(1) NOT NULL,
+  `taste` tinyint(1) NOT NULL,
+  PRIMARY KEY (`child_growth_household_id`,`child_growth_baby_name`),
+  KEY `child_growth_baby_name` (`child_growth_baby_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `family_members`
+
+CREATE TABLE IF NOT EXISTS `family_members` (
+  `family_member_household_id` varchar(255) NOT NULL,
+  `family_member_first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `occupation` varchar(255) NOT NULL,
+  `profile_photo` varchar(255) NOT NULL,
+  `decease` text NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `sleeping_hour` float NOT NULL,
+  `exercise_hour` float NOT NULL,
+  `educational_level` varchar(255) NOT NULL,
+  `bmi` float NOT NULL,
+  `whr` float NOT NULL,
+  `family_member_questionnaire_id` varchar(255) NOT NULL,
+  `mark_for_questionarie` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`family_member_household_id`,`family_member_first_name`),
+  KEY `family_member_questionnaire_id` (`family_member_questionnaire_id`),
+  KEY `family_member_first_name` (`family_member_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
