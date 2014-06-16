@@ -1,3 +1,63 @@
 SQL Queries for Database Creation
 ----------------------------------
+
+--
+-- Database: `modaca_db`
+--
+
 CREATE DATABASE modaca_db;
+
+-- --------------------------------------------------------
+-- Table structure for table `administrators`
+
+CREATE TABLE IF NOT EXISTS `administrators` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `designation` varchar(255) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `profile_photo` varchar(255) NOT NULL,
+  `bio` text NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `student_progresses`
+
+CREATE TABLE IF NOT EXISTS `student_progresses` (
+  `student_progress_index_no` int(6) NOT NULL DEFAULT '0',
+  `attendance` tinyint(1) NOT NULL,
+  `date` date NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `mark` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`student_progress_index_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `students`
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `index_no` int(6) NOT NULL DEFAULT '0',
+  `reg_no` varchar(15) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
+  `address` varchar(64) NOT NULL,
+  `group_name` char(2) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `profile_photo` varchar(15) NOT NULL,
+  `bio` text NOT NULL,
+  PRIMARY KEY (`index_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
