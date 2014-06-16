@@ -168,3 +168,35 @@ CREATE TABLE IF NOT EXISTS `task_assigners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `salt_usages`
+
+CREATE TABLE IF NOT EXISTS `salt_usages` (
+  `salt_usage_household_id` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`salt_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `oil_usages`
+
+CREATE TABLE IF NOT EXISTS `oil_usages` (
+  `oil_usage_household_id` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`oil_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issue_in_communitys`
+
+CREATE TABLE IF NOT EXISTS `health_issue_in_communitys` (
+  `serial_no` int(5) NOT NULL,
+  `health_issue_in_community_field_community_id` varchar(255) NOT NULL,
+  `health_issue_in_community_health_issue_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`serial_no`),
+  KEY `health_issue_in_community_field_community_id` (`health_issue_in_community_field_community_id`),
+  KEY `health_issue_in_community_health_issue_id` (`health_issue_in_community_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
