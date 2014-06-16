@@ -219,3 +219,237 @@ CREATE TABLE IF NOT EXISTS `field_communitys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
+-- Table structure for table `babys`
+
+CREATE TABLE IF NOT EXISTS `babys` (
+  `baby_household_id` varchar(255) NOT NULL,
+  `baby_name` varchar(255) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `no_of_sibling` int(2) NOT NULL,
+  `profile_photo` varchar(255) NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `weight` float NOT NULL,
+  `height` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`baby_household_id`,`baby_name`),
+  KEY `baby_name` (`baby_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `child_growths`
+
+CREATE TABLE IF NOT EXISTS `child_growths` (
+  `child_growth_household_id` varchar(255) NOT NULL,
+  `child_growth_baby_name` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `weight` float NOT NULL,
+  `height` float NOT NULL,
+  `age` int(3) NOT NULL,
+  `vision` tinyint(1) NOT NULL,
+  `hearing` tinyint(1) NOT NULL,
+  `sensitivity` tinyint(1) NOT NULL,
+  `smell` tinyint(1) NOT NULL,
+  `taste` tinyint(1) NOT NULL,
+  PRIMARY KEY (`child_growth_household_id`,`child_growth_baby_name`),
+  KEY `child_growth_baby_name` (`child_growth_baby_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `family_members`
+
+CREATE TABLE IF NOT EXISTS `family_members` (
+  `family_member_household_id` varchar(255) NOT NULL,
+  `family_member_first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `occupation` varchar(255) NOT NULL,
+  `profile_photo` varchar(255) NOT NULL,
+  `decease` text NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `sleeping_hour` float NOT NULL,
+  `exercise_hour` float NOT NULL,
+  `educational_level` varchar(255) NOT NULL,
+  `bmi` float NOT NULL,
+  `whr` float NOT NULL,
+  `family_member_questionnaire_id` varchar(255) NOT NULL,
+  `mark_for_questionarie` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`family_member_household_id`,`family_member_first_name`),
+  KEY `family_member_questionnaire_id` (`family_member_questionnaire_id`),
+  KEY `family_member_first_name` (`family_member_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `pregnant_mothers`
+
+CREATE TABLE IF NOT EXISTS `pregnant_mothers` (
+  `p_mother_id` varchar(15) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `ocuupation` varchar(20) NOT NULL,
+  `profile_photo` varchar(15) NOT NULL,
+  `decease` text NOT NULL,
+  `primary_health_issue` varchar(20) NOT NULL,
+  `sleeping_hour` float NOT NULL,
+  `exercise_hour` float NOT NULL,
+  `educational_level` varchar(20) NOT NULL,
+  `bmi` float NOT NULL,
+  `whr` float NOT NULL,
+  `note` text NOT NULL,
+  `fetus_age` int(3) NOT NULL,
+  `no_of_children` int(2) NOT NULL,
+  `weight` float NOT NULL,
+  PRIMARY KEY (`p_mother_id`),
+  KEY `first_name` (`first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `sugar_usages`
+
+CREATE TABLE IF NOT EXISTS `sugar_usages` (
+  `sugar_usage_household_id` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`sugar_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `p_m_k_questions`
+
+CREATE TABLE IF NOT EXISTS `p_m_k_questions` (
+  `p_m_k_question_no` int(3) NOT NULL,
+  `question_set_id` varchar(15) NOT NULL,
+  `question` text NOT NULL,
+  PRIMARY KEY (`p_m_k_question_no`),
+  KEY `question_set_id` (`question_set_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `pregnant_mother_knowledges`
+
+CREATE TABLE IF NOT EXISTS `pregnant_mother_knowledges` (
+  `pregnant_mother_knowlegde_household_id` varchar(15) NOT NULL,
+  `pregnant_mother_knowlegde_first_name` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `pregnant_mother_knowlegde_question_set_id` varchar(15) NOT NULL,
+  `marks_percent` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`pregnant_mother_knowlegde_household_id`,`pregnant_mother_knowlegde_first_name`),
+  KEY `pregnant_mother_knowlegde_question_set_id` (`pregnant_mother_knowlegde_question_set_id`),
+  KEY `pregnant_mother_knowlegde_first_name` (`pregnant_mother_knowlegde_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `flour_usages`
+
+CREATE TABLE IF NOT EXISTS `flour_usages` (
+  `flour_usage_household_id` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`flour_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `whrs`
+
+CREATE TABLE IF NOT EXISTS `whrs` (
+  `whr_household_id` varchar(15) NOT NULL,
+  `whr_family_member_first_name` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `whr_value` float NOT NULL,
+  PRIMARY KEY (`whr_household_id`),
+  KEY `whr_family_member_first_name` (`whr_family_member_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issue_groups`
+
+CREATE TABLE IF NOT EXISTS `health_issue_groups` (
+  `health_issue_group_id` varchar(255) NOT NULL,
+  `health_issue_group_field_community_id` varchar(255) NOT NULL,
+  `no_of_members` int(3) NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `health_issue_group_health_issue_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`health_issue_group_id`),
+  KEY `health_issue_group_field_community_id` (`health_issue_group_field_community_id`),
+  KEY `health_issue_group_health_issue_id` (`health_issue_group_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `navigation_details`
+
+CREATE TABLE IF NOT EXISTS `navigation_details` (
+  `navigation_detail_household_id` varchar(15) NOT NULL,
+  `time_stamp` datetime NOT NULL,
+  `latitude` varchar(15) NOT NULL,
+  `longitude` varchar(15) NOT NULL,
+  PRIMARY KEY (`navigation_detail_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issues`
+
+CREATE TABLE IF NOT EXISTS `health_issues` (
+  `health_issue_id` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `questions`
+
+CREATE TABLE IF NOT EXISTS `questions` (
+  `question_no` int(3) NOT NULL,
+  `question_questionnaire_id` varchar(15) NOT NULL,
+  `question` text NOT NULL,
+  `no_of_responses` int(2) NOT NULL,
+  `weight_of_response1` int(2) NOT NULL,
+  `weight_of_response2` int(2) NOT NULL,
+  `weight_of_response3` int(2) NOT NULL,
+  `weight_of_response4` int(2) NOT NULL,
+  `weight_of_response5` int(2) NOT NULL,
+  `weight_of_response6` int(2) NOT NULL,
+  PRIMARY KEY (`question_no`),
+  KEY `question_questionnaire_id` (`question_questionnaire_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `bmis`
+
+CREATE TABLE IF NOT EXISTS `bmis` (
+  `bmi_household_id` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `bmi_value` float NOT NULL,
+  PRIMARY KEY (`bmi_household_id`,`first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_group_progresses`
+
+CREATE TABLE IF NOT EXISTS `health_group_progresses` (
+  `health_group_progress_health_group_id` varchar(255) NOT NULL,
+  `health_group_progress_indicator_id` varchar(255) NOT NULL,
+  `health_group_progress_health_issue_id` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`health_group_progress_health_group_id`),
+  KEY `health_group_progress_indicator_id` (`health_group_progress_indicator_id`),
+  KEY `health_group_progress_health_issue_id` (`health_group_progress_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `indicators`
+
+CREATE TABLE IF NOT EXISTS `indicators` (
+  `indicator_id` varchar(15) NOT NULL,
+  `indicator_type` varchar(15) NOT NULL,
+  `indicator_health_issue_id` varchar(15) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`indicator_id`),
+  KEY `indicator_health_issue_id` (`indicator_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
