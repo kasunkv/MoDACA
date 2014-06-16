@@ -61,3 +61,54 @@ CREATE TABLE IF NOT EXISTS `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `staffs`
+
+CREATE TABLE IF NOT EXISTS `staffs` (
+  `staff_id` int(6) NOT NULL DEFAULT '0',
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
+  `address` varchar(64) NOT NULL,
+  `designation` varchar(15) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `profile_photo` varchar(15) NOT NULL,
+  `bio` text NOT NULL,
+  PRIMARY KEY (`staff_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `support_staffs`
+
+CREATE TABLE IF NOT EXISTS `support_staffs` (
+  `support_staff_id` varchar(15) NOT NULL DEFAULT '',
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
+  `address` varchar(64) NOT NULL,
+  `designation` varchar(15) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `profile_photo` varchar(15) NOT NULL,
+  `bio` text NOT NULL,
+  PRIMARY KEY (`support_staff_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `field_groups`
+
+CREATE TABLE IF NOT EXISTS `field_groups` (
+  `field_group_name` varchar(255) NOT NULL DEFAULT '',
+  `no_of_members` int(1) NOT NULL,
+  `field_group_field_community_id` varchar(255) NOT NULL,
+  `field_group_task_assigner_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`field_group_name`),
+  KEY `field_group_field_community_id` (`field_group_field_community_id`),
+  KEY `field_group_task_assigner_id` (`field_group_task_assigner_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
