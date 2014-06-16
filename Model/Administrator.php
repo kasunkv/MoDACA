@@ -55,7 +55,7 @@ class Administrator extends AppModel {
 			),
 			'maxLength' => array(
 				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'message' => 'First name should not exceed 255 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -73,7 +73,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Last name should not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
