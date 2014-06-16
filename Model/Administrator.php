@@ -29,17 +29,13 @@ class Administrator extends AppModel {
 		'admin_id' => array(
 			'blank' => array(
 				'rule' => array('blank'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'first_name' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => array('custom', 'regex here'),
+				'message' => 'First name may only contain letters and spaces',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -54,7 +50,7 @@ class Administrator extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
+				'rule' => array('maxLength', 255),
 				'message' => 'First name should not exceed 255 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -64,8 +60,8 @@ class Administrator extends AppModel {
 		),
 		'last_name' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => array('custom', 'regex here'),
+				'message' => 'First name may only contain letters and spaces',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -80,8 +76,8 @@ class Administrator extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'Last name should not exceed 255 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -91,15 +87,15 @@ class Administrator extends AppModel {
 		'gender' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Gender can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 6),
+				'message' => 'Gender should not exceed 6 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -107,7 +103,7 @@ class Administrator extends AppModel {
 			),
 			'custom' => array(
 				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'message' => 'Gender should only contain letters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -115,17 +111,9 @@ class Administrator extends AppModel {
 			),
 		),
 		'email' => array(
-			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'Please enter a valid email address',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -133,7 +121,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Email con not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -141,9 +129,9 @@ class Administrator extends AppModel {
 			),
 		),
 		'contact_no' => array(
-			'naturalNumber' => array(
-				'rule' => array('naturalNumber'),
-				//'message' => 'Your custom message here',
+			'phone' => array(
+				'rule' => array('phone', ""),
+				'message' => 'Please enter a valid phone number',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -151,15 +139,15 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Contach number can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 12),
+				'message' => 'Last name should not exceed 12 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -169,7 +157,7 @@ class Administrator extends AppModel {
 		'address' => array(
 			'custom' => array(
 				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -177,7 +165,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Address can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -185,7 +173,7 @@ class Administrator extends AppModel {
 			),
 			'maxLength' => array(
 				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'message' => 'Address name should not exceed 255 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -195,7 +183,7 @@ class Administrator extends AppModel {
 		'designation' => array(
 			'custom' => array(
 				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'message' => 'The Designation name can only contain latter, numbers and spaces',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -203,7 +191,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Designation can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -221,7 +209,7 @@ class Administrator extends AppModel {
 		'user_name' => array(
 			'alphaNumeric' => array(
 				'rule' => array('alphaNumeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Only letters and number are allowed',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -229,15 +217,15 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Username can not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 20),
+				'message' => 'User name should not exceed 20 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -247,7 +235,7 @@ class Administrator extends AppModel {
 		'password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Password can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -255,7 +243,7 @@ class Administrator extends AppModel {
 			),
 			'maxLength' => array(
 				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'message' => 'Passwrod should not exceed 20 characters',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -265,7 +253,7 @@ class Administrator extends AppModel {
 		'profile_photo' => array(
 			'url' => array(
 				'rule' => array('url'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid URL',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -273,7 +261,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'URL can not be empry',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -283,7 +271,7 @@ class Administrator extends AppModel {
 		'bio' => array(
 			'custom' => array(
 				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -291,15 +279,7 @@ class Administrator extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'message' => 'Biography can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
