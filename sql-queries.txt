@@ -453,3 +453,40 @@ CREATE TABLE IF NOT EXISTS `indicators` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `determinants`
+
+CREATE TABLE IF NOT EXISTS `determinants` (
+  `determinant_id` varchar(255) NOT NULL,
+  `determinant_health_issue_id` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`determinant_id`),
+  KEY `determinant_health_issue_id` (`determinant_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `legends`
+
+CREATE TABLE IF NOT EXISTS `legends` (
+  `entry_no` varchar(15) NOT NULL,
+  `legend_id` varchar(15) NOT NULL,
+  `entry` text NOT NULL,
+  `lower_range_value` int(2) NOT NULL,
+  `upper_range_value` int(2) NOT NULL,
+  `legend_health_issue_id` varchar(15) NOT NULL,
+  PRIMARY KEY (`entry_no`),
+  KEY `legend_health_issue_id` (`legend_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `questionnaires`
+
+CREATE TABLE IF NOT EXISTS `questionnaires` (
+  `questionnaire_id` varchar(15) NOT NULL,
+  `questionnaire_health_issue_id` varchar(15) NOT NULL,
+  `no_of_questions` int(3) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`questionnaire_id`),
+  KEY `questionnaire_health_issue_id` (`questionnaire_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
