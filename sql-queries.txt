@@ -399,3 +399,21 @@ CREATE TABLE IF NOT EXISTS `health_issues` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `questions`
+
+CREATE TABLE IF NOT EXISTS `questions` (
+  `question_no` int(3) NOT NULL,
+  `question_questionnaire_id` varchar(15) NOT NULL,
+  `question` text NOT NULL,
+  `no_of_responses` int(2) NOT NULL,
+  `weight_of_response1` int(2) NOT NULL,
+  `weight_of_response2` int(2) NOT NULL,
+  `weight_of_response3` int(2) NOT NULL,
+  `weight_of_response4` int(2) NOT NULL,
+  `weight_of_response5` int(2) NOT NULL,
+  `weight_of_response6` int(2) NOT NULL,
+  PRIMARY KEY (`question_no`),
+  KEY `question_questionnaire_id` (`question_questionnaire_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
