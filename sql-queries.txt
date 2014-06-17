@@ -282,3 +282,49 @@ CREATE TABLE IF NOT EXISTS `family_members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `pregnant_mothers`
+
+CREATE TABLE IF NOT EXISTS `pregnant_mothers` (
+  `p_mother_id` varchar(15) NOT NULL,
+  `first_name` varchar(20) NOT NULL,
+  `age` int(3) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `ocuupation` varchar(20) NOT NULL,
+  `profile_photo` varchar(15) NOT NULL,
+  `decease` text NOT NULL,
+  `primary_health_issue` varchar(20) NOT NULL,
+  `sleeping_hour` float NOT NULL,
+  `exercise_hour` float NOT NULL,
+  `educational_level` varchar(20) NOT NULL,
+  `bmi` float NOT NULL,
+  `whr` float NOT NULL,
+  `note` text NOT NULL,
+  `fetus_age` int(3) NOT NULL,
+  `no_of_children` int(2) NOT NULL,
+  `weight` float NOT NULL,
+  PRIMARY KEY (`p_mother_id`),
+  KEY `first_name` (`first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `sugar_usages`
+
+CREATE TABLE IF NOT EXISTS `sugar_usages` (
+  `sugar_usage_household_id` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`sugar_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `p_m_k_questions`
+
+CREATE TABLE IF NOT EXISTS `p_m_k_questions` (
+  `p_m_k_question_no` int(3) NOT NULL,
+  `question_set_id` varchar(15) NOT NULL,
+  `question` text NOT NULL,
+  PRIMARY KEY (`p_m_k_question_no`),
+  KEY `question_set_id` (`question_set_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
