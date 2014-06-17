@@ -490,3 +490,27 @@ CREATE TABLE IF NOT EXISTS `questionnaires` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
+-- Constraints for table `bmis`
+
+ALTER TABLE `bmis`
+  ADD CONSTRAINT `bmi_household_id` FOREIGN KEY (`bmi_household_id`) REFERENCES `households` (`household_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `determinants`
+
+ALTER TABLE `determinants`
+  ADD CONSTRAINT `determinant_health_issue_id` FOREIGN KEY (`determinant_health_issue_id`) REFERENCES `health_issues` (`health_issue_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `legends`
+
+ALTER TABLE `legends`
+  ADD CONSTRAINT `legend_health_issue_id` FOREIGN KEY (`legend_health_issue_id`) REFERENCES `health_issues` (`health_issue_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questionnaires`
+
+ALTER TABLE `questionnaires`
+  ADD CONSTRAINT `questionnaire_health_issue_id` FOREIGN KEY (`questionnaire_health_issue_id`) REFERENCES `health_issues` (`health_issue_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
