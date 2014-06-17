@@ -365,3 +365,37 @@ CREATE TABLE IF NOT EXISTS `whrs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
+-- Table structure for table `health_issue_groups`
+
+CREATE TABLE IF NOT EXISTS `health_issue_groups` (
+  `health_issue_group_id` varchar(255) NOT NULL,
+  `health_issue_group_field_community_id` varchar(255) NOT NULL,
+  `no_of_members` int(3) NOT NULL,
+  `primary_health_issue` varchar(255) NOT NULL,
+  `health_issue_group_health_issue_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`health_issue_group_id`),
+  KEY `health_issue_group_field_community_id` (`health_issue_group_field_community_id`),
+  KEY `health_issue_group_health_issue_id` (`health_issue_group_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `navigation_details`
+
+CREATE TABLE IF NOT EXISTS `navigation_details` (
+  `navigation_detail_household_id` varchar(15) NOT NULL,
+  `time_stamp` datetime NOT NULL,
+  `latitude` varchar(15) NOT NULL,
+  `longitude` varchar(15) NOT NULL,
+  PRIMARY KEY (`navigation_detail_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issues`
+
+CREATE TABLE IF NOT EXISTS `health_issues` (
+  `health_issue_id` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
