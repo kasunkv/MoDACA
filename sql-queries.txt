@@ -328,3 +328,40 @@ CREATE TABLE IF NOT EXISTS `p_m_k_questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `pregnant_mother_knowledges`
+
+CREATE TABLE IF NOT EXISTS `pregnant_mother_knowledges` (
+  `pregnant_mother_knowlegde_household_id` varchar(15) NOT NULL,
+  `pregnant_mother_knowlegde_first_name` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `pregnant_mother_knowlegde_question_set_id` varchar(15) NOT NULL,
+  `marks_percent` float NOT NULL,
+  `note` text NOT NULL,
+  PRIMARY KEY (`pregnant_mother_knowlegde_household_id`,`pregnant_mother_knowlegde_first_name`),
+  KEY `pregnant_mother_knowlegde_question_set_id` (`pregnant_mother_knowlegde_question_set_id`),
+  KEY `pregnant_mother_knowlegde_first_name` (`pregnant_mother_knowlegde_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `flour_usages`
+
+CREATE TABLE IF NOT EXISTS `flour_usages` (
+  `flour_usage_household_id` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  PRIMARY KEY (`flour_usage_household_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `whrs`
+
+CREATE TABLE IF NOT EXISTS `whrs` (
+  `whr_household_id` varchar(15) NOT NULL,
+  `whr_family_member_first_name` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `whr_value` float NOT NULL,
+  PRIMARY KEY (`whr_household_id`),
+  KEY `whr_family_member_first_name` (`whr_family_member_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
