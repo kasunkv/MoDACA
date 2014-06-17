@@ -9,9 +9,45 @@
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
    
     ========================================================  */
+/*
+    Color Guide
+    -----------
+    0b5a93 = Dark Blue
+    0e73b8 = Light Blue
+
+*/
+
 /*==============================================
     GENERAL  STYLES    
     =============================================*/
+
+/* My Styles */
+
+.user-image-container{
+    height: 170px;
+    width: 170px;
+    max-width: 170px;
+    max-height: 170px;
+    margin: 25px auto;
+}
+
+.signin-form {
+    margin: auto 0px;
+}
+
+.wrapper-login {
+    margin: 0 0 0 260px;
+        padding: 15px 30px;
+        max-height: 800px;
+}
+
+.btn-custom {
+    width: 150px;
+}
+
+/* End of My Styles */
+
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -42,7 +78,7 @@ body {
     border:1px solid #f3f3f3;
 }
 h2 {
-    color: #f00;
+    color: #0b5a93;
 }
 h4 {
     padding-top:10px;
@@ -207,7 +243,7 @@ max-width:170px;
 
 .navbar-cls-top .navbar-brand {
 	color: #fff;
-background: #C90000;
+background: #0b5a93;
 width: 260px;
 text-align: center;
 height: 60px;
@@ -215,7 +251,7 @@ font-size: 30px;
 font-weight: 700;
 }
 .active-menu {
-    background-color:#C90000!important;
+    background-color:#0b5a93!important;
 }
 
 .arrow {
@@ -311,7 +347,7 @@ font-weight: 700;
 }
 .navbar-cls-top .navbar-brand:hover {
 
-background: #C90000;
+background: #0e73b8;
 color:#fff;
 
 }
@@ -321,7 +357,7 @@ border:0px solid black;
      
 }
 .navbar-header {
-    background: #A70303;
+    background: #0b5a93;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 background-color: #B40101;
