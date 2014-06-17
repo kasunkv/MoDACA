@@ -417,3 +417,39 @@ CREATE TABLE IF NOT EXISTS `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- Table structure for table `bmis`
+
+CREATE TABLE IF NOT EXISTS `bmis` (
+  `bmi_household_id` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `bmi_value` float NOT NULL,
+  PRIMARY KEY (`bmi_household_id`,`first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_group_progresses`
+
+CREATE TABLE IF NOT EXISTS `health_group_progresses` (
+  `health_group_progress_health_group_id` varchar(255) NOT NULL,
+  `health_group_progress_indicator_id` varchar(255) NOT NULL,
+  `health_group_progress_health_issue_id` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`health_group_progress_health_group_id`),
+  KEY `health_group_progress_indicator_id` (`health_group_progress_indicator_id`),
+  KEY `health_group_progress_health_issue_id` (`health_group_progress_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Table structure for table `indicators`
+
+CREATE TABLE IF NOT EXISTS `indicators` (
+  `indicator_id` varchar(15) NOT NULL,
+  `indicator_type` varchar(15) NOT NULL,
+  `indicator_health_issue_id` varchar(15) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`indicator_id`),
+  KEY `indicator_health_issue_id` (`indicator_health_issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
