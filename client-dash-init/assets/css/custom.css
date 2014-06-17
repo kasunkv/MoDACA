@@ -131,20 +131,20 @@ font-size: 40px;
 border-radius: 50px;
 
 }
-    .bg-color-green {
-background-color: #00CE6F;
+    .bg-color-blue-1 {
+background-color: #09497a;
 color: #fff;
 }
- .bg-color-blue {
-background-color: #A95DF0;
+ .bg-color-blue-2 {
+background-color: #2186d3;
 color: #fff;
 }
-  .bg-color-red {
-background-color: #DB0630;
+  .bg-color-blue-3 {
+background-color: #0b8df1;
 color: #fff;
 }
-  .bg-color-brown {
-background-color: #B94A00;
+  .bg-color-blue-4 {
+background-color: #62b8fa;
 color: #fff;
 }
 
@@ -312,7 +312,7 @@ font-weight: 700;
 	left:20px;
 	width:15px;
 	height:1px;
-	background:#ff0000;
+	background:#0b5a93;
 	top:20px;
 }
 .nav-second-level > li > a:after,
@@ -323,7 +323,7 @@ font-weight: 700;
 	left:20px;
 	width:1px;
 	height:100%;
-	background:#ff0000;
+	background:#0b5a93;
 	top:0px;
 	z-index:10;
 }
