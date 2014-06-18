@@ -1,4 +1,4 @@
-SQL Queries for Database Creation
+SQL Queries for Database Creation - modaca_db
 ----------------------------------
 
 --
