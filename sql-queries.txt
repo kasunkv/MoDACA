@@ -157,11 +157,12 @@ CREATE TABLE IF NOT EXISTS `task_assigners` (
 -- Table structure for table `salt_usages`
 
 CREATE TABLE IF NOT EXISTS `salt_usages` (
-  `salt_usage_household_id` varchar(15) NOT NULL,
-  `date` date NOT NULL,
-  `value` float NOT NULL,
-  PRIMARY KEY (`salt_usage_household_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `salt_usage_id` int(11) NOT NULL AUTO_INCREMENT,
+  `salt_usage_household_identifier` varchar(40) NOT NULL,
+  `date` date DEFAULT NULL,
+  `value` float DEFAULT NULL,
+  PRIMARY KEY (`salt_usage_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `oil_usages`
@@ -177,32 +178,33 @@ CREATE TABLE IF NOT EXISTS `oil_usages` (
 -- Table structure for table `health_issue_in_communitys`
 
 CREATE TABLE IF NOT EXISTS `health_issue_in_communitys` (
-  `serial_no` int(5) NOT NULL,
-  `health_issue_in_community_field_community_id` varchar(255) NOT NULL,
-  `health_issue_in_community_health_issue_id` varchar(255) NOT NULL,
-  PRIMARY KEY (`serial_no`),
-  KEY `health_issue_in_community_field_community_id` (`health_issue_in_community_field_community_id`),
-  KEY `health_issue_in_community_health_issue_id` (`health_issue_in_community_health_issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `health_issue_in_community_id` int(11) NOT NULL AUTO_INCREMENT,
+  `health_issue_in_community_field_community_identifier` varchar(40) NOT NULL,
+  `health_issue_in_community_health_issue_identifier` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`health_issue_in_community_id`),
+  KEY `health_issue_in_community_field_community_id` (`health_issue_in_community_field_community_identifier`),
+  KEY `health_issue_in_community_health_issue_id` (`health_issue_in_community_health_issue_identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `field_communitys`
 
 CREATE TABLE IF NOT EXISTS `field_communitys` (
-  `field_community_id` varchar(255) NOT NULL,
-  `gn_area` varchar(255) NOT NULL,
-  `moh_area` varchar(255) NOT NULL,
-  `phi_area` varchar(255) NOT NULL,
-  `phm_area` varchar(255) NOT NULL,
-  `village_name` varchar(255) NOT NULL,
-  `no_of_families` int(3) NOT NULL,
-  `population` int(5) NOT NULL,
-  `field_map` varchar(255) NOT NULL,
-  `student_group_name` char(2) NOT NULL,
-  `no_of_formal_settings` int(2) NOT NULL,
-  `no_of_informal_settings` int(2) NOT NULL,
+  `field_community_id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_community_identifier` varchar(40) NOT NULL,
+  `gn_area` varchar(255) DEFAULT NULL,
+  `moh_area` varchar(255) DEFAULT NULL,
+  `phi_area` varchar(255) DEFAULT NULL,
+  `phm_area` varchar(255) DEFAULT NULL,
+  `village_name` varchar(255) DEFAULT NULL,
+  `no_of_families` int(11) DEFAULT NULL,
+  `population` int(11) DEFAULT NULL,
+  `field_map` varchar(255) DEFAULT NULL,
+  `field_group_name` char(12) DEFAULT NULL,
+  `no_of_formal_settings` int(11) DEFAULT NULL,
+  `no_of_informal_settings` int(11) DEFAULT NULL,
   PRIMARY KEY (`field_community_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `babys`
