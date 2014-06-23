@@ -85,26 +85,28 @@ CREATE TABLE IF NOT EXISTS `staffs` (
 -- Table structure for table `field_groups`
 
 CREATE TABLE IF NOT EXISTS `field_groups` (
-  `field_group_name` varchar(255) NOT NULL DEFAULT '',
-  `no_of_members` int(1) NOT NULL,
-  `field_group_field_community_id` varchar(255) NOT NULL,
-  `field_group_task_assigner_id` varchar(255) NOT NULL,
-  PRIMARY KEY (`field_group_name`),
-  KEY `field_group_field_community_id` (`field_group_field_community_id`),
-  KEY `field_group_task_assigner_id` (`field_group_task_assigner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `field_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_group_name` varchar(12) NOT NULL DEFAULT '',
+  `no_of_members` int(11) DEFAULT NULL,
+  `field_group_field_community_identifier` varchar(40) DEFAULT NULL,
+  `field_group_task_assigner_index_no` int(11) DEFAULT NULL,
+  PRIMARY KEY (`field_group_id`),
+  KEY `field_group_field_community_id` (`field_group_field_community_identifier`),
+  KEY `field_group_task_assigner_id` (`field_group_task_assigner_index_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `field_group_progresses`
 
 CREATE TABLE IF NOT EXISTS `field_group_progresses` (
-  `field_group_progress_field_group_name` char(2) NOT NULL DEFAULT '',
-  `no_of_field_visits` int(2) NOT NULL DEFAULT '0',
-  `community_feedback` varchar(150) NOT NULL DEFAULT '',
-  `mark` float NOT NULL,
-  `note` text NOT NULL,
-  PRIMARY KEY (`field_group_progress_field_group_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `field_group_progress_id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_group_progress_field_group_name` varchar(12) NOT NULL DEFAULT '',
+  `no_of_field_visits` int(11) DEFAULT '0',
+  `community_feedback` varchar(255) DEFAULT '',
+  `mark` float DEFAULT NULL,
+  `note` text,
+  PRIMARY KEY (`field_group_progress_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `households`
@@ -133,23 +135,23 @@ CREATE TABLE IF NOT EXISTS `households` (
 -- Table structure for table `task_assigners`
 
 CREATE TABLE IF NOT EXISTS `task_assigners` (
-  `task_assigner_id` varchar(15) NOT NULL,
-  `task_assigner_index_no` int(6) NOT NULL,
-  `task_assigner_reg_no` varchar(15) NOT NULL,
-  `firs_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `gender` varchar(6) NOT NULL,
-  `email` varchar(32) NOT NULL,
-  `contact_no` varchar(12) NOT NULL,
-  `address` varchar(32) NOT NULL,
-  `task_assigner_field_group_name` varchar(2) NOT NULL,
-  `user_name` varchar(20) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `profile_photo` varchar(15) NOT NULL,
-  `bio` text NOT NULL,
+  `task_assigner_id` int(11) NOT NULL AUTO_INCREMENT,
+  `task_assigner_index_no` int(11) DEFAULT NULL,
+  `task_assigner_reg_no` varchar(20) DEFAULT NULL,
+  `firs_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contact_no` varchar(12) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `task_assigner_field_group_name` varchar(12) DEFAULT NULL,
+  `user_name` varchar(40) DEFAULT NULL,
+  `password` varchar(40) DEFAULT NULL,
+  `profile_photo` varchar(255) DEFAULT NULL,
+  `bio` text,
   PRIMARY KEY (`task_assigner_id`),
   KEY `task_assigner_index_no` (`task_assigner_index_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `salt_usages`
