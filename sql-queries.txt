@@ -250,27 +250,28 @@ CREATE TABLE IF NOT EXISTS `child_growths` (
 -- Table structure for table `family_members`
 
 CREATE TABLE IF NOT EXISTS `family_members` (
-  `family_member_household_id` varchar(255) NOT NULL,
-  `family_member_first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `age` int(3) NOT NULL,
-  `gender` varchar(6) NOT NULL,
-  `occupation` varchar(255) NOT NULL,
-  `profile_photo` varchar(255) NOT NULL,
-  `decease` text NOT NULL,
-  `primary_health_issue` varchar(255) NOT NULL,
-  `sleeping_hour` float NOT NULL,
-  `exercise_hour` float NOT NULL,
-  `educational_level` varchar(255) NOT NULL,
-  `bmi` float NOT NULL,
-  `whr` float NOT NULL,
-  `family_member_questionnaire_id` varchar(255) NOT NULL,
-  `mark_for_questionarie` float NOT NULL,
-  `note` text NOT NULL,
-  PRIMARY KEY (`family_member_household_id`,`family_member_first_name`),
+  `family_member_id` int(11) NOT NULL AUTO_INCREMENT,
+  `family_member_household_identifier` varchar(40) DEFAULT NULL,
+  `family_member_first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL,
+  `occupation` varchar(255) DEFAULT NULL,
+  `profile_photo` varchar(255) DEFAULT NULL,
+  `decease` text,
+  `primary_health_issue` varchar(255) DEFAULT NULL,
+  `sleeping_hour` float DEFAULT NULL,
+  `exercise_hour` float DEFAULT NULL,
+  `educational_level` varchar(255) DEFAULT NULL,
+  `bmi` float DEFAULT NULL,
+  `whr` float DEFAULT NULL,
+  `family_member_questionnaire_id` varchar(255) DEFAULT NULL,
+  `mark_for_questionarie` float DEFAULT NULL,
+  `note` text,
+  PRIMARY KEY (`family_member_id`),
   KEY `family_member_questionnaire_id` (`family_member_questionnaire_id`),
   KEY `family_member_first_name` (`family_member_first_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `pregnant_mothers`
