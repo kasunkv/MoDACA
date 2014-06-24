@@ -403,43 +403,46 @@ CREATE TABLE IF NOT EXISTS `health_issues` (
 -- Table structure for table `questions`
 
 CREATE TABLE IF NOT EXISTS `questions` (
-  `question_no` int(3) NOT NULL,
-  `question_questionnaire_id` varchar(15) NOT NULL,
-  `question` text NOT NULL,
-  `no_of_responses` int(2) NOT NULL,
-  `weight_of_response1` int(2) NOT NULL,
-  `weight_of_response2` int(2) NOT NULL,
-  `weight_of_response3` int(2) NOT NULL,
-  `weight_of_response4` int(2) NOT NULL,
-  `weight_of_response5` int(2) NOT NULL,
-  `weight_of_response6` int(2) NOT NULL,
-  PRIMARY KEY (`question_no`),
-  KEY `question_questionnaire_id` (`question_questionnaire_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_no` int(11) DEFAULT NULL,
+  `question_questionnaire_identifier` varchar(40) NOT NULL,
+  `question` text,
+  `no_of_responses` int(11) DEFAULT NULL,
+  `weight_of_response1` int(11) DEFAULT NULL,
+  `weight_of_response2` int(11) DEFAULT NULL,
+  `weight_of_response3` int(11) DEFAULT NULL,
+  `weight_of_response4` int(11) DEFAULT NULL,
+  `weight_of_response5` int(11) DEFAULT NULL,
+  `weight_of_response6` int(11) DEFAULT NULL,
+  PRIMARY KEY (`question_id`),
+  KEY `question_questionnaire_id` (`question_questionnaire_identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `bmis`
 
 CREATE TABLE IF NOT EXISTS `bmis` (
-  `bmi_household_id` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `bmi_value` float NOT NULL,
-  PRIMARY KEY (`bmi_household_id`,`first_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `bmi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bmi_household_identifier` varchar(40) NOT NULL,
+  `family_member_first_name` varchar(255) NOT NULL,
+  `date` date DEFAULT NULL,
+  `bmi_value` float DEFAULT NULL,
+  PRIMARY KEY (`bmi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `health_group_progresses`
 
 CREATE TABLE IF NOT EXISTS `health_group_progresses` (
-  `health_group_progress_health_group_id` varchar(255) NOT NULL,
-  `health_group_progress_indicator_id` varchar(255) NOT NULL,
-  `health_group_progress_health_issue_id` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`health_group_progress_health_group_id`),
-  KEY `health_group_progress_indicator_id` (`health_group_progress_indicator_id`),
-  KEY `health_group_progress_health_issue_id` (`health_group_progress_health_issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `health_group_progress_id` int(11) NOT NULL AUTO_INCREMENT,
+  `health_group_progress_health_issue_group_identifier` varchar(40) NOT NULL,
+  `health_group_progress_indicator_identifier` varchar(40) NOT NULL,
+  `health_group_progress_health_issue_identifier` varchar(40) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`health_group_progress_id`),
+  KEY `health_group_progress_indicator_id` (`health_group_progress_indicator_identifier`),
+  KEY `health_group_progress_health_issue_id` (`health_group_progress_health_issue_identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `indicators`
