@@ -366,35 +366,38 @@ CREATE TABLE IF NOT EXISTS `whrs` (
 -- Table structure for table `health_issue_groups`
 
 CREATE TABLE IF NOT EXISTS `health_issue_groups` (
-  `health_issue_group_id` varchar(255) NOT NULL,
-  `health_issue_group_field_community_id` varchar(255) NOT NULL,
-  `no_of_members` int(3) NOT NULL,
-  `primary_health_issue` varchar(255) NOT NULL,
-  `health_issue_group_health_issue_id` varchar(255) NOT NULL,
+  `health_issue_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `health_issue_group_identifier` varchar(40) NOT NULL,
+  `health_issue_group_field_community_identifier` varchar(40) NOT NULL,
+  `no_of_members` int(3) DEFAULT NULL,
+  `primary_health_issue` varchar(255) DEFAULT NULL,
+  `health_issue_group_health_issue_identifier` varchar(40) NOT NULL,
   PRIMARY KEY (`health_issue_group_id`),
-  KEY `health_issue_group_field_community_id` (`health_issue_group_field_community_id`),
-  KEY `health_issue_group_health_issue_id` (`health_issue_group_health_issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `health_issue_group_field_community_id` (`health_issue_group_field_community_identifier`),
+  KEY `health_issue_group_health_issue_id` (`health_issue_group_health_issue_identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `navigation_details`
 
 CREATE TABLE IF NOT EXISTS `navigation_details` (
-  `navigation_detail_household_id` varchar(15) NOT NULL,
-  `time_stamp` datetime NOT NULL,
-  `latitude` varchar(15) NOT NULL,
-  `longitude` varchar(15) NOT NULL,
-  PRIMARY KEY (`navigation_detail_household_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `navigation_detail_id` int(11) NOT NULL AUTO_INCREMENT,
+  `navigation_detail_household_identifier` varchar(40) NOT NULL,
+  `time_stamp` datetime DEFAULT NULL,
+  `latitude` varchar(15) DEFAULT NULL,
+  `longitude` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`navigation_detail_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `health_issues`
 
 CREATE TABLE IF NOT EXISTS `health_issues` (
-  `health_issue_id` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `health_issue_id` int(11) NOT NULL AUTO_INCREMENT,
+  `health_issue_identifier` varchar(40) NOT NULL,
+  `description` text,
   PRIMARY KEY (`health_issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `questions`
