@@ -326,38 +326,41 @@ CREATE TABLE IF NOT EXISTS `pregnant_mother_knowledge_questions` (
 -- Table structure for table `pregnant_mother_knowledges`
 
 CREATE TABLE IF NOT EXISTS `pregnant_mother_knowledges` (
-  `pregnant_mother_knowlegde_household_id` varchar(15) NOT NULL,
-  `pregnant_mother_knowlegde_first_name` varchar(20) NOT NULL,
-  `date` date NOT NULL,
+  `pregnant_mother_knowlegde_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pregnant_mother_knowlegde_household_identifier` varchar(40) NOT NULL,
+  `pregnant_mother_knowlegde_pregnant_mother_first_name` varchar(255) NOT NULL,
+  `date` date DEFAULT NULL,
   `pregnant_mother_knowlegde_question_set_id` varchar(15) NOT NULL,
-  `marks_percent` float NOT NULL,
-  `note` text NOT NULL,
-  PRIMARY KEY (`pregnant_mother_knowlegde_household_id`,`pregnant_mother_knowlegde_first_name`),
+  `marks_percent` float DEFAULT NULL,
+  `note` text,
+  PRIMARY KEY (`pregnant_mother_knowlegde_id`),
   KEY `pregnant_mother_knowlegde_question_set_id` (`pregnant_mother_knowlegde_question_set_id`),
-  KEY `pregnant_mother_knowlegde_first_name` (`pregnant_mother_knowlegde_first_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `pregnant_mother_knowlegde_first_name` (`pregnant_mother_knowlegde_pregnant_mother_first_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `flour_usages`
 
 CREATE TABLE IF NOT EXISTS `flour_usages` (
-  `flour_usage_household_id` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `value` float NOT NULL,
-  PRIMARY KEY (`flour_usage_household_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `flour_usage_id` int(11) NOT NULL AUTO_INCREMENT,
+  `flour_usage_household_identifier` varchar(40) NOT NULL,
+  `date` date DEFAULT NULL,
+  `value` float DEFAULT NULL,
+  PRIMARY KEY (`flour_usage_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `whrs`
 
 CREATE TABLE IF NOT EXISTS `whrs` (
-  `whr_household_id` varchar(15) NOT NULL,
-  `whr_family_member_first_name` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `whr_value` float NOT NULL,
-  PRIMARY KEY (`whr_household_id`),
+  `whrs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `whr_household_identifier` varchar(40) NOT NULL,
+  `whr_family_member_first_name` varchar(255) NOT NULL,
+  `date` date DEFAULT NULL,
+  `whr_value` float DEFAULT NULL,
+  PRIMARY KEY (`whrs_id`),
   KEY `whr_family_member_first_name` (`whr_family_member_first_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 -- Table structure for table `health_issue_groups`
