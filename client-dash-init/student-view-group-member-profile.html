@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrator | View Profile</title>
+    <title>Student | View Group Member Profile</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -40,48 +40,40 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-pri
                         <img src="assets/img/find_user1.png" class="user-image img-responsive" />
                     </li>
                     <li>
-                        <a href="dash-admin.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a href="dash-student.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-user fa-3x"></i> Profiles<span class="fa arrow"></span></a>
+                        <a href="student-view-profile.html"><i class="fa fa-user fa-3x"></i> Profile</a>                        
+                    </li>
+                    <li class="active">
+                        <a href="track-studetns.html"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="admin-approve.html">Approve Profile</a>
-                            </li>
-                            <!-- <li>
-                                <a href="#">Remove Profile</a>
-                            </li> -->
-                            <li>
-                                <a href="admin-search-profile.html">Search Profile</a>
-                            </li>
-                            <!-- <li>
-                                <a href="edit-profile.html">Edit Profile</a>
-                            </li>  -->                                                       
-                        </ul>
-                    </li>                    
-                    <li>
-                        <a href="#"><i class="fa fa-tasks fa-3x"></i> Admins<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Add Administrator</a>
+                                <a class="active-menu" href="student-group-members.html">Group Members</a>
                             </li>
                             <li>
-                                <a href="#">Remove Administrator</a>
+                                <a href="student-group-progress.html">Group Progress</a>
                             </li>  
                         </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="student-my-progress.html"><i class="fa fa-signal fa-3x"></i> My Progress</a>                       
+                    </li>   
+                    <li>
+                        <a href="student-reports.html"><i class="fa fa-file fa-3x"></i> Reports</a>                        
                     </li>                    
                 </ul>
             </div>
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Administrator | View Profiles</h2>
-                        <h5>View selected user profile</h5>
+                        <h2>Student | Group Member Profile</h2>
+                        <h5>Profile of your group member</h5>
                     </div>
                 </div>
                 <!-- /. ROW  -->
@@ -163,23 +155,8 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-pri
                                         </div> 
                                     </div>
                                 </div>
-                            </div>  
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Tasks
-                                </div>
-                                <div class="panel-body">
-                                    <div class="col-md-6">
-                                        <a href="admin-edit-profile.html" class="btn btn-primary btn-sm">Edit Profile</a>                                        
-                                    </div>
-                                    <div class="col-md-6">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button> -->
-                            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-                            <a href="dash-admin.html" class="btn btn-lg btn-danger btn-custom">Back</a>
+                            </div>   
+                            <a href="dash-student.html" class="btn btn-lg btn-danger btn-custom">Back</a>
                         </form>                                 
                     </div>
                     <div class="col-md-2">

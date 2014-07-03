@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MoDACA | Admin Dashboard</title>
+    <title>Student | Group Members</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -40,54 +40,44 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-pri
                         <img src="assets/img/find_user1.png" class="user-image img-responsive" />
                     </li>
                     <li>
-                        <a href="dash-admin.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a href="dash-student.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
 
-                    <li class="active">
-                        <a href="#"><i class="fa fa-user fa-3x"></i> Profiles<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="active-menu" href="admin-approve.html">Approve Profile</a>
-                            </li>
-                            <!-- <li>
-                                <a href="#">Remove Profile</a>
-                            </li> -->
-                            <li>
-                                <a href="admin-search-profile.html">Search Profile</a>
-                            </li>
-                            <!-- <li>
-                                <a href="edit-profile.html">Edit Profile</a>
-                            </li>  -->                                                       
-                        </ul>
-                    </li>                    
                     <li>
-                        <a href="#"><i class="fa fa-tasks fa-3x"></i> Admins<span class="fa arrow"></span></a>
+                        <a href="student-view-profile.html"><i class="fa fa-user fa-3x"></i> Profile</a>                        
+                    </li>
+                    <li class="active">
+                        <a href="track-studetns.html"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Add Administrator</a>
+                                <a class="active-menu" href="student-group-members.html">Group Members</a>
                             </li>
                             <li>
-                                <a href="#">Remove Administrator</a>
+                                <a href="student-group-progress.html">Group Progress</a>
                             </li>  
                         </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="student-my-progress.html"><i class="fa fa-signal fa-3x"></i> My Progress</a>                       
+                    </li>   
+                    <li>
+                        <a href="student-reports.html"><i class="fa fa-file fa-3x"></i> Reports</a>                        
                     </li>                    
                 </ul>
-
             </div>
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Administrator | Registration Approval</h2>
-                        <h5>Approve user requests made to use MoDACA</h5>
+                        <h2>Student | Group Members</h2>
+                        <h5>View your field group members</h5>
                     </div>
                 </div>
                 <!-- /. ROW  -->
                 <hr />
-                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
@@ -102,9 +92,7 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-pri
                                                     <th>#</th>
                                                     <th>Fisrt Name</th>
                                                     <th>Last Name</th>
-                                                    <th>Role</th>
                                                     <th>Profile</th>
-                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -112,63 +100,37 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-pri
                                                     <td>1</td>
                                                     <td>Kasun</td>
                                                     <td>Kodagoda</td>
-                                                    <td>Student</td>
-                                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                                    <td>
-                                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                                    </td>
+                                                    <td><a class="btn btn-xs btn-success" href="student-view-group-member-profile.html" >View</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Kaushal</td>
                                                     <td>Nihathamana</td>
-                                                    <td>Student</td>
-                                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                                    <td>
-                                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                                    </td>
-                                                </tr>
+                                                    <td><a class="btn btn-xs btn-success" href="student-view-group-member-profile.html" >View</a></td>                              
+                                                </tr>                                                
                                                 <tr>
                                                     <td>3</td>
-                                                    <td>Saman</td>
-                                                    <td>Gammanpila</td>
-                                                    <td>Lecturer</td>
-                                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                                    <td>
-                                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                                    </td>
+                                                    <td>Nadeesha</td>
+                                                    <td>Thilakerathne</td>
+                                                    <td><a class="btn btn-xs btn-success" href="student-view-group-member-profile.html" >View</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
-                                                    <td>Nadeesha</td>
-                                                    <td>Thilakerathne</td>
-                                                    <td>Student</td>
-                                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                                    <td>
-                                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
                                                     <td>Shifan</td>
                                                     <td>Mohamed</td>
-                                                    <td>Student</td>
-                                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                                    <td>
-                                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                                    </td>
+                                                    <td><a class="btn btn-xs btn-success" href="student-view-group-member-profile.html" >View</a></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div> 
-                    </div>
+                    </div>               
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+                <div class="row">
+                    
                 </div>
                 <!-- /. ROW  -->
                 <div class="row">
