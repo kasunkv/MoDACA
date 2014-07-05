@@ -562,3 +562,18 @@ ALTER TABLE `health_issue_in_communitys`
 --
 ALTER TABLE `households`
   ADD CONSTRAINT `FK_households_field_communitys` FOREIGN KEY (`household_field_community_identifier`) REFERENCES `field_communitys` (`field_community_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `indicators`
+--
+ALTER TABLE `indicators`
+  ADD CONSTRAINT `FK_indicators_health_issues` FOREIGN KEY (`indicator_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `legends`
+--
+ALTER TABLE `legends`
+  ADD CONSTRAINT `FK_legends_health_issues` FOREIGN KEY (`legend_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `navigation_details`
+--
+ALTER TABLE `navigation_details`
+  ADD CONSTRAINT `FK_navigation_details_households` FOREIGN KEY (`navigation_detail_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
