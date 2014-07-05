@@ -577,3 +577,13 @@ ALTER TABLE `legends`
 --
 ALTER TABLE `navigation_details`
   ADD CONSTRAINT `FK_navigation_details_households` FOREIGN KEY (`navigation_detail_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `oil_usages`
+--
+ALTER TABLE `oil_usages`
+  ADD CONSTRAINT `FK_oil_usages_households` FOREIGN KEY (`oil_usage_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `pregnant_mothers`
+--
+ALTER TABLE `pregnant_mothers`
+  ADD CONSTRAINT `FK_pregnant_mothers_households` FOREIGN KEY (`pregnant_mother_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
