@@ -501,3 +501,8 @@ CREATE TABLE IF NOT EXISTS `questionnaires` (
 --
 ALTER TABLE `babys`
   ADD CONSTRAINT `FK_babys_households` FOREIGN KEY (`baby_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `bmis`
+--
+ALTER TABLE `bmis`
+  ADD CONSTRAINT `FK_bmis_households` FOREIGN KEY (`bmi_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
