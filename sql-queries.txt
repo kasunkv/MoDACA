@@ -497,3 +497,7 @@ CREATE TABLE IF NOT EXISTS `questionnaires` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
+-- Constraints for table `babys`
+--
+ALTER TABLE `babys`
+  ADD CONSTRAINT `FK_babys_households` FOREIGN KEY (`baby_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
