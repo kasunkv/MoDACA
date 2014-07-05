@@ -523,7 +523,25 @@ ALTER TABLE `determinants`
 ALTER TABLE `family_members`
   ADD CONSTRAINT `FK_family_members_households` FOREIGN KEY (`family_member_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+-- Constraints for table `field_groups`
+--
+ALTER TABLE `field_groups`
+  ADD CONSTRAINT `FK_field_groups_task_assigners` FOREIGN KEY (`field_group_task_assigner_index_no`) REFERENCES `task_assigners` (`task_assigner_index_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_field_groups_field_communitys` FOREIGN KEY (`field_group_field_community_identifier`) REFERENCES `field_communitys` (`field_community_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 -- Constraints for table `field_group_progresses`
 --
 ALTER TABLE `field_group_progresses`
   ADD CONSTRAINT `FK_field_group_progresses_field_groups` FOREIGN KEY (`field_group_progress_field_group_name`) REFERENCES `field_groups` (`field_group_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `flour_usages`
+--
+ALTER TABLE `flour_usages`
+  ADD CONSTRAINT `FK_flour_usages_households` FOREIGN KEY (`flour_usage_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `health_group_progresses`
+--
+ALTER TABLE `health_group_progresses`
+  ADD CONSTRAINT `FK_health_group_progress_health_issues` FOREIGN KEY (`health_group_progress_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`),
+  ADD CONSTRAINT `FK_health_group_progress_health_issue_groups` FOREIGN KEY (`health_group_progress_health_issue_group_identifier`) REFERENCES `health_issue_groups` (`health_issue_group_identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_health_group_progress_indicators` FOREIGN KEY (`health_group_progress_indicator_identifier`) REFERENCES `indicators` (`indicator_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
