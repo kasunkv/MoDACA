@@ -506,3 +506,8 @@ ALTER TABLE `babys`
 --
 ALTER TABLE `bmis`
   ADD CONSTRAINT `FK_bmis_households` FOREIGN KEY (`bmi_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+-- Constraints for table `child_growths`
+--
+ALTER TABLE `child_growths`
+  ADD CONSTRAINT `FK_child_growths_babys` FOREIGN KEY (`child_growth_baby_name`) REFERENCES `babys` (`baby_name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_child_growths_households` FOREIGN KEY (`child_growth_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
