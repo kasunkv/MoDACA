@@ -545,3 +545,20 @@ ALTER TABLE `health_group_progresses`
   ADD CONSTRAINT `FK_health_group_progress_health_issues` FOREIGN KEY (`health_group_progress_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`),
   ADD CONSTRAINT `FK_health_group_progress_health_issue_groups` FOREIGN KEY (`health_group_progress_health_issue_group_identifier`) REFERENCES `health_issue_groups` (`health_issue_group_identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_health_group_progress_indicators` FOREIGN KEY (`health_group_progress_indicator_identifier`) REFERENCES `indicators` (`indicator_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `health_issue_groups`
+--
+ALTER TABLE `health_issue_groups`
+  ADD CONSTRAINT `FK_health_issue_groups_health_issues` FOREIGN KEY (`health_issue_group_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_health_issue_groups_field_communitys` FOREIGN KEY (`health_issue_group_field_community_identifier`) REFERENCES `field_communitys` (`field_community_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `health_issue_in_communitys`
+--
+ALTER TABLE `health_issue_in_communitys`
+  ADD CONSTRAINT `FK_health_issue_in_communitys_` FOREIGN KEY (`health_issue_in_community_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_health_issue_in_communitys_field_communitys` FOREIGN KEY (`health_issue_in_community_field_community_identifier`) REFERENCES `field_communitys` (`field_community_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `households`
+--
+ALTER TABLE `households`
+  ADD CONSTRAINT `FK_households_field_communitys` FOREIGN KEY (`household_field_community_identifier`) REFERENCES `field_communitys` (`field_community_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
