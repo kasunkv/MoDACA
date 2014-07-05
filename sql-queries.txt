@@ -506,8 +506,24 @@ ALTER TABLE `babys`
 --
 ALTER TABLE `bmis`
   ADD CONSTRAINT `FK_bmis_households` FOREIGN KEY (`bmi_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 -- Constraints for table `child_growths`
 --
 ALTER TABLE `child_growths`
   ADD CONSTRAINT `FK_child_growths_babys` FOREIGN KEY (`child_growth_baby_name`) REFERENCES `babys` (`baby_name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_child_growths_households` FOREIGN KEY (`child_growth_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `determinants`
+--
+ALTER TABLE `determinants`
+  ADD CONSTRAINT `FK_determinants_health_issues` FOREIGN KEY (`determinant_health_issue_identifier`) REFERENCES `health_issues` (`health_issue_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `family_members`
+--
+ALTER TABLE `family_members`
+  ADD CONSTRAINT `FK_family_members_households` FOREIGN KEY (`family_member_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `field_group_progresses`
+--
+ALTER TABLE `field_group_progresses`
+  ADD CONSTRAINT `FK_field_group_progresses_field_groups` FOREIGN KEY (`field_group_progress_field_group_name`) REFERENCES `field_groups` (`field_group_name`) ON DELETE CASCADE ON UPDATE CASCADE;
