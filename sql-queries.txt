@@ -593,3 +593,8 @@ ALTER TABLE `pregnant_mothers`
 ALTER TABLE `pregnant_mother_knowledges`
   ADD CONSTRAINT `FK_pregnant_mother_knowledges_` FOREIGN KEY (`pregnant_mother_knowlegde_pregnant_mother_first_name`) REFERENCES `pregnant_mothers` (`first_name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_pregnant_mother_knowledges_households` FOREIGN KEY (`pregnant_mother_knowlegde_household_identifier`) REFERENCES `households` (`household_identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Constraints for table `pregnant_mothers`
+--
+ALTER TABLE `pregnant_mothers`
+  DROP COLUMN `gender`
