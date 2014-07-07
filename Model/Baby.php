@@ -40,13 +40,13 @@ class Baby extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'baby_household_identifier' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/^[A-Za-z0-9_\-]{4,40}$/',
+				'message' => 'Must only contain digits, letters, dashs and underscores.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -54,15 +54,15 @@ class Baby extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Identifier must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 40),
+				'message' => 'Identifier must not exceed 40 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -71,24 +71,24 @@ class Baby extends AppModel {
 		),
 		'baby_name' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/^[A-Z][A-Za-z. ]+$/',
+				'message' => 'Baby name should only contain letters and spaces.',
 				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'required' => true,
+				'last' => true, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Baby name should not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'Baby name must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -98,7 +98,7 @@ class Baby extends AppModel {
 		'age' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Age must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -106,7 +106,7 @@ class Baby extends AppModel {
 			),
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Age must be a number.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -115,24 +115,16 @@ class Baby extends AppModel {
 		),
 		'gender' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/^(Male|Female)$/',
+				'message' => 'Gender should be Male or Female',
 				//'allowEmpty' => false,
-				//'required' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'message' => 'Gender must not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -142,7 +134,7 @@ class Baby extends AppModel {
 		'no_of_sibling' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Number of sibilings must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -150,25 +142,17 @@ class Baby extends AppModel {
 			),
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Number of sibilings must be a number.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'profile_photo' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+		'profile_photo' => array(			
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'URL must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -177,24 +161,16 @@ class Baby extends AppModel {
 		),
 		'primary_health_issue' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Bio must not be invalid.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			),			
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'Heath issue must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -204,15 +180,15 @@ class Baby extends AppModel {
 		'weight' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Weight must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'decimal' => array(
-				'rule' => array('decimal'),
-				//'message' => 'Your custom message here',
+				'rule' => array('decimal', 2),
+				'message' => 'Weight must be a decilmal value with 2 decimal points.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -222,15 +198,15 @@ class Baby extends AppModel {
 		'height' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Height must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'decimal' => array(
-				'rule' => array('decimal'),
-				//'message' => 'Your custom message here',
+				'rule' => array('decimal', 2),
+				'message' => 'Height must be a decilmal value with 2 decimal points.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -239,8 +215,8 @@ class Baby extends AppModel {
 		),
 		'note' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Note must not be invalid.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -248,12 +224,12 @@ class Baby extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Note must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),			
+			),		
 		),
 	);
 }
