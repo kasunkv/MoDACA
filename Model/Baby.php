@@ -162,7 +162,7 @@ class Baby extends AppModel {
 		'primary_health_issue' => array(
 			'custom' => array(
 				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
-				'message' => 'Bio must not be invalid.',
+				'message' => 'Heath issue must not be invalid.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
