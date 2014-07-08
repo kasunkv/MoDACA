@@ -29,25 +29,29 @@ class PregnantMother extends AppModel {
 		'pregnant_mother_id' => array(
 			'blank' => array(
 				'rule' => array('blank'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'pregnant_mother_household_identifier' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+			'custom' => array(
+				'rule' => '/^[A-Za-z0-9_\-]+$/',
+				'message' => 'Must only contain digits, letters, dashs and underscores.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Identifier must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 40),
+				'message' => 'Identifier must not exceed 40 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -55,27 +59,94 @@ class PregnantMother extends AppModel {
 			),
 		),
 		'first_name' => array(
+			'custom' => array(
+				'rule' => '/^[A-Z][A-Za-z. ]+$/',
+				'message' => 'First name should only contain letters and spaces.',
+				'required' => true,
+				'last' => true, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'message' => 'First name can not be empty.',
+				'last' => true, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'First name must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'last' => true, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'age' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Age must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Age must be a number.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'gender' => array(
+			'custom' => array(
+				'rule' => '/^(Male|Female)$/',
+				'message' => 'Gender should be Male or Female',
+				//'allowEmpty' => false,
+				'required' => true,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Gender must not be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'occupation' => array(
+			'custom' => array(
+				'rule' => '/^[A-Za-z\-, ./()]+$/',
+				'message' => 'Must not contain numbers and special characters.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Occupation must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 255),
+				'message' => 'Occupation must not exceed 255 characters.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'profile_photo' => array(
+			'maxLength' => array(
+				'rule' => array('maxLength', 255),
+				'message' => 'URL must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -84,8 +155,8 @@ class PregnantMother extends AppModel {
 		),
 		'decease' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Must not include invalid characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -93,9 +164,53 @@ class PregnantMother extends AppModel {
 			),
 		),
 		'primary_health_issue' => array(
+			'custom' => array(
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Heath issue must not be invalid.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),			
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'Heath issue must not exceed 255 characters.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'sleeping_hour' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Sleeping hours must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Sleeping hours must be a number.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'exercise_hour' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Exercise hours must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Exercise hours must be a number.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -103,19 +218,43 @@ class PregnantMother extends AppModel {
 			),
 		),
 		'educational_level' => array(
+			'custom' => array(
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Educational level must not be invalid.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),			
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'Educational level must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Educational level must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),			
 		),
 		'bmi' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'BMI must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'decimal' => array(
+				'rule' => array('decimal', 2),
+				'message' => 'BMI must be a decilmal value with 2 decimal points.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -125,7 +264,15 @@ class PregnantMother extends AppModel {
 		'whr' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'WHR must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'decimal' => array(
+				'rule' => array('decimal', 2),
+				'message' => 'WHR must be a decilmal value with 2 decimal points.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -134,8 +281,8 @@ class PregnantMother extends AppModel {
 		),
 		'note' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Note must not be invalid.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -143,24 +290,50 @@ class PregnantMother extends AppModel {
 			),
 		),
 		'fetus_age' => array(
+                        'numeric' => array(
+                                'rule' => array('numeric'),
+                                'message' => 'Fetus age must be a number.',
+                                //'allowEmpty' => false,
+                                //'required' => false,
+                                //'last' => false, // Stop validation after this rule
+                                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                        ),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Fetus age must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+                'no_of_children' => array(                            
+                        'numeric' => array(
+                                'rule' => array('numeric'),
+                                'message' => 'No of children must be a number.',
+                                //'allowEmpty' => false,
+                                //'required' => false,
+                                //'last' => false, // Stop validation after this rule
+                                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                        ),
+                ),    
 		'weight' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Weight must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+                        'decimal' => array(
+                                'rule' => array('decimal', 2),
+                                'message' => 'weight must be a decilmal value with 2 decimal points.',
+                                //'allowEmpty' => false,
+                                //'required' => false,
+                                //'last' => false, // Stop validation after this rule
+                                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                        ),
 		),
 	);
 }

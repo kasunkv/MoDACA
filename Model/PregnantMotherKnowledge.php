@@ -29,25 +29,29 @@ class PregnantMotherKnowledge extends AppModel {
 		'pregnant_mother_knowlegde_id' => array(
 			'blank' => array(
 				'rule' => array('blank'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'pregnant_mother_knowlegde_household_identifier' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+			'custom' => array(
+				'rule' => '/^[A-Za-z0-9_\-]+$/',
+				'message' => 'Must only contain digits, letters, dashs and underscores.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Identifier must not be empty.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'maxLength' => array(
+				'rule' => array('maxLength', 40),
+				'message' => 'Identifier must not exceed 40 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -55,27 +59,32 @@ class PregnantMotherKnowledge extends AppModel {
 			),
 		),
 		'pregnant_mother_knowlegde_pregnant_mother_first_name' => array(
+			'custom' => array(
+				'rule' => '/^[A-Z][A-Za-z. ]+$/',
+				'message' => 'First name should only contain letters and spaces.',
+				'required' => true,
+				'last' => true, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'message' => 'First name can not be empty.',
+				'last' => true, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 255),
+				'message' => 'First name must not exceed 255 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+				'last' => true, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'date' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
+				'message' => 'Must be a valid date.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -83,7 +92,7 @@ class PregnantMotherKnowledge extends AppModel {
 			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Date must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -91,17 +100,25 @@ class PregnantMotherKnowledge extends AppModel {
 			),
 		),
 		'pregnant_mother_knowlegde_question_set_id' => array(
+			'custom' => array(
+				'rule' => '/^[A-Za-z0-9_\-]+$/',
+				'message' => 'Must only contain digits, letters, dashs and underscores.',
+				//'allowEmpty' => false,
+				'required' => trie,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Question set id must not be empty.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxLength' => array(
-				'rule' => array('maxLength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('maxLength', 15),
+				'message' => 'Question set id must not exceed 15 characters.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -109,9 +126,9 @@ class PregnantMotherKnowledge extends AppModel {
 			),
 		),
 		'marks_percent' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
+			'decimal' => array(
+				'rule' => array('decimal', 2),
+				'message' => 'Mark presentage must be a decilmal value with 2 decimal points.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -120,8 +137,8 @@ class PregnantMotherKnowledge extends AppModel {
 		),
 		'note' => array(
 			'custom' => array(
-				'rule' => array('custom'),
-				//'message' => 'Your custom message here',
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Note must not be invalid.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
