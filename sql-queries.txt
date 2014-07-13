@@ -165,6 +165,43 @@ CREATE TABLE IF NOT EXISTS `field_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+-- Table structure for table `field_group_progresses`
+
+CREATE TABLE IF NOT EXISTS `field_group_progresses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_group_id` int(11) NOT NULL,
+  `no_of_field_visits` int(11) DEFAULT NULL,
+  `community_feedback` varchar(255) DEFAULT NULL,
+  `mark` float DEFAULT NULL,
+  `note` text,
+  `timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `flour_usages`
+
+CREATE TABLE IF NOT EXISTS `flour_usages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `household_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issues`
+
+CREATE TABLE IF NOT EXISTS `health_issues` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `issue_name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 -- Constraints for table `babys`
 --
 ALTER TABLE `babys`
