@@ -117,6 +117,54 @@ CREATE TABLE IF NOT EXISTS `family_members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+-- Table structure for table `family_member_knowledges`
+
+CREATE TABLE IF NOT EXISTS `family_member_knowledges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `family_member_id` int(11) NOT NULL,
+  `questionnaire_id` int(11) NOT NULL,
+  `marks_percent` float NOT NULL,
+  `date` date NOT NULL,
+  `note` text,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `field_communities`
+
+CREATE TABLE IF NOT EXISTS `field_communities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tittle` varchar(40) DEFAULT NULL,
+  `gn_area` varchar(255) NOT NULL,
+  `moh_area` varchar(255) NOT NULL,
+  `phi_area` varchar(255) NOT NULL,
+  `phm_are` varchar(255) NOT NULL,
+  `village_name` varchar(255) NOT NULL,
+  `no_of_families` int(11) NOT NULL,
+  `population` int(11) NOT NULL,
+  `field_map` varchar(255) DEFAULT NULL,
+  `field_group_name` varchar(12) DEFAULT NULL,
+  `no_of_formal_settings` int(11) DEFAULT NULL,
+  `no_of_informal_settings` int(11) DEFAULT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `field_groups`
+
+CREATE TABLE IF NOT EXISTS `field_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(12) NOT NULL,
+  `no_of_members` int(11) NOT NULL,
+  `field_community_id` int(11) NOT NULL,
+  `task_assigner_id` int(11) DEFAULT NULL,
+  `timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 -- Constraints for table `babys`
 --
 ALTER TABLE `babys`
