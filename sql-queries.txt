@@ -202,6 +202,30 @@ CREATE TABLE IF NOT EXISTS `health_issues` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+-- Table structure for table `health_issue_communities`
+
+CREATE TABLE IF NOT EXISTS `health_issue_communities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_community_id` int(11) NOT NULL,
+  `health_issue_id` int(11) NOT NULL,
+  `timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `health_issue_groups`
+
+CREATE TABLE IF NOT EXISTS `health_issue_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `field_community_id` int(11) NOT NULL,
+  `health_issue_id` int(11) NOT NULL,
+  `group_title` varchar(255) NOT NULL,
+  `no_of_members` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 -- Constraints for table `babys`
 --
 ALTER TABLE `babys`
