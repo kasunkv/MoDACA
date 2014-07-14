@@ -328,6 +328,84 @@ CREATE TABLE IF NOT EXISTS `pregnant_mothers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
+-- Table structure for table `pregnant_mother_knowledges`
+
+CREATE TABLE IF NOT EXISTS `pregnant_mother_knowledges` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pregnant_mother_id` int(11) NOT NULL,
+  `questionnaire_id` int(11) NOT NULL,
+  `marks_percent` float NOT NULL,
+  `date` date NOT NULL,
+  `note` text,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `questionnaires`
+
+CREATE TABLE IF NOT EXISTS `questionnaires` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `legend_id` int(11) DEFAULT NULL,
+  `health_issue_id` int(11) NOT NULL,
+  `no_of_questions` int(11) NOT NULL,
+  `description` text,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `questions`
+
+CREATE TABLE IF NOT EXISTS `questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `questionnaire_id` int(11) NOT NULL,
+  `question_no` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `no_of_responses` int(11) NOT NULL,
+  `weight_of_response1` int(11) DEFAULT NULL,
+  `weight_of_response2` int(11) DEFAULT NULL,
+  `weight_of_response3` int(11) DEFAULT NULL,
+  `weight_of_response4` int(11) DEFAULT NULL,
+  `weight_of_response5` int(11) DEFAULT NULL,
+  `weight_of_response6` int(11) DEFAULT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `salt_usages`
+
+CREATE TABLE IF NOT EXISTS `salt_usages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `household_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `value` float NOT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+-- Table structure for table `staffs`
+
+CREATE TABLE IF NOT EXISTS `staffs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact_no` varchar(12) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `designation` varchar(255) NOT NULL,
+  `user_name` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `profile_photo` varchar(255) DEFAULT NULL,
+  `bio` varchar(255) DEFAULT NULL,
+  `timestamp` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 -- Constraints for table `babys`
 --
 ALTER TABLE `babys`
