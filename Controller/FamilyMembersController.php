@@ -56,6 +56,9 @@ class FamilyMembersController extends AppController {
 				$this->Session->setFlash(__('The family member could not be saved. Please, try again.'));
 			}
 		}
+		$households = $this->FamilyMember->Household->find('list');
+		$healthIssues = $this->FamilyMember->HealthIssue->find('list');
+		$this->set(compact('households', 'healthIssues'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class FamilyMembersController extends AppController {
 			$options = array('conditions' => array('FamilyMember.' . $this->FamilyMember->primaryKey => $id));
 			$this->request->data = $this->FamilyMember->find('first', $options);
 		}
+		$households = $this->FamilyMember->Household->find('list');
+		$healthIssues = $this->FamilyMember->HealthIssue->find('list');
+		$this->set(compact('households', 'healthIssues'));
 	}
 
 /**

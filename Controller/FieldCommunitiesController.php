@@ -56,6 +56,8 @@ class FieldCommunitiesController extends AppController {
 				$this->Session->setFlash(__('The field community could not be saved. Please, try again.'));
 			}
 		}
+		$fieldGroups = $this->FieldCommunity->FieldGroup->find('list');
+		$this->set(compact('fieldGroups'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class FieldCommunitiesController extends AppController {
 			$options = array('conditions' => array('FieldCommunity.' . $this->FieldCommunity->primaryKey => $id));
 			$this->request->data = $this->FieldCommunity->find('first', $options);
 		}
+		$fieldGroups = $this->FieldCommunity->FieldGroup->find('list');
+		$this->set(compact('fieldGroups'));
 	}
 
 /**

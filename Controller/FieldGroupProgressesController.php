@@ -56,6 +56,8 @@ class FieldGroupProgressesController extends AppController {
 				$this->Session->setFlash(__('The field group progress could not be saved. Please, try again.'));
 			}
 		}
+		$fieldGroups = $this->FieldGroupProgress->FieldGroup->find('list');
+		$this->set(compact('fieldGroups'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class FieldGroupProgressesController extends AppController {
 			$options = array('conditions' => array('FieldGroupProgress.' . $this->FieldGroupProgress->primaryKey => $id));
 			$this->request->data = $this->FieldGroupProgress->find('first', $options);
 		}
+		$fieldGroups = $this->FieldGroupProgress->FieldGroup->find('list');
+		$this->set(compact('fieldGroups'));
 	}
 
 /**
