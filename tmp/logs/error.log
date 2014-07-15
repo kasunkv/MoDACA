@@ -19,3 +19,21 @@ Request URL: /MoDACA/client-dash-init/
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-07-15 21:53:57 Error: [MissingControllerException] Controller class RangerController could not be found.
+Exception Attributes: array (
+  'class' => 'RangerController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/Ranger
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 21:56:30 Error: [MissingControllerException] Controller class ViewController could not be found.
+Exception Attributes: array (
+  'class' => 'ViewController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/View/Layouts/error
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
