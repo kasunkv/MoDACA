@@ -1,105 +1,74 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
- * Bmis Controller
+ * BMIs Controller
  *
- * @property Bmi $Bmi
+ * @property BMI $BMI
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
-class BmisController extends AppController {
+class BMIsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator', 'Session');
+    public function index() {
+        $this->BMI->recursive = 0;
+        $this->set('bMIs', $this->Paginator->paginate());
+    }
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Bmi->recursive = 0;
-		$this->set('bmis', $this->Paginator->paginate());
-	}
+    public function view($id = null) {
+        if (!$this->BMI->exists($id)) {
+            throw new NotFoundException(__('Invalid b m i'));
+        }
+        $options = array('conditions' => array('BMI.' . $this->BMI->primaryKey => $id));
+        $this->set('bMI', $this->BMI->find('first', $options));
+    }
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Bmi->exists($id)) {
-			throw new NotFoundException(__('Invalid bmi'));
-		}
-		$options = array('conditions' => array('Bmi.' . $this->Bmi->primaryKey => $id));
-		$this->set('bmi', $this->Bmi->find('first', $options));
-	}
+    public function add() {
+        if ($this->request->is('post')) {
+            $this->BMI->create();
+            if ($this->BMI->save($this->request->data)) {
+                $this->Session->setFlash(__('The b m i has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The b m i could not be saved. Please, try again.'));
+            }
+        }
+        $familyMembers = $this->BMI->FamilyMember->find('list');
+        $this->set(compact('familyMembers'));
+    }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Bmi->create();
-			if ($this->Bmi->save($this->request->data)) {
-				$this->Session->setFlash(__('The bmi has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The bmi could not be saved. Please, try again.'));
-			}
-		}
-	}
+    public function edit($id = null) {
+        if (!$this->BMI->exists($id)) {
+            throw new NotFoundException(__('Invalid b m i'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->BMI->save($this->request->data)) {
+                $this->Session->setFlash(__('The b m i has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The b m i could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('BMI.' . $this->BMI->primaryKey => $id));
+            $this->request->data = $this->BMI->find('first', $options);
+        }
+        $familyMembers = $this->BMI->FamilyMember->find('list');
+        $this->set(compact('familyMembers'));
+    }
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Bmi->exists($id)) {
-			throw new NotFoundException(__('Invalid bmi'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Bmi->save($this->request->data)) {
-				$this->Session->setFlash(__('The bmi has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The bmi could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Bmi.' . $this->Bmi->primaryKey => $id));
-			$this->request->data = $this->Bmi->find('first', $options);
-		}
-	}
+    public function delete($id = null) {
+        $this->BMI->id = $id;
+        if (!$this->BMI->exists()) {
+            throw new NotFoundException(__('Invalid b m i'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->BMI->delete()) {
+            $this->Session->setFlash(__('The b m i has been deleted.'));
+        } else {
+            $this->Session->setFlash(__('The b m i could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Bmi->id = $id;
-		if (!$this->Bmi->exists()) {
-			throw new NotFoundException(__('Invalid bmi'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Bmi->delete()) {
-			$this->Session->setFlash(__('The bmi has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The bmi could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
 }
