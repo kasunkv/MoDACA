@@ -56,6 +56,9 @@ class PregnantMotherKnowledgesController extends AppController {
 				$this->Session->setFlash(__('The pregnant mother knowledge could not be saved. Please, try again.'));
 			}
 		}
+		$pregnantMothers = $this->PregnantMotherKnowledge->PregnantMother->find('list');
+		$questionnaires = $this->PregnantMotherKnowledge->Questionnaire->find('list');
+		$this->set(compact('pregnantMothers', 'questionnaires'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class PregnantMotherKnowledgesController extends AppController {
 			$options = array('conditions' => array('PregnantMotherKnowledge.' . $this->PregnantMotherKnowledge->primaryKey => $id));
 			$this->request->data = $this->PregnantMotherKnowledge->find('first', $options);
 		}
+		$pregnantMothers = $this->PregnantMotherKnowledge->PregnantMother->find('list');
+		$questionnaires = $this->PregnantMotherKnowledge->Questionnaire->find('list');
+		$this->set(compact('pregnantMothers', 'questionnaires'));
 	}
 
 /**

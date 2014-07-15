@@ -56,6 +56,8 @@ class IndicatorsController extends AppController {
 				$this->Session->setFlash(__('The indicator could not be saved. Please, try again.'));
 			}
 		}
+		$healthIssues = $this->Indicator->HealthIssue->find('list');
+		$this->set(compact('healthIssues'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class IndicatorsController extends AppController {
 			$options = array('conditions' => array('Indicator.' . $this->Indicator->primaryKey => $id));
 			$this->request->data = $this->Indicator->find('first', $options);
 		}
+		$healthIssues = $this->Indicator->HealthIssue->find('list');
+		$this->set(compact('healthIssues'));
 	}
 
 /**

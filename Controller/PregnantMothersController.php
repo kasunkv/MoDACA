@@ -56,6 +56,9 @@ class PregnantMothersController extends AppController {
 				$this->Session->setFlash(__('The pregnant mother could not be saved. Please, try again.'));
 			}
 		}
+		$households = $this->PregnantMother->Household->find('list');
+		$familyMembers = $this->PregnantMother->FamilyMember->find('list');
+		$this->set(compact('households', 'familyMembers'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class PregnantMothersController extends AppController {
 			$options = array('conditions' => array('PregnantMother.' . $this->PregnantMother->primaryKey => $id));
 			$this->request->data = $this->PregnantMother->find('first', $options);
 		}
+		$households = $this->PregnantMother->Household->find('list');
+		$familyMembers = $this->PregnantMother->FamilyMember->find('list');
+		$this->set(compact('households', 'familyMembers'));
 	}
 
 /**

@@ -56,6 +56,8 @@ class LegendsController extends AppController {
 				$this->Session->setFlash(__('The legend could not be saved. Please, try again.'));
 			}
 		}
+		$questionnaires = $this->Legend->Questionnaire->find('list');
+		$this->set(compact('questionnaires'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class LegendsController extends AppController {
 			$options = array('conditions' => array('Legend.' . $this->Legend->primaryKey => $id));
 			$this->request->data = $this->Legend->find('first', $options);
 		}
+		$questionnaires = $this->Legend->Questionnaire->find('list');
+		$this->set(compact('questionnaires'));
 	}
 
 /**

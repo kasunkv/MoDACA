@@ -56,6 +56,8 @@ class OilUsagesController extends AppController {
 				$this->Session->setFlash(__('The oil usage could not be saved. Please, try again.'));
 			}
 		}
+		$households = $this->OilUsage->Household->find('list');
+		$this->set(compact('households'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class OilUsagesController extends AppController {
 			$options = array('conditions' => array('OilUsage.' . $this->OilUsage->primaryKey => $id));
 			$this->request->data = $this->OilUsage->find('first', $options);
 		}
+		$households = $this->OilUsage->Household->find('list');
+		$this->set(compact('households'));
 	}
 
 /**

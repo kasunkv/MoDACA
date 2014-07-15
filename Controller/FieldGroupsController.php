@@ -56,6 +56,9 @@ class FieldGroupsController extends AppController {
 				$this->Session->setFlash(__('The field group could not be saved. Please, try again.'));
 			}
 		}
+		$fieldCommunities = $this->FieldGroup->FieldCommunity->find('list');
+		$taskAssigners = $this->FieldGroup->TaskAssigner->find('list');
+		$this->set(compact('fieldCommunities', 'taskAssigners'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class FieldGroupsController extends AppController {
 			$options = array('conditions' => array('FieldGroup.' . $this->FieldGroup->primaryKey => $id));
 			$this->request->data = $this->FieldGroup->find('first', $options);
 		}
+		$fieldCommunities = $this->FieldGroup->FieldCommunity->find('list');
+		$taskAssigners = $this->FieldGroup->TaskAssigner->find('list');
+		$this->set(compact('fieldCommunities', 'taskAssigners'));
 	}
 
 /**

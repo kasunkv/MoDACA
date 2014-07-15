@@ -56,6 +56,9 @@ class HealthIssueGroupsController extends AppController {
 				$this->Session->setFlash(__('The health issue group could not be saved. Please, try again.'));
 			}
 		}
+		$fieldCommunities = $this->HealthIssueGroup->FieldCommunity->find('list');
+		$healthIssues = $this->HealthIssueGroup->HealthIssue->find('list');
+		$this->set(compact('fieldCommunities', 'healthIssues'));
 	}
 
 /**
@@ -80,6 +83,9 @@ class HealthIssueGroupsController extends AppController {
 			$options = array('conditions' => array('HealthIssueGroup.' . $this->HealthIssueGroup->primaryKey => $id));
 			$this->request->data = $this->HealthIssueGroup->find('first', $options);
 		}
+		$fieldCommunities = $this->HealthIssueGroup->FieldCommunity->find('list');
+		$healthIssues = $this->HealthIssueGroup->HealthIssue->find('list');
+		$this->set(compact('fieldCommunities', 'healthIssues'));
 	}
 
 /**

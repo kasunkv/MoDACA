@@ -56,6 +56,8 @@ class NavigationDetailsController extends AppController {
 				$this->Session->setFlash(__('The navigation detail could not be saved. Please, try again.'));
 			}
 		}
+		$households = $this->NavigationDetail->Household->find('list');
+		$this->set(compact('households'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class NavigationDetailsController extends AppController {
 			$options = array('conditions' => array('NavigationDetail.' . $this->NavigationDetail->primaryKey => $id));
 			$this->request->data = $this->NavigationDetail->find('first', $options);
 		}
+		$households = $this->NavigationDetail->Household->find('list');
+		$this->set(compact('households'));
 	}
 
 /**

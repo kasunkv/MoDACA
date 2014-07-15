@@ -56,6 +56,8 @@ class HouseholdsController extends AppController {
 				$this->Session->setFlash(__('The household could not be saved. Please, try again.'));
 			}
 		}
+		$fieldCommunities = $this->Household->FieldCommunity->find('list');
+		$this->set(compact('fieldCommunities'));
 	}
 
 /**
@@ -80,6 +82,8 @@ class HouseholdsController extends AppController {
 			$options = array('conditions' => array('Household.' . $this->Household->primaryKey => $id));
 			$this->request->data = $this->Household->find('first', $options);
 		}
+		$fieldCommunities = $this->Household->FieldCommunity->find('list');
+		$this->set(compact('fieldCommunities'));
 	}
 
 /**
