@@ -11,6 +11,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
+        <?php echo $this->Session->flash(); ?>
         <h3>Create Profile - Student</h3>
         <!--<form role="form">-->
         <?php echo $this->Form->create('Administrator', array(

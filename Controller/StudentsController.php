@@ -33,6 +33,7 @@ class StudentsController extends AppController {
             } else {
                 $this->Session->setFlash(__('The student could not be saved. Please, try again.'));
             }
+            
         }
         $fieldGroups = $this->Student->FieldGroup->find('list');
         $this->set(compact('fieldGroups'));
