@@ -1,4 +1,5 @@
 <?php echo $this->layout = 'defaultLayout'; ?>
+<?php echo $this->set('sideNavBar', 'sideNavTest'); ?>
 <div class="row">
     <div class="col-md-12">
         <h2>Student Registration | MoDACA</h2>

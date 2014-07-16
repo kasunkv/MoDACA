@@ -72,6 +72,72 @@ class StudentsController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
     
+    // View all Pending Student Approvals Method
+    
+    public function approveStudent() {
+        $this->Student->recursive = 0;
+        $this->set('students', $this->Paginator->paginate());
+    }
+    
+    
+    // Approve Student
+    
+    public function regApprove($id = null) {
+        $message = null;
+        $element = null;
+        
+        if (!$id) {            
+            $message = 'The Student ID was not set properly.';
+            $element = 'flashError';
+        }
+        
+        if (!$this->Student->exists($id)) {
+            $message = 'A student with ID ' . $id . ' does not exist in the database.';
+            $element = 'flashError';
+        } else {
+            // perform the action to update the approve field in the database.
+            
+            
+            
+            // then redirect with the message
+            $message = 'Student with ID ' . $id . ' was successfully approved.';
+            $element = 'flashSuccess';
+        }
+        
+        // Redirect to approveStudent View
+        $this->Session->setFlash(__($message), $element);
+        $this->redirect(array('action' => 'approveStudent'));
+        
+    }
+    
+    // Decline Student
+    
+    public function regDecline($id = null) {
+        $message = null;
+        $element = null;
+        
+        if (!$id) {            
+            $message = 'The Student ID was not set properly.';
+            $element = 'flashError';
+        }
+        
+        if (!$this->Student->exists($id)) {
+            $message = 'A student with ID ' . $id . ' does not exist in the database.';
+            $element = 'flashError';
+        } else {
+            // perform the action to delete the record from the database.
+            
+            
+            
+            // then redirect with the message
+            $message = 'Student with ID ' . $id . ' was declined and removed.';
+            $element = 'flashWarn';
+        }
+        
+        // Redirect to approveStudent View
+        $this->Session->setFlash(__($message), $element);
+        $this->redirect(array('action' => 'approveStudent'));
+    }
     
 
 }

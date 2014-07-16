@@ -2,7 +2,7 @@
 	<h2><?php echo __('Students'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('student_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('index_no'); ?></th>
 			<th><?php echo $this->Paginator->sort('reg_no'); ?></th>
 			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
@@ -10,8 +10,7 @@
 			<th><?php echo $this->Paginator->sort('gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('contact_no'); ?></th>
-			<th><?php echo $this->Paginator->sort('address'); ?></th>
-			<th><?php echo $this->Paginator->sort('group_name'); ?></th>
+			<th><?php echo $this->Paginator->sort('address'); ?></th>			
 			<th><?php echo $this->Paginator->sort('user_name'); ?></th>
 			<th><?php echo $this->Paginator->sort('password'); ?></th>
 			<th><?php echo $this->Paginator->sort('profile_photo'); ?></th>
@@ -20,7 +19,7 @@
 	</tr>
 	<?php foreach ($students as $student): ?>
 	<tr>
-		<td><?php echo h($student['Student']['student_id']); ?>&nbsp;</td>
+		<td><?php echo h($student['Student']['id']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['index_no']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['reg_no']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['first_name']); ?>&nbsp;</td>
@@ -29,7 +28,6 @@
 		<td><?php echo h($student['Student']['email']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['contact_no']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['address']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['group_name']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['user_name']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['password']); ?>&nbsp;</td>
 		<td><?php echo h($student['Student']['profile_photo']); ?>&nbsp;</td>
