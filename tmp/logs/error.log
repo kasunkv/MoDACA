@@ -136,3 +136,152 @@ Request URL: /MoDACA/img/find_user1.jpg
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-07-15 23:30:30 Error: [MissingControllerException] Controller class StudentController could not be found.
+Exception Attributes: array (
+  'class' => 'StudentController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/Student/register
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 23:30:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 23:31:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 23:31:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'FieldGroup.id' in 'field list'
+Request URL: /MoDACA/students/register
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('list', Array)
+#6 D:\wamp\www\MoDACA\Controller\StudentsController.php(37): Model->find('list')
+#7 [internal function]: StudentsController->register()
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-07-15 23:36:25 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 23:36:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-15 23:36:53 Error: Fatal Error (1): Call to a member function paginate() on a non-object in [D:\wamp\www\MoDACA\Controller\StudentsController.php, line 16]
+2014-07-15 23:36:53 Error: [FatalErrorException] Call to a member function paginate() on a non-object
+Request URL: /MoDACA/students
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 16)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 16, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 16, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-07-15 23:37:00 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/field_groups
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 D:\wamp\www\MoDACA\Controller\FieldGroupsController.php(26): PaginatorComponent->paginate()
+#8 [internal function]: FieldGroupsController->index()
+#9 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(FieldGroupsController), Array)
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(FieldGroupsController), Object(CakeRequest))
+#12 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-07-15 23:37:11 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\FieldGroups\add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\FieldGroups\\add.ctp',
+)
+Request URL: /MoDACA/field_groups/add
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(FieldGroupsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-15 23:37:33 Error: [MissingControllerException] Controller class TaskAssignersController could not be found.
+Exception Attributes: array (
+  'class' => 'TaskAssignersController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/task_assigners/add
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-16 07:57:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-16 08:02:45 Error: [MissingControllerException] Controller class Dash-admin.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Dash-admin.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/dash-admin.html
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-16 08:36:52 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\FieldGroups\add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\FieldGroups\\add.ctp',
+)
+Request URL: /MoDACA/field_groups/add
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(FieldGroupsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-16 13:41:01 Error: Fatal Error (4): syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in [D:\wamp\www\MoDACA\View\Students\register.ctp, line 186]
+2014-07-16 13:41:01 Error: [FatalErrorException] syntax error, unexpected ''type'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /MoDACA/students/register
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 186)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 186, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 186, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

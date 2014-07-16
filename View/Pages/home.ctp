@@ -44,11 +44,11 @@
         <h3>Not a Registerd User?</h3>
         <h5>Please Sign up to use MoDACA.</h5>
         <!--<a href="create-profile.html" title="Signup Button." class="btn btn-lg btn-primary btn-signup">Sign Up</a>-->
-        <?php echo $this->Html->link('Student Sign Up', '/Student/register', array(
+        <?php echo $this->Html->link('Student Sign Up', array('controller' => 'students', 'action' => 'register'), array(
             'class' => 'btn btn-lg btn-primary btn-signup',
             'title' => 'Signup Button.',
         )); ?>
-        <?php echo $this->Html->link('Staff Sign Up', '/Staff/register', array(
+        <?php echo $this->Html->link('Staff Sign Up', array('controller' => 'staffs', 'action' => 'register'), array(
             'class' => 'btn btn-lg btn-primary btn-signup',
             'title' => 'Signup Button.',
         )); ?>
