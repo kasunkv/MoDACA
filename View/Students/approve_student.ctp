@@ -1,4 +1,9 @@
 <?php echo $this->layout = 'defaultLayout'; ?>
+<?php
+    $this->start('sideNav');
+    echo $this->element('sideNavStdApprove');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Student Registration Approval</h2>

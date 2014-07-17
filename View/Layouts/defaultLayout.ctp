@@ -29,7 +29,10 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">                    
-                    <?php echo $this->fetch('sideNavBar'); ?>
+                    <?php
+                        //echo $this->element('sideNavTest');
+                        echo $this->fetch('sideNav');
+                    ?>
                 </ul>
             </div>
         </nav>
