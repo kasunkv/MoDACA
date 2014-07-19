@@ -15,7 +15,7 @@
         <?php echo $this->Session->flash(); ?>
         <h3>Create Profile - Student</h3>
         <!--<form role="form">-->
-        <?php echo $this->Form->create('Administrator', array(
+        <?php echo $this->Form->create('Student', array(
             'inputDefaults' => array(
                 'label' => false,
             ),
@@ -193,7 +193,8 @@
                         ?>  
                     </div>
                     <div class="col-md-6">
-                        <a href="" id="btn-generate-password" class="btn btn-primary btn-sm">Generate Password</a>
+<!--                        <a href="" id="btn-generate-password" class="btn btn-primary btn-sm">Generate Password</a>-->
+                        <?php echo $this->Html->link(__('Generate Password'), array('controller' => 'utilities' , 'action' => 'generatePassword'), array('class' => 'btn btn-primary btn-sm')); ?>
                     </div>
                 </div>
             </div>

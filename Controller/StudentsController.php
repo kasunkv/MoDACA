@@ -39,10 +39,31 @@ class StudentsController extends AppController {
         $this->set(compact('fieldGroups'));
     }
 
-    public function edit($id = null) {
+    public function editStudent($id = null) {
         if (!$this->Student->exists($id)) {
             throw new NotFoundException(__('Invalid student'));
         }
+    
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Student->save($this->request->data)) {
+                $this->Session->setFlash(__('The student has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The student could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
+            $this->request->data = $this->Student->find('first', $options);
+        }
+        $fieldGroups = $this->Student->FieldGroup->find('list');
+        $this->set(compact('fieldGroups'));
+    }
+    
+    public function editAdmin($id = null) {
+        if (!$this->Student->exists($id)) {
+            throw new NotFoundException(__('Invalid student'));
+        }
+    
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Student->save($this->request->data)) {
                 $this->Session->setFlash(__('The student has been saved.'));
@@ -139,5 +160,11 @@ class StudentsController extends AppController {
         $this->redirect(array('action' => 'approveStudent'));
     }
     
+    
+    // Change Password
+    
+    public function changePassword() {
+        
+    }
 
 }
