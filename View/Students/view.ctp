@@ -1,184 +1,223 @@
-<div class="students view">
-<h2><?php echo __('Student'); ?></h2>
-	<dl>
-		<dt><?php echo __('Student Id'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['student_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Index No'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['index_no']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Reg No'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['reg_no']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['first_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['last_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Gender'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['gender']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Contact No'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['contact_no']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Address'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['address']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Group Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['group_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Name'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['user_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Profile Photo'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['profile_photo']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Bio'); ?></dt>
-		<dd>
-			<?php echo h($student['Student']['bio']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Student'), array('action' => 'edit', $student['Student']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Student'), array('action' => 'delete', $student['Student']['id']), array(), __('Are you sure you want to delete # %s?', $student['Student']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Students'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Field Groups'), array('controller' => 'field_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Field Group'), array('controller' => 'field_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Student Progresses'), array('controller' => 'student_progresses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student Progress'), array('controller' => 'student_progresses', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Task Assigners'), array('controller' => 'task_assigners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Task Assigner'), array('controller' => 'task_assigners', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Student Progresses'); ?></h3>
-	<?php if (!empty($student['StudentProgress'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Student Progress Id'); ?></th>
-		<th><?php echo __('Student Progress Index No'); ?></th>
-		<th><?php echo __('Attendance'); ?></th>
-		<th><?php echo __('Date'); ?></th>
-		<th><?php echo __('Start Time'); ?></th>
-		<th><?php echo __('End Time'); ?></th>
-		<th><?php echo __('Mark'); ?></th>
-		<th><?php echo __('Note'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($student['StudentProgress'] as $studentProgress): ?>
-		<tr>
-			<td><?php echo $studentProgress['student_progress_id']; ?></td>
-			<td><?php echo $studentProgress['student_progress_index_no']; ?></td>
-			<td><?php echo $studentProgress['attendance']; ?></td>
-			<td><?php echo $studentProgress['date']; ?></td>
-			<td><?php echo $studentProgress['start_time']; ?></td>
-			<td><?php echo $studentProgress['end_time']; ?></td>
-			<td><?php echo $studentProgress['mark']; ?></td>
-			<td><?php echo $studentProgress['note']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'student_progresses', 'action' => 'view', $studentProgress['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'student_progresses', 'action' => 'edit', $studentProgress['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'student_progresses', 'action' => 'delete', $studentProgress['id']), array(), __('Are you sure you want to delete # %s?', $studentProgress['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<?php echo $this->layout = 'defaultLayout'; ?>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Student Progress'), array('controller' => 'student_progresses', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Administrator | Edit Profile</h2>
+        <h5>Edit current student's profile information.</h5>
+    </div>
 </div>
-<div class="related">
-	<h3><?php echo __('Related Task Assigners'); ?></h3>
-	<?php if (!empty($student['TaskAssigner'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Task Assigner Id'); ?></th>
-		<th><?php echo __('Task Assigner Index No'); ?></th>
-		<th><?php echo __('Task Assigner Reg No'); ?></th>
-		<th><?php echo __('Firs Name'); ?></th>
-		<th><?php echo __('Last Name'); ?></th>
-		<th><?php echo __('Gender'); ?></th>
-		<th><?php echo __('Email'); ?></th>
-		<th><?php echo __('Contact No'); ?></th>
-		<th><?php echo __('Address'); ?></th>
-		<th><?php echo __('Task Assigner Field Group Name'); ?></th>
-		<th><?php echo __('User Name'); ?></th>
-		<th><?php echo __('Password'); ?></th>
-		<th><?php echo __('Profile Photo'); ?></th>
-		<th><?php echo __('Bio'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($student['TaskAssigner'] as $taskAssigner): ?>
-		<tr>
-			<td><?php echo $taskAssigner['task_assigner_id']; ?></td>
-			<td><?php echo $taskAssigner['task_assigner_index_no']; ?></td>
-			<td><?php echo $taskAssigner['task_assigner_reg_no']; ?></td>
-			<td><?php echo $taskAssigner['firs_name']; ?></td>
-			<td><?php echo $taskAssigner['last_name']; ?></td>
-			<td><?php echo $taskAssigner['gender']; ?></td>
-			<td><?php echo $taskAssigner['email']; ?></td>
-			<td><?php echo $taskAssigner['contact_no']; ?></td>
-			<td><?php echo $taskAssigner['address']; ?></td>
-			<td><?php echo $taskAssigner['task_assigner_field_group_name']; ?></td>
-			<td><?php echo $taskAssigner['user_name']; ?></td>
-			<td><?php echo $taskAssigner['password']; ?></td>
-			<td><?php echo $taskAssigner['profile_photo']; ?></td>
-			<td><?php echo $taskAssigner['bio']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'task_assigners', 'action' => 'view', $taskAssigner['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'task_assigners', 'action' => 'edit', $taskAssigner['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'task_assigners', 'action' => 'delete', $taskAssigner['id']), array(), __('Are you sure you want to delete # %s?', $taskAssigner['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<!-- /. ROW  -->
+<hr />
+<div class="row">
+    <div class="col-md-1">
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Task Assigner'), array('controller' => 'task_assigners', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
+    </div>
+    <div class="col-md-10">
+        <h3>Edit Profile</h3>
+        <?php echo $this->Form->create('Student', array(
+            'inputDefaults' => array(
+                //'label' => false,
+            ),
+            'enctype' => 'multipart/form-data',
+        ));
+        ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Details
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-6">                        
+                        <!-- First Name -->
+                        <?php 
+                            echo $this->Form->input('first_name', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'First Name', 
+                                'type' => 'text',  
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['first_name'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'First Name',
+                            ));
+                        ?>
+                        <!-- Last Name -->
+                        <?php 
+                            echo $this->Form->input('last_name', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Last Name', 
+                                'type' => 'text',   
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['last_name'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Last Name',
+                                
+                            ));
+                        ?>
+                        <!-- Gender -->
+                        <div class="form-group input-group-lg">
+                            <lable><b>Gender</b></lable>
+                            <br />
+                            <?php 
+                                $options = array('Male' => 'Male', 'Female' => 'Female');
+                                $attributes = array(
+                                    'class' => 'form-group',
+                                    'disabled' => 'disabled',
+                                    'value' => $student['Student']['gender'],
+                                    ); 
+                                echo $this->Form->select('gender', $options, $attributes);
+                            ?>                           
+                        </div>
+                        <!-- Registration No -->
+                        <?php 
+                            echo $this->Form->input('reg_no', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Registration No', 
+                                'type' => 'text',      
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['reg_no'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Registration No',
+                            ));
+                        ?>
+                        
+                        <!-- Index No -->
+                        <?php 
+                            echo $this->Form->input('index_no', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Index No', 
+                                'type' => 'text',   
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['index_no'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Index No',
+                            ));
+                        ?> 
+                        
+                        <!-- User Name -->
+                        <?php 
+                            echo $this->Form->input('user_name', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Username', 
+                                'type' => 'text', 
+                                'disabled' => 'disabled',
+                                'value' => h($student['Student']['user_name']),
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Username',
+                            ));
+                        ?>                         
+                        
+                        <!-- Group Name -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Group Name', 
+                                'type' => 'text', 
+                                'disabled' => 'disabled',
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Group Name',
+                            ));
+                        ?> 
+                        
+                        <!-- Email -->
+                        <?php 
+                            echo $this->Form->input('email', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Email', 
+                                'type' => 'email',
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['email'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Email',
+                            ));
+                        ?>
+                      
+                        <!-- Contact No -->
+                        <?php 
+                            echo $this->Form->input('contact_no', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Contact No', 
+                                'type' => 'text',   
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['contact_no'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Contact No',
+                            ));
+                        ?>
+                        
+                        <!-- Address -->
+                        <?php 
+                            echo $this->Form->input('address', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Address', 
+                                'type' => 'textarea',
+                                'rows' => '4',    
+                                'disabled' => 'disabled',
+                                'value' => $student['Student']['address'],
+                                'div' => array (
+                                    'class' => 'form-group'
+                                ),
+                                'label' => 'Address',
+                            ));
+                        ?>                                   
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group input-group-lg">
+                            <label>Photo</label>
+                            <br /><br />
+                            <img src="assets/img/find_user1.png" height="128" width="128">                           
+                        </div>
+                        <div class="form-group">                          
+                            <!-- Bio -->
+                            <?php 
+                                echo $this->Form->input('bio', array(
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Enter your biography here...', 
+                                    'type' => 'textarea',
+                                    'rows' => '32',
+                                    'disabled' => 'disabled',
+                                    'value' => $student['Student']['bio'],
+                                    'div' => array (
+                                        'class' => 'form-group'
+                                    ),
+                                    'label' => 'Biography',
+                                ));
+                            ?> 
+                        </div> 
+                    </div>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tasks
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <?php echo $this->Html->link(__('Edit Profile'), array('controller' => 'students' , 'action' => 'editStudent', $student['Student']['id']), array('class' => 'btn btn-primary btn-sm')); ?>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+            <?php echo $this->Form->end(); ?>       
+    </div>
+    <div class="col-md-2">
+
+    </div>
 </div>
+<!-- /. ROW  -->

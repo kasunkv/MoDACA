@@ -1007,3 +1007,192 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2014-07-19 14:22:27 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:03:35 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:04:16 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:04:42 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:05:10 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:05:56 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:07:59 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:08:20 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:08:41 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:09:09 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:11:04 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:12:05 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:14:01 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:14:04 Error: [MissingControllerException] Controller class StudentController could not be found.
+Exception Attributes: array (
+  'class' => 'StudentController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/student/editStudent/1
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-19 18:14:17 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:14:22 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:27:51 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:28:15 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:28:42 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:28:56 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-19 18:29:56 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
