@@ -2,8 +2,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Administrator | Edit Profile</h2>
-        <h5>Edit current student's profile information.</h5>
+        <h2>Student | View Profile</h2>
+        <h5>View your current student profile.</h5>
     </div>
 </div>
 <!-- /. ROW  -->
