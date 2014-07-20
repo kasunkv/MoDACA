@@ -1,26 +1,40 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * Questionnaire Model
- *
- * @property Legend $Legend
- * @property HealthIssue $HealthIssue
- * @property Determinant $Determinant
- * @property FamilyMemberKnowledge $FamilyMemberKnowledge
- * @property Legend $Legend
- * @property PregnantMotherKnowledge $PregnantMotherKnowledge
- * @property Question $Question
- */
+
 class Questionnaire extends AppModel {
 
+	public $validate = array(
+		'id' => array(
+			'blank' => array(
+				'rule' => array('blank'),
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'no_of_questions' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Number of questions must not be empty.',
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => 'Number of questions must be a number.',
+			),
+		),
+		'description' => array(
+			'custom' => array(
+				'rule' => array('custom'),
+				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
+				'message' => 'Description must not be invalid.',
+			),
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => 'Description must not be empty.',
+			),
+		),
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
 	public $belongsTo = array(
 		'Legend' => array(
 			'className' => 'Legend',
@@ -38,11 +52,6 @@ class Questionnaire extends AppModel {
 		)
 	);
 
-/**
- * hasMany associations
- *
- * @var array
- */
 	public $hasMany = array(
 		'Determinant' => array(
 			'className' => 'Determinant',
