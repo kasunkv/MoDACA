@@ -184,6 +184,8 @@ class StudentsController extends AppController {
         $this->set('students', $this->Student->find('all'));
     }
     
+    // View Student Group Members Profile
+    
     public function viewMemberProfile($id = null) {
         $message = null;
         $element = null;
@@ -201,5 +203,30 @@ class StudentsController extends AppController {
         $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
         $this->set('student', $this->Student->find('first', $options));
     }
+    
+    // View Field Group Progress
+    
+    public function viewGroupProgress(){
+        
+    }
+    
+    // View My Progress
+    
+    public function viewMyProgress() {
+        
+    }
+    
+    // Generate Reports
+    
+    public function generateReports() {
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }
