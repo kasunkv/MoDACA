@@ -167,4 +167,21 @@ class StudentsController extends AppController {
         
     }
 
+    // View Student Group Members
+    
+    public function viewGroupMembers($grp_id = null) {
+        $message = null;
+        $element = null;
+        
+        if (!$grp_id) {            
+            $message = 'Something went wrong, Can not find field group members';
+            $element = 'flashError';
+            $this->Session->setFlash(__($message), $element);
+            //$this->redirect(array('action' => 'index'));
+        }
+        
+        //$options = array('conditions' => array('Student.' . 'field_group_id' => $grp_id));
+        $this->set('students', $this->Student->find('all'));
+    }
+    
 }

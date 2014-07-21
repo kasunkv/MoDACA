@@ -1,68 +1,53 @@
-<div class="students index">
-	<h2><?php echo __('Students'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('index_no'); ?></th>
-			<th><?php echo $this->Paginator->sort('reg_no'); ?></th>
-			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('last_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('gender'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('contact_no'); ?></th>
-			<th><?php echo $this->Paginator->sort('address'); ?></th>			
-			<th><?php echo $this->Paginator->sort('user_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('profile_photo'); ?></th>
-			<th><?php echo $this->Paginator->sort('bio'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($students as $student): ?>
-	<tr>
-		<td><?php echo h($student['Student']['id']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['index_no']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['reg_no']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['first_name']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['last_name']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['gender']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['email']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['contact_no']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['address']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['user_name']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['password']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['profile_photo']); ?>&nbsp;</td>
-		<td><?php echo h($student['Student']['bio']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $student['Student']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $student['Student']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $student['Student']['id']), array(), __('Are you sure you want to delete # %s?', $student['Student']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<?php $this->layout = 'defaultLayout'; ?>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Student | Dashboard</h2>
+        <h5>Welcome Username</h5>
+    </div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Student'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Field Groups'), array('controller' => 'field_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Field Group'), array('controller' => 'field_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Student Progresses'), array('controller' => 'student_progresses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Student Progress'), array('controller' => 'student_progresses', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Task Assigners'), array('controller' => 'task_assigners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Task Assigner'), array('controller' => 'task_assigners', 'action' => 'add')); ?> </li>
-	</ul>
+<!-- /. ROW  -->
+<hr />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <?php echo $this->Session->flash(); ?>    
+    </div>    
 </div>
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-3 set-icon">
+                <i class="fa fa-location-arrow"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">Mihintale</p>
+                <p class="text-muted">Field Area</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-1 set-icon">
+                <i class="fa fa-users"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">5 Members</p>
+                <p class="text-muted">In the Group</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-2 set-icon">
+                <i class="fa fa fa-signal"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">50%</p>
+                <p class="text-muted">Completed</p>
+            </div>
+        </div>
+    </div>                    
+</div>
+<!-- /. ROW  -->
+<hr />
+<div class="row">
+                  

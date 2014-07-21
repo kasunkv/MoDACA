@@ -1205,3 +1205,242 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2014-07-21 12:55:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:11:39 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:12:01 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:12:33 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:12:44 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:13:28 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:18:23 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-21 13:23:24 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:23:24 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:24:18 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:24:18 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:24:37 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:24:38 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:31:34 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:31:36 Error: [MissingActionException] Action StudentsController::viewGroupMember() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'viewGroupMember',
+)
+Request URL: /MoDACA/students/viewGroupMember
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-07-21 13:32:04 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:32:04 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:06 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:06 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:19 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:19 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:57 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:33:57 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-21 13:55:25 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-07-21 13:55:28 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
