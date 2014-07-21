@@ -184,4 +184,22 @@ class StudentsController extends AppController {
         $this->set('students', $this->Student->find('all'));
     }
     
+    public function viewMemberProfile($id = null) {
+        $message = null;
+        $element = null;
+        
+        if (!$id) {            
+            $this->Session->setFlash(__('The Student ID was not set properly.'), 'flashError');
+            $this->redirect(array('action' => 'viewGroupMembers', 1));
+        }
+        
+        if (!$this->Student->exists($id)) {
+            $this->Session->setFlash(__('A student with ID ' . $id . ' does not exist in the database.'), 'flashError');
+            $this->redirect(array('action' => 'viewGroupMembers', 1));
+        }
+        
+        $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
+        $this->set('student', $this->Student->find('first', $options));
+    }
+    
 }

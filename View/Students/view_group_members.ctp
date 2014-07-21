@@ -34,7 +34,7 @@
                                     <td>
                                         <?php echo $this->Html->link(__('View'),
                                             array(
-                                                'action' => 'view', $student['Student']['id'],                                            
+                                                'action' => 'viewMemberProfile', $student['Student']['id'],                                            
                                             ),
                                             array(
                                                 'class' => 'btn btn-success btn-xs'
