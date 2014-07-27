@@ -222,6 +222,10 @@ class StudentsController extends AppController {
         
     }
     
+    public function trackStudents() {
+        
+    }
+    
     
     
     

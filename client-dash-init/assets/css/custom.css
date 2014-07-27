@@ -48,6 +48,11 @@
 .btn-signup {
     width: 30%;
 }
+
+#map_canvas { 
+    height: 400px;
+    width: 100%;
+}
 /* End of My Styles */
 
 
