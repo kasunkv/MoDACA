@@ -2384,3 +2384,40 @@ Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 >>>>>>> origin/master
+2014-07-27 16:21:04 Error: [MissingTableException] Table administrators for model Administrator was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'administrators',
+  'class' => 'Administrator',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('administrators')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#4 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(16): PaginatorComponent->paginate()
+#5 [internal function]: AdministratorsController->index()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-07-27 16:21:31 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-27 16:21:32 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
