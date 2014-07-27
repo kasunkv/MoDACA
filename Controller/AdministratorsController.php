@@ -32,6 +32,7 @@ class AdministratorsController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
+                //debug($this->Administrator->validationErrors);
             }
         }
     }
@@ -66,5 +67,4 @@ class AdministratorsController extends AppController {
         }
         return $this->redirect(array('action' => 'index'));
     }
-
-}
+    }
