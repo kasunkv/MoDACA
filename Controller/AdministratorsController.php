@@ -67,4 +67,8 @@ class AdministratorsController extends AppController {
         }
         return $this->redirect(array('action' => 'index'));
     }
-    }
+    
+    public function approve_registration() {
+
+	}
+}

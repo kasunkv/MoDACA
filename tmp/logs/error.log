@@ -2421,3 +2421,67 @@ Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-07-28 08:44:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/img/find_user1.jpg
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-28 08:44:25 Error: [MissingControllerException] Controller class AdministratorController could not be found.
+Exception Attributes: array (
+  'class' => 'AdministratorController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/Administrator
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-28 08:44:34 Error: [MissingTableException] Table administrators for model Administrator was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'administrators',
+  'class' => 'Administrator',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('administrators')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#4 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(16): PaginatorComponent->paginate()
+#5 [internal function]: AdministratorsController->index()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-07-28 08:46:11 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.woff?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-28 08:46:12 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.ttf?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-07-28 08:46:12 Error: [MissingControllerException] Controller class Font-awesomeController could not be found.
+Exception Attributes: array (
+  'class' => 'Font-awesomeController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.svg?v=4.0.3
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
