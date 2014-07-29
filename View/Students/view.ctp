@@ -102,12 +102,12 @@
                         
                         <!-- User Name -->
                         <?php 
-                            echo $this->Form->input('user_name', array(
+                            echo $this->Form->input('username', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Username', 
                                 'type' => 'text', 
                                 'disabled' => 'disabled',
-                                'value' => h($student['Student']['user_name']),
+                                'value' => h($student['Student']['username']),
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 ),

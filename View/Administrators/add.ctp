@@ -10,7 +10,7 @@
 		echo $this->Form->input('contact_no');
 		echo $this->Form->input('address');
 		echo $this->Form->input('designation');
-		echo $this->Form->input('user_name');
+		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		echo $this->Form->input('profile_photo');
 		echo $this->Form->input('bio');

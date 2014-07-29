@@ -8,6 +8,11 @@ App::uses('AppModel', 'Model');
  * @property TaskAssigner $TaskAssigner
  */
 class Student extends AppModel {
+    
+    public function beforeSave() {
+		$this->data['Student']['password'] = AuthComponent::password($this->data['Student']['password']);
+                return true;
+	}
 
 
 	public $displayField = 'first_name';

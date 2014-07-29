@@ -6,18 +6,12 @@ App::uses('AppModel', 'Model');
  */
 class Staff extends AppModel {
 
-/**
- * Display field
- *
- * @var string
- */
+    public function beforeSave() {
+		$this->data['Staff']['password'] = AuthComponent::password($this->data['Staff']['password']);
+                return true;
+    }
 	public $displayField = 'first_name';
 
-/**
- * Validation rules
- *
- * @var array
- */
 	public $validate = array(
 		'id' => array(
 			'blank' => array(

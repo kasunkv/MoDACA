@@ -43,7 +43,7 @@
 		</dd>
 		<dt><?php echo __('User Name'); ?></dt>
 		<dd>
-			<?php echo h($administrator['Administrator']['user_name']); ?>
+			<?php echo h($administrator['Administrator']['username']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Password'); ?></dt>

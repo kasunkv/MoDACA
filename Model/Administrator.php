@@ -3,6 +3,12 @@ App::uses('AppModel', 'Model');
 
 class Administrator extends AppModel {
 
+	public function beforeSave() {
+		$this->data['Administrator']['password'] = AuthComponent::password($this->data['Administrator']['password']);
+                return true;
+	}
+
+
 	public $displayField = 'first_name';
         
         public $validate = array(
@@ -98,7 +104,7 @@ class Administrator extends AppModel {
 				'message' => 'Destination must not exceed 255 characters.',
 			),
 		),
-		'user_name' => array(
+		'username' => array(
 			'custom' => array(
 				'rule' => '/^[A-Za-z0-9_\-]{4,40}$/',
 				'message' => 'Must only contain digits, letters, dashs and underscores.',

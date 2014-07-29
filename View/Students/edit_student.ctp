@@ -92,7 +92,7 @@
                         
                         <!-- User Name -->
                         <?php 
-                            echo $this->Form->input('user_name', array(
+                            echo $this->Form->input('username', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Username', 
                                 'type' => 'text',                    
