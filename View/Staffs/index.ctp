@@ -1,62 +1,45 @@
-<div class="staffs index">
-	<h2><?php echo __('Staffs'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('first_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('last_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('gender'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('contact_no'); ?></th>
-			<th><?php echo $this->Paginator->sort('address'); ?></th>
-			<th><?php echo $this->Paginator->sort('designation'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('profile_photo'); ?></th>
-			<th><?php echo $this->Paginator->sort('bio'); ?></th>
-			<th><?php echo $this->Paginator->sort('timestamp'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($staffs as $staff): ?>
-	<tr>
-		<td><?php echo h($staff['Staff']['id']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['first_name']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['last_name']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['gender']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['email']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['contact_no']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['address']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['designation']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['user_name']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['password']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['profile_photo']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['bio']); ?>&nbsp;</td>
-		<td><?php echo h($staff['Staff']['timestamp']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $staff['Staff']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $staff['Staff']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $staff['Staff']['id']), array(), __('Are you sure you want to delete # %s?', $staff['Staff']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+<?php $this->layout = 'defaultLayout'; ?>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Lecturer | Dashboard</h2>
+        <h5>Welcome Username</h5>
+    </div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Staff'), array('action' => 'add')); ?></li>
-	</ul>
+<!-- /. ROW  -->
+<hr />
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-1 set-icon">
+                <i class="fa fa-users"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">4 Groups</p>
+                <p class="text-muted">In the Field</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-2 set-icon">
+                <i class="fa fa fa-user"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">20 Students</p>
+                <p class="text-muted">In the Field</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-3 set-icon">
+                <i class="fa fa-location-arrow"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text">Mihintale</p>
+                <p class="text-muted">Field Area</p>
+            </div>
+        </div>
+    </div>
 </div>
