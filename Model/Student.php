@@ -9,10 +9,12 @@ App::uses('AppModel', 'Model');
  */
 class Student extends AppModel {
     
-    public function beforeSave() {
+    public function beforeSave($options = array()) {
+                $this->data['Student']['field_group_id'] = 2;
+                $this->data['Student']['profile_photo'] = "";
 		$this->data['Student']['password'] = AuthComponent::password($this->data['Student']['password']);
                 return true;
-	}
+    }
 
 
 	public $displayField = 'first_name';

@@ -10,6 +10,11 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class StudentsController extends AppController {
+    //public $components = array('Auth');
+    
+    public function beforeFilter() {
+        $this->Auth->allow('register');
+    }
 
     public function index() {
         $this->Student->recursive = 0;
@@ -28,10 +33,10 @@ class StudentsController extends AppController {
         if ($this->request->is('post')) {
             $this->Student->create();
             if ($this->Student->save($this->request->data)) {
-                $this->Session->setFlash(__('The student has been saved.'));
+                $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
                 return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
             } else {
-                $this->Session->setFlash(__('The student could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The student could not be saved. Please, try again.'), 'flashError');
             }
             
         }
@@ -46,10 +51,10 @@ class StudentsController extends AppController {
     
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Student->save($this->request->data)) {
-                $this->Session->setFlash(__('The student has been saved.'));
+                $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The student could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The student could not be saved. Please, try again.'), 'flashError');
             }
         } else {
             $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
@@ -66,10 +71,10 @@ class StudentsController extends AppController {
     
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Student->save($this->request->data)) {
-                $this->Session->setFlash(__('The student has been saved.'));
+                $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The student could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The student could not be saved. Please, try again.'), 'flashError');
             }
         } else {
             $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
@@ -86,9 +91,9 @@ class StudentsController extends AppController {
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->Student->delete()) {
-            $this->Session->setFlash(__('The student has been deleted.'));
+            $this->Session->setFlash(__('The student has been deleted.'), 'flashInfo');
         } else {
-            $this->Session->setFlash(__('The student could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('The student could not be deleted. Please, try again.'), 'flashError');
         }
         return $this->redirect(array('action' => 'index'));
     }
@@ -224,6 +229,16 @@ class StudentsController extends AppController {
     
     public function trackStudents() {
         
+    }
+    
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                return $this->redirect('index');
+            }
+            
+           
+        }
     }
     
     

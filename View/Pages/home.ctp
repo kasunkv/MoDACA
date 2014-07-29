@@ -23,7 +23,8 @@
                 <input class="form-control" placeholder="Password">
             </div>
                 <!-- <button type="submit" class="btn btn-lg btn-success btn-custom">Sign In</button> -->
-                <a href="dash-admin.html" class="btn btn-lg btn-success btn-custom">Sign In</a>
+                <!--<a href="dash-admin.html" class="btn btn-lg btn-success btn-custom">Sign In</a>-->
+                <?php echo $this->Form->postLink(__('Sign In'), array( 'controller' => 'student', 'action' => 'login'), array('class' => 'btn btn-lg btn-success btn-custom')); ?>
                 <button type="reset" class="btn btn-lg btn-danger btn-custom">Clear</button>
             <div class="form-group">
             <br />
@@ -52,7 +53,7 @@
             'class' => 'btn btn-lg btn-primary btn-signup',
             'title' => 'Signup Button.',
         )); ?>
-        <?php echo $this->Html->image('find_user1.jpg'); ?>
+       
     </div>
     <div class="col-md-3">
         

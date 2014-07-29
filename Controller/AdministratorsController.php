@@ -10,6 +10,7 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class AdministratorsController extends AppController {
+    public $components = array('Auth');
 
     public function index() {
         $this->Administrator->recursive = 0;

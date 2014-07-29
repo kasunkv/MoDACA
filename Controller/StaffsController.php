@@ -8,7 +8,9 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class StaffsController extends AppController {
-
+    public $components = array('Auth');
+    
+    
 /**
  * Components
  *
