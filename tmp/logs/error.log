@@ -2486,6 +2486,7 @@ Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 <<<<<<< HEAD
+<<<<<<< HEAD
 2014-07-29 16:47:47 Error: [MissingControllerException] Controller class UsersController could not be found.
 Exception Attributes: array (
   'class' => 'UsersController',
@@ -2700,6 +2701,8 @@ Exception Attributes: array (
 )
 Request URL: /MoDACA/css/bootstrap.css.map
 =======
+=======
+>>>>>>> a17a7dbe5d3a5964e90849d771e2bd66b4efbc4a
 2014-07-28 12:46:07 Error: [MissingActionException] Action AdministratorsController::change_admin_password() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
@@ -2816,6 +2819,7 @@ Exception Attributes: array (
   'plugin' => NULL,
 )
 Request URL: /MoDACA/font-awesome/fonts/fontawesome-webfontba72.svg?v=4.0.3
+<<<<<<< HEAD
 >>>>>>> 6415fcf4e8f15697356e9c53a6f53cf2582792ca
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -3470,3 +3474,8 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+=======
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+>>>>>>> a17a7dbe5d3a5964e90849d771e2bd66b4efbc4a
