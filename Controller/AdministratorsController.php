@@ -38,21 +38,21 @@ class AdministratorsController extends AppController {
         }
     }
 
-    public function edit($id = null) {
-        if (!$this->Administrator->exists($id)) {
-            throw new NotFoundException(__('Invalid administrator'));
-        }
-        if ($this->request->is(array('post', 'put'))) {
-            if ($this->Administrator->save($this->request->data)) {
-                $this->Session->setFlash(__('The administrator has been saved.'));
-                return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
-            }
-        } else {
-            $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
-            $this->request->data = $this->Administrator->find('first', $options);
-        }
+    public function edit_admin_profile($id = null) {
+//        if (!$this->Administrator->exists($id)) {
+//            throw new NotFoundException(__('Invalid administrator'));
+//        }
+//        if ($this->request->is(array('post', 'put'))) {
+//            if ($this->Administrator->save($this->request->data)) {
+//                $this->Session->setFlash(__('The administrator has been saved.'));
+//                return $this->redirect(array('action' => 'index'));
+//            } else {
+//                $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
+//            }
+//        } else {
+//            $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
+//            $this->request->data = $this->Administrator->find('first', $options);
+//        }
     }
 
     public function delete($id = null) {
@@ -71,5 +71,5 @@ class AdministratorsController extends AppController {
     
     public function approve_registration() {
 
-	}
+    }
 }

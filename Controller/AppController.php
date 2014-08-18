@@ -23,10 +23,31 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(
-            'loginAction' => array (
-                'controller' => 'pages',
-                'action' => 'home',
-            ),
-            'authError' => 'Invalid username/password',
-        ));
+                                    'loginAction' => array(
+                                        'controller' => 'pages',
+                                        'action' => 'home',
+                                    ),
+                                    'loginRedirect' => array (
+                                        'controller' => 'students',
+                                        'action' => 'index',
+                                    ),
+                                    'logoutRedirect' => array(
+                                        'controller' => 'pages',
+                                        'action' => 'home',
+                                    ),
+                                    'authError' => 'Did you really think you are allowed to see that?',
+                                    
+                                    ));
+        
+//        public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(
+//            'loginRedirect' => array (
+//                'controller' => 'pages',
+//                'action' => 'home',
+//            ),
+//            'logoutRedirect' => array(
+//                'controller' => 'pages',
+//                'action' => 'home',
+//            ),
+//            'authError' => 'Invalid username/password',
+//        ));
 }

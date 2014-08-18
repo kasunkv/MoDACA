@@ -13,7 +13,8 @@ class StudentsController extends AppController {
     //public $components = array('Auth');
     
     public function beforeFilter() {
-        $this->Auth->allow('register');
+        //$this->Auth->allow('register');
+        $this->Auth->allow();
     }
 
     public function index() {
@@ -157,7 +158,7 @@ class StudentsController extends AppController {
             
             // then redirect with the message
             $message = 'Student with ID ' . $id . ' was declined and removed.';
-            $element = 'flashWarn';
+            $element = 'flashError';
         }
         
         // Redirect to approveStudent View
@@ -232,13 +233,13 @@ class StudentsController extends AppController {
     }
     
     public function login() {
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                return $this->redirect('index');
-            }
-            
-           
-        }
+//        if ($this->request->is('post')) {
+//            if ($this->Auth->login()) {
+//                return $this->redirect('index');
+//            }
+//            
+//           
+//        }
     }
     
     

@@ -1,5 +1,9 @@
 <?php echo $this->layout = 'defaultLayout'; ?>
-
+<?php
+    $this->start('sideNav');
+    echo $this->element('studentNav');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Student | View Member Profile</h2>
@@ -13,7 +17,7 @@
 
     </div>
     <div class="col-md-10">
-        <h3>Edit Profile</h3>
+        <h3>Group Member Profile</h3>
         <?php echo $this->Form->create('Student', array(
             'inputDefaults' => array(
                 //'label' => false,
