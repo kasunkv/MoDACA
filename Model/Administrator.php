@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * Administrator Model
  *
@@ -8,7 +9,11 @@ App::uses('AppModel', 'Model');
 class Administrator extends AppModel {
 
         public function beforeSave() {
-		$this->data['Administrator']['password'] = AuthComponent::password($this->data['Administrator']['password']);
+		
+                if (!empty($this->data['Administrator']['password'])) {
+                    $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                    $this->data['Administrator']['password'] = $passwordHasher->hash($this->data['Administrator']['password']);
+                }
                 return true;
 	}
         

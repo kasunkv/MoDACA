@@ -1,12 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * User Model
- *
- * @property Administrator $Administrator
- * @property Staff $Staff
- * @property Student $Student
- */
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+
 class User extends AppModel {
 
 /**
@@ -16,6 +11,13 @@ class User extends AppModel {
  */
 	public $displayField = 'role';
 
+        public function beforeSave($options = array()) {
+            if (!empty($this->data['User']['password'])) {
+                $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                $this->data['User']['password'] = $passwordHasher->hash($this->data['User']['password']);
+            }
+            return true;
+        }
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

@@ -1,12 +1,16 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 class Student extends AppModel {
 
         public function beforeSave($options = array()) {
             $this->data['Student']['field_group_id'] = 2;
             $this->data['Student']['profile_photo'] = "";
-            $this->data['Student']['password'] = AuthComponent::password($this->data['Student']['password']);
+            if (!empty($this->data['Student']['password'])) {
+                $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                $this->data['Student']['password'] = $passwordHasher->hash($this->data['Student']['password']);
+            }
             return true;
         }
         
