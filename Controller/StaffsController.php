@@ -8,15 +8,11 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class StaffsController extends AppController {
-    public $components = array('Auth');
+    public $components = array('Paginator', 'Session', 'Auth');
     
-    
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator', 'Session');
+     public function beforeFilter() {
+        $this->Auth->allow();
+    }
 
 /**
  * index method

@@ -23,7 +23,7 @@
     <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-2 set-icon">
-                <i class="fa fa fa-user"></i>
+                <i class="fa    fa-user"></i>
             </span>
             <div class="text-box">
                 <p class="main-text">20 Students</p>

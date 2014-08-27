@@ -11,6 +11,10 @@ App::uses('AppController', 'Controller');
  */
 class AdministratorsController extends AppController {
     public $components = array('Auth');
+    
+    public function beforeFilter() {
+        $this->Auth->allow();
+    }
 
     public function index() {
         $this->Administrator->recursive = 0;
@@ -38,7 +42,7 @@ class AdministratorsController extends AppController {
         }
     }
 
-    public function edit_admin_profile($id = null) {
+    public function editAdminProfile($id = null) {
 //        if (!$this->Administrator->exists($id)) {
 //            throw new NotFoundException(__('Invalid administrator'));
 //        }
@@ -71,5 +75,17 @@ class AdministratorsController extends AppController {
     
     public function approve_registration() {
 
+    }
+    
+    public function changePassword() {
+        
+    }
+    
+    public function searchProfile() {
+        
+    }
+    
+     public function viewProfile() {
+        
     }
 }
