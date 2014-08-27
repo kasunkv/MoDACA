@@ -100,4 +100,16 @@ class StaffsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        public function createProfile(){
+            
+        }
+        
+        public function editProfile(){
+            
+        }
+        
+        public function changePassword(){
+            
+        }
 }
