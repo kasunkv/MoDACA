@@ -3587,3 +3587,102 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2014-08-27 18:45:02 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:45:02 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/editStaffProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:45:08 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:45:08 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/createProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:45:12 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:45:13 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/createProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:45:38 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:45:38 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/createProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:45:39 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:45:40 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/createProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:46:43 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 108]
+2014-08-27 18:46:43 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 108, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:47:15 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 112]
+2014-08-27 18:47:15 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/editProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:47:25 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 112]
+2014-08-27 18:47:25 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/editStaffProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 18:47:59 Error: Fatal Error (4): syntax error, unexpected '(', expecting identifier (T_STRING) in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 112]
+2014-08-27 18:47:59 Error: [FatalErrorException] syntax error, unexpected '(', expecting identifier (T_STRING)
+Request URL: /MoDACA/Staffs/changePassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 112, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-27 19:32:44 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/view/1
+Stack Trace:
+#0 [internal function]: AdministratorsController->view('1')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
