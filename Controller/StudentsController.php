@@ -32,17 +32,31 @@ class StudentsController extends AppController {
 
     public function register() {
         if ($this->request->is('post')) {
+            
+            $user['User']['role'] = 'Student';
+            $user['User']['username'] = $this->request->data['Student']['username'];
+            $user['User']['password'] = $this->request->data['Student']['password'];
+            
+            $this->Student->User->create();
+            $user = $this->Student->User->save($user);
+            
+            $this->request->data['Student']['user_id'] = $user['User']['id'];
+            
             $this->Student->create();
-            if ($this->Student->save($this->request->data)) {
-                $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
+            $student = $this->Student->save($this->request->data);
+                     
+            
+            
+            if ($user != null && $student != null) {
+                $this->Session->setFlash(__('<b>Congratulations!</b> You are now registered. Please wait for account approval.'), 'flashSuccess');
                 return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
             } else {
-                $this->Session->setFlash(__('The student could not be saved. Please, try again.'), 'flashError');
+                $this->Session->setFlash(__('Oopz! Registration failed. Please try again.'), 'flashError');
             }
             
         }
-        $fieldGroups = $this->Student->FieldGroup->find('list');
-        $this->set(compact('fieldGroups'));
+        //$fieldGroups = $this->Student->FieldGroup->find('list');
+        //$this->set(compact('fieldGroups'));
     }
 
     public function editStudent($id = null) {
