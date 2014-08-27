@@ -15,6 +15,12 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session');
+        
+        
+        public function beforeFilter() {
+            parent::beforeFilter();
+            //$this->Auth->allow();
+        }
 
 /**
  * index method
@@ -102,4 +108,23 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        public function login() {
+            if ($this->request->is('post')) {
+                
+                if ($this->Auth->login()) {
+                    
+                    $user = AuthComponent::user();
+                    if ($user['role'] == 'Student') {
+                        return $this->redirect(array('controller' => 'students', 'action' => 'index'));
+                    } else if ($user['role'] == 'Admin') {
+                        return $this->redirect(array('controller' => 'sdministrators', 'action' => 'index'));
+                    } else if ($user['role'] == 'Staff') {
+                        return $this->redirect(array('controller' => 'staffs', 'action' => 'index'));
+                    }
+                } else {
+                    $this->Session->setFlash(__('<b>Oopzz!</b>  Invalid username/password'), 'flashError');
+                }
+           }
+        }
 }

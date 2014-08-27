@@ -48,10 +48,11 @@ class StudentsController extends AppController {
             
             
             if ($user != null && $student != null) {
-                $this->Session->setFlash(__('<b>Congratulations!</b> You are now registered. Please wait for account approval.'), 'flashSuccess');
+                $this->Session->setFlash(__('<b>Congratulations!</b>  You are now registered. Please wait for account approval.'), 'flashSuccess');
                 return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
             } else {
                 $this->Session->setFlash(__('Oopz! Registration failed. Please try again.'), 'flashError');
+                return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
             }
             
         }
@@ -247,13 +248,10 @@ class StudentsController extends AppController {
     }
     
     public function login() {
-//        if ($this->request->is('post')) {
-//            if ($this->Auth->login()) {
-//                return $this->redirect('index');
-//            }
-//            
-//           
-//        }
+        if ($this->request->is('post')) {
+             $this->Session->setFlash(__('<b>Congratulations!</b>  You are logged in. :)'), 'flashSuccess');
+             return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+        }
     }
     
     
