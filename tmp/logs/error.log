@@ -3926,3 +3926,60 @@ Stack Trace:
 #4 [internal function]: App::shutdown()
 #5 {main}
 >>>>>>> origin/master
+2014-08-28 06:07:01 Error: [MissingTableException] Table users for model User was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'users',
+  'class' => 'User',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(2494): Model->schema()
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1719): DboSource->fields(Object(User), 'User', '')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1093): DboSource->generateAssociationQuery(Object(Administrator), Object(User), 'belongsTo', 'User', Array, Array, false)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Administrator), Array)
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#8 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(21): PaginatorComponent->paginate()
+#9 [internal function]: AdministratorsController->index()
+#10 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#13 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-08-28 06:07:20 Error: [MissingTableException] Table users for model User was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'users',
+  'class' => 'User',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(2494): Model->schema()
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1719): DboSource->fields(Object(User), 'User', '')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1093): DboSource->generateAssociationQuery(Object(Administrator), Object(User), 'belongsTo', 'User', Array, Array, false)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Administrator), Array)
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#8 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(21): PaginatorComponent->paginate()
+#9 [internal function]: AdministratorsController->index()
+#10 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#13 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-08-28 06:15:16 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
