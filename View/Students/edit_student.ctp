@@ -1,4 +1,4 @@
-<?php echo $this->layout = 'defaultLayout'; ?>
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
     echo $this->element('studentNav');
