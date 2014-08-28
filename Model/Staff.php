@@ -1,18 +1,26 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * Staff Model
  *
+ * @property User $User
  */
 class Staff extends AppModel {
-
-    public function beforeSave() {
-		$this->data['Staff']['password'] = AuthComponent::password($this->data['Staff']['password']);
+        
+        public function beforeSave() {
+		
+                if (!empty($this->data['Staff']['password'])) {
+                    $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                    $this->data['Staff']['password'] = $passwordHasher->hash($this->data['Staff']['password']);
+                }
                 return true;
-    }
-	public $displayField = 'first_name';
+        }
+	
+        public $displayField = 'first_name';
 
-	public $validate = array(
+        
+        public $validate = array(
 		'id' => array(
 			'blank' => array(
 				'rule' => array('blank'),
@@ -23,5 +31,22 @@ class Staff extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+	);
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
 	);
 }

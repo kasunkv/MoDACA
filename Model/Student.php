@@ -1,27 +1,23 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * Student Model
- *
- * @property FieldGroup $FieldGroup
- * @property StudentProgress $StudentProgress
- * @property TaskAssigner $TaskAssigner
- */
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+
 class Student extends AppModel {
-    
-    public function beforeSave($options = array()) {
-        //if ($this->data['Student']['id'] != null) {
+
+        public function beforeSave($options = array()) {
             $this->data['Student']['field_group_id'] = 2;
             $this->data['Student']['profile_photo'] = "";
-            $this->data['Student']['password'] = AuthComponent::password($this->data['Student']['password']);
-        //}
-        return true;
-    }
-
-
+            if (!empty($this->data['Student']['password'])) {
+                $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                $this->data['Student']['password'] = $passwordHasher->hash($this->data['Student']['password']);
+            }
+            return true;
+        }
+        
 	public $displayField = 'first_name';
 
-	public $validate = array(
+        
+        public $validate = array(
 		'id' => array(
 			'blank' => array(
 				'rule' => array('blank'),
@@ -36,8 +32,19 @@ class Student extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
 	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'FieldGroup' => array(
 			'className' => 'FieldGroup',
 			'foreignKey' => 'field_group_id',
@@ -47,7 +54,11 @@ class Student extends AppModel {
 		)
 	);
 
-
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
 	public $hasMany = array(
 		'StudentProgress' => array(
 			'className' => 'StudentProgress',

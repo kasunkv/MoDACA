@@ -23,20 +23,14 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(
-                                    'loginAction' => array(
-                                        'controller' => 'pages',
-                                        'action' => 'home',
+                                    'authenticate' => array(
+                                        'Form' => array(
+                                            'passwordHasher' => array(
+                                                'className' => 'Simple',
+                                                'hashType' => 'md5'
+                                            )
+                                        )
                                     ),
-                                    'loginRedirect' => array (
-                                        'controller' => 'students',
-                                        'action' => 'index',
-                                    ),
-                                    'logoutRedirect' => array(
-                                        'controller' => 'pages',
-                                        'action' => 'home',
-                                    ),
-                                    'authError' => 'Did you really think you are allowed to see that?',
-                                    
                                     ));
         
 //        public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(

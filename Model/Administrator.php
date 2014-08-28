@@ -1,14 +1,22 @@
 <?php
 App::uses('AppModel', 'Model');
-
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+/**
+ * Administrator Model
+ *
+ * @property User $User
+ */
 class Administrator extends AppModel {
 
-	public function beforeSave() {
-		$this->data['Administrator']['password'] = AuthComponent::password($this->data['Administrator']['password']);
+        public function beforeSave() {
+		
+                if (!empty($this->data['Administrator']['password'])) {
+                    $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
+                    $this->data['Administrator']['password'] = $passwordHasher->hash($this->data['Administrator']['password']);
+                }
                 return true;
 	}
-
-
+        
 	public $displayField = 'first_name';
         
         public $validate = array(
@@ -150,4 +158,20 @@ class Administrator extends AppModel {
 		),
 	);
 
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }
