@@ -118,7 +118,7 @@ class UsersController extends AppController {
                     if ($user['role'] == 'Student') {
                         return $this->redirect(array('controller' => 'students', 'action' => 'index'));
                     } else if ($user['role'] == 'Admin') {
-                        return $this->redirect(array('controller' => 'sdministrators', 'action' => 'index'));
+                        return $this->redirect(array('controller' => 'administrators', 'action' => 'index'));
                     } else if ($user['role'] == 'Staff') {
                         return $this->redirect(array('controller' => 'staffs', 'action' => 'index'));
                     }

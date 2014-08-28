@@ -10,7 +10,7 @@
  * @since         CakePHP(tm) v 0.2.9
  */
 
-App::uses('Controller', 'Controller');
+App::uses('Controller', 'Controller', 'Auth');
 
 /**
  * Application Controller
@@ -31,7 +31,7 @@ class AppController extends Controller {
                                             )
                                         )
                                     ),
-                                    ));
+                                ));
         
 //        public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(
 //            'loginRedirect' => array (

@@ -3926,6 +3926,7 @@ Stack Trace:
 #4 [internal function]: App::shutdown()
 #5 {main}
 >>>>>>> origin/master
+<<<<<<< HEAD
 2014-08-28 06:07:01 Error: [MissingTableException] Table users for model User was not found in datasource default.
 Exception Attributes: array (
   'table' => 'users',
@@ -3983,3 +3984,38 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+=======
+2014-08-28 06:28:40 Error: Fatal Error (4): syntax error, unexpected 'class' (T_CLASS) in [D:\wamp\www\MoDACA\Controller\AppController.php, line 24]
+2014-08-28 06:28:40 Error: [FatalErrorException] syntax error, unexpected 'class' (T_CLASS)
+Request URL: /MoDACA/users/login
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 24)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 24, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 24, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-08-28 06:51:06 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Array' in 'field list'
+Request URL: /MoDACA/staffs/register
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('INSERT INTO `mo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `mo...')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1834): DboSource->create(Object(Staff), Array, Array)
+#4 D:\wamp\www\MoDACA\Controller\StaffsController.php(117): Model->save(Array)
+#5 [internal function]: StaffsController->register()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-08-28 07:07:59 Error: [MissingControllerException] Controller class Admin-approve.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Admin-approve.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/admin-approve.html
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+>>>>>>> origin/master
