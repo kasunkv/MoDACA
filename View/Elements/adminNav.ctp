@@ -11,24 +11,32 @@
 </li>
 
 <li>
-    <a href="/MoDACA/Administrators/view_profile"><i class="fa fa-user fa-3x"></i> View Profile</a>                        
+    <a href="#"><i class="fa fa-user fa-3x"></i> Profile<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/MoDACA/Administrators/viewProfile">View Profile</a>
+        </li>
+        <li>
+            <a href="/MoDACA/Administrators/searchProfile">Search Profile</a>
+        </li>  
+    </ul>
 </li>
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/Administrators/viewGroupMembers">Group Members</a>
+            <a href="/MoDACA/Students/viewGroupMembers">Group Members</a>
         </li>
         <li>
-            <a href="/MoDACA/Administrators/viewGroupProgress">Group Progress</a>
+            <a href="/MoDACA/Students/viewGroupProgress">Group Progress</a>
         </li>  
     </ul>
 </li>
 
 <li>
-    <a href="/MoDACA/Administrators/approve_registration"><i class="fa fa-signal fa-3x"></i> Approve Registration</a>                       
+    <a href="/MoDACA/Administrators/approveRegistration"><i class="fa fa-signal fa-3x"></i> Approve Registration</a>                       
 </li>   
 <li>
-    <a href="#"><i class="fa fa-file fa-3x"></i> Reports</a>                        
+    <a href="/MoDACA/Administrators/changePassword"><i class="fa fa-file fa-3x"></i> Change Password</a>                        
 </li>
      
