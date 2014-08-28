@@ -101,6 +101,34 @@ class StaffsController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
         
+        public function register() {            
+            if ($this->request->is('post')) {
+
+                $user['User']['role'] = 'Staff';
+                $user['User']['username'] = $this->request->data['Staff']['username'];
+                $user['User']['password'] = $this->request->data['Staff']['password'];
+
+                $this->Staff->User->create();
+                $user = $this->Staff->User->save($user);
+
+                $this->request->data['Staff']['user_id'] = $user['User']['id'];
+
+                $this->Staff->create();
+                $student = $this->Staff->save($this->request->data);
+
+
+
+                if ($user != null && $student != null) {
+                    $this->Session->setFlash(__('<b>Congratulations!</b>  You are now registered. Please wait for account approval.'), 'flashSuccess');
+                    return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+                } else {
+                    $this->Session->setFlash(__('Oopz! Registration failed. Please try again.'), 'flashError');
+                    return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+                }
+
+            }
+        }
+ 
         public function createProfile(){
             
         }

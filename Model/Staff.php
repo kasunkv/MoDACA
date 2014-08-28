@@ -8,8 +8,8 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
  */
 class Staff extends AppModel {
         
-        public function beforeSave() {
-		
+        public function beforeSave($options = array()) {
+		$this->data['Staff']['profile_photo'] = "";
                 if (!empty($this->data['Staff']['password'])) {
                     $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
                     $this->data['Staff']['password'] = $passwordHasher->hash($this->data['Staff']['password']);
