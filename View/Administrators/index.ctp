@@ -20,7 +20,7 @@
             </span>
             <div class="text-box">
                 <p class="main-text">5 Pending</p>
-                <p class="text-muted"><a href="admin-approve.html" title="Pending approvals.">Approval</a></p>
+                <p class="text-muted"><a href="approveRegistration" title="Pending approvals.">Approval</a></p>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
             </span>
             <div class="text-box">
                 <p class="main-text">20 Total</p>
-                <p class="text-muted">Students</p>
+                <p class="text-muted"><a href="../Students/index" title="Students dashboard">Students</a></p>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
             </span>
             <div class="text-box">
                 <p class="main-text">5 Total</p>
-                <p class="text-muted">Lecturers</p>
+                <p class="text-muted"><a href="../Staffs/index" title="Staffs dashboard">Lecturers</a></p>
             </div>
         </div>
     </div>
