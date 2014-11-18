@@ -53,7 +53,7 @@
                                     <td><?php echo h($student['Student']['index_no']);  ?></td>
                                     <td>
                                         <?php echo $this->Html->link(__('View'),
-                                            array(
+                                            array(  
                                                 'action' => 'view', $student['Student']['id'],                                            
                                             ),
                                             array(
@@ -62,8 +62,8 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <!-- Approve -->
-                                        <?php echo $this->Html->link(__('Approve'),
+                                        <!-- Approve -->                                      
+                                        <?php echo $this->Form->postLink(__('Approve'),
                                             array(
                                                 'action' => 'regApprove', $student['Student']['id'],                                            
                                             ),

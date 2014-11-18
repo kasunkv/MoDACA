@@ -4,6 +4,11 @@
     echo $this->element('studentNav');
     $this->end();
 ?>
+<?php
+    //$this->start('topNavLogout');
+    //echo $this->element('studentTopNav');
+//    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Student | Dashboard</h2>

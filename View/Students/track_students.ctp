@@ -49,8 +49,7 @@
                         <div id="map_canvas"></div>
                     </div>
                 </div>
-            </div> 
-            <a href="dash.html" class="btn btn-danger btn-lg btn-custom">Cancle</a>                                              
+            </div>             
     </div>
     <div class="col-md-2">
 

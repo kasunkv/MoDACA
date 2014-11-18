@@ -19,6 +19,9 @@
         <li>
             <a href="/MoDACA/Administrators/searchProfile">Search Profile</a>
         </li>  
+        <li>
+            <a href="/MoDACA/Administrators/editAdminProfile">Edit Profile</a>
+        </li>
     </ul>
 </li>
 <li>

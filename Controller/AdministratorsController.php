@@ -17,8 +17,9 @@ class AdministratorsController extends AppController {
     }
 
     public function index() {
-        $this->Administrator->recursive = 0;
-        $this->set('administrators', $this->Paginator->paginate());
+//        $this->Administrator->recursive = 0;
+//        $this->set('administrators', $this->Paginator->paginate());
+        $this->getLoggedUser();
     }
 
     public function view($id = null) {
@@ -85,7 +86,18 @@ class AdministratorsController extends AppController {
         
     }
     
-     public function viewProfile() {
-        
+    public function viewProfile() {
+        $currentAdmin = $this->getLoggedAdmin();
+        $this->set('administrator', $currentAdmin);
+    }
+    
+    private function getLoggedAdmin() {
+        $user = AuthComponent::user();
+        if ($user['role'] == 'Admin') {
+            $options = array('conditions' => array('Administrator.user_id' => $user['id']));
+            return $loggedAdmin = $this->Administrator->find('first', $options);            
+        } else {
+            return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
+        }
     }
 }

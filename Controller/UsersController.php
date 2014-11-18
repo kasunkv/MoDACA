@@ -127,4 +127,20 @@ class UsersController extends AppController {
                 }
            }
         }
+        
+        public function redirectLoggedUser() {
+            $user = AuthComponent::user();
+            if ($user['role'] == 'Student') {
+                return $this->redirect(array('controller' => 'students', 'action' => 'index'));
+            } else if ($user['role'] == 'Admin') {
+                return $this->redirect(array('controller' => 'administrators', 'action' => 'index'));
+            } else if ($user['role'] == 'Staff') {
+                return $this->redirect(array('controller' => 'staffs', 'action' => 'index'));
+            }
+        }
+        
+        public function logout(){
+            $this->Auth->logout();
+            $this->redirect(array('controller' => 'users', 'action' => 'login'));
+        }
 }

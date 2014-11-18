@@ -1,4 +1,4 @@
-<?php echo $this->layout = 'defaultLayout'; ?>
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
     echo $this->element('adminNav');
@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="form-group input-group-lg">
                                             <!-- <label>Name</label> -->
-                                            <input class="form-control" placeholder="First Name" required>
+                                            <input class="form-control" placeholder="First Name" required value="<?php echo h($administrator['Administrator']['first_name']); ?>">
                                         </div>
                                         <div class="form-group input-group-lg">
                                             <!-- <label>Name</label> -->
@@ -103,9 +103,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button> -->
-                            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-                            <a href="dash-admin.html" class="btn btn-lg btn-danger btn-custom">Back</a>
                         </form>                                 
                     </div>
                     <div class="col-md-2">

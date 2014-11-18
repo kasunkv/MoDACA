@@ -7,7 +7,7 @@
     <!-- BOOTSTRAP STYLES-->
     <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom')); ?>    
     <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
 </head>
 <body>
     <div id="wrapper">
@@ -22,7 +22,21 @@
                 <a class="navbar-brand" href="index.html">MoDACA</a>
             </div>
             <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-                <?php echo $this->fetch('topNavLogout'); ?>
+                <?php //echo $this->fetch('topNavLogout');
+                    $user = AuthComponent::user();
+                    if (isset($user)) {
+                        echo $this->Form->postLink(__('Log Out'),
+                            array(
+                                'controller' => 'users',
+                                'action' => 'logout',                                            
+                            ),
+                            array(
+                                'class' => 'btn btn-primary square-btn-adjust'
+                        ));
+                    }
+                    
+                
+                ?>
             </div>
         </nav>
         <!-- /. NAV TOP  -->

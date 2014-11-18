@@ -1,5 +1,9 @@
 <?php $this->layout = 'defaultLayout'; ?>
-
+<?php
+    $this->start('sideNav');
+    echo $this->element('adminNav');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Edit Profile</h2>
@@ -21,14 +25,14 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <div class="form-group input-group-lg">
+<!--                        <div class="form-group input-group-lg">
                             <label>Role</label>
                             <select class="form-control" required>
                                 <option>Administrator</option>
                                 <option>Student</option>
                                 <option>Lecturer</option>
                             </select>
-                        </div>
+                        </div>-->
                         <div class="form-group input-group-lg">
                             <input class="form-control" placeholder="Name" required>
                         </div>
@@ -93,8 +97,6 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button>
-            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-            <a href="admin-view-profile.html" class="btn btn-lg btn-danger btn-custom">Cancle</a>
         </form>                                 
     </div>
     <div class="col-md-2">

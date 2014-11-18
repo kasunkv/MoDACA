@@ -1,4 +1,4 @@
-<?php echo $this->layout = 'defaultLayout'; ?>
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
     echo $this->element('adminNav');
@@ -38,8 +38,6 @@
                                     <input class="form-control" placeholder="Re-type Password">
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button>
-                                <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-                                <a href="view-profile.html" class="btn btn-lg btn-danger btn-custom">Cancle</a>
                             </div>
                         </div>
                     </form>                    

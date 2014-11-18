@@ -1,4 +1,4 @@
-<?php echo $this->layout = 'defaultLayout'; ?>
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
     echo $this->element('adminNav');
@@ -110,8 +110,7 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div> 
-                            <a href="dash-admin.html" class="btn btn-danger btn-lg btn-custom">Cancle</a>                                              
+                            </div>                                               
                     </div>
                     <div class="col-md-2">
                         
