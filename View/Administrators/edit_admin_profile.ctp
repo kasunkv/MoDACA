@@ -27,15 +27,43 @@
                     <div class="col-md-6">
 <!--                        <div class="form-group input-group-lg">
                             <label>Role</label>
-                            <select class="form-control" required>
+                            <!--select class="form-control" required>
                                 <option>Administrator</option>
                                 <option>Student</option>
                                 <option>Lecturer</option>
                             </select>
                         </div>-->
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Name" required>
-                        </div>
+
+                        <?php 
+                            $options = array('Administrator' => 'Administrator', 'Lecturer' => 'Lecturer');
+                            $attributes = array(
+                                'class' => 'form-control',
+                                ); 
+                            echo $this->Form->select('Role', $options, $attributes);
+                        ?>
+
+                        <!-- <label>First Name</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'First Name', 
+                                'type' => 'text',                    
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                )
+                            ));
+                        ?>
+                        <!-- <label>Last Name</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Last Name', 
+                                'type' => 'text',                    
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                )
+                            ));
+                        ?>
                         <div class="form-group input-group-lg">
                             <div class="radio">
                                 <label>
@@ -50,24 +78,51 @@
                                 </label>                                                
                             </div>
                         </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Designation" required>
-                        </div>
-                        <!--div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Index No" required>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Group No" required>
-                        </div-->
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Contact No" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Address"></textarea>
-                        </div>                               
+                        <!-- <label>Designation No</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Designation', 
+                                'type' => 'text',                    
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                )
+                            ));
+                        ?>
+                        <!-- <label>Email</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Email', 
+                                'type' => 'text',                    
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                )
+                            ));
+                        ?>
+                        <!-- <label>Contact No</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Contact No', 
+                                'type' => 'text',                    
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                )
+                            ));
+                        ?>
+                        <!-- <label>Address</label> -->
+                        <?php 
+                            echo $this->Form->input('', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Address', 
+                                'type' => 'textarea',
+                                'rows' => '4',
+                                'div' => array (
+                                    'class' => 'form-group'
+                                )
+                            ));
+                        ?>                               
                     </div>
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
@@ -75,11 +130,18 @@
                             <br /><br />
                             <img src="../../webroot/img/find_user.png" height="128" width="128">
                         </div>
-                        <div class="form-group">
-                            <label>Bio</label>
-                            <textarea class="form-control" rows="13" placeholder="Enter bio here"></textarea>
-                            <!--textarea class="form-control" rows="19" placeholder="Enter bio here"></textarea-->
-                        </div> 
+                        <!--Bio-->
+                        <?php 
+                                echo $this->Form->input('biography', array(
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Enter your biography here...', 
+                                    'type' => 'textarea',
+                                    'rows' => '22',                          
+                                    'div' => array (
+                                        'class' => 'form-group'
+                                    )
+                                ));
+                        ?> 
                     </div>
                 </div>
             </div>  

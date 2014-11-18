@@ -3926,6 +3926,65 @@ Stack Trace:
 #4 [internal function]: App::shutdown()
 #5 {main}
 >>>>>>> origin/master
+<<<<<<< HEAD
+2014-08-28 06:07:01 Error: [MissingTableException] Table users for model User was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'users',
+  'class' => 'User',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(2494): Model->schema()
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1719): DboSource->fields(Object(User), 'User', '')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1093): DboSource->generateAssociationQuery(Object(Administrator), Object(User), 'belongsTo', 'User', Array, Array, false)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Administrator), Array)
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#8 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(21): PaginatorComponent->paginate()
+#9 [internal function]: AdministratorsController->index()
+#10 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#13 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-08-28 06:07:20 Error: [MissingTableException] Table users for model User was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'users',
+  'class' => 'User',
+  'ds' => 'default',
+)
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(2494): Model->schema()
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1719): DboSource->fields(Object(User), 'User', '')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1093): DboSource->generateAssociationQuery(Object(Administrator), Object(User), 'belongsTo', 'User', Array, Array, false)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Administrator), Array)
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#8 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(21): PaginatorComponent->paginate()
+#9 [internal function]: AdministratorsController->index()
+#10 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#13 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-08-28 06:15:16 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+=======
 2014-08-28 06:28:40 Error: Fatal Error (4): syntax error, unexpected 'class' (T_CLASS) in [D:\wamp\www\MoDACA\Controller\AppController.php, line 24]
 2014-08-28 06:28:40 Error: [FatalErrorException] syntax error, unexpected 'class' (T_CLASS)
 Request URL: /MoDACA/users/login
@@ -3959,6 +4018,7 @@ Request URL: /MoDACA/admin-approve.html
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-08-28 10:11:17 Error: [MissingActionException] Action StudentsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'StudentsController',
@@ -4009,22 +4069,166 @@ Exception Attributes: array (
   'action' => 'assets',
 )
 Request URL: /MoDACA/students/assets/img/find_user1.png
+=======
+>>>>>>> origin/master
+2014-09-17 08:04:40 Error: [MissingControllerException] Controller class AdminstratorsController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminstratorsController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/Adminstrators
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:04:56 Error: [MissingControllerException] Controller class AdminstratorsController could not be found.
+Exception Attributes: array (
+  'class' => 'AdminstratorsController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/Adminstrators
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:09:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:34:50 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 08:35:49 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 08:39:23 Error: [MissingActionException] Action AdministratorsController::admin-approve.html() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'admin-approve.html',
+)
+Request URL: /MoDACA/Administrators/admin-approve.html
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 08:39:41 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:42:54 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:42:58 Error: [MissingActionException] Action AdministratorsController::MoDACA() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'MoDACA',
+)
+Request URL: /MoDACA/Administrators/MoDACA/Administrators/approveRegistration
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 08:43:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:43:43 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:43:46 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:43:49 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 08:47:53 Error: [MissingActionException] Action StudentsController::index.ctp() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'index.ctp',
+)
+Request URL: /MoDACA/Students/index.ctp
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 10:39:22 Error: [MissingActionException] Action StudentsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'StudentsController',
   'action' => 'assets',
 )
 Request URL: /MoDACA/students/assets/img/find_user1.png
+=======
+2014-09-17 08:48:50 Error: [MissingActionException] Action StudentsController::index.ctp() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'index.ctp',
+)
+Request URL: /MoDACA/Students/index.ctp
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 10:39:29 Error: [MissingActionException] Action StudentsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'StudentsController',
@@ -4273,6 +4477,17 @@ Stack Trace:
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
 2014-08-28 12:35:05 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 08:51:15 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-09-17 11:52:44 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4283,7 +4498,241 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-09-17 11:53:21 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 12:55:58 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:02:20 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:02:31 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:02:32 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:02:36 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:02:37 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:04:07 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:04:08 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:06:31 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:06:32 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:19:10 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:19:10 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:24:13 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:24:14 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:27:08 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:27:09 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:27:13 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:27:13 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:27:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 13:32:11 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+<<<<<<< HEAD
 2014-08-28 12:35:51 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:32:12 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4294,7 +4743,11 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 12:36:20 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:32:19 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4305,18 +4758,31 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 12:39:08 Error: [MissingActionException] Action AdministratorsController::admin-view-profile.html() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'admin-view-profile.html',
 )
 Request URL: /MoDACA/Administrators/admin-view-profile.html
+=======
+2014-09-17 13:32:21 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:31:08 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:32:30 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4327,7 +4793,11 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:33:09 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:32:52 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4338,29 +4808,51 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:33:15 Error: [MissingActionException] Action AdministratorsController::editProfile() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'editProfile',
 )
 Request URL: /MoDACA/Administrators/editProfile
+=======
+2014-09-17 13:33:00 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:34:30 Error: [MissingActionException] Action AdministratorsController::editProfile() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'editProfile',
 )
 Request URL: /MoDACA/Administrators/editProfile
+=======
+2014-09-17 13:33:01 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:35:40 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:33:09 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4371,6 +4863,7 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 13:46:53 Error: [NotFoundException] Invalid student
 Request URL: /MoDACA/students/view/assets/img/find_user1.png
 Stack Trace:
@@ -4430,6 +4923,8 @@ Stack Trace:
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
 2014-08-28 14:14:04 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:33:10 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4440,7 +4935,34 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-09-17 13:33:17 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 13:33:18 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+<<<<<<< HEAD
 2014-08-28 14:21:30 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:33:26 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4451,7 +4973,11 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-08-28 14:22:34 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:33:27 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4462,6 +4988,7 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-09-04 19:06:02 Error: [MissingActionException] Action StudentsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'StudentsController',
@@ -4474,6 +5001,8 @@ Stack Trace:
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
 2014-11-18 07:18:38 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 13:33:39 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4484,7 +5013,23 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-09-17 13:33:40 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+<<<<<<< HEAD
 2014-11-18 07:18:56 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+=======
+2014-09-17 17:40:38 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
 Exception Attributes: array (
   'controller' => 'AdministratorsController',
   'action' => 'assets',
@@ -4495,6 +5040,7 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+<<<<<<< HEAD
 2014-11-18 07:36:13 Error: [NotFoundException] Invalid administrator
 Request URL: /MoDACA/Administrators/viewProfile
 Stack Trace:
@@ -4556,11 +5102,91 @@ Exception Attributes: array (
   'action' => 'index.php',
 )
 Request URL: /MoDACA/Administrators/index.php
+=======
+2014-09-17 17:41:05 Error: [MissingActionException] Action AdministratorsController::admin-edit-profile.html() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'admin-edit-profile.html',
+)
+Request URL: /MoDACA/Administrators/admin-edit-profile.html
 Stack Trace:
 #0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-09-17 17:42:46 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-09-17 17:43:08 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-09-17 17:43:30 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-09-17 17:44:03 Error: [MissingActionException] Action StudentsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/students/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 17:46:35 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 17:46:35 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 17:46:37 Error: [MissingActionException] Action AdministratorsController::adminEditProfile() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'adminEditProfile',
+)
+Request URL: /MoDACA/Administrators/adminEditProfile
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+<<<<<<< HEAD
 2014-11-18 16:36:39 Error: Fatal Error (1): Undefined class constant 'user' in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 23]
 2014-11-18 16:36:39 Error: [FatalErrorException] Undefined class constant 'user'
 Request URL: /MoDACA/administrators
@@ -4621,3 +5247,173 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+=======
+2014-09-17 17:48:54 Error: Fatal Error (64): Cannot redeclare AdministratorsController::editAdminProfile() in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 92]
+2014-09-17 17:48:54 Error: [FatalErrorException] Cannot redeclare AdministratorsController::editAdminProfile()
+Request URL: /MoDACA/Administrators/adminEditProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-09-17 17:49:07 Error: Fatal Error (64): Cannot redeclare AdministratorsController::editAdminProfile() in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 92]
+2014-09-17 17:49:07 Error: [FatalErrorException] Cannot redeclare AdministratorsController::editAdminProfile()
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-09-17 17:49:11 Error: Fatal Error (64): Cannot redeclare AdministratorsController::editAdminProfile() in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 92]
+2014-09-17 17:49:11 Error: [FatalErrorException] Cannot redeclare AdministratorsController::editAdminProfile()
+Request URL: /MoDACA/Administrators/
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-09-17 17:49:27 Error: Fatal Error (64): Cannot redeclare AdministratorsController::editAdminProfile() in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 92]
+2014-09-17 17:49:27 Error: [FatalErrorException] Cannot redeclare AdministratorsController::editAdminProfile()
+Request URL: /MoDACA/Administrators
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', 'D:\\wamp\\www\\MoD...', 92, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-09-17 17:50:49 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:31:04 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-09-17 18:31:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-09-17 18:32:33 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:37:22 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:37:23 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:38:31 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:38:32 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:38:47 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-09-17 18:38:49 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+>>>>>>> 6f19aec2019aa162c874e1c0280625c299dd75d8
+2014-11-18 17:03:56 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-18 17:05:12 Error: [MissingActionException] Action AdministratorsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/Administrators/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
