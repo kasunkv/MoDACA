@@ -19,7 +19,6 @@ class AdministratorsController extends AppController {
     public function index() {
 //        $this->Administrator->recursive = 0;
 //        $this->set('administrators', $this->Paginator->paginate());
-        $this->getLoggedUser();
     }
 
     public function view($id = null) {
