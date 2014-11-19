@@ -5,6 +5,7 @@
     $this->end();
 ?>
 <div class="row">
+
     <div class="col-md-12">
         <h2>Administrator | Profiles</h2>
         <h5>Change the current password</h5>
@@ -13,7 +14,6 @@
 <!-- /. ROW  -->
 <hr />
 <div class="col-md-3">
-
 </div>
 <div class="col-md-6 signin-form">
     <div class="alert alert-danger alert-dismissable">
@@ -62,8 +62,6 @@
                     ));
                 ?>
                 <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button>
-                <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-                <a href="view-profile.html" class="btn btn-lg btn-danger btn-custom">Cancle</a>
             </div>
         </div>
     </form>                    

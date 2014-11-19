@@ -17,8 +17,8 @@ class AdministratorsController extends AppController {
     }
 
     public function index() {
-        $this->Administrator->recursive = 0;
-        $this->set('administrators', $this->Paginator->paginate());
+//        $this->Administrator->recursive = 0;
+//        $this->set('administrators', $this->Paginator->paginate());
     }
 
     public function view($id = null) {
@@ -89,11 +89,27 @@ class AdministratorsController extends AppController {
         
     }
     
+<<<<<<< HEAD
      public function viewProfile($id = null) {
         if (!$this->Administrator->exists($id)) {
             throw new NotFoundException(__('Invalid administrator'));
         }
         $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
         $this->set('administrator', $this->Administrator->find('first', $options));
+=======
+    public function viewProfile() {
+        $currentAdmin = $this->getLoggedAdmin();
+        $this->set('administrator', $currentAdmin);
+    }
+    
+    private function getLoggedAdmin() {
+        $user = AuthComponent::user();
+        if ($user['role'] == 'Admin') {
+            $options = array('conditions' => array('Administrator.user_id' => $user['id']));
+            return $loggedAdmin = $this->Administrator->find('first', $options);            
+        } else {
+            return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
+        }
+>>>>>>> bd1b8ff66ee5ed3cca3419ab6ddf95f356eb964f
     }
 }

@@ -57,4 +57,11 @@
             </div>
         </div>
     </div>
+    <?php  
+        $user = AuthComponent::user();
+        echo var_dump($user);        
+    ?>
+    <br />
+    <?php echo var_dump($administrator); ?>
+    
 </div>

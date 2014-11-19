@@ -75,18 +75,6 @@
                                 echo $this->Form->select('gender', $options, $attributes);
                             ?>                           
                         </div>
-
-                        <!-- Index No -->
-                        <?php 
-                            /*echo $this->Form->input('index_no', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Index No', 
-                                'type' => 'text',                    
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                )
-                            ));*/
-                        ?>                       
                         
                         <!-- Email -->
                         <?php 
@@ -193,7 +181,6 @@
                         ?>  
                     </div>
                     <div class="col-md-6">
-<!--                        <a href="" id="btn-generate-password" class="btn btn-primary btn-sm">Generate Password</a>-->
                         <?php echo $this->Html->link(__('Generate Password'), array('controller' => 'utilities' , 'action' => 'generatePassword'), array('class' => 'btn btn-primary btn-sm')); ?>
                     </div>
                 </div>

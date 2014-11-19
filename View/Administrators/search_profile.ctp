@@ -55,6 +55,7 @@
                     <br /><br /><br /><br />
                     <button type="submit" class="btn btn-lg btn-success btn-custom">Search</button>
                 </div>
+
             </div>
         </div>  
         <div class="panel panel-default">
@@ -122,8 +123,7 @@
                     </table>
                 </div>
             </div>
-        </div> 
-        <a href="dash-admin.html" class="btn btn-danger btn-lg btn-custom">Cancel</a>                                              
+        </div>                                                     
     </div>
     <div class="col-md-2">
 

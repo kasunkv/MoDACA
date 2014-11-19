@@ -6,23 +6,40 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Administrator | View Profiles</h2>
+        <h2>Administrator | View Profile</h2>
         <h5>View selected user profile</h5>
     </div>
 </div>
 <!-- /. ROW  -->
 <hr />
 <div class="row">
-    <div class="col-md-1">
-
-    </div>
+    <div class="col-md-1"></div>
     <div class="col-md-10">
-        <h3>View Profile</h3>
-        <form role="form">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Details
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Details
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <p class="profile-view-heading">Name</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['first_name'] . " " .  $administrator['Administrator']['last_name']; ?></P>
+                    
+                    <p class="profile-view-heading">Gender</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['gender']; ?></P>
+                    
+                    <p class="profile-view-heading">Designation</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['designation']; ?></P>
+                    
+                    <p class="profile-view-heading">Email</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['email']; ?></P>
+                    
+                    <p class="profile-view-heading">Contact No</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['contact_no']; ?></P>
+                    
+                    <p class="profile-view-heading">Address</p>
+                    <P class="profile-view-info"><?php echo $administrator['Administrator']['address']; ?></P>
                 </div>
+<<<<<<< HEAD
                 <div class="panel-body">
                     <div class="col-md-6">
                         <!-- <label>Role</label> -->
@@ -140,27 +157,34 @@
                                 ));
                         ?> 
                     </div>
+=======
+                <div class="col-md-6">
+                    <p class="profile-view-heading">Profile Photo</p>
+                    <img class="profile-view-img" src="../webroot/img/find_user.png" height="128" width="128">
+                    
+                    <p class="profile-view-heading">Biography</p>
+                    <P class="profile-view-info profile-view-bio"><?php echo $administrator['Administrator']['bio']; ?></P>
+>>>>>>> bd1b8ff66ee5ed3cca3419ab6ddf95f356eb964f
                 </div>
-            </div>  
-            <div class="panel panel-default">
+                <br /><br />
+            </div> 
+        </div>
+        
+        <div class="panel panel-default">
                 <div class="panel-heading">
                     Tasks
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <a href="editAdminProfile" class="btn btn-primary btn-sm">Edit Profile</a>                                        
+                        <a href="editAdminProfile" class="btn btn-primary btn-sm">Edit Profile</a>   
                     </div>
                     <div class="col-md-6">
 
                     </div>
                 </div>
             </div>
-            <!-- <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button> -->
-            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-            <a href="dash-admin.html" class="btn btn-lg btn-danger btn-custom">Back</a>
-        </form>                                 
     </div>
-    <div class="col-md-2">
-
-    </div>
+    <div class="col-md-1"></div>
 </div>
+
+

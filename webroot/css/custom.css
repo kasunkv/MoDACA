@@ -54,6 +54,28 @@
     width: 100%;
 }
 
+.profile-view-heading {
+    color: gray;
+    font-weight: lighter;
+    font-size: 1.1em;
+    margin-bottom: -20px;
+}
+
+.profile-view-info {
+    /*font-weight: bold;*/
+    font-size: 1.4em;
+    margin-bottom: -10px;
+}
+
+.profile-view-bio {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.profile-view-img {
+    margin-top: 30px;
+}
+
 /* End of My Styles */
 
 

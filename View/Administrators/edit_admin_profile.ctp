@@ -25,21 +25,23 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <div class="form-group input-group-lg">
+<!--                        <div class="form-group input-group-lg">
                             <label>Role</label>
                             <!--select class="form-control" required>
                                 <option>Administrator</option>
                                 <option>Student</option>
                                 <option>Lecturer</option>
-                            </select-->
-                            <?php 
-                                $options = array('Administrator' => 'Administrator', 'Lecturer' => 'Lecturer');
-                                $attributes = array(
-                                    'class' => 'form-control',
-                                    ); 
-                                echo $this->Form->select('Role', $options, $attributes);
-                            ?>
-                        </div>
+                            </select>
+                        </div>-->
+
+                        <?php 
+                            $options = array('Administrator' => 'Administrator', 'Lecturer' => 'Lecturer');
+                            $attributes = array(
+                                'class' => 'form-control',
+                                ); 
+                            echo $this->Form->select('Role', $options, $attributes);
+                        ?>
+
                         <!-- <label>First Name</label> -->
                         <?php 
                             echo $this->Form->input('', array(
@@ -157,8 +159,6 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button>
-            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-            <a href="admin-view-profile.html" class="btn btn-lg btn-danger btn-custom">Cancle</a>
         </form>                                 
     </div>
     <div class="col-md-2">

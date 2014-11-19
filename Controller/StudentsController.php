@@ -1,14 +1,6 @@
 <?php
-
 App::uses('AppController', 'Controller');
 
-/**
- * Students Controller
- *
- * @property Student $Student
- * @property PaginatorComponent $Paginator
- * @property SessionComponent $Session
- */
 class StudentsController extends AppController {
     //public $components = array('Auth');
     
@@ -44,8 +36,6 @@ class StudentsController extends AppController {
             
             $this->Student->create();
             $student = $this->Student->save($this->request->data);
-                     
-            
             
             if ($user != null && $student != null) {
                 $this->Session->setFlash(__('<b>Congratulations!</b>  You are now registered. Please wait for account approval.'), 'flashSuccess');
@@ -66,6 +56,7 @@ class StudentsController extends AppController {
         }
     
         if ($this->request->is(array('post', 'put'))) {
+            $this->Student->id = $id;
             if ($this->Student->save($this->request->data)) {
                 $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
                 return $this->redirect(array('action' => 'index'));
@@ -118,7 +109,9 @@ class StudentsController extends AppController {
     
     public function approveStudent() {
         $this->Student->recursive = 0;
-        $this->set('students', $this->Paginator->paginate());
+        $this->set('students', $this->Student->find('all', array(
+            'conditions' => array('Student.approved' => 0)
+        )));
     }
     
     
@@ -139,11 +132,23 @@ class StudentsController extends AppController {
         } else {
             // perform the action to update the approve field in the database.
             
+            $student = $this->Student->find('first', array(
+               'conditions' => array('Student.id' => $id) 
+            ));
             
+            $this->request->data['Student']['approved'] = 1;
+            $this->Student->id = $id;
             
-            // then redirect with the message
-            $message = 'Student with ID ' . $id . ' was successfully approved.';
-            $element = 'flashSuccess';
+            if ($this->Student->save($this->request->data)) {
+                $message = 'Student:  ' . $student['Student']['first_name'] . " " . $student['Student']['last_name'] . ' was successfully approved.';
+                $element = 'flashSuccess';
+            }
+            
+            $this->Student->recursive = 0;
+            $this->set('students', $this->Student->find('all', array(
+                'conditions' => array('Student.approved' => 0)
+            )));
+            
         }
         
         // Redirect to approveStudent View
