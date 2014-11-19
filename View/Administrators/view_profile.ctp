@@ -41,7 +41,8 @@
                             echo $this->Form->input('', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'First Name', 
-                                'type' => 'text',                    
+                                'type' => 'text',  
+                                'value' => h($administrator['Administrator']['first_name']),
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -52,7 +53,8 @@
                             echo $this->Form->input('', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Last Name', 
-                                'type' => 'text',                    
+                                'type' => 'text',   
+                                'value' => h($administrator['Administrator']['last_name']),
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )

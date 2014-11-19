@@ -1,2 +1,2 @@
-1410973700
-a:1:{s:4:"name";a:2:{s:32:"e1bfb4c85e3b58643ac9a744c0fcf974";s:11:"`modaca_db`";s:32:"bfe1479ea05f97a1718e1a09ea0638a7";s:10:"`students`";}}
+1416397569
+a:2:{s:4:"name";a:5:{s:32:"e1bfb4c85e3b58643ac9a744c0fcf974";s:11:"`modaca_db`";s:32:"47eb7bb09414c64f779510914712b6ee";s:7:"`count`";s:32:"27d15c3c1121033be244665fd0dabf27";s:16:"`administrators`";s:32:"27fb67cb3b5d7acb5efe92f1ad3b958d";s:20:"`Administrator`.`id`";s:32:"446f485696498103026c0716f75bed46";s:15:"`Administrator`";}s:6:"fields";a:1:{s:32:"7643b6cfe143bc59717f2d6374b74729";a:1:{i:0;s:19:"COUNT(*) AS `count`";}}}

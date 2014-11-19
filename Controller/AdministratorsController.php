@@ -30,12 +30,16 @@ class AdministratorsController extends AppController {
     }
 
     public function add() {
-        if ($this->request->is('post')) {
+        if($this->request->is('post'))
+        {
             $this->Administrator->create();
-            if ($this->Administrator->save($this->request->data)) {
+            if ($this->Administrator->save($this->request->data)) 
+            {
                 $this->Session->setFlash(__('The administrator has been saved.'));
                 return $this->redirect(array('action' => 'index'));
-            } else {
+            } 
+            else
+            {
                 $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
                 //debug($this->Administrator->validationErrors);
             }
@@ -85,7 +89,11 @@ class AdministratorsController extends AppController {
         
     }
     
-     public function viewProfile() {
-        
+     public function viewProfile($id = null) {
+        if (!$this->Administrator->exists($id)) {
+            throw new NotFoundException(__('Invalid administrator'));
+        }
+        $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
+        $this->set('administrator', $this->Administrator->find('first', $options));
     }
 }

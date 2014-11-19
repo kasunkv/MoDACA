@@ -1,4 +1,10 @@
 <div class="administrators form">
+<?php $this->layout = 'defaultLayout'; ?>
+<?php
+    $this->start('sideNav');
+    echo $this->element('adminNav');
+    $this->end();
+?>
 <?php echo $this->Form->create('Administrator'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Administrator'); ?></legend>
