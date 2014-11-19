@@ -89,14 +89,6 @@ class AdministratorsController extends AppController {
         
     }
     
-<<<<<<< HEAD
-     public function viewProfile($id = null) {
-        if (!$this->Administrator->exists($id)) {
-            throw new NotFoundException(__('Invalid administrator'));
-        }
-        $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
-        $this->set('administrator', $this->Administrator->find('first', $options));
-=======
     public function viewProfile() {
         $currentAdmin = $this->getLoggedAdmin();
         $this->set('administrator', $currentAdmin);
@@ -110,6 +102,5 @@ class AdministratorsController extends AppController {
         } else {
             return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
         }
->>>>>>> bd1b8ff66ee5ed3cca3419ab6ddf95f356eb964f
     }
 }
