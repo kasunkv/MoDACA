@@ -40,18 +40,18 @@
                     <p class="profile-view-heading">Address</p>
                     <P class="profile-view-info"><?php echo $administrator['Administrator']['address']; ?></P>
                 </div>
-                <div class="col-md-6">
-                    <p class="profile-view-heading">Profile Photo</p>
-                    <img class="profile-view-img" src="../webroot/img/find_user.png" height="128" width="128">
-                    
-                    <p class="profile-view-heading">Biography</p>
-                    <P class="profile-view-info profile-view-bio"><?php echo $administrator['Administrator']['bio']; ?></P>
-                </div>
-                <br /><br />
-            </div> 
-        </div>
-        
-        <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <p class="profile-view-heading">Profile Photo</p>
+                        <img class="profile-view-img" src="../webroot/img/find_user.png" height="128" width="128">
+
+                        <p class="profile-view-heading">Biography</p>
+                        <P class="profile-view-info profile-view-bio"><?php echo $administrator['Administrator']['bio']; ?></P>
+                    </div>
+                    <br /><br />
+                </div> 
+            </div>
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     Tasks
                 </div>
@@ -59,13 +59,10 @@
                     <div class="col-md-6">
                         <a href="editAdminProfile" class="btn btn-primary btn-sm">Edit Profile</a>   
                     </div>
-                    <div class="col-md-6">
-
-                    </div>
                 </div>
             </div>
+        </div>
     </div>
-    <div class="col-md-1"></div>
 </div>
 
 

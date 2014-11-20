@@ -19,6 +19,8 @@ class AdministratorsController extends AppController {
     public function index() {
 //        $this->Administrator->recursive = 0;
 //        $this->set('administrators', $this->Paginator->paginate());
+        $currentAdmin = $this->getLoggedAdmin();
+        $this->set('administrator', $currentAdmin);
     }
 
     public function view($id = null) {
@@ -30,12 +32,16 @@ class AdministratorsController extends AppController {
     }
 
     public function add() {
-        if ($this->request->is('post')) {
+        if($this->request->is('post'))
+        {
             $this->Administrator->create();
-            if ($this->Administrator->save($this->request->data)) {
+            if ($this->Administrator->save($this->request->data)) 
+            {
                 $this->Session->setFlash(__('The administrator has been saved.'));
                 return $this->redirect(array('action' => 'index'));
-            } else {
+            } 
+            else
+            {
                 $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
                 //debug($this->Administrator->validationErrors);
             }

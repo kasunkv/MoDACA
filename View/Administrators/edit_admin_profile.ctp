@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Edit Profile</h2>
-        <h5>Edit an existing user profile</h5>
+        <h5>Edit your profile information</h5>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -33,23 +33,6 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-<!--                        <div class="form-group input-group-lg">
-                            <label>Role</label>
-                            <!--select class="form-control" required>
-                                <option>Administrator</option>
-                                <option>Student</option>
-                                <option>Lecturer</option>
-                            </select>
-                        </div>-->
-                        <!--<label>Role</label>-->
-                        <?php 
-//                            $options = array('Admin' => 'Administrator', 'Lec' => 'Lecturer');
-//                            $attributes = array(
-//                                'class' => 'form-control',
-//                                ); 
-//                            echo $this->Form->select('role', $options, $attributes);
-                        ?>
-
                         <!-- <label>First Name</label> -->
                         <?php 
                             echo $this->Form->input('first_name', array(
@@ -57,6 +40,7 @@
                                 'placeholder' => 'First Name', 
                                 'type' => 'text',         
                                 'value' => $loggedAdmin['Administrator']['first_name'],
+                                'type' => 'text',
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -81,7 +65,7 @@
                                 'class' => 'form-control',
                                 ); 
                             echo $this->Form->select('gender', $options, $attributes);
-                        ?>
+                        ?>                        
                         
                         <!-- <label>Designation No</label> -->
                         <?php 
@@ -137,7 +121,7 @@
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
                             <br /><br />
-                            <img src="../../webroot/img/find_user.png" height="128" width="128">
+                            <img src="../webroot/img/find_user.png" height="128" width="128">
                         </div>
                         <!--Bio-->
                         <?php 
