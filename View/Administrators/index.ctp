@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Dashboard</h2>
-        <h5>Welcome Username</h5>
+        <h5>Welcome <?php echo $administrator['Administrator']['first_name'];?></h5>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -57,11 +57,11 @@
             </div>
         </div>
     </div>
-    <?php  
+    <!--<?php  
         $user = AuthComponent::user();
         echo var_dump($user);        
     ?>
     <br />
     <?php echo var_dump($administrator); ?>
-    
+    -->
 </div>

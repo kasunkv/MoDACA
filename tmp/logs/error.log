@@ -6695,3 +6695,201 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-11-20 04:54:26 Error: [MissingActionException] Action AdministratorsController::webroot() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'webroot',
+)
+Request URL: /MoDACA/Administrators/webroot/img/find_user.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-20 06:17:05 Error: [MissingActionException] Action AdministratorsController::edit() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'edit',
+)
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-20 06:18:23 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:18:59 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:19:33 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:19:54 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/delete
+Stack Trace:
+#0 [internal function]: AdministratorsController->delete()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:23:04 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/view
+Stack Trace:
+#0 [internal function]: AdministratorsController->view()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:25:37 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:27:31 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:32:42 Error: [MissingActionException] Action AdministratorsController::webroot() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'webroot',
+)
+Request URL: /MoDACA/Administrators/webroot/img/find_user.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-20 06:36:25 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/view/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->view('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:36:30 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 06:50:46 Error: [NotFoundException] Invalid student
+Request URL: /MoDACA/students/editStudent/assets/img/find_user1.png
+Stack Trace:
+#0 [internal function]: StudentsController->editStudent('assets', 'img', 'find_user1.png')
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StudentsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 10:38:57 Error: Fatal Error (1): Call to undefined method View::getLoggedAdmin() in [D:\wamp\www\MoDACA\View\Administrators\index.ctp, line 11]
+2014-11-20 10:38:57 Error: [FatalErrorException] Call to undefined method View::getLoggedAdmin()
+Request URL: /MoDACA/Administrators/index
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-20 10:39:28 Error: Fatal Error (1): Call to undefined method View::getLoggedAdmin() in [D:\wamp\www\MoDACA\View\Administrators\index.ctp, line 11]
+2014-11-20 10:39:28 Error: [FatalErrorException] Call to undefined method View::getLoggedAdmin()
+Request URL: /MoDACA/administrators
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 11, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-20 10:51:20 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/editAdminProfile
+Stack Trace:
+#0 [internal function]: AdministratorsController->editAdminProfile()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 11:32:25 Error: Fatal Error (4): syntax error, unexpected 'public' (T_PUBLIC) in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 96]
+2014-11-20 11:32:25 Error: [FatalErrorException] syntax error, unexpected 'public' (T_PUBLIC)
+Request URL: /MoDACA/Administrators/editAdminProfile
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 96)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 96, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 96, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-20 11:33:21 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/editAdminProfile
+Stack Trace:
+#0 [internal function]: AdministratorsController->editAdminProfile()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 11:33:56 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/editAdminProfile
+Stack Trace:
+#0 [internal function]: AdministratorsController->editAdminProfile()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 11:34:37 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 11:35:36 Error: [NotFoundException] Invalid administrator
+Request URL: /MoDACA/Administrators/edit
+Stack Trace:
+#0 [internal function]: AdministratorsController->edit()
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

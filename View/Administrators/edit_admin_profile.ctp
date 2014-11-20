@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Edit Profile</h2>
-        <h5>Edit an existing user profile</h5>
+        <h5>Edit your profile information</h5>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -32,8 +32,7 @@
                                 <option>Student</option>
                                 <option>Lecturer</option>
                             </select>
-                        </div>-->
-
+                        </div>
                         <?php 
                             $options = array('Administrator' => 'Administrator', 'Lecturer' => 'Lecturer');
                             $attributes = array(
@@ -41,13 +40,13 @@
                                 ); 
                             echo $this->Form->select('Role', $options, $attributes);
                         ?>
-
+-->
                         <!-- <label>First Name</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('first_name', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'First Name', 
-                                'type' => 'text',                    
+                                'type' => 'text',
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -55,7 +54,7 @@
                         ?>
                         <!-- <label>Last Name</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('last_name', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Last Name', 
                                 'type' => 'text',                    
@@ -65,6 +64,7 @@
                             ));
                         ?>
                         <div class="form-group input-group-lg">
+                            <label>Gender</label>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="gender" id="radGenderMale" value="male" checked>
@@ -80,7 +80,7 @@
                         </div>
                         <!-- <label>Designation No</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('designation', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Designation', 
                                 'type' => 'text',                    
@@ -91,7 +91,7 @@
                         ?>
                         <!-- <label>Email</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('email', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Email', 
                                 'type' => 'text',                    
@@ -102,7 +102,7 @@
                         ?>
                         <!-- <label>Contact No</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('contact_no', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Contact No', 
                                 'type' => 'text',                    
@@ -113,7 +113,7 @@
                         ?>
                         <!-- <label>Address</label> -->
                         <?php 
-                            echo $this->Form->input('', array(
+                            echo $this->Form->input('address', array(
                                 'class' => 'form-control',
                                 'placeholder' => 'Address', 
                                 'type' => 'textarea',
