@@ -15,6 +15,7 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
+        <?php echo $this->Session->flash(); ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 Details

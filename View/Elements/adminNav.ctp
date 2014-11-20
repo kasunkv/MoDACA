@@ -35,10 +35,20 @@
         </li>  
     </ul>
 </li-->
-
 <li>
+    <a href="#"><i class="fa fa-check-square-o fa-3x"></i> Approve Registration<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/MoDACA/Administrators/approveStudent">Approve Students Registrations</a>
+        </li>
+        <li>
+            <a href="/MoDACA/Administrators/approveStaff">Approve Staff Registrations</a>
+        </li>          
+    </ul>
+</li>
+<!--<li>
     <a href="/MoDACA/Administrators/approveRegistration"><i class="fa fa-check-square-o fa-3x"></i> Approve Registration</a>                       
-</li>   
+</li>   -->
 <li>
     <a href="/MoDACA/Administrators/changePassword"><i class="fa fa-cog fa-3x"></i> Change Password</a>                        
 </li>

@@ -42,21 +42,22 @@ class AdministratorsController extends AppController {
         }
     }
 
-    public function editAdminProfile($id = null) {
-//        if (!$this->Administrator->exists($id)) {
-//            throw new NotFoundException(__('Invalid administrator'));
-//        }
-//        if ($this->request->is(array('post', 'put'))) {
-//            if ($this->Administrator->save($this->request->data)) {
-//                $this->Session->setFlash(__('The administrator has been saved.'));
-//                return $this->redirect(array('action' => 'index'));
-//            } else {
-//                $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'));
-//            }
-//        } else {
-//            $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
-//            $this->request->data = $this->Administrator->find('first', $options);
-//        }
+    public function editAdminProfile() {
+        
+        if ($this->request->is(array('post', 'put'))) {
+            $loggedAdmin = $this->getLoggedAdmin();
+            $this->Administrator->id = $loggedAdmin['Administrator']['id'];
+            if ($this->Administrator->save($this->request->data)) {
+                $this->Session->setFlash(__('The profile was <b>puccesfully</b> ppdated.'), 'flashSuccess');
+                return $this->redirect(array('action' => 'viewProfile'));
+            } else {
+                $this->Session->setFlash(__('Oopz, Something went wrong. The profile was <b>NOT</b> updated. Please, try again.'), 'flashError');
+                return $this->redirect(array('action' => 'viewProfile'));
+            }
+        } else {
+            //$options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
+            $this->set('loggedAdmin', $this->getLoggedAdmin());
+        }
     }
 
     public function delete($id = null) {
@@ -74,7 +75,40 @@ class AdministratorsController extends AppController {
     }
     
     public function approveRegistration() {
-
+        $result = array();
+        
+        // get the unapproved users from Users Table
+        $this->loadModel('User');
+        $options = array('conditions' => array('approved' => 0));
+        $users = $this->User->find('all', $options);
+        
+        // Get the users details from appropriate tables
+        foreach ($users as $user) {
+            if ($user['User']['role'] == "Student") {
+                $this->loadModel('Student');
+                $student = $this->Student->find('first', array(
+                   'conditions' => array(
+                       'user_id' => $user['User']['id'],
+                   ) 
+                ));
+                
+                $container = array($user, $student);
+                array_push($result, $container);
+            } elseif ($user['User']['role'] == "Staff") {
+                $this->loadModel('Staff');
+                $staff = $this->Staff->find('first', array(
+                   'conditions' => array(
+                       'user_id' => $user['User']['id'],
+                   ) 
+                ));
+                
+                $container = array($user, $student);
+                array_push($result, $container);
+            }            
+        }
+        
+        $this->loadModel('Administrator');
+        $this->set('results', $result);
     }
     
     public function changePassword() {

@@ -111,17 +111,24 @@ class UsersController extends AppController {
         
         public function login() {
             if ($this->request->is('post')) {
-                
+                $temp = $this->request->data;
                 if ($this->Auth->login()) {
                     
                     $user = AuthComponent::user();
-                    if ($user['role'] == 'Student') {
-                        return $this->redirect(array('controller' => 'students', 'action' => 'index'));
-                    } else if ($user['role'] == 'Admin') {
-                        return $this->redirect(array('controller' => 'administrators', 'action' => 'index'));
-                    } else if ($user['role'] == 'Staff') {
-                        return $this->redirect(array('controller' => 'staffs', 'action' => 'index'));
+                    if($user['approved']) {
+                        if ($user['role'] == 'Student') {
+                            return $this->redirect(array('controller' => 'students', 'action' => 'index'));
+                        } else if ($user['role'] == 'Admin') {
+                            return $this->redirect(array('controller' => 'administrators', 'action' => 'index'));
+                        } else if ($user['role'] == 'Staff') {
+                            return $this->redirect(array('controller' => 'staffs', 'action' => 'index'));
+                        }
+                    } else {
+                        $this->Session->setFlash(__('<b>Oopzz!</b>  Your Account is <b>NOT Approved</b> yet. You will Receive and Email When Your Account is Active.'), 'flashError');
+                        $this->Auth->logout();
+                        return;
                     }
+                    
                 } else {
                     $this->Session->setFlash(__('<b>Oopzz!</b>  Invalid username/password'), 'flashError');
                 }

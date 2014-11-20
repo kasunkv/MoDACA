@@ -6,8 +6,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Student | Group Progress</h2>
-        <h5>Inspect your group progress here</h5>
+        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Group Progress</h2>
+        <h4 class="page-subheader">Inspect your group progress here</h4>
     </div>
 </div>
 <!-- /. ROW  -->

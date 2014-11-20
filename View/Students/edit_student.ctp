@@ -6,8 +6,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Student | Edit Profile</h2>
-        <h5>Edit your current profile information.</h5>
+        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Edit Profile</h2>
+        <h4 class="page-subheader">Edit your student profile information.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -17,12 +17,18 @@
 
     </div>
     <div class="col-md-10">
-        <h3>Edit Profile</h3>
+        <?php
+            //echo var_dump($fieldGroups);
+            //echo '<br />';
+            //echo var_dump($student);        
+        ?>
+        
         <?php echo $this->Form->create('Student', array(
             'inputDefaults' => array(
                 //'label' => false,
             ),
             'enctype' => 'multipart/form-data',
+            'type' => 'file',
         ));
         ?>
             <div class="panel panel-default">
@@ -56,18 +62,41 @@
                                 
                             ));
                         ?>
+                        <!-- User Name -->
+                        <?php 
+                            echo $this->Form->input('username', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Username', 
+                                'type' => 'text',
+                                'disabled' => true,
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Username',
+                            ));
+                        ?>                         
+                        
+                        <!-- Group Name -->
+                        <?php 
+                            echo $this->Form->input('field_group_id', array(
+                                'class' => 'form-control',
+                                'options' => $fieldGroups,
+                                'selected' => $student['Student']['field_group_id'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Group Name',
+                            ));
+                        ?>                         
+                        
                         <!-- Gender -->
-                        <div class="form-group input-group-lg">
-                            <lable><b>Gender</b></lable>
-                            <br />
-                            <?php 
-                                $options = array('Male' => 'Male', 'Female' => 'Female');
-                                $attributes = array(
-                                    'class' => 'form-group',
-                                    ); 
-                                echo $this->Form->select('gender', $options, $attributes);
-                            ?>                           
-                        </div>
+                        <?php
+                            echo $this->Form->hidden('gender', array(                                
+                                'type' => 'text',                                                    
+                                'label' => 'Last Name',                                
+                            ));
+                        ?>
+                                                
                         <!-- Registration No -->
                         <?php 
                             echo $this->Form->input('reg_no', array(
@@ -93,33 +122,6 @@
                                 'label' => 'Index No',
                             ));
                         ?> 
-                        
-                        <!-- User Name -->
-                        <?php 
-                            echo $this->Form->input('username', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Username', 
-                                'type' => 'text',                    
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Username',
-                            ));
-                        ?>                         
-                        
-                        <!-- Group Name -->
-                        <?php 
-                            echo $this->Form->input('group_id', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Group Name', 
-                                'type' => 'text',                    
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Group Name',
-                            ));
-                        ?> 
-                        
                         <!-- Email -->
                         <?php 
                             echo $this->Form->input('email', array(
@@ -163,8 +165,14 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
-                            <br /><br />
-                            <img src="assets/img/find_user1.png" height="128" width="128">
+                            <br />
+                            <?php 
+                                echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
+                                    'width' => 200,
+                                    'height' => 200,
+                                    'class' => 'profile-image')
+                                );                                        
+                            ?>
                             <br /><br />
                             <?php echo $this->Form->file('profile_photo'); ?>
                         </div>
@@ -175,7 +183,7 @@
                                     'class' => 'form-control',
                                     'placeholder' => 'Enter your biography here...', 
                                     'type' => 'textarea',
-                                    'rows' => '30',                          
+                                    'rows' => '24',                          
                                     'div' => array (
                                         'class' => 'form-group'
                                     ),

@@ -11,8 +11,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Student | Dashboard</h2>
-        <h5>Welcome Username</h5>
+        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Dashboard</h2>
+        <h4 class="page-subheader">Welcome <?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> to your dashboard. Manage your profile tasks here.</h4>
     </div>
 </div>
 <!-- /. ROW  -->

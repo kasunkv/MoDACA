@@ -1,4 +1,4 @@
-<?php echo $this->layout = 'defaultLayout'; ?>
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
     echo $this->element('studentNav');
@@ -6,8 +6,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Student | View Member Profile</h2>
-        <h5>View your group members profile</h5>
+        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | View Member Profile</h2>
+        <h4>View your group member <i><?php echo $groupStudent['Student']['first_name'] . " " . $groupStudent['Student']['last_name'] . "'s"; ?></i> profile.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -29,151 +29,43 @@
                     Details
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-6">                        
-                        <!-- First Name -->
-                        <?php 
-                            echo $this->Form->input('first_name', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'First Name', 
-                                'type' => 'text',  
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['first_name'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'First Name',
-                            ));
-                        ?>
-                        <!-- Last Name -->
-                        <?php 
-                            echo $this->Form->input('last_name', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Last Name', 
-                                'type' => 'text',   
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['last_name'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Last Name',
-                                
-                            ));
-                        ?>
-                        <!-- Gender -->
-                        <div class="form-group input-group-lg">
-                            <?php 
-                                echo $this->Form->input('gender', array(
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Gender', 
-                                    'type' => 'text',   
-                                    'disabled' => 'disabled',
-                                    'value' => $student['Student']['gender'],
-                                    'div' => array (
-                                        'class' => 'form-group input-group-lg'
-                                    ),
-                                    'label' => 'Gender',
+                    <div class="col-md-6">  
+                        <p class="profile-view-heading">Name</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['first_name'] . " " .  $groupStudent['Student']['last_name']; ?></P>
 
-                                ));                                
-                            ?>                           
-                        </div>
-                        <!-- Registration No -->
-                        <?php 
-                            echo $this->Form->input('reg_no', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Registration No', 
-                                'type' => 'text',      
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['reg_no'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Registration No',
-                            ));
-                        ?>
+                        <p class="profile-view-heading">Gender</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['gender']; ?></P>
+
+                        <p class="profile-view-heading">Registration No</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['reg_no']; ?></P>
                         
-                        <!-- Index No -->
-                        <?php 
-                            echo $this->Form->input('index_no', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Index No', 
-                                'type' => 'text',   
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['index_no'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Index No',
-                            ));
-                        ?>                         
-                        <!-- Email -->
-                        <?php 
-                            echo $this->Form->input('email', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Email', 
-                                'type' => 'email',
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['email'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Email',
-                            ));
-                        ?>
-                      
-                        <!-- Contact No -->
-                        <?php 
-                            echo $this->Form->input('contact_no', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Contact No', 
-                                'type' => 'text',   
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['contact_no'],
-                                'div' => array (
-                                    'class' => 'form-group input-group-lg'
-                                ),
-                                'label' => 'Contact No',
-                            ));
-                        ?>
-                        
-                        <!-- Address -->
-                        <?php 
-                            echo $this->Form->input('address', array(
-                                'class' => 'form-control',
-                                'placeholder' => 'Address', 
-                                'type' => 'textarea',
-                                'rows' => '3',    
-                                'disabled' => 'disabled',
-                                'value' => $student['Student']['address'],
-                                'div' => array (
-                                    'class' => 'form-group'
-                                ),
-                                'label' => 'Address',
-                            ));
-                        ?>                                   
+                        <p class="profile-view-heading">Index No</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['index_no']; ?></P>
+
+                        <p class="profile-view-heading">Email</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['email']; ?></P>
+
+                        <p class="profile-view-heading">Contact No</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['contact_no']; ?></P>
+
+                        <p class="profile-view-heading">Address</p>
+                        <P class="profile-view-info"><?php echo $groupStudent['Student']['address']; ?></P>                                   
                     </div>
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
-                            <label>Photo</label>
-                            <br /><br />
-                            <img src="assets/img/find_user1.png" height="128" width="128">                           
+                            <br />
+<!--                            <label class="profile-view-heading">Photo</label>
+                            <br /><br />-->
+                             <?php 
+                                echo $this->Html->image('../uploads/students/'.$groupStudent['Student']['profile_photo'], array(
+                                    'width' => 200,
+                                    'height' => 200,
+                                    'class' => 'profile-image')
+                                );                                        
+                            ?>
                         </div>
-                        <div class="form-group">                          
-                            <!-- Bio -->
-                            <?php 
-                                echo $this->Form->input('bio', array(
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Enter your biography here...', 
-                                    'type' => 'textarea',
-                                    'rows' => '24',
-                                    'disabled' => 'disabled',
-                                    'value' => $student['Student']['bio'],
-                                    'div' => array (
-                                        'class' => 'form-group'
-                                    ),
-                                    'label' => 'Biography',
-                                ));
-                            ?> 
-                        </div> 
+                        <p class="profile-view-heading">Biography</p>
+                        <P class="profile-view-info profile-view-bio"><?php echo $groupStudent['Student']['bio']; ?></P>
                     </div>
                 </div>
             </div>             

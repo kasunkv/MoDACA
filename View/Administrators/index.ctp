@@ -12,7 +12,10 @@
 </div>
 <!-- /. ROW  -->
 <hr />
-<div class="row">
+<div class="row">    
+    <div class="col-md-12">
+        <?php echo $this->Session->flash(); ?>
+    </div>
     <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-1 set-icon">
@@ -57,11 +60,5 @@
             </div>
         </div>
     </div>
-    <?php  
-        $user = AuthComponent::user();
-        echo var_dump($user);        
-    ?>
-    <br />
-    <?php echo var_dump($administrator); ?>
-    
+        
 </div>

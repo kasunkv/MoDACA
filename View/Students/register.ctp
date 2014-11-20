@@ -20,6 +20,7 @@
                 'label' => false,
             ),
             'enctype' => 'multipart/form-data',
+            'type' => 'file',
         ));
         ?>
             <div class="panel panel-default">

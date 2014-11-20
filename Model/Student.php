@@ -1,12 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+App::uses('Folder','Utility');
 
 class Student extends AppModel {
 
         public function beforeSave($options = array()) {
-            $this->data['Student']['field_group_id'] = 2;
-            $this->data['Student']['profile_photo'] = "";
             if (!empty($this->data['Student']['password'])) {
                 $passwordHasher = new SimplePasswordHasher(array('hashType' => 'md5'));
                 $this->data['Student']['password'] = $passwordHasher->hash($this->data['Student']['password']);
@@ -87,5 +86,7 @@ class Student extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
+        
+        
+        
 }

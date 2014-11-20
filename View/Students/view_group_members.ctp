@@ -6,8 +6,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Student | Group Members</h2>
-        <h5>View your field group members</h5>
+        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Group Members</h2>
+        <h4 class="page-subheader">View your field group members</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($students as $student): ?>
+                                <?php foreach ($grpStudents as $student): ?>
                                 <tr>
                                     <td><?php echo h($i);  ?></td>
                                     <td><?php echo h($student['Student']['first_name']) . ' ' . h($student['Student']['last_name']); ?></td>
