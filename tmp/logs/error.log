@@ -7655,3 +7655,14 @@ Stack Trace:
 #4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
 >>>>>>> 23c5f06c4bd887ad7d12889033fc9cc63e05434b
+2014-11-20 18:50:50 Error: [MissingActionException] Action AdministratorsController::approveStudent() could not be found.
+Exception Attributes: array (
+  'controller' => 'AdministratorsController',
+  'action' => 'approveStudent',
+)
+Request URL: /MoDACA/Administrators/approveStudent
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

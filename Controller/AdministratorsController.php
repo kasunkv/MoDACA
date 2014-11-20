@@ -117,6 +117,37 @@ class AdministratorsController extends AppController {
         $this->set('results', $result);
     }
     
+    public function approveStudent() {
+        $students = array();
+        
+        // get the unapproved users from Users Table
+        $this->loadModel('User');
+        $options = array('conditions' => array('approved' => 0));
+        $users = $this->User->find('all', $options);
+        
+        // Get the users details from appropriate tables
+        foreach ($users as $user) {
+            if ($user['User']['role'] == "Student") {
+                $this->loadModel('Student');
+                $student = $this->Student->find('first', array(
+                   'conditions' => array(
+                       'user_id' => $user['User']['id'],
+                   ) 
+                ));              
+                
+                array_push($students, $student);
+            }
+        }
+        
+        $this->loadModel('Administrator');
+        $this->set('$students', $students);
+    
+    }
+
+    public function approveStaff() {
+        
+    }
+    
     public function changePassword() {
         
     }
