@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Staff Registration Approval</h2>
-        <h4>Approve pending staff registration requests</h4>
+        <h4 class="page-subheader">Approve pending staff registration requests</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -15,81 +15,57 @@
 
 <div class="row">
     <div class="col-md-12">
+        <?php echo $this->Session->flash(); ?> 
         <div class="panel panel-default">
                 <div class="panel-heading">
                     Results
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
+                        <?php if(!empty($staffs)): ?>
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Photo</th>
-                                    <th>Full Name</th>
-                                    <th>Role</th>
-                                    <th>Profile</th>
-                                    <th>Status</th>
+                                    <th class="table-header-style">#</th>
+                                    <th class="table-header-style">Photo</th>
+                                    <th class="table-header-style">Full Name</th>
+                                    <th class="table-header-style">Username</th>
+                                    <th class="table-header-style">Profile</th>
+                                    <th class="table-header-style">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($staffs as $staff): ?>
+                                
                                 <tr>
-                                    <td>1</td>
-                                    <td>Kasun</td>
-                                    <td>Kodagoda</td>
-                                    <td>Student</td>
-                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
+                                    <td><?php echo $i; ?></td>
                                     <td>
-                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
+                                        <?php 
+                                            echo $this->Html->image('../uploads/staff/'.$staff['Staff']['profile_photo'], array(
+                                                'width' => 60,
+                                                'height' => 60,
+                                                'class' => 'profile-image-approve')
+                                            );                                        
+                                        ?>
+                                    </td>
+                                    <td class="approve-request-name"><?php echo $staff['Staff']['first_name'] . " " . $staff['Staff']['last_name']; ?></td>
+                                    <td class="approve-request-name"><?php echo $staff['Staff']['username']; ?></td>
+                                    <td><?php echo $this->Html->link(__('View Profile'), array('controller' => 'administrators' , 'action' => 'viewStudentProfile', $staff['Staff']['id']), array('class' => 'btn btn-info btn-sm')); ?></td>
+                                    <td>
+                                        <!--<a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>-->
+                                        <?php echo $this->Html->link(__('Approve'), array('controller' => 'administrators' , 'action' => 'requestApprove', $staff['Staff']['user_id']), array('class' => 'btn btn-success btn-sm')); ?>
+                                        <!--<a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>-->
+                                        <?php echo $this->Html->link(__('Decline'), array('controller' => 'administrators' , 'action' => 'requestDecline', $staff['Staff']['user_id']), array('class' => 'btn btn-danger btn-sm')); ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Kaushal</td>
-                                    <td>Nihathamana</td>
-                                    <td>Student</td>
-                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                    <td>
-                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Saman</td>
-                                    <td>Gammanpila</td>
-                                    <td>Lecturer</td>
-                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                    <td>
-                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Nadeesha</td>
-                                    <td>Thilakerathne</td>
-                                    <td>Student</td>
-                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                    <td>
-                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Shifan</td>
-                                    <td>Mohamed</td>
-                                    <td>Student</td>
-                                    <td><a href="admin-view-profile.html" target="_blank">View</a></td>
-                                    <td>
-                                        <a href="#" title="approve" class="btn btn-success btn-xs">Approve</a>
-                                        <a href="#" title="approve" class="btn btn-danger btn-xs">Decline</a>
-                                    </td>
-                                </tr>
+                                <?php $i++; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?php else: ?>
+                            <h4>No Pending Approvals</h4>                        
+                        <?php endif; ?>
                     </div>
                 </div>
             </div> 

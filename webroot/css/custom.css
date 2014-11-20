@@ -77,7 +77,7 @@
 }
 
 .page-subheader {
-    margin-top: -20px;
+    margin-top: -15px;
     font-size: 1.2em;
 }
 
@@ -85,6 +85,20 @@
 .profile-image {
     border-radius: 100px;
 }
+
+.profile-image-approve {
+    border-radius: 50px;
+}
+
+.approve-request-name {
+    font-size: 1.2em;
+}
+
+.table-header-style {
+    font-size: 1.4em;
+    text-align: center;
+}
+
 
 /* End of My Styles */
 

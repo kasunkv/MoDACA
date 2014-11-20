@@ -7666,3 +7666,112 @@ Stack Trace:
 #1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-11-20 19:13:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 19:14:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 19:17:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 19:18:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 20:19:46 Error: Fatal Error (1): Call to a member function loadModel() on a non-object in [D:\wamp\www\MoDACA\Controller\AdministratorsController.php, line 124]
+2014-11-20 20:19:46 Error: [FatalErrorException] Call to a member function loadModel() on a non-object
+Request URL: /MoDACA/Administrators/approveStudent
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 124)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 124, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 124, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-20 20:20:19 Error: [MissingControllerException] Controller class AdministratorController could not be found.
+Exception Attributes: array (
+  'class' => 'AdministratorController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/administrator/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 20:21:06 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Administrators\request_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Administrators\\request_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 20:40:23 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Administrators\request_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Administrators\\request_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 20:45:46 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Administrators\request_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Administrators\\request_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-11-20 20:51:55 Error: [MissingControllerException] Controller class UploadsController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadsController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/uploads/staff/
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-20 20:58:57 Error: [MissingControllerException] Controller class UploadsController could not be found.
+Exception Attributes: array (
+  'class' => 'UploadsController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/uploads/staff/
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
