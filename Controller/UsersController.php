@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('PasswordGenerator', 'Lib');
 /**
  * Users Controller
  *
@@ -8,7 +9,8 @@ App::uses('AppController', 'Controller');
  * @property SessionComponent $Session
  */
 class UsersController extends AppController {
-
+    
+    //public $components = array('Auth');
 /**
  * Components
  *
@@ -19,7 +21,7 @@ class UsersController extends AppController {
         
         public function beforeFilter() {
             parent::beforeFilter();
-            //$this->Auth->allow();
+            $this->Auth->allow('forgotPassword');
         }
 
 /**
@@ -149,5 +151,72 @@ class UsersController extends AppController {
         public function logout(){
             $this->Auth->logout();
             $this->redirect(array('controller' => 'users', 'action' => 'login'));
+        }
+        
+        public function forgotPassword() {
+            if ($this->request->is('post')) {
+                $resetRequest = $this->request->data;
+                $forgottenUser = null;
+                
+                $user = $this->User->find('first', array(
+                   'conditions' => array(
+                       'username' => $resetRequest['User']['username'],
+                   ) 
+                ));
+                
+                if (!empty($user)) {
+                    switch ($user['User']['role']) {
+                        case 'Student':
+                            $this->loadModel('Student');
+                            $forgottenUser = $this->Student->find('first', array(
+                                'conditions' => array(
+                                    'user_id' => $user['User']['id'],
+                                )
+                            ));
+
+                            if ($resetRequest['User']['username'] === $forgottenUser['Student']['username'] && $resetRequest['User']['email'] === $forgottenUser['Student']['email']) {
+                                // reset  the password and send the email.
+
+
+
+
+                            } else {
+                                if($resetRequest['User']['email'] != $forgottenUser['Student']['email']) {
+                                    $this->Session->setFlash(__('<b>Email</b> address you entered is not associated with an account. Please enter the email address used to create the account.'), 'flashWarn');
+                                    return;
+                                }
+                            }     
+                            break;
+                        case 'Admin':
+                            $this->loadModel('Administrator');
+                            $forgottenUser = $this->Administrator->find('first', array(
+                                'conditions' => array(
+                                    'user_id' => $user['User']['id'],
+                                )
+                            ));
+
+                            break;
+                        case 'Staff':
+                            $this->loadModel('Staff');
+                            $forgottenUser = $this->Staff->find('first', array(
+                                'conditions' => array(
+                                    'user_id' => $user['User']['id'],
+                                )
+                            ));
+
+                            break;
+
+                        default:
+                            break;
+                    }
+                } else {
+                    $this->Session->setFlash(__('Your <b>username</b> is not registered with us. Please enter a valid username'), 'flashWarn');
+                    return;
+                }
+                
+                
+                
+                
+            }
         }
 }

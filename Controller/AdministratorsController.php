@@ -11,7 +11,7 @@ App::uses('SendEmail', 'Lib');
  * @property SessionComponent $Session
  */
 class AdministratorsController extends AppController {
-    public $components = array('Auth');
+   // public $components = array('Auth');
     
     public function beforeFilter() {
         $this->Auth->allow();

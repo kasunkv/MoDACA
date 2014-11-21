@@ -46,7 +46,8 @@
 }
 
 .btn-signup {
-    width: 40%;
+    width: auto;
+    margin-bottom: 10px; 
 }
 
 #map_canvas { 
@@ -466,8 +467,8 @@ line-height: 1.428571429;
     }
 
    .navbar {
- border-radius: 0px; 
-}
+    border-radius: 0px; 
+   }
    
 }
 
