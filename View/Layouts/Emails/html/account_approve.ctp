@@ -14,7 +14,7 @@
             <div class="email-content" style="padding: 20px;background: white;font-family: sans-serif;min-height: 400px;text-align: center;">
                 <h2><?php echo $title; ?></h2>
                 <hr style="border-top: none;border-bottom: 1px solid rgba(0, 0, 0, 0.2);margin-top: -10px;">
-                <p><?php echo $message; ?></p>
+                <p><?php echo $body; ?></p>
                 <p></p>
             </div>
 

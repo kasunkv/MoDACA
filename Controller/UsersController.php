@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('PasswordGenerator', 'Lib');
+App::uses('SendEmail', 'Lib');
 /**
  * Users Controller
  *
@@ -155,6 +156,16 @@ class UsersController extends AppController {
         
         public function forgotPassword() {
             if ($this->request->is('post')) {
+                
+                $resStd = false;
+                $resUser = false;
+                
+                //email details
+                $receiverEmail = '';
+                $receiverName = '';
+                $receiverUsername = '';
+                $newPassword = '';
+                
                 $resetRequest = $this->request->data;
                 $forgottenUser = null;
                 
@@ -175,11 +186,20 @@ class UsersController extends AppController {
                             ));
 
                             if ($resetRequest['User']['username'] === $forgottenUser['Student']['username'] && $resetRequest['User']['email'] === $forgottenUser['Student']['email']) {
-                                // reset  the password and send the email.
-
-
-
-
+                                // reset  the password and send the email.                                
+                                $newPassword = PasswordGenerator::getRandomPassword(10);
+                                $hashedPassword = PasswordGenerator::hashPassword($newPassword);
+                                
+                                // set the details of the receiver for sending mail
+                                $receiverEmail = $forgottenUser['Student']['email'];
+                                $receiverName = $forgottenUser['Student']['first_name'];
+                                $receiverUsername = $forgottenUser['Student']['username'];
+                                
+                                // load the models and update the record
+                                $resStd = $this->Student->updateAll(array('password' => "'" . $hashedPassword . "'"), array('student.id' => $forgottenUser['Student']['id']));
+                                $this->loadModel('User');
+                                $resUser = $this->User->updateAll(array('password' => "'" . $hashedPassword . "'"), array('user.id' => $user['User']['id']));
+                              
                             } else {
                                 if($resetRequest['User']['email'] != $forgottenUser['Student']['email']) {
                                     $this->Session->setFlash(__('<b>Email</b> address you entered is not associated with an account. Please enter the email address used to create the account.'), 'flashWarn');
@@ -194,6 +214,28 @@ class UsersController extends AppController {
                                     'user_id' => $user['User']['id'],
                                 )
                             ));
+                            
+                            if ($resetRequest['User']['username'] === $forgottenUser['Administrator']['username'] && $resetRequest['User']['email'] === $forgottenUser['Administrator']['email']) {
+                                // reset  the password and send the email.                                
+                                $newPassword = PasswordGenerator::getRandomPassword(10);
+                                $hashedPassword = PasswordGenerator::hashPassword($newPassword);
+                                
+                                // set the details of the receiver for sending mail
+                                $receiverEmail = $forgottenUser['Administrator']['email'];
+                                $receiverName = $forgottenUser['Administrator']['first_name'];
+                                $receiverUsername = $forgottenUser['Administrator']['username'];
+                                
+                                // load the models and update the record
+                                $resStd = $this->Administrator->updateAll(array('password' => "'" . $hashedPassword . "'"), array('administrator.id' => $forgottenUser['Administrator']['id']));
+                                $this->loadModel('User');
+                                $resUser = $this->User->updateAll(array('password' => "'" . $hashedPassword . "'"), array('user.id' => $user['User']['id']));
+                              
+                            } else {
+                                if($resetRequest['User']['email'] != $forgottenUser['Administrator']['email']) {
+                                    $this->Session->setFlash(__('<b>Email</b> address you entered is not associated with an account. Please enter the email address used to create the account.'), 'flashWarn');
+                                    return;
+                                }
+                            }     
 
                             break;
                         case 'Staff':
@@ -203,12 +245,56 @@ class UsersController extends AppController {
                                     'user_id' => $user['User']['id'],
                                 )
                             ));
-
+                            
+                            
+                            if ($resetRequest['User']['username'] === $forgottenUser['Staff']['username'] && $resetRequest['User']['email'] === $forgottenUser['Staff']['email']) {
+                                // reset  the password and send the email.                                
+                                $newPassword = PasswordGenerator::getRandomPassword(10);
+                                $hashedPassword = PasswordGenerator::hashPassword($newPassword);
+                                
+                                // set the details of the receiver for sending mail
+                                $receiverEmail = $forgottenUser['Staff']['email'];
+                                $receiverName = $forgottenUser['Staff']['first_name'];
+                                $receiverUsername = $forgottenUser['Staff']['username'];
+                                
+                                // load the models and update the record
+                                $resStd = $this->Staff->updateAll(array('password' => "'" . $hashedPassword . "'"), array('staff.id' => $forgottenUser['Staff']['id']));
+                                $this->loadModel('User');
+                                $resUser = $this->User->updateAll(array('password' => "'" . $hashedPassword . "'"), array('user.id' => $user['User']['id']));
+                              
+                            } else {
+                                if($resetRequest['User']['email'] != $forgottenUser['Staff']['email']) {
+                                    $this->Session->setFlash(__('<b>Email</b> address you entered is not associated with an account. Please enter the email address used to create the account.'), 'flashWarn');
+                                    return;
+                                }
+                            }     
                             break;
 
                         default:
                             break;
                     }
+                    
+                    if (!empty($forgottenUser)) {
+                        if ($resStd && $resUser) {
+                            // create the email Fields
+                            $subject = "MoDACA - Password Reset.";
+                            $emailFields = array();
+                            $emailFields['title'] = $receiverName;
+                            $emailFields['username'] = $receiverUsername;
+                            $emailFields['password'] = $newPassword;    
+                            
+                            $res = SendEmail::sendMail($receiverEmail, $subject, $emailFields, 'reset_password');
+                            if ($res) {
+                                $this->Session->setFlash(__('An email containing the login credentials has been sent to your email address. Please check your inbox.'), 'flashSuccess');
+                                return $this->redirect(array('action' => 'login'));
+                            } else {
+                                $this->Session->setFlash(__('An error occured, your new password is not sent. Please try again.'), 'flashError');
+                                return $this->redirect(array('action' => 'login'));
+                            }
+                        }
+                    }
+                    
+                    
                 } else {
                     $this->Session->setFlash(__('Your <b>username</b> is not registered with us. Please enter a valid username'), 'flashWarn');
                     return;

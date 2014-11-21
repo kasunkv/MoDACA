@@ -18,8 +18,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">MoDACA</a>
+                </button>                
+                <?php echo $this->Html->link('MoDACA', array('controller' => 'users', 'action' => 'login'), array(
+                    'title' => 'MoDACA',
+                    'class' => 'navbar-brand',
+                )); ?>
             </div>
             <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
                 <?php //echo $this->fetch('topNavLogout');

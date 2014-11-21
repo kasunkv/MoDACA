@@ -3,11 +3,10 @@ App::uses('CakeEmail', 'Network/Email');
 
 class SendEmail {
     
-    public static function sendMail($to = null, $subject = null, $body = null) {
+    public static function sendMail($to = null, $subject = null, $fields = array(), $template) {
         $email = new CakeEmail('gmailConfig');
-        $email->template('default');
-        $email->viewVars(array('message' => $body));
-        $email->viewVars(array('title' => $subject));
+        $email->template($template);
+        $email = self::populateEmailBody($email, $fields);
         $email->emailFormat('html');
         $email->to($to);
         $email->subject($subject);
@@ -18,6 +17,14 @@ class SendEmail {
         return true;
     }
     
+    private static function populateEmailBody($email, $fields = array()) {
+        if ($email != null && !empty($fields)) {
+            foreach ($fields as $key => $value) {
+                $email->viewVars(array($key => $value));
+            }
+            return $email;
+        }
+    }
     
     
 }

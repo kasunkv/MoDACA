@@ -198,9 +198,12 @@ class AdministratorsController extends AppController {
             ));
             
             // Send the email
-            $emailSubject = "Congratulations! Your Account has been Approved";
-            $emailBody = "Congratulations " . $student['Student']['first_name'] . ", Your Student User account is Approved. You can now login to MoDACA - Health Promotion Management System.";
-            $res = SendEmail::sendMail($student['Student']['email'], $emailSubject, $emailBody);
+            $subject = "MoDACA - Account Approval";
+            $emailFields = array();
+            $emailFields['title'] = "Congratulations! Your Account has been Approved";
+            $emailFields['body'] = "Congratulations " . $student['Student']['first_name'] . ", Your Student User account is Approved. You can now login to MoDACA - Health Promotion Management System.";
+            
+            $res = SendEmail::sendMail($student['Student']['email'], $subject, $emailFields, 'account_approve');
             
             $this->Session->setFlash(__('The User: <b>'. $student['Student']['first_name'] . " " . $student['Student']['last_name'] . '</b> was <b>Succesfully</b> Approved.'), 'flashSuccess');
             if ($user['User']['role'] == "Student") {

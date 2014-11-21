@@ -8443,3 +8443,164 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-11-21 19:33:02 Error: [MissingActionException] Action UsersController::index.html() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index.html',
+)
+Request URL: /MoDACA/users/index.html
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-21 19:36:21 Error: [MissingPluginException] Plugin Congratulations Kasun, Your Student User account is Approved could not be found.
+Exception Attributes: array (
+  'plugin' => 'Congratulations Kasun, Your Student User account is Approved',
+)
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(365): CakePlugin::path('Congratulations...')
+#1 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(226): App::pluginPath('Congratulations...')
+#2 D:\wamp\www\CakePHP\lib\Cake\View\View.php(1139): App::path('View', 'Congratulations...')
+#3 D:\wamp\www\CakePHP\lib\Cake\View\View.php(1002): View->_paths('Congratulations...')
+#4 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('Congratulations...')
+#5 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('Congratulations...', 'default')
+#6 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#7 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#8 D:\wamp\www\MoDACA\Lib\SendEmail.php(16): CakeEmail->send()
+#9 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(203): SendEmail::sendMail('kvkrusl@gmail.c...', 'Congratulations...', 'Congratulations...')
+#10 [internal function]: AdministratorsController->requestApprove('1')
+#11 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#12 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#13 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#14 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2014-11-21 19:43:55 Error: Fatal Error (1): Using $this when not in object context in [D:\wamp\www\MoDACA\Lib\SendEmail.php, line 9]
+2014-11-21 19:43:55 Error: [FatalErrorException] Using $this when not in object context
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Using $this whe...', 'D:\\wamp\\www\\MoD...', 9)
+#1 [internal function]: ErrorHandler::handleError(1, 'Using $this whe...', 'D:\\wamp\\www\\MoD...', 9, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Using $this whe...', 'D:\\wamp\\www\\MoD...', 9, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-21 20:30:48 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('UPDATE `modaca_...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\Database\Mysql.php(411): DboSource->execute('UPDATE `modaca_...')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2543): Mysql->update(Object(Student), Array, NULL, Array)
+#4 D:\wamp\www\MoDACA\Controller\UsersController.php(198): Model->updateAll(Array, Array)
+#5 [internal function]: UsersController->forgotPassword()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-21 20:33:49 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'd6f921b76dd49acb53a6bca3858f5e82' in 'field list'
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('UPDATE `modaca_...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\Database\Mysql.php(411): DboSource->execute('UPDATE `modaca_...')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2543): Mysql->update(Object(Student), Array, NULL, Array)
+#4 D:\wamp\www\MoDACA\Controller\UsersController.php(198): Model->updateAll(Array, Array)
+#5 [internal function]: UsersController->forgotPassword()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-21 20:37:03 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column '3065bd7eb6ac3f8ba1e9c9549cb8d319' in 'field list'
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('UPDATE `modaca_...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\Database\Mysql.php(411): DboSource->execute('UPDATE `modaca_...')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2543): Mysql->update(Object(Student), Array, NULL, Array)
+#4 D:\wamp\www\MoDACA\Controller\UsersController.php(198): Model->updateAll(Array, Array)
+#5 [internal function]: UsersController->forgotPassword()
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-21 20:39:21 Error: Fatal Error (1): Class 'SendEmail' not found in [D:\wamp\www\MoDACA\Controller\UsersController.php, line 241]
+2014-11-21 20:39:21 Error: [FatalErrorException] Class 'SendEmail' not found
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'SendEmai...', 'D:\\wamp\\www\\MoD...', 241)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'SendEmai...', 'D:\\wamp\\www\\MoD...', 241, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'SendEmai...', 'D:\\wamp\\www\\MoD...', 241, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-21 20:40:29 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\reset_password.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\reset_password.ctp',
+)
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('reset_password')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('reset_password', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\UsersController.php(242): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Passwo...', Array, 'reset_password')
+#6 [internal function]: UsersController->forgotPassword()
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-21 20:48:26 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\reset_password.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\reset_password.ctp',
+)
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('reset_password')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('reset_password', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\UsersController.php(242): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Passwo...', Array, 'reset_password')
+#6 [internal function]: UsersController->forgotPassword()
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-21 20:55:10 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\reset_password.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\reset_password.ctp',
+)
+Request URL: /MoDACA/users/forgotPassword
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('reset_password')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('reset_password', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\UsersController.php(242): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Passwo...', Array, 'reset_password')
+#6 [internal function]: UsersController->forgotPassword()
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-21 21:56:16 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Students\change_password.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Students\\change_password.ctp',
+)
+Request URL: /MoDACA/students/changePassword/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
