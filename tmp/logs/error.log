@@ -7775,3 +7775,65 @@ Request URL: /MoDACA/uploads/staff/
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-11-21 07:44:40 Error: Fatal Error (1): Call to undefined function uses() in [D:\wamp\www\MoDACA\Lib\SendEmail.php, line 2]
+2014-11-21 07:44:40 Error: [FatalErrorException] Call to undefined function uses()
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 2)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 2, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 2, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-21 07:45:52 Error: Fatal Error (1): Class 'CakeMail' not found in [D:\wamp\www\MoDACA\Lib\SendEmail.php, line 7]
+2014-11-21 07:45:52 Error: [FatalErrorException] Class 'CakeMail' not found
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'CakeMail...', 'D:\\wamp\\www\\MoD...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'CakeMail...', 'D:\\wamp\\www\\MoD...', 7, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'CakeMail...', 'D:\\wamp\\www\\MoD...', 7, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-21 07:47:59 Error: Fatal Error (1): Class 'CakeEMail' not found in [D:\wamp\www\MoDACA\Lib\SendEmail.php, line 7]
+2014-11-21 07:47:59 Error: [FatalErrorException] Class 'CakeEMail' not found
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'CakeEMai...', 'D:\\wamp\\www\\MoD...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'CakeEMai...', 'D:\\wamp\\www\\MoD...', 7, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'CakeEMai...', 'D:\\wamp\\www\\MoD...', 7, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-21 07:48:38 Error: [SocketException] Invalid email: "noreply,modaca@gmail.com"
+Request URL: /MoDACA/administrators/requestApprove/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(557): CakeEmail->_validateEmail('noreply,modaca@...')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(605): CakeEmail->_setEmail('_sender', 'noreply,modaca@...', 'MoDACA - Health...')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(380): CakeEmail->_setEmailSingle('_sender', 'noreply,modaca@...', 'MoDACA - Health...', 'Sender requires...')
+#3 D:\wamp\www\MoDACA\Lib\SendEmail.php(11): CakeEmail->sender('noreply,modaca@...', 'MoDACA - Health...')
+#4 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(200): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - User A...', 'Your MoDACA use...')
+#5 [internal function]: AdministratorsController->requestApprove('1')
+#6 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#9 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-11-21 09:44:17 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-21 12:21:31 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('SendEmail', 'Lib');
 
 /**
  * Administrators Controller
@@ -187,10 +188,21 @@ class AdministratorsController extends AppController {
         ));
         
         // update the User table
-        $updatedUser = $this->User->updateAll(array('approved' => 1), array('id' => $id));
-        
+                
         if ($this->User->updateAll(array('approved' => 1), array('id' => $id))) {
-            $this->Session->setFlash(__('The User was <b>Succesfully</b> Approved.'), 'flashSuccess');
+            $this->loadModel('Student');
+            $student = $this->Student->find('first', array(
+                'conditions' => array(
+                    'user_id' => $user['User']['id'],                    
+                )
+            ));
+            
+            // Send the email
+            $emailSubject = "Congratulations! Your Account has been Approved";
+            $emailBody = "Congratulations " . $student['Student']['first_name'] . ", Your Student User account is Approved. You can now login to MoDACA - Health Promotion Management System.";
+            $res = SendEmail::sendMail($student['Student']['email'], $emailSubject, $emailBody);
+            
+            $this->Session->setFlash(__('The User: <b>'. $student['Student']['first_name'] . " " . $student['Student']['last_name'] . '</b> was <b>Succesfully</b> Approved.'), 'flashSuccess');
             if ($user['User']['role'] == "Student") {
                 return $this->redirect(array('action' => 'approveStudent'));
             } else if ($user['User']['role'] == "Staff") {

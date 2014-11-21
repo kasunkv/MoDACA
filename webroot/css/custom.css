@@ -301,7 +301,8 @@ color: #8d8888;
 
 .navbar-cls-top .navbar-brand {
 	color: #fff;
-background: #0b5a93;
+
+	background: #0b5a93;
 width: 260px;
 text-align: center;
 height: 60px;
