@@ -7,49 +7,25 @@ class PregnantMothersController extends AppController {
 	public $components = array('Paginator');
 
 
-	public function index() {
-		$this->PregnantMother->recursive = 0;
-		$this->set('pregnantMothers', $this->Paginator->paginate());
+	public function getAll() {
+            $this->autoRender = false;
+            
+	}
+
+	public function getByID($id = null) {
+	    $this->autoRender = false;
+            
 	}
 
 
-	public function view($id = null) {
-		if (!$this->PregnantMother->exists($id)) {
-			throw new NotFoundException(__('Invalid pregnant mother'));
-		}
-		$options = array('conditions' => array('PregnantMother.' . $this->PregnantMother->primaryKey => $id));
-		$this->set('pregnantMother', $this->PregnantMother->find('first', $options));
+	public function save() {
+            $this->autoRender = false;
+            
 	}
 
-
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->PregnantMother->create();
-			if ($this->PregnantMother->save($this->request->data)) {
-				return $this->flash(__('The pregnant mother has been saved.'), array('action' => 'index'));
-			}
-		}
-		$households = $this->PregnantMother->Household->find('list');
-		$familyMembers = $this->PregnantMother->FamilyMember->find('list');
-		$this->set(compact('households', 'familyMembers'));
-	}
-
-
-	public function edit($id = null) {
-		if (!$this->PregnantMother->exists($id)) {
-			throw new NotFoundException(__('Invalid pregnant mother'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->PregnantMother->save($this->request->data)) {
-				return $this->flash(__('The pregnant mother has been saved.'), array('action' => 'index'));
-			}
-		} else {
-			$options = array('conditions' => array('PregnantMother.' . $this->PregnantMother->primaryKey => $id));
-			$this->request->data = $this->PregnantMother->find('first', $options);
-		}
-		$households = $this->PregnantMother->Household->find('list');
-		$familyMembers = $this->PregnantMother->FamilyMember->find('list');
-		$this->set(compact('households', 'familyMembers'));
+	public function update($id = null) {
+	    $this->autoRender = false;
+            
 	}
 
 

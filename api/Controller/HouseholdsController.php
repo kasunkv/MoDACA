@@ -16,7 +16,9 @@ class HouseholdsController extends AppController {
         public function beforeFilter() {
            // $this->Auth->allow();
         }
-        public function getHouseholds() {
+        public function getAll() {
+            $this->autoRender = false;
+            
             if ($this->request->is('post')) {
                 $response = array();
                 
@@ -37,7 +39,7 @@ class HouseholdsController extends AppController {
             }
         }
         
-        public function getHousehold($id=NULL) {
+        public function getByID($id=NULL) {
             if ($this->request->is('post')) {
                 $response = array();
                 $house = "";
@@ -66,7 +68,7 @@ class HouseholdsController extends AppController {
         
         
         
-        public function setHouseholds() {
+        public function save() {
             if ($this->request->is('post')) {
                 $response = array();               
                 
