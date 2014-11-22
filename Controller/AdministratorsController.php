@@ -14,7 +14,7 @@ class AdministratorsController extends AppController {
    // public $components = array('Auth');
     
     public function beforeFilter() {
-        $this->Auth->allow();
+        //$this->Auth->allow();
     }
 
     public function index() {

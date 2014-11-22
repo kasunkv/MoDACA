@@ -9,6 +9,9 @@ App::uses('AppController', 'Controller');
  */
 class HouseholdsController extends AppController {
 
+     public function beforeFilter() {
+        $this->Auth->allow();
+    }
 /**
  * Components
  *
@@ -41,6 +44,14 @@ class HouseholdsController extends AppController {
 		$this->set('household', $this->Household->find('first', $options));
 	}
 
+        public function getHouseholds() {
+            if ($this->request->is('post')) {
+                $households = $this->Household->find('all');
+                //$this->set('households', $households);
+                echo json_encode($households[0]);
+            }
+            
+        }
 /**
  * add method
  *
