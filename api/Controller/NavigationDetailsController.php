@@ -31,10 +31,34 @@ class NavigationDetailsController extends AppController {
             }
 	}
 
-	public function getByID($id = null) {
-	    $this->autoRender = false;
+	public function getByID($id=NULL) {
+            $this->autoRender = false;
             
-	}
+            if ($this->request->is('post')) {
+                $response = array();
+                $detail = "";
+                if ($id ==  NULL) {
+                    $response = RestHelper::createResponseMessage('error', array('message' => 'No ID passed.'));
+                    echo json_encode($response);
+                    return;
+                }
+
+                $results = $this->NavigationDetail->find('first', array(
+                    'conditions' => array(
+                        'HealthIssue.id' => $id,
+                    )
+                ));
+
+                if (count($results) > 0) {
+                    $detail = $results['NavigationDetail'];
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($detail), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+            }
+        }
 
 
 	public function save() {

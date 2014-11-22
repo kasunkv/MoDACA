@@ -31,10 +31,34 @@ class WHRsController extends AppController {
             }
 	}
 
-	public function getByID($id = null) {
-	    $this->autoRender = false;
+	public function getByID($id=NULL) {
+            $this->autoRender = false;
             
-	}
+            if ($this->request->is('post')) {
+                $response = array();
+                $whr = "";
+                if ($id ==  NULL) {
+                    $response = RestHelper::createResponseMessage('error', array('message' => 'No ID passed.'));
+                    echo json_encode($response);
+                    return;
+                }
+
+                $results = $this->WHR->find('first', array(
+                    'conditions' => array(
+                        'WHR.id' => $id,
+                    )
+                ));
+
+                if (count($results) > 0) {
+                    $whr = $results['WHR'];
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($whr), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+            }
+        }
 
 
 	public function save() {

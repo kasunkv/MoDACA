@@ -31,10 +31,34 @@ class BMIsController extends AppController {
             }
 	}
 
-	public function getByID($id = null) {
-	    $this->autoRender = false;
+	public function getByID($id=NULL) {
+            $this->autoRender = false;
             
-	}
+            if ($this->request->is('post')) {
+                $response = array();
+                $bmi = "";
+                if ($id ==  NULL) {
+                    $response = RestHelper::createResponseMessage('error', array('message' => 'No ID passed.'));
+                    echo json_encode($response);
+                    return;
+                }
+
+                $results = $this->BMI->find('first', array(
+                    'conditions' => array(
+                        'BMI.id' => $id,
+                    )
+                ));
+
+                if (count($results) > 0) {
+                    $bmi = $results['BMI'];
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($bmi), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+            }
+        }
 
 
 	public function save() {

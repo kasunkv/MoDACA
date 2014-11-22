@@ -40,6 +40,8 @@ class HouseholdsController extends AppController {
         }
         
         public function getByID($id=NULL) {
+            $this->autoRender = false;
+            
             if ($this->request->is('post')) {
                 $response = array();
                 $house = "";
@@ -51,7 +53,7 @@ class HouseholdsController extends AppController {
 
                 $results = $this->Household->find('first', array(
                     'conditions' => array(
-                        'id' => $id,
+                        'Household.id' => $id,
                     )
                 ));
 
