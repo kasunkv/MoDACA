@@ -16,22 +16,6 @@ class HouseholdsController extends AppController {
         public function beforeFilter() {
            // $this->Auth->allow();
         }
-
-	public function index() {
-		$this->Household->recursive = 0;
-		$this->set('households', $this->Paginator->paginate());
-	}
-
-
-	public function view($id = null) {
-		if (!$this->Household->exists($id)) {
-			throw new NotFoundException(__('Invalid household'));
-		}
-		$options = array('conditions' => array('Household.' . $this->Household->primaryKey => $id));
-		$this->set('household', $this->Household->find('first', $options));
-	}
-        
-        
         public function getHouseholds() {
             if ($this->request->is('post')) {
                 $response = array();
@@ -104,39 +88,6 @@ class HouseholdsController extends AppController {
             }
         }
         
-
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Household->create();
-			if ($this->Household->save($this->request->data)) {
-				$this->Session->setFlash(__('The household has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The household could not be saved. Please, try again.'));
-			}
-		}
-		$fieldCommunities = $this->Household->FieldCommunity->find('list');
-		$this->set(compact('fieldCommunities'));
-	}
-
-	public function edit($id = null) {
-		if (!$this->Household->exists($id)) {
-			throw new NotFoundException(__('Invalid household'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Household->save($this->request->data)) {
-				$this->Session->setFlash(__('The household has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The household could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Household.' . $this->Household->primaryKey => $id));
-			$this->request->data = $this->Household->find('first', $options);
-		}
-		$fieldCommunities = $this->Household->FieldCommunity->find('list');
-		$this->set(compact('fieldCommunities'));
-	}
 
         
 	public function delete($id = null) {
