@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('RestHelper', 'Lib');
 
 class WHRsController extends AppController {
 
@@ -10,6 +11,24 @@ class WHRsController extends AppController {
 	public function getAll() {
             $this->autoRender = false;
             
+            if ($this->request->is('post')) {
+                $response = array();
+                
+                $results = $this->WHR->find('all');
+                $whrs = array();
+                foreach ($results as $res) {
+                    array_push($whrs, $res['WHR']);
+                }
+                
+                if (count($whrs) > 0) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($whrs), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+               
+            }
 	}
 
 	public function getByID($id = null) {

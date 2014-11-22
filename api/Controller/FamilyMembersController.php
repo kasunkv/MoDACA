@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('RestHelper', 'Lib');
 
 class FamilyMembersController extends AppController {
 
@@ -8,6 +9,24 @@ class FamilyMembersController extends AppController {
 	public function getAll() {
             $this->autoRender = false;
             
+            if ($this->request->is('post')) {
+                $response = array();
+                
+                $results = $this->FamilyMember->find('all');
+                $member = array();
+                foreach ($results as $res) {
+                    array_push($member, $res['FamilyMember']);
+                }
+                
+                if (count($member) > 0) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($member), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+               
+            }
 	}
 
 	public function getByID($id = null) {

@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('RestHelper', 'Lib');
 
 class BMIsController extends AppController {
 
@@ -10,6 +11,24 @@ class BMIsController extends AppController {
 	public function getAll() {
             $this->autoRender = false;
             
+            if ($this->request->is('post')) {
+                $response = array();
+                
+                $results = $this->BMI->find('all');
+                $BMIs = array();
+                foreach ($results as $res) {
+                    array_push($BMIs, $res['BMI']);
+                }
+                
+                if (count($BMIs) > 0) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($BMIs), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+               
+            }
 	}
 
 	public function getByID($id = null) {

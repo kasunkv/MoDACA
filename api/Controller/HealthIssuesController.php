@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('RestHelper', 'Lib');
 
 class HealthIssuesController extends AppController {
 
@@ -10,6 +11,24 @@ class HealthIssuesController extends AppController {
 	public function getAll() {
             $this->autoRender = false;
             
+            if ($this->request->is('post')) {
+                $response = array();
+                
+                $results = $this->HealthIssue->find('all');
+                $issues = array();
+                foreach ($results as $res) {
+                    array_push($issues, $res['HealthIssue']);
+                }
+                
+                if (count($issues) > 0) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($issues), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+               
+            }
 	}
 
 	public function getByID($id = null) {
