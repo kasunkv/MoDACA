@@ -48,3 +48,119 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-11-22 16:16:17 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(80): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-11-22 16:17:17 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(80): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-11-22 16:20:15 Error: Fatal Error (1): Call to a member function allow() on a non-object in [D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php, line 17]
+2014-11-22 16:20:15 Error: [FatalErrorException] Call to a member function allow() on a non-object
+Request URL: /MoDACA/api/households/getHouseholds
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-22 16:20:18 Error: Fatal Error (1): Call to a member function allow() on a non-object in [D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php, line 17]
+2014-11-22 16:20:18 Error: [FatalErrorException] Call to a member function allow() on a non-object
+Request URL: /MoDACA/api/households/getHouseholds
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\wamp\\www\\MoD...', 17, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-22 16:20:40 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(69): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-11-22 16:23:11 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(69): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-11-22 16:24:23 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(69): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-11-22 16:25:39 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Request URL: /MoDACA/api/households/getHousehold/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Househo...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Househo...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Househo...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Household), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(70): Model->find('first', Array)
+#7 [internal function]: HouseholdsController->getHousehold('2')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}

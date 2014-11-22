@@ -9,31 +9,20 @@ App::uses('RestHelper', 'Lib');
  * @property SessionComponent $Session
  */
 class HouseholdsController extends AppController {
+    
 
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator', 'Session');
 
-/**
- * index method
- *
- * @return void
- */
+        public function beforeFilter() {
+           // $this->Auth->allow();
+        }
+
 	public function index() {
 		$this->Household->recursive = 0;
 		$this->set('households', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+
 	public function view($id = null) {
 		if (!$this->Household->exists($id)) {
 			throw new NotFoundException(__('Invalid household'));
@@ -45,16 +34,53 @@ class HouseholdsController extends AppController {
         
         public function getHouseholds() {
             if ($this->request->is('post')) {
+                $response = array();
+                
                 $results = $this->Household->find('all');
                 $households = array();
                 foreach ($results as $res) {
                     array_push($households, $res['Household']);
                 }
                 
-                //$this->set('households', $households);
-                echo json_encode($households);
+                if (count($households) > 0) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($households), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+               
             }
         }
+        
+        public function getHousehold($id=NULL) {
+            if ($this->request->is('post')) {
+                $response = array();
+                $house = "";
+                if ($id ==  NULL) {
+                    $response = RestHelper::createResponseMessage('error', array('message' => 'No ID passed.'));
+                    echo json_encode($response);
+                    return;
+                }
+
+                $results = $this->Household->find('first', array(
+                    'conditions' => array(
+                        'id' => $id,
+                    )
+                ));
+
+                if (count($results) > 0) {
+                    $house = $results['Household'];
+                    $response = RestHelper::createResponseMessage('success', array('data' => json_encode($house), 'message' => 'Data retrived from the database.'));
+                     echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    echo json_encode($response);
+                }
+            }
+        }
+        
+        
         
         public function setHouseholds() {
             if ($this->request->is('post')) {
@@ -78,13 +104,7 @@ class HouseholdsController extends AppController {
             }
         }
         
-        
 
-/**
- * add method
- *
- * @return void
- */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Household->create();
@@ -99,13 +119,6 @@ class HouseholdsController extends AppController {
 		$this->set(compact('fieldCommunities'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function edit($id = null) {
 		if (!$this->Household->exists($id)) {
 			throw new NotFoundException(__('Invalid household'));
@@ -125,13 +138,7 @@ class HouseholdsController extends AppController {
 		$this->set(compact('fieldCommunities'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+        
 	public function delete($id = null) {
 		$this->Household->id = $id;
 		if (!$this->Household->exists()) {
