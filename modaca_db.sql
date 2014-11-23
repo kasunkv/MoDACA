@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2014 at 08:44 PM
+-- Generation Time: Nov 23, 2014 at 07:59 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -43,16 +43,15 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `administrators`
 --
 
 INSERT INTO `administrators` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `email`, `contact_no`, `address`, `designation`, `username`, `password`, `profile_photo`, `bio`, `created`, `modified`) VALUES
-(1, NULL, 'Kasun', 'Kodagoda', 'Male', 'kvkrusl@gmail.com', '0717673839', '153/C, Ihalayagoda, Gampaha.', 'Demo', 'kvk', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test bio', '2014-08-05 12:20:36', '2014-08-05 12:20:39'),
-(2, NULL, 'Oreliya', 'Fernando', 'Female', 'ict009@gmail.com', '0717584586', 'Negombo', 'Demo', 'oreliya', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', '2014-08-05 12:37:46', '2014-08-05 12:37:49'),
-(3, NULL, 'Nadeesha', 'Thilakarathne', 'Female', 'nadeesha@gmail.com', '0711231234', 'Kurunagala', 'Demo', 'nadeesha', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', '2014-08-05 12:39:45', '2014-08-05 12:39:47');
+(1, 4, 'Kasun', 'Kodagoda Vitharanage', '', 'kvkrusl@gmail.com', '0717673839', '153/c, Ihalayagoda, Gampaha.', 'Demonstrator', 'admin', '2d3b7f86848715061bb6c1d3d9781f73', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. \r\n\r\nEt harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis.\r\n\r\n aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', '2014-08-28 15:53:12', '2014-11-19 10:51:19'),
+(2, 8, 'Oreliya', 'Fernando', 'Female', 'oreliya@gmail.com', '0717676868', 'Negombo', 'Demo', 'admin2', '2d3b7f86848715061bb6c1d3d9781f73', '', 'Good Girl', '2014-11-18 21:11:18', '2014-11-18 21:11:21');
 
 -- --------------------------------------------------------
 
@@ -94,7 +93,14 @@ CREATE TABLE IF NOT EXISTS `b_m_is` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_bmis_family_members` (`family_member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `b_m_is`
+--
+
+INSERT INTO `b_m_is` (`id`, `family_member_id`, `date`, `value`, `created`, `modified`) VALUES
+(1, 1, '2014-11-22', 26, '2014-11-22 21:49:01', '2014-11-22 21:49:06');
 
 -- --------------------------------------------------------
 
@@ -170,7 +176,14 @@ CREATE TABLE IF NOT EXISTS `family_members` (
   PRIMARY KEY (`id`),
   KEY `FK_family_members_households` (`household_id`),
   KEY `FK_family_members_health_issues` (`health_issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `family_members`
+--
+
+INSERT INTO `family_members` (`id`, `household_id`, `first_name`, `last_name`, `age`, `gender`, `occupation`, `profile_photo`, `decease`, `health_issue_id`, `sleeping_hour`, `exercise_hour`, `educational_level`, `bmi`, `whr`, `note`, `created`, `modified`) VALUES
+(1, 1, 'John', 'Doe', 25, 'Male', 'Labor', '', 'Heart Attack', 1, 6, 1, 'Ordinary', 25.14, 0.49, 'Good Man', '2014-11-22 21:42:26', '2014-11-22 21:42:28');
 
 -- --------------------------------------------------------
 
@@ -304,7 +317,14 @@ CREATE TABLE IF NOT EXISTS `health_issues` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `health_issues`
+--
+
+INSERT INTO `health_issues` (`id`, `issue_name`, `description`, `created`, `modified`) VALUES
+(1, 'Smoking', 'Excessive smoking', '2014-11-22 21:46:35', '2014-11-22 21:46:37');
 
 -- --------------------------------------------------------
 
@@ -385,7 +405,7 @@ CREATE TABLE IF NOT EXISTS `households` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_households_field_communities` (`field_community_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `households`
@@ -393,9 +413,13 @@ CREATE TABLE IF NOT EXISTS `households` (
 
 INSERT INTO `households` (`id`, `field_community_id`, `household_identifier`, `leader_name`, `address`, `contact_no`, `gps_latitude`, `gps_longitude`, `race`, `no_of_members`, `no_of_babies`, `no_of_pregnant_mothers`, `income`, `ranking`, `note`, `created`, `modified`) VALUES
 (1, 1, 'H1', 'J.K. Karunadasa', 'Mihintale', '0712345678', 8.35576, 80.4988, 'Sinhala', 3, 1, 0, 50000, NULL, 'House', '2014-08-05 13:24:26', '2014-08-05 13:24:30'),
-(2, 2, 'H2', 'K.B. Karunarathna', 'Mihintale ', '0712345678', 8.35574, 80.4991, 'Sinhala', 4, 1, 1, 5000, NULL, 'HOuse', '2014-08-05 13:25:37', '2014-08-05 13:25:40'),
+(2, 2, 'H2', 'K.B. Karunarathna', 'Mihintale ', '0712345678', 8.35574, 80.4991, 'Sinhala', 4, 1, 1, 5000, NULL, 'House', '2014-08-05 13:25:37', '2014-08-05 13:25:40'),
 (3, 3, 'H3', 'D.B. Jayasumana', 'Mihintale', '0712345678', 8.35591, 80.4993, 'Sinhala', 2, 0, 0, 45000, NULL, 'House', '2014-08-05 13:26:47', '2014-08-05 13:26:50'),
-(4, 2, 'H4', 'Sudu Banda', 'Mihintale', '0712345678', 8.3542, 80.498, 'Sinhala', 5, 1, 0, 48000, NULL, 'House', '2014-08-05 13:27:50', '2014-08-05 13:27:52');
+(4, 2, 'H4', 'Sudu Banda', 'Mihintale', '0712345678', 8.3542, 80.498, 'Sinhala', 5, 1, 0, 48000, NULL, 'House', '2014-08-05 13:27:50', '2014-08-05 13:27:52'),
+(5, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:34:44', '2014-11-22 15:34:44'),
+(6, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:35:39', '2014-11-22 15:35:39'),
+(7, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:36:12', '2014-11-22 15:36:12'),
+(8, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:37:42', '2014-11-22 15:37:42');
 
 -- --------------------------------------------------------
 
@@ -488,7 +512,14 @@ CREATE TABLE IF NOT EXISTS `pregnant_mothers` (
   PRIMARY KEY (`id`),
   KEY `FK_pregnant_mothers_households` (`household_id`),
   KEY `FK_pregnant_mothers_family_members` (`family_member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `pregnant_mothers`
+--
+
+INSERT INTO `pregnant_mothers` (`id`, `household_id`, `family_member_id`, `note`, `fetus_age`, `no_of_children`, `weight`, `created`, `modified`) VALUES
+(1, 2, 0, 'Good', 6, 1, 60, '2014-11-22 21:47:48', '2014-11-22 21:47:51');
 
 -- --------------------------------------------------------
 
@@ -594,7 +625,14 @@ CREATE TABLE IF NOT EXISTS `staffs` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `staffs`
+--
+
+INSERT INTO `staffs` (`id`, `user_id`, `first_name`, `last_name`, `gender`, `email`, `contact_no`, `address`, `designation`, `username`, `password`, `profile_photo`, `bio`, `approved`, `created`, `modified`) VALUES
+(1, 5, 'Oreliya', 'Fernando', 'Female', 'oreliya@gmail.com', '0711234567', 'Negombo', 'Demo', 'staff_ore', '2d3b7f86848715061bb6c1d3d9781f73', NULL, 'Great', 0, '2014-08-28 15:54:59', '2014-08-28 15:55:03');
 
 -- --------------------------------------------------------
 
@@ -617,29 +655,26 @@ CREATE TABLE IF NOT EXISTS `students` (
   `username` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
   `profile_photo` varchar(255) DEFAULT NULL,
-  `bio` varchar(255) DEFAULT NULL,
-  `approved` tinyint(1) NOT NULL DEFAULT '0',
+  `bio` text,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_students_field_groups` (`field_group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `user_id`, `field_group_id`, `index_no`, `reg_no`, `first_name`, `last_name`, `gender`, `email`, `contact_no`, `address`, `username`, `password`, `profile_photo`, `bio`, `approved`, `created`, `modified`) VALUES
-(1, NULL, 1, 2465, 'ICT/09/10/024', 'Kasun', 'Kodagoda', 'Male', 'kvkrusl@gmail.com', '0717673839', '153/C, Ihalayagoda, Gampaha', 'kvk', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', '', 'Test bio', 1, '2014-08-05 09:05:59', '2014-08-05 09:05:59'),
-(2, NULL, 2, 2466, 'ICT/09/10/025', 'Nadeesha', 'Thilakarathne', 'Female', 'nadeesha@gmail.com', '0711234567', 'Kurunagala', 'nadeesha', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 1, '2014-08-05 12:48:27', '2014-08-05 12:48:30'),
-(3, NULL, 3, 2467, 'ICT/09/10/009', 'Oreliya', 'Fernando', 'Female', 'oreliya@gmail.com', '0711234567', 'Negombo', 'oreliya', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 1, '2014-08-05 12:49:47', '2014-08-05 12:49:49'),
-(4, NULL, 1, 2468, 'ICT/09/10/021', 'Kaushal', 'Nihathamana', 'Male', 'kaushal@gmail.com', '0711234567', 'Galle', 'kaushal', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 1, '2014-08-05 13:09:12', '2014-08-05 13:09:15'),
-(5, NULL, 2, 2469, 'ICT/09/10/069', 'Shifan', 'Mohemad', 'Male', 'shifan@gmail.com', '0711234567', 'Kurunagala', 'shifan', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 1, '2014-08-05 13:10:25', '2014-08-05 13:10:28'),
-(6, NULL, 3, 2470, 'ICT/09/10/070', 'Gayan', 'Buddika', 'Male', 'gayan@gmail.com', '0711234567', 'Gampaha', 'gayan', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 1, '2014-08-05 13:14:22', '2014-08-05 13:14:24'),
-(7, NULL, 2, 2471, 'ICT/09/10/071', 'Nayana', 'Udesh', 'Male', 'nayana@gmail.com', '0711234567', 'Gampaha', 'nayana', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', NULL, 'Test Bio', 0, '2014-08-05 13:15:37', '2014-08-05 13:15:39'),
-(8, NULL, 2, 2464, 'ICT/09/10/022', 'Kasun', 'Kodagoda', 'Male', 'kvkrusl@gmail.com', '0717673839', '153/C, Ihalayagoda, Gampaha', 'kvk', 'd90d2295142ada7d690549eb9f9c2c9901bfcf96', '', 'Test biography', 0, '2014-08-17 10:23:10', '2014-08-17 10:23:10'),
-(9, NULL, 2, 2464, 'ICT/09/10/022', 'Kasun KAsun', 'Kodagoda', 'Male', 'kvkrusl@gmail.com', '0717673839', '153/C, Ihalayagoda, Gampaha', 'kvk', 'd90d2295142ada7d690549eb9f9c2c9901bfcf96', '', 'Test biography', 0, '2014-08-17 10:24:28', '2014-08-17 10:24:28'),
-(10, NULL, 2, 2456, 'ICT/09/10/024', 'Test User', 'user', 'Male', 'user@gmail.com', '0717673839', 'Gampaha', 'user', '7e9e2eee3b6db1b90b2402b1fa31df69bc2f0fed', '', 'Profile', 0, '2014-08-18 09:46:33', '2014-08-18 09:46:33');
+INSERT INTO `students` (`id`, `user_id`, `field_group_id`, `index_no`, `reg_no`, `first_name`, `last_name`, `gender`, `email`, `contact_no`, `address`, `username`, `password`, `profile_photo`, `bio`, `created`, `modified`) VALUES
+(1, 1, 2, 2465, 'ICT/09/10/024', 'Kasun', 'Kodagoda Vitharanage', 'Male', 'kvkrusl@gmail.com', '0717673839', '153/C, Ihalayagoda, Gampaha.', 'kasun', '5824247e92d2b71a5f971a2f43885fb7', '546dc71c-66d4-4382-9c5b-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-08-28 10:44:29', '2014-11-20 14:23:17'),
+(2, 2, 2, 2452, 'ICT/09/10/009', 'Oreliya', 'Fernando', 'Female', 'ict10009@gmail.com', '0712345678', 'Periyamulla, Negombo', 'oreliya', '2d3b7f86848715061bb6c1d3d9781f73', '546dcd75-a6f4-42f5-a4b2-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-08-28 10:47:07', '2014-11-20 12:16:05'),
+(3, 3, 2, 2458, 'ICT/09/10/022', 'Kaushal', 'Nihathamana', 'Male', 'kaushalnihathamana@gmail.com', '0712345678', 'Galle, South Province.', 'kaushal', '2d3b7f86848715061bb6c1d3d9781f73', '546dcdae-df10-4a9a-8a42-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-08-28 10:49:01', '2014-11-20 12:17:02'),
+(4, 6, 2, 2458, 'ICT/09/10/048', 'Shifan', 'Mohamed', 'Male', 'imshifan@gmail.com', '0717673839', 'Kurunagala', 'shifan', '2d3b7f86848715061bb6c1d3d9781f73', '546dce01-0d64-4927-9114-2574dc306535', 'TestLorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-08-28 13:42:43', '2014-11-20 12:18:25'),
+(5, 7, 2, 2569, 'ICT/09/10/042', 'Nadeesha', 'Thilakarathne', 'Female', 'nadeesha9090@gmail.com', '0717676869', 'Kurunagala', 'nadeesha', '2d3b7f86848715061bb6c1d3d9781f73', '546dce60-25f4-4d92-b135-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-11-18 07:40:16', '2014-11-20 12:20:00'),
+(6, 11, 3, 2401, 'ICT/09/10/001', 'Gayan', 'Buddika', 'Male', 'kvkrusl@gmail.com', '0717683839', '190/F, Ihalayagoda, Gampaha.', 'gayan', '2d3b7f86848715061bb6c1d3d9781f73', '546dcec4-dd18-47f3-829b-2574dc306535', 'Lorem ipsum dolor sit amet, eu modo diceret quaerendum mea. Sea novum melius in. Eam probo movet viderer te. Iisque theophrastus no mei. Vel reque facilisis rationibus id, solum repudiandae vim no.\r\n\r\nLorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.\r\n\r\nVim nobis dolores gloriatur at, vim minim nonumes eu, primis ancillae epicurei vix ea. Mea principes assentior theophrastus ad. Quot nemore malorum ad est, at harum senserit periculis mei, autem molestie detraxit vel ea. Ea has nonumes disputationi, an epicurei conclusionemque has. Eu modus impedit mea, sale habeo evertitur vim cu. Nusquam insolens hendrerit sea ea, molestie pericula cu mei.', '2014-11-19 17:45:23', '2014-11-20 12:46:11'),
+(7, 12, 3, 2484, 'ICT/09/10/065', 'Manjula', 'Susil', 'Male', 'kvkrusl@gmail.com', '0717224585', 'Pahalayagoda, Gampaha.', 'manjula', '2d3b7f86848715061bb6c1d3d9781f73', '546dcf37-da08-40e1-b72f-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-11-20 12:23:35', '2014-11-20 12:45:31'),
+(8, 13, 3, 2447, 'ICT/09/10/047', 'Sameera', 'Siyambalapitiya', 'Male', 'kvkrusl@gmail.com', '0717557874', 'Imbulgoda, Balummahara.', 'sameera', '2d3b7f86848715061bb6c1d3d9781f73', '546dd0e5-72fc-47c2-9e20-2574dc306535', 'Lorem ipsum dolor sit amet, his dolorum vituperata scribentur te. Postea consulatu nec at. Ne primis meliore lobortis eam, in sea viris sensibus adolescens. Et nec commune disputando, eos eu adipisci evertitur. Ea cibo persius splendide sit.\r\n\r\nVel munere adolescens an. No has etiam alienum suscipit, atqui harum eu per. Tale decore bonorum vel ea. Ex errem scaevola repudiandae eum, liber soluta vel te. Veritus verterem singulis sea ad.\r\n\r\nTe odio regione delicatissimi eum, ei has vide illum temporibus, nulla atomorum ius ut. Eos dignissim intellegebat ex. Causae feugiat expetendis no has, sea consequat similique definitionem ne, convenire comprehensam vis et. Modo singulis at quo, ius convenire ocurreret definitionem no.\r\n\r\nAn pri sententiae definitiones, ferri nostrud ut sed, sea tota movet referrentur in. Usu dolore dolorem dolores at, te sea ubique euismod convenire, an causae oblique qualisque nam. Nam no odio clita phaedrum. Ex est delenit vivendum, vocibus reprimique ne vim, tempor everti recusabo mel ad.', '2014-11-20 12:30:45', '2014-11-20 12:45:49');
 
 -- --------------------------------------------------------
 
@@ -716,10 +751,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` varchar(20) DEFAULT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
+  `approved` tinyint(1) DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `role`, `username`, `password`, `approved`, `created`, `modified`) VALUES
+(1, 'Student', 'kasun', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-08-28 10:44:29', '2014-08-28 10:44:29'),
+(2, 'Student', 'oreliya', '2d3b7f86848715061bb6c1d3d9781f73', 0, '2014-08-28 10:47:07', '2014-08-28 10:47:07'),
+(3, 'Student', 'kaushal', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-08-28 10:49:01', '2014-08-28 10:49:01'),
+(4, 'Admin', 'admin', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-08-28 15:53:36', '2014-08-28 15:53:40'),
+(5, 'Staff', 'staff_ore', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-08-28 15:55:22', '2014-08-28 15:55:26'),
+(6, 'Student', 'shifan', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-08-28 13:42:43', '2014-08-28 13:42:43'),
+(7, 'Student', 'nadeesha', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-11-18 07:40:16', '2014-11-18 07:40:16'),
+(8, 'Admin', 'admin2', '2d3b7f86848715061bb6c1d3d9781f73', 1, '2014-11-18 00:00:00', '2014-11-18 00:00:00'),
+(11, 'Student', 'gayan', '2d3b7f86848715061bb6c1d3d9781f73', 0, '2014-11-19 17:45:23', '2014-11-19 17:45:23'),
+(12, 'Student', 'manjula', '2d3b7f86848715061bb6c1d3d9781f73', 0, '2014-11-20 12:23:35', '2014-11-20 12:23:35'),
+(13, 'Student', 'sameera', '2d3b7f86848715061bb6c1d3d9781f73', 0, '2014-11-20 12:30:45', '2014-11-20 12:30:45');
 
 -- --------------------------------------------------------
 
@@ -736,7 +789,14 @@ CREATE TABLE IF NOT EXISTS `w_h_rs` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_whrs_family_members` (`family_member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `w_h_rs`
+--
+
+INSERT INTO `w_h_rs` (`id`, `family_member_id`, `date`, `value`, `created`, `modified`) VALUES
+(1, 1, '2014-11-22', 0.5, '2014-11-22 21:48:34', '2014-11-22 21:48:37');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

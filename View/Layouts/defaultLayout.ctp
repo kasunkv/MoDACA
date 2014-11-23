@@ -7,7 +7,7 @@
     <!-- BOOTSTRAP STYLES-->
     <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom')); ?>    
     <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
 </head>
 <body>
     <div id="wrapper">

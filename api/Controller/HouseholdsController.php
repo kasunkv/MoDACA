@@ -71,8 +71,12 @@ class HouseholdsController extends AppController {
         
         
         public function save() {
+            $this->autoRender = false;
+            
             if ($this->request->is('post')) {
                 $response = array();               
+                
+                //$this->set('data', $this->response->data);
                 
                 echo json_encode($this->request->data);
                 
