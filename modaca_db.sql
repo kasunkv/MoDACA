@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2014 at 02:36 PM
+-- Generation Time: Nov 24, 2014 at 07:32 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -182,14 +182,16 @@ CREATE TABLE IF NOT EXISTS `family_members` (
   PRIMARY KEY (`id`),
   KEY `FK_family_members_households` (`household_id`),
   KEY `FK_family_members_health_issues` (`health_issue_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `family_members`
 --
 
 INSERT INTO `family_members` (`id`, `household_id`, `first_name`, `last_name`, `age`, `gender`, `occupation`, `profile_photo`, `decease`, `health_issue_id`, `sleeping_hour`, `exercise_hour`, `educational_level`, `bmi`, `whr`, `note`, `created`, `modified`) VALUES
-(1, 1, 'John', 'Doe', 25, 'Male', 'Labor', '', 'Heart Attack', 1, 6, 1, 'Ordinary', 25.14, 0.49, 'Good Man', '2014-11-22 21:42:26', '2014-11-22 21:42:28');
+(1, 1, 'John', 'Doe', 25, 'Male', 'Labor', '', 'Heart Attack', 1, 6, 1, 'Ordinary', 25.14, 0.92, 'Good Man', '2014-11-22 21:42:26', '2014-11-22 21:42:28'),
+(2, 1, 'Saman', 'Kumara', 21, 'Male', 'Carpenter', NULL, 'High Blood Pressure', 2, 5, 1.5, 'Ordinary', 27.31, 0.81, 'Normal', '2014-11-23 10:01:13', '2014-11-23 10:05:31'),
+(3, 2, 'Chamari', 'Perera', 19, 'Female', 'HouseWife', NULL, 'Diabets', 3, 4, 1, 'Ordinary', 23.24, 0.86, 'Normal', '2014-11-23 11:21:08', '2014-11-23 11:22:09');
 
 -- --------------------------------------------------------
 
@@ -323,14 +325,16 @@ CREATE TABLE IF NOT EXISTS `health_issues` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `health_issues`
 --
 
 INSERT INTO `health_issues` (`id`, `issue_name`, `description`, `created`, `modified`) VALUES
-(1, 'Smoking', 'Excessive smoking', '2014-11-22 21:46:35', '2014-11-22 21:46:37');
+(1, 'Smoking', 'Excessive smoking', '2014-11-22 21:46:35', '2014-11-22 21:46:37'),
+(2, 'destrupt blood vessels', 'Excessive salt consumption', '2014-11-23 10:22:33', '2014-11-23 10:22:49'),
+(3, 'faint', 'Excessive sugar consumption', '2014-11-23 10:27:00', '2014-11-23 10:29:10');
 
 -- --------------------------------------------------------
 
@@ -793,14 +797,21 @@ CREATE TABLE IF NOT EXISTS `w_h_rs` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_whrs_family_members` (`family_member_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `w_h_rs`
 --
 
 INSERT INTO `w_h_rs` (`id`, `family_member_id`, `date`, `value`, `created`, `modified`) VALUES
-(1, 1, '2014-11-22', 0.5, '2014-11-22 21:48:34', '2014-11-22 21:48:37');
+(1, 1, '2014-11-22', 0.85, '2014-11-22 21:48:34', '2014-11-22 21:48:37'),
+(2, 2, '2014-11-22', 0.7, '2014-11-22 22:45:40', '2014-11-22 22:55:42'),
+(3, 2, '2014-11-22', 0.82, '2014-11-22 23:10:49', '2014-11-22 23:18:30'),
+(4, 1, '2014-11-23', 0.95, '2014-11-23 08:40:14', '2014-11-23 08:50:38'),
+(5, 2, '2014-11-23', 0.79, '2014-11-23 09:41:53', '2014-11-23 09:45:06'),
+(6, 1, '2014-11-23', 0.92, '2014-11-23 10:43:52', '2014-11-23 10:50:34'),
+(7, 1, '2014-11-23', 0.81, '2014-11-23 11:20:57', '2014-11-23 11:26:18'),
+(8, 1, '2014-11-23', 0.92, '2014-11-23 13:30:53', '2014-11-23 13:34:27');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
