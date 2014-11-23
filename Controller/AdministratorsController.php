@@ -2,6 +2,7 @@
 
 App::uses('AppController', 'Controller');
 App::uses('SendEmail', 'Lib');
+App::uses('Folder','Utility');
 
 /**
  * Administrators Controller
@@ -18,10 +19,37 @@ class AdministratorsController extends AppController {
     }
 
     public function index() {
-//        $this->Administrator->recursive = 0;
-//        $this->set('administrators', $this->Paginator->paginate());
-        $currentAdmin = $this->getLoggedAdmin();
-        $this->set('administrator', $currentAdmin);
+        $this->set('administrator', $this->getLoggedAdmin());
+
+        $this->loadModel('User');
+        $users = $this->User->find('all', array(
+            'conditions' => array(
+                'User.approved' => 0,
+            ),
+            'recursive' => -1,
+        ));
+
+        $allApprovals = $users;
+        $this->set('approvals', $allApprovals);
+
+        $users = $this->User->find('all', array(
+            'recursive' => -1,
+        ));
+
+        $students = array();
+        $lecturers = array();
+
+        foreach($users as $user) {
+            if($user['User']['role'] == 'Student') {
+                array_push($students, $user);
+            } else if($user['User']['role'] == 'Staff') {
+                array_push($lecturers, $user);
+            }
+        }
+
+        $this->set('students', $students);
+        $this->set('lec', $lecturers);
+
     }
 
     public function view($id = null) {
@@ -54,16 +82,47 @@ class AdministratorsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $loggedAdmin = $this->getLoggedAdmin();
             $this->Administrator->id = $loggedAdmin['Administrator']['id'];
-            if ($this->Administrator->save($this->request->data)) {
-                $this->Session->setFlash(__('The Profile was <b>Succesfully</b> Updated.'), 'flashSuccess');
-                return $this->redirect(array('action' => 'viewProfile'));
+
+            $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $this->Administrator->id));
+            $admin = $this->Administrator->find('first', $options);
+
+
+            if ($this->request->data['Administrator']['profile_photo']['error'] === UPLOAD_ERR_NO_FILE) {
+                $this->request->data['Administrator']['profile_photo'] = $admin['Administrator']['profile_photo'];
+                if ($this->Administrator->save($this->request->data)) {
+                    $this->Session->setFlash('Your Profile was <b>Successfully</b> Updated.', 'flashSuccess');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                } else {
+                    $this->Session->setFlash('Oopz, Something went Wrong. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                }
             } else {
-                $this->Session->setFlash(__('Oopz, Something went Wrong. The Profile was <b>NOT</b> Updated. Please, try again.'), 'flashError');
-                return $this->redirect(array('action' => 'viewProfile'));
+                if($this->uploadPhoto($this->request->data['Administrator']['profile_photo'])) {
+                    $this->request->data['Administrator']['id'] = $loggedAdmin['Administrator']['id'];
+                    if ($this->Administrator->save($this->request->data)) {
+                        $this->Session->setFlash('Your Profile was <b>Successfully</b> Updated.', 'flashSuccess');
+                        return $this->redirect(array('action' => 'viewProfile'));
+                    } else {
+                        $this->Session->setFlash('Oopz, Something went Wrong. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                        return $this->redirect(array('action' => 'viewProfile'));
+                    }
+                } else {
+                    $this->Administrator->save($this->request->data);
+                    $this->Session->setFlash('Oopz, Something went Wrong. Profile Picture Upload Failed. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                }
             }
+
+//            if ($this->Administrator->save($this->request->data)) {
+//                $this->Session->setFlash(__('The Profile was <b>Successfully</b> Updated.'), 'flashSuccess');
+//                return $this->redirect(array('action' => 'viewProfile'));
+//            } else {
+//                $this->Session->setFlash(__('Oopz, Something went Wrong. The Profile was <b>NOT</b> Updated. Please, try again.'), 'flashError');
+//                return $this->redirect(array('action' => 'viewProfile'));
+//            }
         } else {
             //$options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
-            $this->set('loggedAdmin', $this->getLoggedAdmin());
+            $this->set('administrator', $this->getLoggedAdmin());
         }
     }
 
@@ -119,6 +178,8 @@ class AdministratorsController extends AppController {
     }
     
     public function approveStudent() {
+        $this->set('administrator', $this->getLoggedAdmin());
+
         $students = array();
         
         // get the unapproved users from Users Table
@@ -146,6 +207,8 @@ class AdministratorsController extends AppController {
     }
 
     public function approveStaff() {
+        $this->set('administrator', $this->getLoggedAdmin());
+
         $staffs = array();
         
         // get the unapproved users from Users Table
@@ -228,16 +291,17 @@ class AdministratorsController extends AppController {
 
 
     public function changePassword() {
-        
+        $this->set('administrator', $this->getLoggedAdmin());
+
     }
     
     public function searchProfile() {
+        $this->set('administrator', $this->getLoggedAdmin());
         
     }
     
     public function viewProfile() {
-        $currentAdmin = $this->getLoggedAdmin();
-        $this->set('administrator', $currentAdmin);
+        $this->set('administrator', $this->getLoggedAdmin());
     }
     
     private function getLoggedAdmin() {
@@ -248,5 +312,35 @@ class AdministratorsController extends AppController {
         } else {
             return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
         }
+    }
+
+    public function uploadPhoto($data) {
+        $file = $data;
+
+        if($file['error'] === UPLOAD_ERR_OK) {
+            $folderName = APP.'webroot'.DS.'uploads'.DS.'admins';
+            $folder = new Folder($folderName, true, 0777);
+
+//            if($id!=null){
+//                if(file_exists($folderName.DS.$id)){
+//                    chmod($folderName.DS.$id,0755);
+//                    unlink($folderName.DS.$id);
+//                }
+//            }
+
+            $id = String::uuid();
+
+            $tmp_file = $file['tmp_name'];
+            list($width, $height) = getimagesize($tmp_file);
+
+            if ($width == null && $height == null) {
+                return false;
+            }
+
+            move_uploaded_file($file['tmp_name'], $folderName.DS.$id);
+            $this->request->data['Administrator']['profile_photo'] = $id;
+            return true;
+        }
+        return false;
     }
 }

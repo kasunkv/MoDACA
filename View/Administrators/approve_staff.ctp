@@ -42,7 +42,7 @@
                                     <td><?php echo $i; ?></td>
                                     <td>
                                         <?php 
-                                            echo $this->Html->image('../uploads/staff/'.$staff['Staff']['profile_photo'], array(
+                                            echo $this->Html->image('../uploads/staffs/'.$staff['Staff']['profile_photo'], array(
                                                 'width' => 60,
                                                 'height' => 60,
                                                 'class' => 'profile-image-approve')

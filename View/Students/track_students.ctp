@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Track Students</h2>
-        <h5>Track the current location of the students</h5>
+        <h4 class="page-subheader">Track the current location of the students</h4>
     </div>
 </div>
 <!-- /. ROW  -->

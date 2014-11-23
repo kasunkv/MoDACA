@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Student Registration | MoDACA</h2>
-        <h5>Register to login to MoDACA. You will be notified via email after verification of your details</h5>
+        <h5 class="page-subheader">Register to login to MoDACA. You will be notified via email after verification of your details</h5>
     </div>
 </div>
 <!-- /. ROW  -->

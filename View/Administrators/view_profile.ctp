@@ -42,8 +42,16 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <p class="profile-view-heading">Profile Photo</p>
-                        <img class="profile-view-img" src="../webroot/img/find_user.png" height="128" width="128">
+                        <div class="form-group input-group-lg">
+                            <br />
+                            <?php 
+                                echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
+                                    'width' => 200,
+                                    'height' => 200,
+                                    'class' => 'profile-image')
+                                );                                        
+                            ?>
+                        </div>
 
                         <p class="profile-view-heading">Biography</p>
                         <P class="profile-view-info profile-view-bio"><?php echo $administrator['Administrator']['bio']; ?></P>

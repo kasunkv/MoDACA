@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Student Registration Approval</h2>
-        <h5>Approve student registration requests made to use MoDACA</h5>
+        <h4 class="page-subheader">Approve student registration requests made to use MoDACA</h4>
     </div>
 </div>
 <!-- /. ROW  -->

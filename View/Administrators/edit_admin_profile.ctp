@@ -24,7 +24,8 @@
                 'inputDefaults' => array(
                     //'label' => false,
                 ),
-                'enctype' => 'multipart/form-data',
+                'enctype' => 'multipart/form-data',                
+                'type' => 'file',
             ));
         ?>
             <div class="panel panel-default">
@@ -39,7 +40,7 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'First Name', 
                                 'type' => 'text',         
-                                'value' => $loggedAdmin['Administrator']['first_name'],
+                                'value' => $administrator['Administrator']['first_name'],
                                 'type' => 'text',
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
@@ -52,20 +53,20 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'Last Name', 
                                 'type' => 'text',            
-                                'value' => $loggedAdmin['Administrator']['last_name'],
+                                'value' => $administrator['Administrator']['last_name'],
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
                             ));
                         ?>
-                        <label>Gender</label>
-                        <?php 
-                            $options = array('male' => 'Male', 'female' => 'Female');
-                            $attributes = array(
-                                'class' => 'form-control',
-                                ); 
-                            echo $this->Form->select('gender', $options, $attributes);
-                        ?>                        
+                        
+                        <?php
+                            echo $this->Form->hidden('gender', array(                                
+                                'type' => 'text',                                                    
+                                'label' => 'Gender',
+                                'value' => $administrator['Administrator']['gender'],
+                            ));
+                        ?>                    
                         
                         <!-- <label>Designation No</label> -->
                         <?php 
@@ -73,7 +74,7 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'Designation', 
                                 'type' => 'text',                    
-                                'value' => $loggedAdmin['Administrator']['designation'],
+                                'value' => $administrator['Administrator']['designation'],
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -85,7 +86,7 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'Email', 
                                 'type' => 'text',                 
-                                'value' => $loggedAdmin['Administrator']['email'],
+                                'value' => $administrator['Administrator']['email'],
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -97,7 +98,7 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'Contact No', 
                                 'type' => 'text',     
-                                'value' => $loggedAdmin['Administrator']['contact_no'],
+                                'value' => $administrator['Administrator']['contact_no'],
                                 'div' => array (
                                     'class' => 'form-group input-group-lg'
                                 )
@@ -109,7 +110,7 @@
                                 'class' => 'form-control',
                                 'placeholder' => 'Address', 
                                 'type' => 'textarea',
-                                'value' => $loggedAdmin['Administrator']['address'],
+                                'value' => $administrator['Administrator']['address'],
                                 'rows' => '4',
                                 'div' => array (
                                     'class' => 'form-group'
@@ -120,8 +121,16 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
+                            <br />
+                            <?php 
+                                echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
+                                    'width' => 200,
+                                    'height' => 200,
+                                    'class' => 'profile-image')
+                                );                                        
+                            ?>
                             <br /><br />
-                            <img src="../webroot/img/find_user.png" height="128" width="128">
+                            <?php echo $this->Form->file('profile_photo'); ?>
                         </div>
                         <!--Bio-->
                         <?php 
@@ -129,7 +138,7 @@
                                     'class' => 'form-control',
                                     'placeholder' => 'Enter your biography here...', 
                                     'type' => 'textarea',
-                                    'value' => $loggedAdmin['Administrator']['bio'],
+                                    'value' => $administrator['Administrator']['bio'],
                                     'rows' => '22',                          
                                     'div' => array (
                                         'class' => 'form-group'

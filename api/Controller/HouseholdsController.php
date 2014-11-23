@@ -75,21 +75,32 @@ class HouseholdsController extends AppController {
             
             if ($this->request->is('post')) {
                 $response = array();               
-                
-                //$this->set('data', $this->response->data);
-                
-                //echo json_encode($this->request->data);
 
-                $temp = json_decode($this->request->data);
+                $temp = json_decode($this->request->data, trues);
+                if(!empty($temp['id']))
+                    $temp['id'] = '';
 
+                $this->request->data = $this->populateRequest($temp, 'Household');
+
+                $this->Household->create();
                 if ($this->Household->save($this->request->data)) {
-                    $response = RestHelper::createResponseMessage('success', array('message' => 'Successfully saved to database'));
+                    $response = RestHelper::createResponseMessage('success', array('data' => null, 'message' => 'Record saved to the database.'));
                     echo json_encode($response);
                 } else {
-                    $response = RestHelper::createResponseMessage('error', array('message' => 'Failed to save to database'));
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Failed to save the record to database.'));
                     echo json_encode($response);
                 }
             }
+        }
+
+        private function populateRequest($ary = array(), $model) {
+            $data = array();
+
+            foreach($ary as $key => $value) {
+                $data[$model][$key] = $value;
+            }
+
+            return $data;
         }
         
 

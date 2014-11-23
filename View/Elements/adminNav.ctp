@@ -1,9 +1,11 @@
 <li class="text-center">
-    <!--<img src="/img/find_user1.png" class="user-image img-responsive" />-->
-    <?php echo $this->Html->image('find_user1.png', array(
+   
+    <?php 
+        echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
             'alt' => 'Profile Image',
             'class' => 'user-image img-responsive',
-        ));
+            )
+        );                                        
     ?>
 </li>
 <li>
@@ -11,17 +13,14 @@
 </li>
 
 <li>
-    <a href="#"><i class="fa fa-user fa-3x"></i> Profile<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-users fa-3x"></i> User Profiles<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/Administrators/viewProfile">View Profile</a>
+            <a href="/MoDACA/Administrators/#">View Profiles</a>
         </li>
         <li>
-            <a href="/MoDACA/Administrators/searchProfile">Search Profile</a>
-        </li>  
-        <li>
-            <a href="/MoDACA/Administrators/editAdminProfile">Edit Profile</a>
-        </li>
+            <a href="/MoDACA/Administrators/searchProfile">Search Profiles</a>
+        </li>          
     </ul>
 </li>
 <!--li>
@@ -50,6 +49,29 @@
     <a href="/MoDACA/Administrators/approveRegistration"><i class="fa fa-check-square-o fa-3x"></i> Approve Registration</a>                       
 </li>   -->
 <li>
-    <a href="/MoDACA/Administrators/changePassword"><i class="fa fa-cog fa-3x"></i> Change Password</a>                        
+    <a href="#"><i class="fa fa-user fa-3x"></i> Admin Profile<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/MoDACA/Administrators/viewProfile">View Profile</a>
+        </li>
+        <li>
+            <a href="/MoDACA/Administrators/editAdminProfile">Edit Profile</a>
+        </li>  
+        <li>
+            <a href="/MoDACA/Administrators/#">Change Password</a>
+        </li>
+    </ul>
+</li>
+
+<li>
+    <a href="#"><i class="fa fa-tasks fa-3x"></i> Tasks<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/MoDACA/Administrators/#">Add Administrator</a>
+        </li>
+        <li>
+            <a href="/MoDACA/Administrators/#">Remove Administrator</a>
+        </li>          
+    </ul>
 </li>
      

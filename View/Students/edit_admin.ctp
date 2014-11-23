@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Edit Profile</h2>
-        <h5>Edit current student's profile information.</h5>
+        <h4 class="page-subheader">Edit current student's profile information.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
