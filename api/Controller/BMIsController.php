@@ -36,25 +36,30 @@ class BMIsController extends AppController {
             
             if ($this->request->is('post')) {
                 $response = array();
-                $bmi = "";
+                $bmi = array();
                 if ($id ==  NULL) {
                     $response = RestHelper::createResponseMessage('error', array('message' => 'No ID passed.'));
                     echo json_encode($response);
                     return;
                 }
 
-                $results = $this->BMI->find('first', array(
+                $results = $this->BMI->find('all', array(
                     'conditions' => array(
-                        'BMI.id' => $id,
-                    )
+                        'BMI.family_member_id' => $id,
+                    ),
+                    'recursive' => -1,
                 ));
 
                 if (count($results) > 0) {
-                    $bmi = $results['BMI'];
+
+                    foreach($results as $result) {
+                        array_push($bmi, $result['BMI']);
+                    }
+
                     $response = RestHelper::createResponseMessage('success', array('data' => json_encode($bmi), 'message' => 'Data retrived from the database.'));
                      echo json_encode($response);
                 } else {
-                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Family member does not exist.'));
                     echo json_encode($response);
                 }
             }

@@ -78,21 +78,17 @@ class HouseholdsController extends AppController {
                 
                 //$this->set('data', $this->response->data);
                 
-                echo json_encode($this->request->data);
-                
-                
-                
-//                if ($this->Household->save($this->request->data)) {
-//                    $response = RestHelper::createResponseMessage('success', array('message' => 'Successfully saved to database'));
-//                    
-//              //      $this->set('response', $response);
-//                    echo json_encode($response);
-//                } else {
-//                    $response = RestHelper::createResponseMessage('error', array('message' => 'Failed to save to database'));
-//                    
-//              //      $this->set('response', $response);
-//                    echo json_encode($response);
-//                }
+                //echo json_encode($this->request->data);
+
+                $temp = json_decode($this->request->data);
+
+                if ($this->Household->save($this->request->data)) {
+                    $response = RestHelper::createResponseMessage('success', array('message' => 'Successfully saved to database'));
+                    echo json_encode($response);
+                } else {
+                    $response = RestHelper::createResponseMessage('error', array('message' => 'Failed to save to database'));
+                    echo json_encode($response);
+                }
             }
         }
         

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2014 at 07:59 AM
+-- Generation Time: Nov 23, 2014 at 02:36 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -93,14 +93,20 @@ CREATE TABLE IF NOT EXISTS `b_m_is` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_bmis_family_members` (`family_member_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `b_m_is`
 --
 
 INSERT INTO `b_m_is` (`id`, `family_member_id`, `date`, `value`, `created`, `modified`) VALUES
-(1, 1, '2014-11-22', 26, '2014-11-22 21:49:01', '2014-11-22 21:49:06');
+(1, 1, '2014-11-22', 27.5, '2014-11-22 21:49:01', '2014-11-22 21:49:06'),
+(2, 1, '2014-11-29', 27.3, '2014-11-23 18:47:36', '2014-11-23 18:47:38'),
+(3, 1, '2014-12-06', 27.3, '2014-11-23 18:48:31', '2014-11-23 18:48:35'),
+(4, 2, '2014-11-22', 30.2, '2014-11-23 18:49:14', '2014-11-23 18:49:17'),
+(5, 1, '2014-12-13', 27.1, '2014-11-23 18:51:39', '2014-11-23 18:51:46'),
+(6, 1, '2014-12-20', 26.9, '2014-11-23 18:52:18', '2014-11-23 18:52:21'),
+(7, 2, '2014-11-29', 30.1, '2014-11-23 18:52:49', '2014-11-23 18:52:52');
 
 -- --------------------------------------------------------
 
@@ -405,21 +411,19 @@ CREATE TABLE IF NOT EXISTS `households` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_households_field_communities` (`field_community_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `households`
 --
 
 INSERT INTO `households` (`id`, `field_community_id`, `household_identifier`, `leader_name`, `address`, `contact_no`, `gps_latitude`, `gps_longitude`, `race`, `no_of_members`, `no_of_babies`, `no_of_pregnant_mothers`, `income`, `ranking`, `note`, `created`, `modified`) VALUES
-(1, 1, 'H1', 'J.K. Karunadasa', 'Mihintale', '0712345678', 8.35576, 80.4988, 'Sinhala', 3, 1, 0, 50000, NULL, 'House', '2014-08-05 13:24:26', '2014-08-05 13:24:30'),
+(1, 1, 'H1', 'J.K. Karunadasa', 'Mihintale', '0712345678', 8.35576, 80.4988, 'Sinhala', 3, 1, 0, 50000, NULL, 'House', '2014-08-05 13:24:26', '2014-11-23 13:47:47'),
 (2, 2, 'H2', 'K.B. Karunarathna', 'Mihintale ', '0712345678', 8.35574, 80.4991, 'Sinhala', 4, 1, 1, 5000, NULL, 'House', '2014-08-05 13:25:37', '2014-08-05 13:25:40'),
 (3, 3, 'H3', 'D.B. Jayasumana', 'Mihintale', '0712345678', 8.35591, 80.4993, 'Sinhala', 2, 0, 0, 45000, NULL, 'House', '2014-08-05 13:26:47', '2014-08-05 13:26:50'),
 (4, 2, 'H4', 'Sudu Banda', 'Mihintale', '0712345678', 8.3542, 80.498, 'Sinhala', 5, 1, 0, 48000, NULL, 'House', '2014-08-05 13:27:50', '2014-08-05 13:27:52'),
-(5, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:34:44', '2014-11-22 15:34:44'),
-(6, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:35:39', '2014-11-22 15:35:39'),
-(7, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:36:12', '2014-11-22 15:36:12'),
-(8, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-22 15:37:42', '2014-11-22 15:37:42');
+(5, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-23 13:56:29', '2014-11-23 13:56:29'),
+(6, 0, '', '', '', NULL, 0, 0, '', 0, 0, 0, 0, NULL, NULL, '2014-11-23 14:25:48', '2014-11-23 14:25:48');
 
 -- --------------------------------------------------------
 
