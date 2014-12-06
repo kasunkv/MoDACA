@@ -9082,3 +9082,252 @@ Request URL: /MoDACA/uploads/staff/
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-11-23 21:14:57 Error: Fatal Error (4): syntax error, unexpected '?>' in [D:\wamp\www\MoDACA\View\Students\index.ctp, line 70]
+2014-11-23 21:14:57 Error: [FatalErrorException] syntax error, unexpected '?>'
+Request URL: /MoDACA/students/index
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 70)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 70, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 70, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-23 21:15:26 Error: Fatal Error (4): syntax error, unexpected ')' in [D:\wamp\www\MoDACA\View\Students\index.ctp, line 69]
+2014-11-23 21:15:26 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /MoDACA/students/index
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-23 21:15:48 Error: Fatal Error (4): syntax error, unexpected ')' in [D:\wamp\www\MoDACA\View\Students\index.ctp, line 69]
+2014-11-23 21:15:48 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /MoDACA/students/index
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 69, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-23 21:28:00 Error: Fatal Error (4): syntax error, unexpected '?>' in [D:\wamp\www\MoDACA\View\Students\index.ctp, line 80]
+2014-11-23 21:28:00 Error: [FatalErrorException] syntax error, unexpected '?>'
+Request URL: /MoDACA/students
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 80)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 80, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 80, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-11-23 21:36:43 Error: [MissingActionException] Action StudentsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/students/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-23 21:39:11 Error: [MissingActionException] Action StudentsController::assets() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'assets',
+)
+Request URL: /MoDACA/students/assets/img/find_user1.png
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-23 21:44:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-24 05:11:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-24 05:12:13 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-24 06:30:36 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-11-24 06:35:30 Error: [MissingActionException] Action StudentsController::trackStudent() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'trackStudent',
+)
+Request URL: /MoDACA/students/trackStudent
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-11-24 07:53:44 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\account_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\account_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('account_approve')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('account_approve', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(269): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Accoun...', Array, 'account_approve')
+#6 [internal function]: AdministratorsController->requestApprove('2')
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-24 07:54:06 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\account_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\account_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('account_approve')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('account_approve', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(269): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Accoun...', Array, 'account_approve')
+#6 [internal function]: AdministratorsController->requestApprove('2')
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-24 07:55:53 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\account_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\account_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('account_approve')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('account_approve', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(271): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Accoun...', Array, 'account_approve')
+#6 [internal function]: AdministratorsController->requestApprove('2')
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-24 08:15:46 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\account_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\account_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/11
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('account_approve')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('account_approve', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(271): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Accoun...', Array, 'account_approve')
+#6 [internal function]: AdministratorsController->requestApprove('11')
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-11-24 08:18:46 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Emails\html\account_approve.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Emails\\html\\account_approve.ctp',
+)
+Request URL: /MoDACA/administrators/requestApprove/12
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName('account_approve')
+#1 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1664): View->render('account_approve', 'default')
+#2 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1517): CakeEmail->_renderTemplates('')
+#3 D:\wamp\www\CakePHP\lib\Cake\Network\Email\CakeEmail.php(1128): CakeEmail->_render(Array)
+#4 D:\wamp\www\MoDACA\Lib\SendEmail.php(15): CakeEmail->send()
+#5 D:\wamp\www\MoDACA\Controller\AdministratorsController.php(271): SendEmail::sendMail('kvkrusl@gmail.c...', 'MoDACA - Accoun...', Array, 'account_approve')
+#6 [internal function]: AdministratorsController->requestApprove('12')
+#7 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(AdministratorsController), Array)
+#8 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
+#10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2014-12-05 18:21:23 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/users/login
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 D:\wamp\www\CakePHP\lib\Cake\View\Helper\FormHelper.php(467): FormHelper->_introspectModel('User', 'fields')
+#8 D:\wamp\www\MoDACA\View\Users\login.ctp(22): FormHelper->create('User', Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\View\View.php(948): include('D:\\wamp\\www\\MoD...')
+#10 D:\wamp\www\CakePHP\lib\Cake\View\View.php(910): View->_evaluate('D:\\wamp\\www\\MoD...', Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\View\View.php(471): View->_render('D:\\wamp\\www\\MoD...')
+#12 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#13 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#14 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-12-05 18:22:47 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/users/login
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('users')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\View\Helper\FormHelper.php(215): Model->schema()
+#7 D:\wamp\www\CakePHP\lib\Cake\View\Helper\FormHelper.php(467): FormHelper->_introspectModel('User', 'fields')
+#8 D:\wamp\www\MoDACA\View\Users\login.ctp(22): FormHelper->create('User', Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\View\View.php(948): include('D:\\wamp\\www\\MoD...')
+#10 D:\wamp\www\CakePHP\lib\Cake\View\View.php(910): View->_evaluate('D:\\wamp\\www\\MoD...', Array)
+#11 D:\wamp\www\CakePHP\lib\Cake\View\View.php(471): View->_render('D:\\wamp\\www\\MoD...')
+#12 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#13 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#14 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#15 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}

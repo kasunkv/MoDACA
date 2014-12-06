@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Dashboard</h2>
-        <h4 class="page-subheader">Welcome <?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> to your dashboard. Manage your profile tasks here.</h4>
+        <h4 class="page-subheader">Welcome <?php echo $student['Student']['first_name']; ?> to your dashboard. Manage your profile tasks here.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -23,7 +23,7 @@
     </div>    
 </div>
 <div class="row">
-    <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-3 set-icon">
                 <i class="fa fa-location-arrow"></i>
@@ -54,18 +54,41 @@
     </div>
     
     
-    <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-1 set-icon">
                 <i class="fa fa-users"></i>
             </span>
             <div class="text-box">
-                <p class="main-text">5 Members</p>
-                <p class="text-muted">In the Group</p>
+                <p class="main-text" style="font-size: 1.3em;">5 Members</p>
+                <p class="text-muted">
+                    <?php echo $this->Html->link(__('in Group'),
+                        array( 'action' => 'viewGroupMembers', $student['Student']['field_group_id'],),
+                        array( 'class' => '' ));
+                    ?>
+                </p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-xs-6">
+    
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="panel panel-back noti-box">
+            <span class="icon-box bg-color-blue-2 set-icon">
+                <i class="fa fa fa-group"></i>
+            </span>
+            <div class="text-box">
+                <p class="main-text"><?php echo $student['FieldGroup']['name']; ?></p>
+                <p class="text-muted">
+                     <?php echo $this->Html->link(__('Field Group'),
+                        array( 'action' => 'viewFieldGroup'),
+                        array( 'class' => '' ));
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-2 set-icon">
                 <i class="fa fa fa-signal"></i>

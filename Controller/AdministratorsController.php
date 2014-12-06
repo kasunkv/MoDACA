@@ -236,6 +236,8 @@ class AdministratorsController extends AppController {
     }
     
     public function requestApprove($id = NULL) {
+        $this->autoRender = false;
+
         if ($id == null) {
             $this->Session->setFlash(__('Oopz, Something went wrong. No ID was Passed, try again.'), 'flashError');
             return;

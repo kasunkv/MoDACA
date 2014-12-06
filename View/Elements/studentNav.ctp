@@ -32,10 +32,13 @@
     <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/students/viewGroupMembers/<?php echo $student['Student']['field_group_id'] ?>">Group Members</a>
+            <a href="/MoDACA/students/viewFieldGroup"> Group Details</a>
         </li>
         <li>
-            <a href="/MoDACA/students/viewGroupProgress">Group Progress</a>
+            <a href="/MoDACA/students/viewGroupMembers/<?php echo $student['Student']['field_group_id'] ?>"> Group Members</a>
+        </li>
+        <li>
+            <a href="/MoDACA/students/viewGroupProgress"> Group Progress</a>
         </li>  
     </ul>
 </li>

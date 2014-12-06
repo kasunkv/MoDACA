@@ -64,7 +64,7 @@
     <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
             <span class="icon-box bg-color-blue-3 set-icon">
-                <i class="fa fa-location-arrow"></i>
+                <i class="fa fa-pencil"></i>
             </span>
             <div class="text-box">
                 <p class="main-text"><?php echo count($lec); ?> Total</p>
