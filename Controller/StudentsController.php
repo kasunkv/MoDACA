@@ -11,12 +11,13 @@ class StudentsController extends AppController {
     }
 
     public function index() {
-        $this->Student->recursive = 0;
-        $this->set('students', $this->Paginator->paginate());
+//        $this->Student->recursive = 0;
+//        $this->set('students', $this->Paginator->paginate());
         
         // set the student in the view
         $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
+        $student = $this->getLoggedStudent($logged['id']);
+        $this->set('student', $student );
     }
 
     public function view($id = null) {
@@ -242,11 +243,11 @@ class StudentsController extends AppController {
             $message = 'Something went wrong, Can not find field group members';
             $element = 'flashError';
             $this->Session->setFlash(__($message), $element);
-            //$this->redirect(array('action' => 'index'));
+            return;
         }
         
         $options = array('conditions' => array('Student.' . 'field_group_id' => $grp_id));
-        $this->set('grpStudents', $this->Student->find('all'));
+        $this->set('grpStudents', $this->Student->find('all', $options));
     }
     
     // View Student Group Members Profile
@@ -287,6 +288,15 @@ class StudentsController extends AppController {
         // set the student in the view
         $logged = AuthComponent::user();
         $this->set('student',  $this->getLoggedStudent($logged['id']));
+    }
+
+    public function viewFieldGroup(){
+        // set the student in the view
+        $logged = AuthComponent::user();
+        $student =  $this->getLoggedStudent($logged['id']);
+        $this->set('student', $student);
+
+
     }
     
     // Generate Reports

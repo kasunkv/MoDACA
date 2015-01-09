@@ -23,10 +23,11 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>  
-                                    <th>Index</th>
-                                    <th>Profile</th>
+                                    <th class="table-header-style">#</th>
+                                    <th class="table-header-style">Photo</th>
+                                    <th class="table-header-style">Full Name</th>
+                                    <th class="table-header-style">Index</th>
+                                    <th class="table-header-style">Profile</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,15 +35,24 @@
                                 <?php foreach ($grpStudents as $student): ?>
                                 <tr>
                                     <td><?php echo h($i);  ?></td>
-                                    <td><?php echo h($student['Student']['first_name']) . ' ' . h($student['Student']['last_name']); ?></td>
-                                    <td><?php echo h($student['Student']['index_no']);  ?></td>
+                                    <td>
+                                        <?php 
+                                            echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
+                                                'width' => 60,
+                                                'height' => 60,
+                                                'class' => 'profile-image-approve')
+                                            );                                        
+                                        ?>
+                                    </td>
+                                    <td class="approve-request-name"><?php echo h($student['Student']['first_name']) . ' ' . h($student['Student']['last_name']); ?></td>
+                                    <td class="approve-request-name"><?php echo h($student['Student']['index_no']);  ?></td>
                                     <td>
                                         <?php echo $this->Html->link(__('View'),
                                             array(
                                                 'action' => 'viewMemberProfile', $student['Student']['id'],                                            
                                             ),
                                             array(
-                                                'class' => 'btn btn-success btn-xs'
+                                                'class' => 'btn btn-success'
                                             ));
                                         ?>
                                     </td>                                    
