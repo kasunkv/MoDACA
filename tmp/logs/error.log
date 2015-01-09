@@ -9082,6 +9082,7 @@ Request URL: /MoDACA/uploads/staff/
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-11-23 21:14:57 Error: Fatal Error (4): syntax error, unexpected '?>' in [D:\wamp\www\MoDACA\View\Students\index.ctp, line 70]
 2014-11-23 21:14:57 Error: [FatalErrorException] syntax error, unexpected '?>'
 Request URL: /MoDACA/students/index
@@ -9145,6 +9146,9 @@ Stack Trace:
 #2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
 2014-11-23 21:44:50 Error: [MissingControllerException] Controller class CssController could not be found.
+=======
+2014-11-24 10:28:40 Error: [MissingControllerException] Controller class CssController could not be found.
+>>>>>>> origin/master
 Exception Attributes: array (
   'class' => 'CssController',
   'plugin' => NULL,
@@ -9153,7 +9157,11 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-11-24 05:11:50 Error: [MissingControllerException] Controller class CssController could not be found.
+=======
+2014-11-24 10:28:59 Error: [MissingControllerException] Controller class CssController could not be found.
+>>>>>>> origin/master
 Exception Attributes: array (
   'class' => 'CssController',
   'plugin' => NULL,
@@ -9162,7 +9170,11 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-11-24 05:12:13 Error: [MissingControllerException] Controller class CssController could not be found.
+=======
+2014-11-24 10:29:12 Error: [MissingControllerException] Controller class CssController could not be found.
+>>>>>>> origin/master
 Exception Attributes: array (
   'class' => 'CssController',
   'plugin' => NULL,
@@ -9171,7 +9183,11 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-11-24 06:30:36 Error: [MissingControllerException] Controller class CssController could not be found.
+=======
+2014-11-24 10:43:17 Error: [MissingControllerException] Controller class CssController could not be found.
+>>>>>>> origin/master
 Exception Attributes: array (
   'class' => 'CssController',
   'plugin' => NULL,
@@ -9180,6 +9196,7 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+<<<<<<< HEAD
 2014-11-24 06:35:30 Error: [MissingActionException] Action StudentsController::trackStudent() could not be found.
 Exception Attributes: array (
   'controller' => 'StudentsController',
@@ -9281,3 +9298,5 @@ Stack Trace:
 #9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(AdministratorsController), Object(CakeRequest))
 #10 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+=======
+>>>>>>> origin/master
