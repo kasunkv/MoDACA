@@ -18,6 +18,17 @@ class StudentsController extends AppController {
         $student = $this->getLoggedStudent($logged['id']);
         $this->set('student', $student );
 
+        // Set the field community
+        $fieldCommunityId = $student['FieldGroup']['field_community_id'];
+        $this->loadModel('FieldCommunity');
+        $community = $this->FieldCommunity->find('first', array(
+            'conditions' => array(
+                'id' => $fieldCommunityId
+            ),
+            'recursive' => -1,
+        ));
+        $this->set('fieldCommunity', $community);
+
     }
 
     public function view($id = null) {
