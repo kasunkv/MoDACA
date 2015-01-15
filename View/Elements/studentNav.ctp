@@ -1,19 +1,10 @@
 <?php 
     $loggedUser = AuthComponent::user();
-
-//    if ($loggedUser['role'] == 'Student') {
-//        $options = array('conditions' => array('Student.user_id' => $id));
-//        $loggedstudent = $this->Student->find('first', $options);            
-//    }
-
 ?>
-
+<!-- Profile Image -->
 <li class="text-center">
-    <!--<img src="/img/find_user1.png" class="user-image img-responsive" />-->
     <?php 
         echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
-//            'width' => 160,
-//            'height' => 160,
             'alt' => 'Profile Image',
             'class' => 'user-image img-responsive',
             )
@@ -21,13 +12,18 @@
     ?>
     
 </li>
+
+<!-- Dashboard -->
 <li>
     <a class="" href="/MoDACA/students/index"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>    
 </li>
 
+<!-- Profiles -->
 <li>
     <a href="/MoDACA/students/view/<?php echo $loggedUser['id']; ?>"><i class="fa fa-user fa-3x"></i> Profile</a>                        
 </li>
+
+<!-- Field Groups -->
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
@@ -43,9 +39,28 @@
     </ul>
 </li>
 
+<!-- Activities -->
+<li>
+    <a href="#"><i class="fa fa-calendar fa-3x"></i> Community Activities<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="/MoDACA/students/createActivity"> Create Activity</a>
+        </li>
+        <li>
+            <a href="/MoDACA/students/completedActivity/<?php echo $student['Student']['field_group_id'] ?>"> Completed Activity</a>
+        </li>
+        <li>
+            <a href="/MoDACA/students/pendingActivity/<?php echo $student['Student']['field_group_id'] ?>"> Pending Activity</a>
+        </li>  
+    </ul>
+</li>
+
+<!-- Progress -->
 <li>
     <a href="/MoDACA/students/viewProgress"><i class="fa fa-signal fa-3x"></i> Progress</a>     
-</li>   
+</li> 
+
+<!-- Reports -->
 <li>
     <a href="#"><i class="fa fa-file fa-3x"></i> Reports</a>                        
 </li>
