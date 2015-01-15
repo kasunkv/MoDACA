@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MoDACA | Welcome</title>
     <!-- BOOTSTRAP STYLES-->
-    <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom')); ?>    
+    <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom', 'morris-0.4.3.min')); ?>
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- GOOGLE MAPS API -->
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <!-- SCRIPTS -->
+    <?php echo $this->Html->script(array('jquery-1.10.2', 'bootstrap.min', 'jquery.metisMenu', 'custom', 'morris', 'raphael-2.1.0.min', 'gmaps', 'canvg', 'rgbcolor', 'StackBlur', 'canvas2image', 'script')); ?>
+    
 </head>
 <body>
     <div id="wrapper">
@@ -64,7 +69,7 @@
     </div>
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <?php echo $this->Html->script(array('jquery-1.10.2', 'bootstrap.min', 'jquery.metisMenu', 'custom')); ?>
+
 
 </body>
 </html>

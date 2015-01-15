@@ -44,7 +44,7 @@
 </li>
 
 <li>
-    <a href="/MoDACA/students/viewMyProgress"><i class="fa fa-signal fa-3x"></i> My Progress</a>                       
+    <a href="/MoDACA/students/viewProgress"><i class="fa fa-signal fa-3x"></i> Progress</a>     
 </li>   
 <li>
     <a href="#"><i class="fa fa-file fa-3x"></i> Reports</a>                        

@@ -20,9 +20,11 @@ class StaffsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Staff->recursive = 0;
-		$this->set('staffs', $this->Paginator->paginate());
+        $this->set('staff', $this->getLoggedStaff());
 	}
+
+
+
 
 /**
  * view method
@@ -140,4 +142,19 @@ class StaffsController extends AppController {
         public function changePassword(){
             
         }
+
+
+    /* PRIVATE HELPER FUNCTION */
+
+    private function getLoggedStaff() {
+        $user = AuthComponent::user();
+        if ($user['role'] == 'Staff') {
+            $options = array('conditions' => array('Staff.user_id' => $user['id']));
+            return $loggedStaff = $this->Staff->find('first', $options);
+        } else {
+            return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
+        }
+    }
+
+
 }

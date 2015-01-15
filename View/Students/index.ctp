@@ -29,30 +29,16 @@
                 <i class="fa fa-location-arrow"></i>
             </span>
             <div class="text-box">
-                <p class="main-text">Mihintale</p>
-                <p class="text-muted"><a href="#" data-toggle="modal" data-target="#myMapModal" >Field Area</a></p>
+                <p class="main-text"><?php echo $fieldCommunity['FieldCommunity']['title'] ?></p>
+                <p class="text-muted">
+                    <?php echo $this->Html->link(__('Field Area'),
+                        array( 'action' => 'viewFieldCommunity', $fieldCommunity['FieldCommunity']['id'],),
+                        array( 'class' => '' ));
+                    ?>                    
+                </p>
             </div>
         </div>
     </div>
-    
-    <!-- Map View -->
-    <div class="modal fade" id="myMapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Field Area</h4>
-                </div>
-                <div class="modal-body">                   
-                   <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCLNQUy728sA_6OUDcJqFYhJgdbBaFTnGc&center=8.3500199,80.5090785&zoom=12&maptype=roadmap" width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border: solid 2px white;"></iframe>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     
     <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
@@ -60,7 +46,7 @@
                 <i class="fa fa-users"></i>
             </span>
             <div class="text-box">
-                <p class="main-text" style="font-size: 1.3em;">5 Members</p>
+                <p class="main-text" style="font-size: 1.3em;"><?php echo $student['FieldGroup']['no_of_members']; ?> Members</p>
                 <p class="text-muted">
                     <?php echo $this->Html->link(__('in Group'),
                         array( 'action' => 'viewGroupMembers', $student['Student']['field_group_id'],),
@@ -102,5 +88,39 @@
 </div>
 <!-- /. ROW  -->
 <hr />
-<div class="row">
+<div id="chart-container" class="row">    
+    <!--<div id="columnwrapper" style="display: block; float: left; width:90%; margin-bottom: 20px;"></div>-->
+    
+    <?php echo var_dump($student); ?>
+    
+    
+    
+    
+    
+<!--    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Area Chart Example
+            </div>
+            <div class="panel-body">
+                //<div id="morris-line-chart"></div>
+            </div>
+        </div>
+    </div>-->
+
+    <script>
+//        Morris.Line({
+//                element: 'morris-line-chart',
+//                data: <?php echo json_encode($value); ?>,
+//                xkey: 'date',
+//                ykeys: ['value'],
+//                labels: ['BMI Value'],
+//                pointSize: 2,
+//                hideHover: 'auto',
+//                resize: true
+//            });
+    </script>
+        
+	<?php //echo $this->HighCharts->render('Column Chart'); ?>
+</div>
                   

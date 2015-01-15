@@ -5,16 +5,27 @@ App::uses('RestHelper', 'Lib');
 class BMIsController extends AppController {
 
 
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session', 'Security');
+
+        public function beforeFilter() {
+           // $this->Auth->allow();
+            $this->Security->csrfCheck = false;
+        }
 
 
 	public function getAll() {
+            $this->response->header(array(
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Headers' => 'Content-Type'
+                )
+            );
+            
             $this->autoRender = false;
             
             if ($this->request->is('post')) {
                 $response = array();
                 
-                $results = $this->BMI->find('all');
+                $results = $this->BMI->find('all', array('recursive' => -1,));
                 $BMIs = array();
                 foreach ($results as $res) {
                     array_push($BMIs, $res['BMI']);
@@ -32,6 +43,11 @@ class BMIsController extends AppController {
 	}
 
 	public function getByID($id=NULL) {
+            $this->response->header(array(
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Headers' => 'Content-Type'
+                )
+            );
             $this->autoRender = false;
             
             if ($this->request->is('post')) {

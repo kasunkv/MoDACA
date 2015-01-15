@@ -17,6 +17,7 @@ class HouseholdsController extends AppController {
            // $this->Auth->allow();
         }
         public function getAll() {
+            
             $this->autoRender = false;
             
             if ($this->request->is('post')) {
@@ -30,11 +31,14 @@ class HouseholdsController extends AppController {
                 
                 if (count($households) > 0) {
                     $response = RestHelper::createResponseMessage('success', array('data' => json_encode($households), 'message' => 'Data retrived from the database.'));
-                     echo json_encode($response);
+                     //echo json_encode($response);
                 } else {
                     $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'No data in the database'));
-                    echo json_encode($response);
+                    //echo json_encode($response);
                 }
+                
+                $this->response->type('json');
+                $this->response->body(json_encode($response));
                
             }
         }
@@ -76,11 +80,11 @@ class HouseholdsController extends AppController {
             if ($this->request->is('post')) {
                 $response = array();               
 
-                $temp = json_decode($this->request->data, trues);
+                $temp = json_decode($this->request->data, true);
                 if(!empty($temp['id']))
                     $temp['id'] = '';
 
-                $this->request->data = $this->populateRequest($temp, 'Household');
+                $this->request->data = $this->populateRequest($temp, 'BMI');
 
                 $this->Household->create();
                 if ($this->Household->save($this->request->data)) {

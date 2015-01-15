@@ -6,8 +6,10 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'port' => '3306',
 		'host' => 'localhost',
-		'login' => 'kasunkv',
-		'password' => 'kvk123',
+//		'login' => 'kasunkv',
+//		'password' => 'kvk123',
+        'login' => 'root',
+        'password' => '',
 		'database' => 'modaca_db',
 	);
 }

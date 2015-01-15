@@ -113,7 +113,7 @@ class UsersController extends AppController {
 	}
         
         public function login() {
-            if ($this->request->is('post')) {
+            if ($this->request->is('post') || $this->Auth->loggedIn()) {
                 $temp = $this->request->data;
                 if ($this->Auth->login()) {
                     

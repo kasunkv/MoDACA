@@ -4,20 +4,55 @@ App::uses('Folder','Utility');
 
 class StudentsController extends AppController {
     //public $components = array('Auth');
-    
+    public $components = array('HighCharts.HighCharts');
+
+
     public function beforeFilter() {
         //$this->Auth->allow('register');
         $this->Auth->allow();
     }
 
     public function index() {
-//        $this->Student->recursive = 0;
-//        $this->set('students', $this->Paginator->paginate());
         
         // set the student in the view
         $logged = AuthComponent::user();
         $student = $this->getLoggedStudent($logged['id']);
         $this->set('student', $student );
+
+        // Set the field community
+        $fieldCommunityId = $student['FieldGroup']['field_community_id'];
+        $this->loadModel('FieldCommunity');
+        $community = $this->FieldCommunity->find('first', array(
+            'conditions' => array(
+                'id' => $fieldCommunityId
+            ),
+            'recursive' => -1,
+        ));
+        $this->set('fieldCommunity', $community);
+
+
+
+
+
+
+
+//        $this->loadModel('BMI');
+//        $bmis = $this->BMI->find('all', array(
+//            'recursive' => -1,
+//        ));
+//
+//        $value = array();
+//
+//        foreach ($bmis as $bmi) {
+//            $temp = array();
+//            $temp['date'] = $bmi['BMI']['date'];
+//            $temp['value'] = $bmi['BMI']['value'];
+//            array_push($value, $temp);
+//        }
+//
+//        $this->set('value', $value);
+
+
     }
 
     public function view($id = null) {
@@ -115,7 +150,7 @@ class StudentsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Student->save($this->request->data)) {
                 $this->Session->setFlash(__('The student has been saved.'), 'flashSuccess');
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'view'));
             } else {
                 $this->Session->setFlash(__('The student could not be saved. Please, try again.'), 'flashError');
             }
@@ -284,11 +319,124 @@ class StudentsController extends AppController {
     
     // View My Progress
     
-    public function viewMyProgress() {
+    public function viewProgress() {
         // set the student in the view
         $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
+        $student = $this->getLoggedStudent($logged['id']);
+        $this->set('student', $student );
+
+        // Set the field community
+        $fieldCommunityId = $student['FieldGroup']['field_community_id'];
+
+        $this->loadModel('Household');
+        $households =  $this->Household->find('all', array(
+            'conditions' => array(
+                'field_community_id' => $fieldCommunityId,
+            ),
+            'recursive' => -1
+        ));
+
+        $this->set('households', $households);
     }
+
+    public function viewHousehold($id = null) {
+        // set the student in the view
+        if($id != null) {
+            $logged = AuthComponent::user();
+            $student = $this->getLoggedStudent($logged['id']);
+            $this->set('student', $student );
+
+            $this->loadModel('Household');
+            $house = $this->Household->find('first', array(
+                'conditions' => array(
+                    'Household.id' => $id,
+                ),
+                'recursive' => 1
+            ));
+            $this->set('house', $house);
+
+            $sugarUsage = $this->getSugarSaltConsumption($id);
+            $this->set('sugarUsage', $sugarUsage);
+
+            $oilUsage = $this->getOilConsumption($id);
+            $this->set('oilUsage', $oilUsage);
+
+        } else {
+            $this->Session->setFlash(__('Household is not found!.'), 'flashError');
+            $this->redirect(array('action' => 'viewProgress'));
+        }
+    }
+
+    public function viewFamilyMember($id = null) {
+        if($id != null) {
+            $logged = AuthComponent::user();
+            $student = $this->getLoggedStudent($logged['id']);
+            $this->set('student', $student );
+
+            $this->loadModel('FamilyMember');
+            $familyMember = $this->FamilyMember->find('first', array(
+                'conditions' => array(
+                    'FamilyMember.id' => $id,
+                ),
+                'recursive' => 0
+            ));
+
+            if(empty($familyMember)) {
+                $this->Session->setFlash(__('Family Member not found!.'), 'flashError');
+                $this->redirect(array('action' => 'viewProgress'));
+                return;
+            }
+
+            $this->loadModel('BMI');
+            $familyMemberBmi = $this->BMI->find('all', array(
+                'conditions' => array(
+                    'family_member_id' => $id
+                ),
+                'recursive' => -1
+            ));
+
+            $this->loadModel('WHR');
+            $familyMemberWhr = $this->WHR->find('all', array(
+                'conditions' => array(
+                    'family_member_id' => $id
+                ),
+                'recursive' => -1
+            ));
+
+            $temp = array_values($familyMemberBmi);
+            $lastBmiCat = end($temp);
+            $lastBmiCat = $this->getBmiCategory($lastBmiCat['BMI']['value']);
+
+            $firstBmiCat = array_values($familyMemberBmi)[0];
+            $firstBmiCat = $this->getBmiCategory($firstBmiCat['BMI']['value']);
+
+
+            $this->set(compact('familyMember', 'familyMemberBmi', 'familyMemberWhr', 'lastBmiCat', 'firstBmiCat'));
+
+
+        } else {
+            $this->Session->setFlash(__('Family Member not found!.'), 'flashError');
+            $this->redirect(array('action' => 'viewProgress'));
+        }
+    }
+
+    private function getBmiCategory($value) {
+        if ($value > 40.0)
+            return 'Morbid Obesity (Class 3)';
+        else if ($value < 39.9 && $value > 35.0)
+            return 'Very Obese (Class 2)';
+        else if ($value > 30 && $value < 34.9)
+            return 'Obese (Class 1)';
+        else if ($value > 25 && $value < 29.9)
+            return 'Overweight';
+        else if ($value > 18.5 && $value < 24.9)
+            return 'Normal';
+        else if ($value > 16 && $value < 18.4)
+            return 'Underweight';
+        else
+            return 'Severely Underweight';
+    }
+
 
     public function viewFieldGroup(){
         // set the student in the view
@@ -297,6 +445,281 @@ class StudentsController extends AppController {
         $this->set('student', $student);
 
 
+
+
+    }
+
+    public function viewFieldCommunity($id = null) {
+        if($id) {
+            // set the student in the view
+            $logged = AuthComponent::user();
+            $student =  $this->getLoggedStudent($logged['id']);
+            $this->set('student', $student);
+
+
+            $this->loadModel('FieldCommunity');
+            $community = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'id' => $id,
+                ),
+                'recursive' => -1,
+            ));
+
+            if(empty($community)) {
+                $this->Session->setFlash(__('A Field Community with ID ' . $id . ' does not exist in the database.'), 'flashError');
+                $this->redirect(array('action' => 'index'));
+            } else {
+                // Load initial Data for Population
+                $populationResult = $this->getPopulationInfo($id);
+                $this->set('chartPopulation', $populationResult);
+
+                // Load Age Distribution Data
+                $ageDistribution = $this->getAgeDistribution($id);
+                $this->set('ageDistribution', $ageDistribution);
+
+                // Load Education Level Distribution Data
+                $educationDist = $this->getEducationDistribution($id);
+                $this->set('eduDistribution', $educationDist);
+
+                // Load Occupation Distribution Data
+                $occDist = $this->getOccupationDistribution($id);
+                $this->set('occDistribution', $occDist);
+
+                // Load Income Distribution Data
+                $incomeDist = $this->getIncomeDistribution($id);
+                $this->set('incomeDistribution', $incomeDist);
+
+
+                $this->set('community', $community);
+            }
+        } else {
+            $this->Session->setFlash(__('Field Community ID was not passed.'), 'flashError');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
+    private function getPopulationInfo($id) {
+        $this->loadModel('InitPopulation');
+        $population = $this->InitPopulation->find('first', array(
+            'conditions' =>  array(
+                'field_community_id' => $id,
+            ),
+            'recursive' => -1,
+        ));
+
+        $totalPop = intval($population['InitPopulation']['total_population']);
+        $male = intval($population['InitPopulation']['male']);
+        $female = intval($population['InitPopulation']['female']);
+
+        $malePresentage = round(($male / $totalPop) * 100);
+        $femalePresentage = (100 - $malePresentage);
+
+        // get formal/informal settings
+        $this->loadModel('FieldCommunity');
+        $fieldComm = $this->FieldCommunity->find('first', array(
+            'conditions' => array(
+                'id' => $id,
+            ),
+            'recursive' => -1,
+        ));
+
+        $result = array(
+            'title' => $fieldComm['FieldCommunity']['title'],
+            'village_name' => $fieldComm['FieldCommunity']['village_name'],
+            'male' => $male,
+            'female' => $female,
+            'total_population' => $totalPop,
+            'male_pre' => $malePresentage,
+            'female_pre' => $femalePresentage,
+            'families' => $population['InitPopulation']['no_of_families'],
+            'formal_settings' => $fieldComm['FieldCommunity']['no_of_formal_settings'],
+            'informal_settings' => $fieldComm['FieldCommunity']['no_of_informal_settings']
+        );
+
+        return $result;
+    }
+
+    private function getAgeDistribution($id) {
+        $this->loadModel('InitAgeDistribution');
+        $dist = $this->InitAgeDistribution->find('all', array(
+            'conditions' => array(
+                'field_community_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $result = array();
+        $temp = array();
+
+        foreach ($dist as $row){
+            foreach($row as $a) {
+                   array_push($result, $a);
+            }
+        }
+
+        foreach($result as $key => $val) {
+            $temp[$key]['Age Group'] = $val['age_group'];
+            $temp[$key]['Male'] = intval($val['male']);
+            $temp[$key]['Female'] = intval($val['female']);
+            $temp[$key]['Total'] = $val['male'] + $val['female'];
+
+        }
+        return $temp;
+    }
+
+    private function getEducationDistribution($id) {
+        $this->loadModel('InitEducationLevel');
+        $dist = $this->InitEducationLevel->find('all', array(
+            'conditions' => array(
+                'field_community_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $result = array();
+        $temp = array();
+
+        foreach ($dist as $row){
+            foreach($row as $a) {
+                array_push($result, $a);
+            }
+        }
+
+        foreach($result as $key => $val) {
+            $temp[$key]['Education Level'] = $val['education_level'];
+            $temp[$key]['Male'] = intval($val['male']);
+            $temp[$key]['Female'] = intval($val['female']);
+            $temp[$key]['Total'] = $val['male'] + $val['female'];
+
+        }
+        return $temp;
+    }
+
+    private function getOccupationDistribution($id) {
+        $this->loadModel('InitOccupation');
+        $dist = $this->InitOccupation->find('all', array(
+            'conditions' => array(
+                'field_community_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $result = array();
+        $temp = array();
+
+        foreach ($dist as $row){
+            foreach($row as $a) {
+                array_push($result, $a);
+            }
+        }
+
+        foreach($result as $key => $val) {
+            $temp[$key]['Occupation Type'] = $val['occupation_type'];
+            $temp[$key]['Male'] = intval($val['male']);
+            $temp[$key]['Female'] = intval($val['female']);
+            $temp[$key]['Total'] = $val['male'] + $val['female'];
+
+        }
+        return $temp;
+    }
+
+    private function getIncomeDistribution($id) {
+        $this->loadModel('InitIncome');
+        $dist = $this->InitIncome->find('all', array(
+            'conditions' => array(
+                'field_community_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $result = array();
+        $temp = array();
+
+        foreach ($dist as $row){
+            foreach($row as $a) {
+                array_push($result, $a);
+            }
+        }
+
+        foreach($result as $key => $val) {
+            $temp[$key]['Income Range'] = $val['income_range'];
+            $temp[$key]['No of Families'] = intval($val['no_of_familiy']);
+
+        }
+        return $temp;
+    }
+
+    private function getOilConsumption($id) {
+        $this->loadModel('OilUsage');
+        $dist = $this->OilUsage->find('all', array(
+            'conditions' => array(
+                'household_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $result = array();
+        $temp = array();
+
+        foreach ($dist as $row){
+            foreach($row as $a) {
+                array_push($result, $a);
+            }
+        }
+
+        foreach($result as $key => $val) {
+            $temp[$key]['Oil Usage'] = $val['value'];
+            $temp[$key]['Date'] = $val['date'];
+
+        }
+        return $temp;
+    }
+
+    private function getSugarSaltConsumption($id) {
+        $this->loadModel('SugarUsage');
+        $sugar = $this->SugarUsage->find('all', array(
+            'conditions' => array(
+                'household_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $this->loadModel('SaltUsage');
+        $salt = $this->SaltUsage->find('all', array(
+            'conditions' => array(
+                'household_id' => $id,
+            ),
+            'recursive' => -1
+        ));
+
+        $resultSugar = array();
+        $resultSalt = array();
+        $temp = array();
+
+        // Sugar
+        foreach ($sugar as $row){
+            foreach($row as $a) {
+                array_push($resultSugar, $a);
+            }
+        }
+
+        foreach($resultSugar as $key => $val) {
+            $temp[$key]['Date'] = $val['date'];
+            $temp[$key]['Sugar'] = intval($val['value']);
+        }
+
+        // Salt
+        foreach ($salt as $row1){
+            foreach($row1 as $b) {
+                array_push($resultSalt, $b);
+            }
+        }
+
+        foreach($resultSalt as $key => $val) {
+            $temp[$key]['Salt'] = intval($val['value']);
+        }
+
+        return $temp;
     }
     
     // Generate Reports

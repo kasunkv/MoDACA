@@ -488,3 +488,125 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-12-10 16:52:52 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/api/households/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('households')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\MoDACA\api\Controller\HouseholdsController.php(25): Model->find('all')
+#8 [internal function]: HouseholdsController->getAll()
+#9 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(HouseholdsController), Array)
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#12 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-12-10 16:55:30 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/api/bmis/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('b_m_is')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\MoDACA\api\Controller\BMIsController.php(17): Model->find('all')
+#8 [internal function]: BMIsController->getAll()
+#9 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(BMIsController), Array)
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#12 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-12-10 17:00:16 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/api/bmis/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('b_m_is')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\MoDACA\api\Controller\BMIsController.php(17): Model->find('all')
+#8 [internal function]: BMIsController->getAll()
+#9 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(BMIsController), Array)
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#12 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-12-10 17:00:45 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\api\View\BMIs\get_all.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\api\\View\\BMIs\\get_all.ctp',
+)
+Request URL: /MoDACA/api/bmis/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-12-10 17:01:04 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\api\View\BMIs\get_all.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\api\\View\\BMIs\\get_all.ctp',
+)
+Request URL: /MoDACA/api/bmis/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-12-10 17:02:08 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1045] Access denied for user \'kasunkv\'@\'localhost\' (using password: YES)',
+  'enabled' => true,
+)
+Request URL: /MoDACA/api/bmis/getByID/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(3501): Model->setSource('b_m_is')
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): Model->getDataSource()
+#6 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#7 D:\wamp\www\MoDACA\api\Controller\BMIsController.php(51): Model->find('all', Array)
+#8 [internal function]: BMIsController->getByID('1')
+#9 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(BMIsController), Array)
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#12 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-12-10 17:26:49 Error: Fatal Error (4): syntax error, unexpected => (T_DOUBLE_ARROW) in [xdebug://debug-eval, line 1]
+2014-12-10 17:26:49 Error: [FatalErrorException] syntax error, unexpected => (T_DOUBLE_ARROW)
+Request URL: /MoDACA/api/bmis/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'xdebug://debug-...', 1)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'xdebug://debug-...', 1, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'xdebug://debug-...', 1, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
