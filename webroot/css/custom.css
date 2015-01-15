@@ -105,6 +105,106 @@
     padding-top: 24px;
 }
 
+.bg-color-green {
+    background-color: #25a325;
+    color: #fff;
+}
+.bg-color-blue {
+    background-color: #A95DF0;
+    color: #fff;
+}
+
+.bg-color-lightblue-1 {
+    background-color: #39b3d7;
+    color: #fff;
+}
+
+.bg-color-red {
+    background-color: #DB0630;
+    color: #fff;
+}
+.bg-color-brown {
+    background-color: #B94A00;
+    color: #fff;
+}
+
+.back-footer-black {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 0px solid #fff;
+}
+
+
+.notification-link-1 {
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.notification-link-1:hover {
+    color: #C7C7C7;
+    text-decoration: none;
+}
+
+.main-dash-noti-box {
+    position: relative;
+}
+
+.main-dash-noti-box-title {
+    color: #fff;
+    font-size: 2em;
+    font-weight: 200;
+    margin-bottom: -10px;
+}
+
+.main-dash-noti-box-link {
+    color: #C7C7C7;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+    .main-dash-noti-box-link:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+.main-dash-noti-box-bg-blue {
+    background-color: #428bca;
+}
+
+.main-dash-noti-box-bg-orange {
+    background-color: #ed9c28;
+}
+
+.main-dash-noti-box-bg-red {
+    background-color: #d2322d;
+}
+
+.main-dash-noti-box-fa-color-blue {
+    color: #1e527f;
+    opacity: 0.7;
+}
+
+.main-dash-noti-box-fa-color-orange {
+    color: #b4761d;
+    opacity: 0.7;
+}
+
+.main-dash-noti-box-fa-color-red {
+    color: #ac2925;
+    opacity: 0.7;
+}
+
+.fa-color-1 {
+    
+}
+
+.icon-bottom-right {
+    font-size: 6.5em;
+    position: absolute;
+    bottom: -50px;
+    right: 0px;
+    margin-right: -25px;
+}
+
 
 /* End of My Styles */
 
@@ -166,6 +266,7 @@ p {
    .noti-box {
 min-height: 100px;
 padding: 20px;
+overflow: hidden;
 }
 
     .noti-box .icon-box {
@@ -223,14 +324,14 @@ font-size: 40px;
 }
 
  .main-temp-back {
-background: #8702A8;
+/*background: #8702A8;*/
 color: #FFFFFF;
 font-size: 16px;
 font-weight: 300;
 text-align: center;
 }
  .main-temp-back .text-temp {
-font-size: 40px;
+font-size: 4em;
 }
 .back-dash {
     padding:20px;
