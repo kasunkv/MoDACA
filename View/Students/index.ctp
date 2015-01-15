@@ -92,4 +92,6 @@
 <div id="chart-container" class="row">    
     <?php //echo var_dump($fieldCommunity); ?>
 </div>
+
+<!-- Test git config -->
                   
