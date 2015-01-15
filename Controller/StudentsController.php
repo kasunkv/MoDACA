@@ -13,45 +13,10 @@ class StudentsController extends AppController {
     }
 
     public function index() {
-        
         // set the student in the view
         $logged = AuthComponent::user();
         $student = $this->getLoggedStudent($logged['id']);
         $this->set('student', $student );
-
-        // Set the field community
-        $fieldCommunityId = $student['FieldGroup']['field_community_id'];
-        $this->loadModel('FieldCommunity');
-        $community = $this->FieldCommunity->find('first', array(
-            'conditions' => array(
-                'id' => $fieldCommunityId
-            ),
-            'recursive' => -1,
-        ));
-        $this->set('fieldCommunity', $community);
-
-
-
-
-
-
-
-//        $this->loadModel('BMI');
-//        $bmis = $this->BMI->find('all', array(
-//            'recursive' => -1,
-//        ));
-//
-//        $value = array();
-//
-//        foreach ($bmis as $bmi) {
-//            $temp = array();
-//            $temp['date'] = $bmi['BMI']['date'];
-//            $temp['value'] = $bmi['BMI']['value'];
-//            array_push($value, $temp);
-//        }
-//
-//        $this->set('value', $value);
-
 
     }
 
@@ -721,7 +686,8 @@ class StudentsController extends AppController {
 
         return $temp;
     }
-    
+
+
     // Generate Reports
     
     public function generateReports() {

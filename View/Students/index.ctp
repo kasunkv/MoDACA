@@ -72,6 +72,7 @@
                 </p>
             </div>
         </div>
+
     </div>   
     
     <div class="col-md-3 col-sm-6 col-xs-6">
@@ -89,38 +90,6 @@
 <!-- /. ROW  -->
 <hr />
 <div id="chart-container" class="row">    
-    <!--<div id="columnwrapper" style="display: block; float: left; width:90%; margin-bottom: 20px;"></div>-->
-    
-    <?php echo var_dump($student); ?>
-    
-    
-    
-    
-    
-<!--    <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Area Chart Example
-            </div>
-            <div class="panel-body">
-                //<div id="morris-line-chart"></div>
-            </div>
-        </div>
-    </div>-->
 
-    <script>
-//        Morris.Line({
-//                element: 'morris-line-chart',
-//                data: <?php echo json_encode($value); ?>,
-//                xkey: 'date',
-//                ykeys: ['value'],
-//                labels: ['BMI Value'],
-//                pointSize: 2,
-//                hideHover: 'auto',
-//                resize: true
-//            });
-    </script>
-        
-	<?php //echo $this->HighCharts->render('Column Chart'); ?>
 </div>
                   
