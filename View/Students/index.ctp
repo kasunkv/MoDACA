@@ -4,11 +4,7 @@
     echo $this->element('studentNav');
     $this->end();
 ?>
-<?php
-    //$this->start('topNavLogout');
-    //echo $this->element('studentTopNav');
-//    $this->end();
-?>
+
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Dashboard</h2>
@@ -92,6 +88,3 @@
 <div id="chart-container" class="row">    
     <?php //echo var_dump($fieldCommunity); ?>
 </div>
-
-<!-- Test git config -->
-                  
