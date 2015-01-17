@@ -3,12 +3,20 @@
 ?>
 <!-- Profile Image -->
 <li class="text-center">
-    <?php 
-        echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
-            'alt' => 'Profile Image',
-            'class' => 'user-image img-responsive',
-            )
-        );                                        
+    <?php
+        if(!empty($student['Student']['profile_photo'])) {
+            echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
+                'alt' => 'Profile Image',
+                'class' => 'user-image img-responsive',
+                )
+            );         
+        } else {
+            echo $this->Html->image('../uploads/default_user.png', array(
+                'alt' => 'Profile Image',
+                'class' => 'user-image img-responsive',
+                )
+            ); 
+        }
     ?>
     
 </li>
@@ -47,11 +55,8 @@
             <a href="/MoDACA/students/createActivity"> Create Activity</a>
         </li>
         <li>
-            <a href="/MoDACA/students/completedActivity/<?php echo $student['Student']['field_group_id'] ?>"> Completed Activity</a>
+            <a href="/MoDACA/students/allActivity"> All Activities</a>
         </li>
-        <li>
-            <a href="/MoDACA/students/pendingActivity/<?php echo $student['Student']['field_group_id'] ?>"> Pending Activity</a>
-        </li>  
     </ul>
 </li>
 

@@ -1,9 +1,5 @@
 <?php $this->layout = 'defaultLayout'; ?>
-<?php
-    $this->start('sideNav');
-    echo $this->element('staffNav');
-    $this->end();
-?>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Staff Registration | MoDACA</h2>

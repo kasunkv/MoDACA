@@ -1,10 +1,18 @@
 <li class="text-center">
-    <?php 
-        echo $this->Html->image('../uploads/staffs/'. $staff['Staff']['profile_photo'], array(
-            'alt' => 'Profile Image',
-            'class' => 'user-image img-responsive',
-            )
-        );                                        
+    <?php         
+        if(!empty($staff['Staff']['profile_photo'])) {
+            echo $this->Html->image('../uploads/staffs/'. $staff['Staff']['profile_photo'], array(
+                'alt' => 'Profile Image',
+                'class' => 'user-image img-responsive',
+                )
+            );         
+        } else {
+            echo $this->Html->image('../uploads/default_user.png', array(
+                'alt' => 'Profile Image',
+                'class' => 'user-image img-responsive',
+                )
+            ); 
+        }      
     ?>
 </li>
 <li>

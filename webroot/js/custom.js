@@ -15,6 +15,7 @@
 
 (function ($) {
     "use strict";
+    
     var mainApp = {
 
         main_fun: function () {

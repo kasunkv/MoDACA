@@ -719,18 +719,53 @@ class StudentsController extends AppController {
     }
     
     public function uploadPhoto($data) {
-            $file = $data;
+        $file = $data;
 
+        if($file['error'] === UPLOAD_ERR_OK) {
+            $folderName = APP.'webroot'.DS.'uploads'.DS.'students';
+            $folder = new Folder($folderName, true, 0777);
+
+            if($id!=null){
+                if(file_exists($folderName.DS.$id)){
+                    chmod($folderName.DS.$id,0755);
+                    unlink($folderName.DS.$id);
+                }
+            }
+
+            $id = String::uuid();
+
+            $tmp_file = $file['tmp_name'];
+            list($width, $height) = getimagesize($tmp_file);
+
+            if ($width == null && $height == null) {
+                return false;
+            }
+
+            move_uploaded_file($file['tmp_name'], $folderName.DS.$id);
+            $this->request->data['Student']['profile_photo'] = $id;
+            return true;
+        }
+        return false;
+    }
+
+    public function uploadEventPhotos($data) {
+        $files = $data['EventPhoto']['image']; // array of uploaded files
+        $fileCount = count($data['EventPhoto']['image']);
+
+        $success = 0;
+        $failed = 0;
+
+        foreach($files as $file) {
             if($file['error'] === UPLOAD_ERR_OK) {
-                $folderName = APP.'webroot'.DS.'uploads'.DS.'students';
+                $folderName = APP.'webroot'.DS.'uploads'.DS.'event_photos';
                 $folder = new Folder($folderName, true, 0777);
 
-                if($id!=null){
-                    if(file_exists($folderName.DS.$id)){
-                        chmod($folderName.DS.$id,0755);
-                        unlink($folderName.DS.$id);
-                    }
-                }
+//                if($id!=null){
+//                    if(file_exists($folderName.DS.$id)){
+//                        chmod($folderName.DS.$id,0755);
+//                        unlink($folderName.DS.$id);
+//                    }
+//                }
 
                 $id = String::uuid();
 
@@ -742,21 +777,171 @@ class StudentsController extends AppController {
                 }
 
                 move_uploaded_file($file['tmp_name'], $folderName.DS.$id);
-                $this->request->data['Student']['profile_photo'] = $id;
-                return true;
+
+                // create the new object to add to database
+                $evtPhotoData['EventPhoto']['event_id'] = $data['EventPhoto']['event_id'];
+                $evtPhotoData['EventPhoto']['image'] = $id;
+
+                // save record to database
+                $this->loadModel('EventPhoto');
+                $this->EventPhoto->create();
+                $evt = $this->EventPhoto->save($evtPhotoData);
+                if($evt)
+                    $success++;
+
+            } else {
+                $failed++;
             }
-            return false;
         }
-        
-        private function getLoggedStudent($id) {
+
+        if($failed < $fileCount)
+            return true;
+        else
+            return false;
+    }
+
+
+    private function getLoggedStudent($id) {
             $user = AuthComponent::user();
             if ($user['role'] == 'Student') {
                 $options = array('conditions' => array('Student.user_id' => $id));
-                return $loggedstudent = $this->Student->find('first', $options);            
+                return $loggedstudent = $this->Student->find('first', $options);
             } else {
                 return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
             }
         }
+
+
+    // Activity Related
+
+    public function createActivity() {
+        $logged = AuthComponent::user();
+        $student = $this->getLoggedStudent($logged['id']);
+        $this->set('student', $student );
+
+        if($this->request->is('post')) {
+
+            $this->request->data['Event']['field_group_id'] = $student['Student']['field_group_id'];
+            $this->request->data['Event']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+
+            $this->loadModel('Event');
+            $this->Event->create();
+            $evt = $this->Event->save($this->request->data);
+            if($evt != null) {
+                $this->Session->setFlash(__('<b>Success!</b>  A new community activity was created.'), 'flashSuccess');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('Oopz! Could not create the community activity.'), 'flashError');
+                return $this->redirect(array('action' => 'index'));
+            }
+        }
+    }
+
+    public function allActivity() {
+        $logged = AuthComponent::user();
+        $student = $this->getLoggedStudent($logged['id']);
+
+        $this->loadModel('Event');
+        $allEvents = $this->Event->find('all', array(
+            'conditions' => array(
+                'Event.field_group_id' => $student['Student']['field_group_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->set(compact('student', 'allEvents'));
+
+
+    }
+
+    public function completeActivity($id = null) {
+        if($id != null) {
+            $logged = AuthComponent::user();
+            $student = $this->getLoggedStudent($logged['id']);
+
+            $this->loadModel('Event');
+            $event = $this->Event->find('first', array(
+                'conditions' => array(
+                    'Event.id' => $id,
+                    'Event.field_group_id' => $student['Student']['field_group_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+
+            if($this->request->is('post')) {
+                $data = $this->request->data;
+
+                if(!empty($this->request->data['EventPhoto'])){
+                    if($this->uploadEventPhotos($data)) {
+                        $this->Session->setFlash(__('Photos was successfully uploaded!'), 'flashSuccess');
+                    } else {
+                        $this->Session->setFlash(__('Photos failed to upload.'), 'flashError');
+                    }
+                }
+
+
+                if(!empty($this->request->data['Event'])) {
+                    $this->loadModel('EventPhoto');
+                    $photos = $this->EventPhoto->find('all', array(
+                        'conditions' => array(
+                            'event_id' => $this->request->data['Event']['id'],
+                        ),
+                        'recursive' => -1,
+                    ));
+
+                    $photoCount = count($photos);
+
+                    if($photoCount > 0) {
+                        $this->loadModel('Event');
+                        $this->request->data['Event']['complete'] = 1;
+                        $evt = $this->Event->save($this->request->data);
+                        if($evt != null) {
+                            $this->Session->setFlash(__('Community Activity was successfully completed!'), 'flashSuccess');
+                            return $this->redirect(array('action' => 'allActivity'));
+                        } else {
+                            $this->Session->setFlash(__('Oopz! Could not complete the community activity.'), 'flashError');
+                            return $this->redirect(array('action' => 'allActivity'));
+                        }
+                    } else {
+                        $this->Session->setFlash(__('Oopz! You have not uploaded any Activity Photos or Photos failed to upload.'), 'flashError');
+                    }
+                }
+            }
+
+
+            $this->set(compact('student', 'event', 'data'));
+        } else {
+            $this->Session->setFlash(__('Community Activity not Found!'), 'flashError');
+            $this->redirect(array('action' => 'allActivity'));
+        }
+    }
+
+    public function viewActivity($id = null) {
+        if($id != null) {
+            $logged = AuthComponent::user();
+            $student = $this->getLoggedStudent($logged['id']);
+
+            $this->loadModel('Event');
+            $event = $this->Event->find('first', array(
+                'conditions' => array(
+                    'Event.id' => $id,
+                ),
+            ));
+
+//            $this->loadModel('EventPhoto');
+//            $eventPhotos = $this->EventPhoto->find('all', array(
+//                'conditions' => array(
+//                    'EventPhoto.event_id' => $id,
+//                ),
+//            ));
+
+            $this->set(compact('student', 'event'));
+        }else {
+            $this->Session->setFlash(__('Community Activity not Found!'), 'flashError');
+            $this->redirect(array('action' => 'allActivity'));
+        }
+    }
 
     
     
