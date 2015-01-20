@@ -1,6 +1,3 @@
-<?php 
-    $loggedUser = AuthComponent::user();
-?>
 <!-- Profile Image -->
 <li class="text-center">
     <?php
@@ -25,12 +22,6 @@
 <li>
     <a class="" href="/MoDACA/students/index"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>    
 </li>
-
-<!-- Profiles -->
-<li>
-    <a href="/MoDACA/students/view/<?php echo $loggedUser['id']; ?>"><i class="fa fa-user fa-3x"></i> Profile</a>                        
-</li>
-
 <!-- Field Groups -->
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>

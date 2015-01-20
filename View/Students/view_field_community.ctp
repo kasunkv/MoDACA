@@ -4,6 +4,11 @@
     echo $this->element('studentNav');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $chartPopulation['title']; ?> | <?php echo $chartPopulation['village_name']; ?> Field Community</h2>

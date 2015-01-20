@@ -4,6 +4,11 @@
     echo $this->element('sideNavStdApprove');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Administrator | Student Registration Approval</h2>

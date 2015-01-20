@@ -13,6 +13,10 @@
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <!-- SCRIPTS -->
     <?php echo $this->Html->script(array('jquery-1.10.2', 'moment.min', 'bootstrap.min', 'jquery.metisMenu', 'custom', 'morris', 'raphael-2.1.0.min', 'gmaps', 'canvg', 'rgbcolor', 'StackBlur', 'canvas2image', 'script', 'bootstrap-datetimepicker', 'fileinput.min', 'star-rating.min')); ?>
+    <style>
+      
+        
+    </style>
         
 </head>
 <body>
@@ -30,22 +34,12 @@
                     'class' => 'navbar-brand',
                 )); ?>
             </div>
-            <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-                <?php //echo $this->fetch('topNavLogout');
-                    $user = AuthComponent::user();
-                    if (isset($user)) {
-                        echo $this->Form->postLink(__('Log Out'),
-                            array(
-                                'controller' => 'users',
-                                'action' => 'logout',                                            
-                            ),
-                            array(
-                                'class' => 'btn btn-primary square-btn-adjust'
-                        ));
-                    }
-                    
-                ?>
-            </div>
+            
+            <!-- Logout Button -->
+            <?php            
+                echo $this->fetch('logout');
+            ?>
+            
         </nav>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">

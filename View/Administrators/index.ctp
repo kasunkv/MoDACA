@@ -4,6 +4,11 @@
     echo $this->element('adminNav');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $administrator['Administrator']['first_name'] . " " . $administrator['Administrator']['last_name'];?> | Admin Dashboard</h2>

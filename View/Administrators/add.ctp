@@ -5,6 +5,11 @@
     echo $this->element('adminNav');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <?php echo $this->Form->create('Administrator'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Administrator'); ?></legend>

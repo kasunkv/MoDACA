@@ -4,6 +4,11 @@
     echo $this->element('staffNav');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2>Staff Registration | MoDACA</h2>

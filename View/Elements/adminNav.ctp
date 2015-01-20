@@ -1,5 +1,4 @@
-<li class="text-center">
-   
+<li class="text-center">   
     <?php         
         if(!empty($administrator['Administrator']['profile_photo'])) {
             echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
@@ -53,24 +52,6 @@
         </li>          
     </ul>
 </li>
-<!--<li>
-    <a href="/MoDACA/Administrators/approveRegistration"><i class="fa fa-check-square-o fa-3x"></i> Approve Registration</a>                       
-</li>   -->
-<li>
-    <a href="#"><i class="fa fa-user fa-3x"></i> Admin Profile<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-        <li>
-            <a href="/MoDACA/Administrators/viewProfile">View Profile</a>
-        </li>
-        <li>
-            <a href="/MoDACA/Administrators/editAdminProfile">Edit Profile</a>
-        </li>  
-        <li>
-            <a href="/MoDACA/Administrators/#">Change Password</a>
-        </li>
-    </ul>
-</li>
-
 <li>
     <a href="#"><i class="fa fa-tasks fa-3x"></i> Tasks<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">

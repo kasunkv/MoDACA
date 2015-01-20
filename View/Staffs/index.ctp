@@ -4,7 +4,11 @@
     echo $this->element('staffNav');
     $this->end();
 ?>
-
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $staff['Staff']['first_name'] . ' ' . $staff['Staff']['last_name']; ?> | Dashboard</h2>

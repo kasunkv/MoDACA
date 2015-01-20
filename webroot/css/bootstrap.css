@@ -3019,7 +3019,8 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   font-size: 14px;
   list-style: none;
-  background-color: #fff;
+/*  background-color: #fff;*/
+  background-color: #428bca;
   background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
@@ -3035,22 +3036,27 @@ input[type="button"].btn-block {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  /*background-color: #e5e5e5;*/
+  background-color: rgba(255,255,255, 0.3);
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 10px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333;
+  /*color: #333;*/
+  color: #fff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  /*color: #262626;*/
+  color: #fff;
   text-decoration: none;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
+  background-color: #357ebd;
+  /*padding: 10px;*/
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3076,6 +3082,8 @@ input[type="button"].btn-block {
 .open > .dropdown-menu {
   display: block;
 }
+
+
 .open > a {
   outline: 0;
 }

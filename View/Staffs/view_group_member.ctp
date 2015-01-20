@@ -1,2 +1,11 @@
+<?php $this->layout = 'defaultLayout'; ?>
 <?php
- echo var_dump($grpId, $stdId);
+    $this->start('sideNav');
+    echo $this->element('staffNav');
+    $this->end();
+?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>

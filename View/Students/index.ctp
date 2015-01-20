@@ -4,6 +4,11 @@
     echo $this->element('studentNav');
     $this->end();
 ?>
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 
 <div class="row">
     <div class="col-md-12">
@@ -112,5 +117,5 @@
 </div>
 
 <div id="chart-container" class="row">    
-    <?php //echo var_dump($fieldCommunity); ?>
+    <?php echo var_dump($loggedUser); ?>
 </div>

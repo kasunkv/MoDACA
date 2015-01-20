@@ -4,7 +4,11 @@
     echo $this->element('staffNav');
     $this->end();
 ?>
-
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
         <h2><?php echo $event['FieldGroup']['name']; ?> | <?php echo $event['Event']['title']; ?></h2>
