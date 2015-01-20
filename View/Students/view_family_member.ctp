@@ -21,7 +21,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Basic Details</b>
             </div>
@@ -74,7 +74,7 @@
 
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b><?php echo $familyMember['FamilyMember']['first_name'] . "'s"; ?> BMI Change</b>
             </div>
@@ -98,7 +98,7 @@
 
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12">        
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b><?php echo $familyMember['FamilyMember']['first_name'] . "'s"; ?> WHR Change</b>
             </div>

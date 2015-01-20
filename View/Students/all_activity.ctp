@@ -22,7 +22,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="panel panel-success">
+            <div class="panel panel-success panel-shadow">
                 <div class="panel-heading">
                     Completed Community Activities
                 </div>
@@ -34,7 +34,7 @@
                     <?php foreach ($allEvents as $event): ?>
                         <?php if($event['Event']['complete'] == 1): ?>
                             <?php $ctr++; ?>
-                            <div class="activity-noti">
+                            <div class="activity-noti shadow">
                                 <div class="activity-noti-header">
                                     <a href="/MoDACA/students/viewActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
                                     <span class="badge badge-green">
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="panel panel-danger">
+            <div class="panel panel-danger panel-shadow">
                 <div class="panel-heading">
                     Pending Community Activities
                 </div>
@@ -72,7 +72,7 @@
                         <?php foreach ($allEvents as $event): ?>
                             <?php if($event['Event']['complete'] == 0): ?>
                                 <?php $ctr++; ?>
-                                <div class="activity-noti">
+                                <div class="activity-noti shadow">
                                     <div class="activity-noti-header">
                                         <a href="/MoDACA/students/completeActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
                                         <span class="badge badge-red">

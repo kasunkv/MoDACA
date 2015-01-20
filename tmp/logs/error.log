@@ -14750,3 +14750,543 @@ Request URL: /MoDACA/css/bootstrap.css.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-01-17 18:46:32 Error: [MissingActionException] Action StaffsController::viewGroup() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'viewGroup',
+)
+Request URL: /MoDACA/Staffs/viewGroup
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-17 18:48:39 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Staffs\view_group.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Staffs\\view_group.ctp',
+)
+Request URL: /MoDACA/Staffs/viewGroup
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-01-17 19:34:51 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewGroup
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(153): Model->find('all')
+#7 [internal function]: StaffsController->viewGroup()
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-17 19:36:09 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewGroup
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(155): Model->find('all', Array)
+#7 [internal function]: StaffsController->viewGroup()
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-17 19:40:55 Error: [MissingActionException] Action StaffsController::viewGroup() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'viewGroup',
+)
+Request URL: /MoDACA/Staffs/viewGroup/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-17 19:42:02 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewFieldGroups
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(155): Model->find('all', Array)
+#7 [internal function]: StaffsController->viewFieldGroups()
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-17 19:50:37 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewFieldGroups
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(155): Model->find('all', Array)
+#7 [internal function]: StaffsController->viewFieldGroups()
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-17 19:50:57 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewGroup/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(171): Model->find('first', Array)
+#7 [internal function]: StaffsController->viewGroup('1')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-17 19:53:06 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'FieldCommunity'
+Request URL: /MoDACA/Staffs/viewGroup/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `FieldGr...', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `FieldGr...', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `FieldGr...', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(FieldGroup), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('first', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(171): Model->find('first', Array)
+#7 [internal function]: StaffsController->viewGroup('1')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-18 08:41:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:42:01 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:47:46 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:49:05 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:49:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:49:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:49:28 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 08:49:36 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 09:44:21 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [D:\wamp\www\MoDACA\View\Staffs\view_group.ctp, line 65]
+2015-01-18 09:44:21 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+Request URL: /MoDACA/Staffs/viewGroup/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 09:44:49 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [D:\wamp\www\MoDACA\View\Staffs\view_group.ctp, line 65]
+2015-01-18 09:44:49 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+Request URL: /MoDACA/Staffs/viewGroup/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 09:45:05 Error: Fatal Error (4): syntax error, unexpected ';', expecting ':' in [D:\wamp\www\MoDACA\View\Staffs\view_group.ctp, line 65]
+2015-01-18 09:45:05 Error: [FatalErrorException] syntax error, unexpected ';', expecting ':'
+Request URL: /MoDACA/Staffs/viewGroup/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 65, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 09:51:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 09:52:12 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 09:52:25 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 15:06:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 15:10:01 Error: Fatal Error (1): Call to undefined method StaffsController::getLoggedStudent() in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 217]
+2015-01-18 15:10:01 Error: [FatalErrorException] Call to undefined method StaffsController::getLoggedStudent()
+Request URL: /MoDACA/Staffs/viewFieldCommunityStats/3
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 217)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 217, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 217, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 16:33:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 16:35:46 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 16:57:21 Error: [MissingActionException] Action StaffsController::trackStudents() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'trackStudents',
+)
+Request URL: /MoDACA/Staffs/trackStudents
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-18 17:20:36 Error: [MissingActionException] Action StaffsController::viewCompletedActivity() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'viewCompletedActivity',
+)
+Request URL: /MoDACA/Staffs/viewCompletedActivity/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-18 17:22:29 Error: [MissingViewException] View file "D:\wamp\www\MoDACA\View\Staffs\view_completed_activity.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'D:\\wamp\\www\\MoDACA\\View\\Staffs\\view_completed_activity.ctp',
+)
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#4 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-01-18 18:33:46 Error: Fatal Error (4): syntax error, unexpected ''div'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in [D:\wamp\www\MoDACA\View\Staffs\view_completed_activity.ctp, line 218]
+2015-01-18 18:33:46 Error: [FatalErrorException] syntax error, unexpected ''div'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 218)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 218, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 218, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 18:34:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:35:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:43:38 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:45:52 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:45:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:50:27 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 18:54:10 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 19:13:25 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 19:19:52 Error: Fatal Error (1): Call to undefined function is() in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 276]
+2015-01-18 19:19:52 Error: [FatalErrorException] Call to undefined function is()
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 276)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 276, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 276, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-18 19:35:07 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'EventFeedback.event_id' in 'where clause'
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Event`....', Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Event`....', Array, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Event`....', false)
+#4 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Event), Array)
+#5 D:\wamp\www\CakePHP\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 D:\wamp\www\MoDACA\Controller\StaffsController.php(279): Model->find('all', Array)
+#7 [internal function]: StaffsController->viewCompletedActivity('2', '1')
+#8 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(StaffsController), Array)
+#9 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#11 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-01-18 19:58:31 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 19:58:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 19:59:04 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/css/bootstrap.css.map
+Stack Trace:
+#0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-18 20:00:16 Error: [MissingActionException] Action StaffsController::search() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'search',
+)
+Request URL: /MoDACA/Staffs/search
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-18 20:00:20 Error: [MissingActionException] Action StaffsController::trackGroup() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'trackGroup',
+)
+Request URL: /MoDACA/Staffs/trackGroup
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-18 20:00:34 Error: [MissingActionException] Action StaffsController::studentProgress() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'studentProgress',
+)
+Request URL: /MoDACA/Staffs/studentProgress
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-20 03:11:25 Error: [MissingActionException] Action StaffsController::viewPendingActivity() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'viewPendingActivity',
+)
+Request URL: /MoDACA/Staffs/viewPendingActivity/2/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-20 03:36:42 Error: Fatal Error (1): Call to undefined function create() in [D:\wamp\www\MoDACA\Controller\StaffsController.php, line 312]
+2015-01-20 03:36:42 Error: [FatalErrorException] Call to undefined function create()
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 312)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 312, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\wamp\\www\\MoD...', 312, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-20 03:52:37 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO) in [D:\wamp\www\MoDACA\View\Staffs\view_completed_activity.ctp, line 243]
+2015-01-20 03:52:37 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /MoDACA/Staffs/viewCompletedActivity/2/1
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 243)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 243, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\wamp\\www\\MoD...', 243, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-20 06:38:39 Error: [MissingActionException] Action StaffsController::viewPendingActivity() could not be found.
+Exception Attributes: array (
+  'controller' => 'StaffsController',
+  'action' => 'viewPendingActivity',
+)
+Request URL: /MoDACA/Staffs/viewPendingActivity/2/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StaffsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

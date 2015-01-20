@@ -27,14 +27,14 @@
             ),
         ));
         ?>
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Community Event Details
                 </div>
                 <div class="panel-body">
                     <!-- Colum Left  -->
                     <div class="col-md-7 col-sm-12 col-xs-12">
-                        <div id="event-map" style="height: 400px;"></div>
+                        <div id="event-map" class="shadow" style="height: 400px;"></div>
                     </div>
                     
                     <div class="col-md-5 col-sm-12 col-xs-12">   

@@ -35,6 +35,24 @@
     margin: auto 0px;
 }
 
+.shadow {
+  -moz-box-shadow:    4px 4px 8px 0px rgba(29,29,29, 0.4);
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(29,29,29, 0.4);
+  box-shadow:         4px 4px 8px 0px rgba(29,29,29, 0.4);
+}
+
+.panel-shadow {
+  -moz-box-shadow:    3px 3px 8px 0px rgba(29,29,29, 0.2);
+  -webkit-box-shadow: 3px 3px 8px 0px rgba(29,29,29, 0.2);
+  box-shadow:         3px 3px 8px 0px rgba(29,29,29, 0.2);
+}
+
+.chat-msg-shadow {
+    -moz-box-shadow:    0px 0px 12px 1px rgba(29,29,29, 0.1);
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(29,29,29, 0.1);
+    box-shadow: 0px 0px 12px 1px rgba(29,29,29, 0.1);
+}
+
 .wrapper-login {
     margin: 0 0 0 260px;
         padding: 15px 30px;
@@ -205,6 +223,10 @@
     margin-right: -25px;
 }
 
+.profile-image-name {
+    /*font-weight: bolder;*/
+    text-align: center;
+}
 
 /* Activity Notifications */
 
@@ -246,11 +268,11 @@
         right: 0px;
     }
     
-    .activity-noti-header .badge-red {
+    .badge-red {
        background-color: rgba(255, 0, 0, 0.6);        
     }
     
-    .activity-noti-header .badge-green {
+    .badge-green {
         background-color: rgba(0, 128, 0, 0.6);
     }
 
@@ -267,6 +289,43 @@
     margin-top: -10px;
     margin-bottom: -0px;
 }
+
+
+/* CUSTOM LIST */
+
+.custom-list-header {
+    font-size: 1.5em;
+    color: rgba(0, 128, 0, 0.8);
+    padding: 5px auto;
+    margin: -5px auto 0px auto;
+}
+
+    .custom-list-header:hover {
+        text-decoration: none;
+        color: rgba(0, 128, 0, 0.5);
+    }
+    
+    .custom-list-link, .custom-list-link:hover, .custom-list-link:active  {
+        text-decoration: none;
+    }
+    
+
+.custom-list-batch {
+    margin-top: 5px;
+}
+
+.feedback-user-image {
+    height: 50px;
+    width: 50px;
+}
+
+
+ /* CUSTOM LABELS */
+.label-red { background-color: #FD4242; }
+.label-orange { background-color: #FFAF1D; }
+.label-yellow { background-color: #DFE500; }
+.label-light-green { background-color: #6AE815; }
+.label-green { background-color: #00900D; }
 
 
 /* End of My Styles */

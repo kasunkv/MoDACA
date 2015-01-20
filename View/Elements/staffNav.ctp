@@ -22,10 +22,10 @@
     <a href="/MoDACA/Staffs/search"><i class="fa fa-search fa-3x"></i> Search</a>
 </li>
 <li>
-    <a href="#"><i class="fa fa-users fa-3x"></i> Student Groups<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-users fa-3x"></i>Student Groups<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/Staffs/viewGroup">View Groups</a>
+            <a href="/MoDACA/Staffs/viewFieldGroups">View Groups</a>
         </li>
         <li>
             <a href="/MoDACA/Staffs/trackGroup">Track Group</a>
@@ -33,7 +33,7 @@
     </ul>
 </li>
 <li>
-    <a href="/MoDACA/Staffs/trackStudents"><i class="fa fa-location-arrow fa-3x"></i> Track Students</a>
+    <a href="/MoDACA/Staffs/trackStudents"><i class="fa fa-location-arrow fa-3x"></i> &nbsp;Track Students</a>
 </li>
 
 <li>

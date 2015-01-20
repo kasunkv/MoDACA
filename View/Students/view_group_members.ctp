@@ -14,7 +14,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Results
                 </div>
@@ -40,7 +40,7 @@
                                             echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
                                                 'width' => 60,
                                                 'height' => 60,
-                                                'class' => 'profile-image-approve')
+                                                'class' => 'profile-image-approve panel-shadow')
                                             );                                        
                                         ?>
                                     </td>

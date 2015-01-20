@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-md-12">
         <?php echo $this->Session->flash(); ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Pending Approvals
                 </div>

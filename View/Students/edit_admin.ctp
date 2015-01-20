@@ -21,7 +21,7 @@
             'enctype' => 'multipart/form-data',
         ));
         ?>
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Details
                 </div>

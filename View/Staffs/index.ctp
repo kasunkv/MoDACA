@@ -7,12 +7,19 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Lecturer | Dashboard</h2>
-        <h5>Welcome Username</h5>
+        <h2><?php echo $staff['Staff']['first_name'] . ' ' . $staff['Staff']['last_name']; ?> | Dashboard</h2>
+        <h4 class="page-subheader">Welcome to your dashboard <?php echo $staff['Staff']['gender'] == 'Male' ? 'Mr. ' : 'Ms. '; ?> <?php echo $staff['Staff']['first_name'] . ' ' . $staff['Staff']['last_name']; ?></h4>
     </div>
 </div>
 <!-- /. ROW  -->
 <hr />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <?php echo $this->Session->flash(); ?>    
+    </div>    
+</div>
+
 <div class="row">
     <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">

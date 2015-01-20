@@ -5,6 +5,8 @@ App::uses('AppModel', 'Model');
  *
  * @property FieldCommunity $FieldCommunity
  * @property FieldGroup $FieldGroup
+ * @property Score $Score
+ * @property EventFeedback $EventFeedback
  * @property EventPhoto $EventPhoto
  */
 class Event extends AppModel {
@@ -135,6 +137,13 @@ class Event extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Score' => array(
+			'className' => 'Score',
+			'foreignKey' => 'score_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -144,6 +153,19 @@ class Event extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'EventFeedback' => array(
+			'className' => 'EventFeedback',
+			'foreignKey' => 'event_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'EventPhoto' => array(
 			'className' => 'EventPhoto',
 			'foreignKey' => 'event_id',

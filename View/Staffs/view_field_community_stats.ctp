@@ -1,7 +1,7 @@
 <?php $this->layout = 'defaultLayout'; ?>
 <?php
     $this->start('sideNav');
-    echo $this->element('studentNav');
+    echo $this->element('staffNav');
     $this->end();
 ?>
 <div class="row">
@@ -171,12 +171,6 @@
     </div>  
 </div>
 
-<div class="row">
-<!--    <div style="height: 50px; width: 150px; border: gray 2px solid; border-radius: 5px;">
-        <h5><?php //echo $chartPopulation['title']; ?>: <?php //echo $chartPopulation['village_name']; ?></h5>
-        <p>The field area consists of <?php //echo $chartPopulation['families']; ?> families with a population of <?php //echo $chartPopulation['total_population']; ?> people.</p>
-    </div>-->
-</div>
 
 <script>
     //colors: ['#428bca', '#39b3d7', '#6DD1EF', '#47a447', '#25A325', '#8CF58C', '#ed9c28', '#d58512', '#d2322d', '#ac2925']

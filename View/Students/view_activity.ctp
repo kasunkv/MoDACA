@@ -16,14 +16,14 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 Community Activity Details
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div id="event-map" style="height: 400px;"></div>                        
+                        <div id="event-map" class="shadow" style="height: 400px;"></div>                        
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <p class="profile-view-heading">Expected Attendance</p>
@@ -130,7 +130,7 @@
                         <br />
                         
                         <!-- FEEDBACK BOX -->
-                        <div class="chat-panel panel panel-info chat-boder chat-panel-head">
+                        <div class="chat-panel panel panel-info chat-boder chat-panel-head panel-shadow">
                             <div class="panel-heading">
                                 <i class="fa fa-comments fa-fw"></i>
                                 Activity Feedback

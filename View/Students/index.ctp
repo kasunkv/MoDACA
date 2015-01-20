@@ -21,7 +21,7 @@
 
 <div class="row">
     <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="panel noti-box main-dash-noti-box-bg-blue">            
+        <div class="panel noti-box main-dash-noti-box-bg-blue shadow">            
             <div class="main-dash-noti-box">
                 <p class="main-dash-noti-box-title"><?php echo $fieldCommunity['FieldCommunity']['title'] ?></p>
                 <p class="">
@@ -39,7 +39,7 @@
     </div>
     
     <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="panel noti-box main-dash-noti-box-bg-orange">            
+        <div class="panel noti-box main-dash-noti-box-bg-orange shadow">            
             <div class="main-dash-noti-box">
                 <p class="main-dash-noti-box-title"><?php echo $student['FieldGroup']['no_of_members']; ?> Members</p>
                 <p class="">
@@ -57,7 +57,7 @@
     </div>
     
     <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="panel noti-box main-dash-noti-box-bg-red">            
+        <div class="panel noti-box main-dash-noti-box-bg-red shadow">            
             <div class="main-dash-noti-box">
                 <p class="main-dash-noti-box-title">Objective 50%</p>
                 <p class="">

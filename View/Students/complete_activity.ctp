@@ -21,13 +21,13 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-warning">
+        <div class="panel panel-warning panel-shadow">
             <div class="panel-heading">
                 Initial Activity Details
             </div>
             <div class="panel-body">
                 <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div id="event-map" style="height: 400px;"></div>
+                    <div id="event-map" class="shadow" style="height: 400px;"></div>
                     
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -64,7 +64,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-warning">
+        <div class="panel panel-warning panel-shadow">
             <div class="panel-heading">
                 Post Activity Details
             </div>

@@ -31,7 +31,7 @@
             'type' => 'file',
         ));
         ?>
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Details
                 </div>
@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>  
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Tasks
                 </div>

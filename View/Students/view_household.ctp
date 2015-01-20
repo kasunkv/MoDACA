@@ -26,12 +26,12 @@
         </div>
     </div>
     <div class="col-md-8 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Location of House</b>
             </div>
             <div class="panel-body">
-                <div id="area-map" style="width: 100%; height: 400px;" ></div>
+                <div id="area-map" class="shadow" style="width: 100%; height: 400px;" ></div>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Basic Details</b>
             </div>
@@ -89,7 +89,7 @@
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Family Members</b>
             </div>
@@ -215,7 +215,7 @@
         </div>
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Sugar & Salt Consumption (g/month)</b>
             </div>
@@ -228,7 +228,7 @@
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-shadow">
             <div class="panel-heading">
                 <b>Oil Consumption (ml/month)</b>
             </div>

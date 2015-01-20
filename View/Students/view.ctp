@@ -16,7 +16,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <?php echo $this->Session->flash(); ?> 
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Details
                 </div>
@@ -58,7 +58,7 @@
                                 echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
                                     'width' => 200,
                                     'height' => 200,
-                                    'class' => 'profile-image')
+                                    'class' => 'profile-image shadow')
                                 );                                        
                             ?>
                         </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>  
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Tasks
                 </div>
