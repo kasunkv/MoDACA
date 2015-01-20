@@ -117,7 +117,27 @@
                         <p class="text-muted" style="margin-top: -35px;"><?php echo $presentage; ?> % Participation</p>
                         
                         <h3>Lecturer's Rating</h3>
-                        <p class="text-muted" style="margin-top: -25px;">Not Rated Yet.</p>
+                        <?php if(empty($event['Score'])): ?>
+                            <p class="text-muted" style="margin-top: -25px;">Not Rated Yet.</p>
+                        <?php else: ?>
+                            <?php 
+                                echo $this->Form->input('', array(
+                                    'class' => 'rating',
+                                    'id' => 'ScoreMark',
+                                    'type' => 'number',
+                                    'readonly' => 'readonly',
+                                    'min' => 0,
+                                    'max' => 100,
+                                    'step' => 1,
+                                    'data-size' => 'md',
+                                    'value' => $event['Score']['mark'],
+                                    'div' => array (
+                                        'class' => 'form-group input-group-lg',
+                                        'style' => 'margin-top: -25px;',
+                                    )
+                                ));
+                            ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 
@@ -138,20 +158,42 @@
 
                             <div class="panel-body">
                                 <ul class="chat-box">
-                                    <li class="left clearfix">
-                                        <span class="chat-img pull-left">
-                                            <img src="assets/img/1.png" alt="User" class="img-circle">
-                                        </span>
-                                        <div class="chat-body">                                        
-                                                <strong>Jack Sparrow</strong>
-                                                <small class="pull-right text-muted">
-                                                    <i class="fa fa-clock-o fa-fw"></i>12 mins ago
-                                                </small>                                      
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                            </p>
-                                        </div>
-                                    </li>                                        
+                                    <?php if(empty($eventFeedbacks)): ?>
+                                        <p class="text-muted">No Feedback Given Yet.</p>
+                                    <?php else: ?>
+                                        <?php foreach ($eventFeedbacks as $feedback): ?>
+                                            <li class="left clearfix" style="padding: 15px 0px; /*border-radius: 10px;*/">
+                                                <span class="chat-img pull-left">
+                                                    <?php 
+                                                        if(!empty($feedback['Staff']['profile_photo'])) {
+                                                            echo $this->Html->image('../uploads/staffs/'. $feedback['Staff']['profile_photo'], array(
+                                                                'alt' => 'Lecturer',
+                                                                'class' => 'img-circle panel-shadow feedback-user-image',
+                                                                'height' => 60,
+                                                                'width' => 60,
+                                                                )
+                                                            ); 
+                                                        } else {
+                                                            echo $this->Html->image('../uploads/default_user.png', array(
+                                                                'alt' => 'Lecturer',
+                                                                'class' => 'img-circle panel-shadow feedback-user-image',
+                                                                'height' => 60,
+                                                                'width' => 60,
+                                                                )
+                                                            );
+                                                        }
+                                                    ?>
+                                                </span>
+                                                <div class="chat-body">                                        
+                                                        <strong><?php echo $feedback['Staff']['first_name'] . ' ' .$feedback['Staff']['last_name']; ?></strong>
+                                                        <small class="pull-right text-muted">
+                                                            <i class="fa fa-clock-o fa-fw"></i><?php echo $feedback['EventFeedback']['created'] ?>
+                                                        </small>                                      
+                                                    <p><?php echo $feedback['EventFeedback']['comment']; ?></p>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
@@ -174,7 +216,24 @@
 </div>
 
 <script>
- 
+    $("#ScoreMark").rating({
+        starCaptions: function (val) {
+            return val + '/100';
+        },
+        starCaptionClasses : function (val) {
+            if(val < 20) {
+                return 'label label-red';
+            } else if(val >= 20 && val < 40) {
+                return 'label label-orange';
+            } else if(val >= 40 && val < 60) {
+                return 'label label-yellow';
+            } else if(val >= 60 && val < 80) {
+                return 'label label-light-green';
+            } else {
+                return 'label label-green';
+            }
+        }
+    });
     
  
    // google map

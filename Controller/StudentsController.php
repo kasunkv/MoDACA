@@ -21,13 +21,30 @@ class StudentsController extends AppController {
         // Set the field community
         $fieldCommunityId = $student['FieldGroup']['field_community_id'];
         $this->loadModel('FieldCommunity');
-        $community = $this->FieldCommunity->find('first', array(
+        $fieldCommunity = $this->FieldCommunity->find('first', array(
             'conditions' => array(
                 'id' => $fieldCommunityId
             ),
             'recursive' => -1,
         ));
-        $this->set('fieldCommunity', $community);
+
+        $this->loadModel('EventFeedback');
+        $totalFeedback = $this->EventFeedback->find('all', array(
+            'conditions' => array(
+                'EventFeedback.field_group_id' => $student['FieldGroup']['id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $unseen = 0;
+        foreach($totalFeedback as $feedback) {
+            if($feedback['EventFeedback']['seen'] == 0){
+                $unseen++;
+            }
+        }
+
+
+        $this->set(compact('fieldCommunity', 'unseen'));
 
     }
 
@@ -846,10 +863,31 @@ class StudentsController extends AppController {
             'conditions' => array(
                 'Event.field_group_id' => $student['Student']['field_group_id'],
             ),
-            'recursive' => -1,
+            'recursive' => 2,
         ));
 
-        $this->set(compact('student', 'allEvents'));
+        $participationProgress = [];
+        foreach($allEvents as $event) {
+            if($event['Event']['complete'] == 1) {
+
+                $activity = $event['Event']['title'];
+
+                $exp = intval($event['Event']['expected_attendance']);
+                $par = intval($event['Event']['participated_attendance']);
+
+                $presentage = round(($par / $exp) * 100, 2);
+
+                $temp = [];
+                $temp['Activity'] =  $activity;
+                $temp['Presentage'] = $presentage;
+
+                array_push($participationProgress, $temp);
+            }
+        }
+
+
+
+        $this->set(compact('student', 'allEvents', 'participationProgress'));
 
 
     }
@@ -868,6 +906,17 @@ class StudentsController extends AppController {
                 'recursive' => -1,
             ));
 
+            $this->loadModel('EventFeedback');
+            $eventFeedbacks = $this->EventFeedback->find('all', array(
+                'conditions' => array(
+                    'EventFeedback.event_id' => $id,
+                ),
+            ));
+
+            foreach($eventFeedbacks as $feedback) {
+                $feedback['EventFeedback']['seen'] = 1;
+                $this->EventFeedback->save($feedback);
+            }
 
             if($this->request->is('post')) {
                 $data = $this->request->data;
@@ -910,7 +959,7 @@ class StudentsController extends AppController {
             }
 
 
-            $this->set(compact('student', 'event', 'data'));
+            $this->set(compact('student', 'event', 'data', 'eventFeedbacks'));
         } else {
             $this->Session->setFlash(__('Community Activity not Found!'), 'flashError');
             $this->redirect(array('action' => 'allActivity'));
@@ -929,14 +978,22 @@ class StudentsController extends AppController {
                 ),
             ));
 
-//            $this->loadModel('EventPhoto');
-//            $eventPhotos = $this->EventPhoto->find('all', array(
-//                'conditions' => array(
-//                    'EventPhoto.event_id' => $id,
-//                ),
-//            ));
+            $this->loadModel('EventFeedback');
+            $eventFeedbacks = $this->EventFeedback->find('all', array(
+                'conditions' => array(
+                    'EventFeedback.event_id' => $id,
+                ),
+            ));
 
-            $this->set(compact('student', 'event'));
+            foreach($eventFeedbacks as $feedback) {
+                $feedback['EventFeedback']['seen'] = 1;
+                $this->EventFeedback->save($feedback);
+            }
+
+
+
+
+            $this->set(compact('student', 'event', 'eventFeedbacks'));
         }else {
             $this->Session->setFlash(__('Community Activity not Found!'), 'flashError');
             $this->redirect(array('action' => 'allActivity'));

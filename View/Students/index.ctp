@@ -100,8 +100,8 @@
               <div class="row">
                   <div class="col-xs-6"> <i class="fa fa-comments fa-3x"></i><br /> Unread Lecturer Feedback </div>
                 <div class="col-xs-6">
-                  <div class="text-temp"> 5 </div>
-                  <a class="notification-link-1" href="#" >Take A Look</a>
+                  <div class="text-temp"> <?php echo $unseen; ?> </div>
+                  <a class="notification-link-1" href="/MoDACA/students/allActivity" >Take A Look</a>
                 </div>
               </div>
             </div>

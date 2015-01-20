@@ -179,7 +179,12 @@
                             Community Activity Progress
                         </div>
                         <div class="panel-body">
-                            
+                            <?php if(empty($participationProgress)): ?>
+                                <p class="No Completed Events Yet."></p>
+                            <?php else: ?>
+                                <div id="area-activity-progress"></div>
+                                <center><h5><strong>Community Member Participation for Activities (%)</strong></h5></center>
+                            <?php endif; ?> 
                         </div>
                     </div>
                 </div>
@@ -256,5 +261,31 @@
         title: 'Field Community Area (Click for More Information)',        
     });
     map.setMapTypeId('hybrid');
+    
+    
+    var progAry = [];
+    <?php foreach ($participationProgress as $progress): ?>
+        var item = {
+            activity: '<?php echo $progress['Activity']; ?>',
+            presentage: <?php echo $progress['Presentage']; ?>            
+        };
+        progAry.push(item);        
+    <?php endforeach; ?>
+    
+    console.log(progAry);
+    
+    Morris.Area({
+        element: 'area-activity-progress',
+        data: progAry,
+        parseTime:false,
+        lineColors: [ '#5cb85c'],
+        xkey: 'activity',
+        ykeys: ['presentage'],
+        labels: ['Participation (%): '],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true,
+        behaveLikeLine: false
+    });
 
 </script>

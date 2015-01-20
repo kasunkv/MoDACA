@@ -37,10 +37,23 @@
                             <div class="activity-noti shadow">
                                 <div class="activity-noti-header">
                                     <a href="/MoDACA/students/viewActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
-                                    <span class="badge badge-green">
-                                        <i class="fa fa-comment"></i>
-                                        5
-                                    </span>
+                                    <?php if(!empty($event['EventFeedback'])): ?>
+                                            <?php 
+                                                $newComment = 0;
+                                                foreach ($event['EventFeedback'] as $feedback) {
+                                                    if($feedback['seen'] == 0) {
+                                                        $newComment++;
+                                                    }
+                                                }
+                                            ?>
+                                            <?php if($newComment > 0): ?>
+                                                <span class="badge badge-green">
+                                                    <i class="fa fa-comment"></i>
+                                                    <?php echo $newComment; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                            
+                                        <?php endif; ?>  
                                 </div>
                                 <p class="activity-noti-desc text-muted"><?php echo $event['Event']['description']; ?></p>
                                 <h5 class="activity-noti-date">
@@ -75,10 +88,23 @@
                                 <div class="activity-noti shadow">
                                     <div class="activity-noti-header">
                                         <a href="/MoDACA/students/completeActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
-                                        <span class="badge badge-red">
-                                            <i class="fa fa-comment"></i>
-                                            5
-                                        </span>
+                                        <?php if(!empty($event['EventFeedback'])): ?>
+                                            <?php 
+                                                $newComment = 0;
+                                                foreach ($event['EventFeedback'] as $feedback) {
+                                                    if($feedback['seen'] == 0) {
+                                                        $newComment++;
+                                                    }
+                                                }
+                                            ?>
+                                            <?php if($newComment > 0): ?>
+                                                <span class="badge badge-red">
+                                                    <i class="fa fa-comment"></i>
+                                                    <?php echo $newComment; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                            
+                                        <?php endif; ?>   
                                     </div>
                                     <p class="activity-noti-desc text-muted"><?php echo $event['Event']['description']; ?></p>
                                     <h5 class="activity-noti-date">
@@ -102,9 +128,53 @@
 </div>
 
 <div class="row">
-    <?php //echo var_dump($allEvents); ?>
+    <div class="col-md-12">
+        <div class="panel panel-default panel-shadow">
+            <div class="panel-heading">
+                Community Activity Participation Progress
+            </div>
+            <div class="panel-body">
+                <?php if(empty($participationProgress)): ?>
+                    <p class="No Completed Events Yet."></p>
+                <?php else: ?>
+                    <div id="area-activity-progress"></div>
+                    <center><h5><strong>Community Member Participation for Activities (%)</strong></h5></center>
+                <?php endif; ?>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <?php //echo var_dump($participationProgress); ?>
 </div>
 
 <script>
-   
+    
+    var progAry = [];
+    <?php foreach ($participationProgress as $progress): ?>
+        var item = {
+            activity: '<?php echo $progress['Activity']; ?>',
+            presentage: <?php echo $progress['Presentage']; ?>            
+        };
+        progAry.push(item);        
+    <?php endforeach; ?>
+    
+    console.log(progAry);
+    
+    Morris.Area({
+        element: 'area-activity-progress',
+        data: progAry,
+        parseTime:false,
+        lineColors: [ '#5cb85c'],
+        xkey: 'activity',
+        ykeys: ['presentage'],
+        labels: ['Participation (%): '],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true,
+        behaveLikeLine: false
+    });
+    
+
 </script>

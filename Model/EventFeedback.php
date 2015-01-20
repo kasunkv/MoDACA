@@ -4,16 +4,12 @@ App::uses('AppModel', 'Model');
  * EventFeedback Model
  *
  * @property Event $Event
+ * @property FieldGroup $FieldGroup
  * @property Staff $Staff
  */
 class EventFeedback extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
+    public $validate = array(
 		'comment' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -37,6 +33,13 @@ class EventFeedback extends AppModel {
 		'Event' => array(
 			'className' => 'Event',
 			'foreignKey' => 'event_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'FieldGroup' => array(
+			'className' => 'FieldGroup',
+			'foreignKey' => 'field_group_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

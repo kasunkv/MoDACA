@@ -199,12 +199,27 @@ class StaffsController extends AppController
                 'recursive' => 2,
             ));
 
+            $participationProgress = [];
+            foreach($allEvents as $event) {
+                if($event['Event']['complete'] == 1) {
+
+                    $activity = $event['Event']['title'];
+
+                    $exp = intval($event['Event']['expected_attendance']);
+                    $par = intval($event['Event']['participated_attendance']);
+
+                    $presentage = round(($par / $exp) * 100, 2);
+
+                    $temp = [];
+                    $temp['Activity'] =  $activity;
+                    $temp['Presentage'] = $presentage;
+
+                    array_push($participationProgress, $temp);
+                }
+            }
 
 
-            $this->set(compact('group', 'fieldCommunity', 'groupMembers', 'allEvents'));
-        } else {
-            $this->Session->setFlash(__('Field Group not Found!'), 'flashError');
-            $this->redirect(array('action' => 'viewFieldGroups'));
+            $this->set(compact('group', 'groupMembers', 'fieldCommunity', 'allEvents', 'participationProgress'));
         }
     }
 

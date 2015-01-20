@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <p class="profile-view-heading">Title</p>
-                    <p class="profile-view-info"><?php echo $event['Event']['title'] ?></p>
+                    <h1><?php echo $event['Event']['title'] ?></h1>
                     
                     <p class="profile-view-heading">Activity Description</p>
                     <p class="profile-view-bio"><?php echo $event['Event']['description'] ?></p>
@@ -62,6 +62,63 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3>Lecturer's Feedback</h3>                        
+        <h4 class="page-subheader">Feedback from your lecturers to improve your community activities.</h4>
+        <br />
+
+        <!-- FEEDBACK BOX -->
+        <div class="chat-panel panel panel-info chat-boder chat-panel-head panel-shadow">
+            <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i>
+                Activity Feedback
+            </div>
+
+            <div class="panel-body" style="height: 260px;">
+                <ul class="chat-box">
+                    <?php if(empty($eventFeedbacks)): ?>
+                        <p class="text-muted">No Feedback Given Yet.</p>
+                    <?php else: ?>
+                        <?php foreach ($eventFeedbacks as $feedback): ?>
+                            <li class="left clearfix" style="padding: 15px 0px; /*border-radius: 10px;*/">
+                                <span class="chat-img pull-left">
+                                    <?php 
+                                        if(!empty($feedback['Staff']['profile_photo'])) {
+                                            echo $this->Html->image('../uploads/staffs/'. $feedback['Staff']['profile_photo'], array(
+                                                'alt' => 'Lecturer',
+                                                'class' => 'img-circle panel-shadow feedback-user-image',
+                                                'height' => 60,
+                                                'width' => 60,
+                                                )
+                                            ); 
+                                        } else {
+                                            echo $this->Html->image('../uploads/default_user.png', array(
+                                                'alt' => 'Lecturer',
+                                                'class' => 'img-circle panel-shadow feedback-user-image',
+                                                'height' => 60,
+                                                'width' => 60,
+                                                )
+                                            );
+                                        }
+                                    ?>
+                                </span>
+                                <div class="chat-body">                                        
+                                        <strong><?php echo $feedback['Staff']['first_name'] . ' ' .$feedback['Staff']['last_name']; ?></strong>
+                                        <small class="pull-right text-muted">
+                                            <i class="fa fa-clock-o fa-fw"></i><?php echo $feedback['EventFeedback']['created'] ?>
+                                        </small>                                      
+                                    <p><?php echo $feedback['EventFeedback']['comment']; ?></p>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-warning panel-shadow">

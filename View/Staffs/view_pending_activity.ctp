@@ -133,6 +133,7 @@
                             ?>    
                             <input type="hidden" name="data[EventFeedback][event_id]" value="<?php echo $event['Event']['id'] ?>" />
                             <input type="hidden" name="data[EventFeedback][staff_id]" value="<?php echo $staff['Staff']['id'] ?>" />
+                            <input type="hidden" name="data[EventFeedback][field_group_id]" value="<?php echo $event['Event']['field_group_id'] ?>" />
                             <?php 
                                 $form_end_options = array(
                                     'label' => 'Submit Feedback', 
