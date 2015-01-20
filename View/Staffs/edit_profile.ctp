@@ -11,8 +11,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Staff | Edit Profile</h2>
-        <h5>Edit an existing user profile</h5>
+        <h2><?php echo $staff['Staff']['first_name'] . " " . $staff['Staff']['last_name']; ?> | Edit Profile</h2>
+        <h4 class="page-subheader">Edit your student profile information.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -22,91 +22,212 @@
 
     </div>
     <div class="col-md-10">
-        <h3>Edit Profile</h3>
-        <form role="form">
-            <div class="panel panel-default">
+        <?php
+            //echo var_dump($fieldGroups);
+            //echo '<br />';
+            //echo var_dump($student);        
+        ?>
+        
+        <?php echo $this->Form->create('Staff', array(
+            'inputDefaults' => array(
+                //'label' => false,
+            ),
+            'enctype' => 'multipart/form-data',
+            'type' => 'file',
+        ));
+        ?>
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Details
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-6">
-                        <div class="form-group input-group-lg">
-                            <label>Role</label>
-                            <select class="form-control" required>
-                                <option>Lecturer</option>
-                                <option>Student</option>
-                                <option>Administrator</option>
-                            </select>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Name" required>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" id="radGenderMale" value="male" checked>
-                                    Male
-                                </label>                                                
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" id="radGenderMale" value="female">
-                                    Female
-                                </label>                                                
-                            </div>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Designation" required>
-                        </div>
-                        <!--div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Index No" required>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Group No" required>
-                        </div-->
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group input-group-lg">
-                            <input class="form-control" placeholder="Contact No" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Address"></textarea>
-                        </div>                               
+                    <div class="col-md-6">      
+                        <!-- ID -->
+                        <?php
+                            echo $this->Form->hidden('id', array(                                
+                                'type' => 'text',                                                    
+                                'label' => 'Last Name',
+                                'value' => $staff['Staff']['id'],
+                            ));
+                        ?>
+                        
+                        <!-- First Name -->
+                        <?php 
+                            echo $this->Form->input('first_name', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'First Name', 
+                                'type' => 'text',    
+                                'value' => $staff['Staff']['first_name'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'First Name',
+                            ));
+                        ?>
+                        <!-- Last Name -->
+                        <?php 
+                            echo $this->Form->input('last_name', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Last Name', 
+                                'type' => 'text',    
+                                'value' => $staff['Staff']['last_name'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Last Name',
+                                
+                            ));
+                        ?>
+                        <!-- User Name -->
+                        <?php 
+                            echo $this->Form->input('username', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Username', 
+                                'type' => 'text',
+                                'value' => $staff['Staff']['username'],
+                                'disabled' => true,
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Username',
+                            ));
+                        ?>                         
+                           
+                        <!-- Designation -->
+                        <?php 
+                            echo $this->Form->input('designation', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Designation', 
+                                'type' => 'text',    
+                                'value' => $staff['Staff']['designation'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Designation',
+                                
+                            ));
+                        ?>
+                        
+                        <!-- Gender -->
+                        <?php
+                            echo $this->Form->hidden('gender', array(                                
+                                'type' => 'text',                                                    
+                                'label' => 'Last Name',
+                                'value' => $staff['Staff']['gender'],
+                            ));
+                        ?>
+                    
+                        <!-- Email -->
+                        <?php 
+                            echo $this->Form->input('email', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Email', 
+                                'type' => 'email',   
+                                'value' => $staff['Staff']['email'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Email',
+                            ));
+                        ?>
+                      
+                        <!-- Contact No -->
+                        <?php 
+                            echo $this->Form->input('contact_no', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Contact No', 
+                                'type' => 'text',        
+                                'value' => $staff['Staff']['contact_no'],
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'label' => 'Contact No',
+                            ));
+                        ?>
+                        
+                        <!-- Address -->
+                        <?php 
+                            echo $this->Form->input('address', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Address', 
+                                'type' => 'textarea',
+                                'value' => $staff['Staff']['address'],
+                                'rows' => '4',                          
+                                'div' => array (
+                                    'class' => 'form-group'
+                                ),
+                                'label' => 'Address',
+                            ));
+                        ?>                                   
                     </div>
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
+                            <br />
+                            <?php 
+                                echo $this->Html->image('../uploads/staffs/'. $staff['Staff']['profile_photo'], array(
+                                    'width' => 200,
+                                    'height' => 200,
+                                    'class' => 'profile-image shadow')
+                                );                                        
+                            ?>
                             <br /><br />
-                            <img src="../webroot/img/find_user.png" height="128" width="128">
+                            <?php echo $this->Form->file('profile_photo', array('multiple' => false)); ?>
                         </div>
-                        <div class="form-group">
-                            <label>Bio</label>
-                            <textarea class="form-control" rows="13" placeholder="Enter bio here"></textarea>
-                            <!--textarea class="form-control" rows="19" placeholder="Enter bio here"></textarea-->
+                        <div class="form-group">                          
+                            <!-- Bio -->
+                            <?php 
+                                echo $this->Form->input('bio', array(
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Enter your biography here...', 
+                                    'type' => 'textarea',
+                                    'value' => $staff['Staff']['bio'],
+                                    'rows' => '24',                          
+                                    'div' => array (
+                                        'class' => 'form-group'
+                                    ),
+                                    'label' => 'Biography',
+                                ));
+                                
+                                //546dcd75-a6f4-42f5-a4b2-2574dc306535
+                                //546dcd75-a6f4-42f5-a4b2-2574dc306535
+                            ?> 
                         </div> 
                     </div>
                 </div>
             </div>  
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
                     Tasks
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-primary btn-sm">Delete Profile</a>
+                        <?php echo $this->Html->link(__('Change Password'), array('controller' => 'Staffs' , 'action' => 'changePassword'), array('class' => 'btn btn-primary btn-sm')); ?>
                     </div>
                     <div class="col-md-6">
 
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-success btn-custom">Save</button>
-            <!-- <button type="reset" class="btn btn-lg btn-danger btn-custom">Cancle</button> -->
-            <a href="admin-view-profile.html" class="btn btn-lg btn-danger btn-custom">Cancle</a>
-        </form>                                 
+            <?php 
+                $form_end_options = array(
+                    'label' => 'Save Changes', 
+                    'class' => 'btn btn-lg btn-success btn-custom',                                
+                );
+                echo $this->Form->end($form_end_options);
+            ?>       
     </div>
     <div class="col-md-2">
 
     </div>
 </div>
+
+<script>
+    $("#StaffProfilePhoto").fileinput({
+        showUpload: false,
+        showCaption: true,
+	showRemove: false,
+        allowedFileTypes: ['image']
+    });    
+</script>
+

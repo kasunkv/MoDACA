@@ -68,7 +68,7 @@
                             ?>
                         </div>
                         <p class="profile-view-heading">Biography</p>
-                        <P class="profile-view-info profile-view-bio"><?php echo $student['Student']['bio']; ?></P>
+                        <P class="profile-view-info profile-view-bio"><?php echo nl2br($student['Student']['bio']); ?></P>
                     </div>
                 </div>
             </div>  

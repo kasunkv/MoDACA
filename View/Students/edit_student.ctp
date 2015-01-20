@@ -171,6 +171,13 @@
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
                             <br />
+                            <!-- HIDDEN PROFILE PHOTO -->
+                            <?php
+//                                echo $this->Form->hidden('profile_photo', array(                                
+//                                    'type' => 'text',                                                    
+//                                    'label' => 'Profile Photo',                                
+//                                ));
+//                            ?>
                             <?php 
                                 echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
                                     'width' => 200,
@@ -179,7 +186,7 @@
                                 );                                        
                             ?>
                             <br /><br />
-                            <?php echo $this->Form->file('profile_photo'); ?>
+                            <?php echo $this->Form->file('profile_photo', array('multiple' => false)); ?>
                         </div>
                         <div class="form-group">                          
                             <!-- Bio -->
@@ -224,21 +231,12 @@
 
     </div>
 </div>
-<!-- /. ROW  -->
 
-
-
-
-
-	<?php
-            /*
-            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Student.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Student.id')));
-            echo $this->Html->link(__('List Students'), array('action' => 'index'));
-            echo $this->Html->link(__('List Field Groups'), array('controller' => 'field_groups', 'action' => 'index'));
-            echo $this->Html->link(__('New Field Group'), array('controller' => 'field_groups', 'action' => 'add')); 
-            echo $this->Html->link(__('List Student Progresses'), array('controller' => 'student_progresses', 'action' => 'index'));
-            echo $this->Html->link(__('New Student Progress'), array('controller' => 'student_progresses', 'action' => 'add'));
-            echo $this->Html->link(__('List Task Assigners'), array('controller' => 'task_assigners', 'action' => 'index')); 
-            echo $this->Html->link(__('New Task Assigner'), array('controller' => 'task_assigners', 'action' => 'add'));
-             */
-        ?>
+<script>
+    $("#StudentProfilePhoto").fileinput({
+        showUpload: false,
+        showCaption: true,
+	showRemove: false,
+        allowedFileTypes: ['image']
+    });    
+</script>

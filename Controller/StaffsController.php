@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Folder','Utility');
 
 /**
  * Staffs Controller
@@ -33,12 +34,8 @@ class StaffsController extends AppController
      * @param string $id
      * @return void
      */
-    public function view($id = null) {
-        if (!$this->Staff->exists($id)) {
-            throw new NotFoundException(__('Invalid staff'));
-        }
-        $options = array('conditions' => array('Staff.' . $this->Staff->primaryKey => $id));
-        $this->set('staff', $this->Staff->find('first', $options));
+    public function viewProfile() {
+        $this->set('staff', $this->getLoggedStaff());
     }
 
     /**
@@ -66,21 +63,41 @@ class StaffsController extends AppController
      * @param string $id
      * @return void
      */
-    public function edit($id = null)
+    public function editProfile()
     {
-        if (!$this->Staff->exists($id)) {
-            throw new NotFoundException(__('Invalid staff'));
-        }
-        if ($this->request->is(array('post', 'put'))) {
-            if ($this->Staff->save($this->request->data)) {
-                $this->Session->setFlash(__('The staff has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+        if ($this->request->is(array('post'))) {
+
+            $staff = $this->getLoggedStaff();
+
+            $this->loadModel('Staff');
+            if ($this->request->data['Staff']['profile_photo']['error'] === UPLOAD_ERR_NO_FILE) {
+                $this->request->data['Staff']['profile_photo'] = $staff['Staff']['profile_photo'];
+                if ($this->Staff->save($this->request->data)) {
+                    $this->Session->setFlash('Your Profile was <b>Successfully</b> Updated.', 'flashSuccess');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                } else {
+                    $this->Session->setFlash('Oopz, Something went Wrong. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                }
             } else {
-                $this->Session->setFlash(__('The staff could not be saved. Please, try again.'));
+                if($this->uploadPhoto($this->request->data['Staff']['profile_photo'])) {
+                    if ($this->Staff->save($this->request->data)) {
+                        $this->Session->setFlash('Your Profile was <b>Successfully</b> Updated.', 'flashSuccess');
+                        return $this->redirect(array('action' => 'viewProfile'));
+                    } else {
+                        $this->Session->setFlash('Oopz, Something went Wrong. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                        return $this->redirect(array('action' => 'viewProfile'));
+                    }
+                } else {
+                    $this->Staff->save($this->request->data);
+                    $this->Session->setFlash('Oopz, Something went Wrong. Profile Picture Upload Failed. Your Profile was <b>NOT</b> Updated. Please, try again.', 'flashError');
+                    return $this->redirect(array('action' => 'viewProfile'));
+                }
             }
+
+
         } else {
-            $options = array('conditions' => array('Staff.' . $this->Staff->primaryKey => $id));
-            $this->request->data = $this->Staff->find('first', $options);
+            $this->set('staff', $this->getLoggedStaff());
         }
     }
 
@@ -135,10 +152,6 @@ class StaffsController extends AppController
     }
 
     public function createProfile() {
-
-    }
-
-    public function editProfile() {
 
     }
 
@@ -643,6 +656,36 @@ class StaffsController extends AppController
         }
 
         return $temp;
+    }
+
+    private  function uploadPhoto($data) {
+        $file = $data;
+
+        if($file['error'] === UPLOAD_ERR_OK) {
+            $folderName = APP.'webroot'.DS.'uploads'.DS.'staffs';
+            $folder = new Folder($folderName, true, 0777);
+
+            if($id!=null){
+                if(file_exists($folderName.DS.$id)){
+                    chmod($folderName.DS.$id,0755);
+                    unlink($folderName.DS.$id);
+                }
+            }
+
+            $id = String::uuid();
+
+            $tmp_file = $file['tmp_name'];
+            list($width, $height) = getimagesize($tmp_file);
+
+            if ($width == null && $height == null) {
+                return false;
+            }
+
+            move_uploaded_file($file['tmp_name'], $folderName.DS.$id);
+            $this->request->data['Staff']['profile_photo'] = $id;
+            return true;
+        }
+        return false;
     }
 
 }

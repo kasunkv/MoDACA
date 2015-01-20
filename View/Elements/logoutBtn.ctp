@@ -13,7 +13,7 @@
                 <?php if($user['role'] == 'Student'): ?>
                     <li><a href="/MoDACA/students/view/<?php echo $student['Student']['id']; ?>" class="square-btn-adjust "><i class="fa fa-user-md"></i> View Profile</a></li>
                 <?php elseif ($user['role'] == 'Staff'): ?>
-                    <li><a href="/MoDACA/Staffs/view/<?php echo $staff['Staff']['id']; ?>" class="square-btn-adjust "><i class="fa fa-user-md"></i> View Profile</a></li>
+                    <li><a href="/MoDACA/Staffs/viewProfile" class="square-btn-adjust "><i class="fa fa-user-md"></i> View Profile</a></li>
                 <?php elseif ($user['role'] == 'Admin'): ?>
                     <li><a href="/MoDACA/Administrators/viewProfile" class="square-btn-adjust "><i class="fa fa-user-md"></i> View Profile</a></li>
                 <?php endif; ?>
@@ -21,9 +21,9 @@
                 <!-- EDIT PROFILE BUTTON -->    
                 <!--<li><a href="#" class="square-btn-adjust"><i class="fa fa-edit"></i> Edit Profile</a></li>-->
                 <?php if($user['role'] == 'Student'): ?>
-                    <li><a href="MoDACA/students/editStudent/<?php echo $student['Student']['id']; ?>" class="square-btn-adjust "><i class="fa fa-edit"></i> Edit Profile</a></li>
+                    <li><a href="/MoDACA/students/editStudent/<?php echo $student['Student']['id']; ?>" class="square-btn-adjust "><i class="fa fa-edit"></i> Edit Profile</a></li>
                 <?php elseif ($user['role'] == 'Staff'): ?>
-                    <li><a href="/MoDACA/Staffs/view/<?php echo $staff['Staff']['id']; ?>" class="square-btn-adjust "><i class="fa fa-edit"></i> Edit Profile</a></li>
+                    <li><a href="/MoDACA/Staffs/editProfile" class="square-btn-adjust "><i class="fa fa-edit"></i> Edit Profile</a></li>
                 <?php elseif ($user['role'] == 'Admin'): ?>
                     <li><a href="/MoDACA/Administrators/editAdminProfile" class="square-btn-adjust "><i class="fa fa-edit"></i> Edit Profile</a></li>
                 <?php endif; ?>

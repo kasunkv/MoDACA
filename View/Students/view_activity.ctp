@@ -51,18 +51,18 @@
                             ?>
                         </p>
                         <p class="profile-view-heading">Activity Description</p>
-                        <p class="profile-view-bio"><?php echo $event['Event']['description'] ?></p>
+                        <p class="profile-view-bio"><?php echo nl2br($event['Event']['description']); ?></p>
                     </div>
                 </div>
                 
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <p class="profile-view-heading">Post Event Summary</p>
-                        <p class="profile-view-bio"><?php echo $event['Event']['post_event_summary'] ?></p>                            
+                        <p class="profile-view-bio"><?php echo nl2br($event['Event']['post_event_summary']); ?></p>                            
                     </div> 
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <p class="profile-view-heading">Conclusion</p>
-                        <p class="profile-view-bio"><?php echo $event['Event']['observation'] ?></p>                            
+                        <p class="profile-view-bio"><?php echo nl2br($event['Event']['observation']); ?></p>                            
                     </div> 
                 </div>
                 <hr />
