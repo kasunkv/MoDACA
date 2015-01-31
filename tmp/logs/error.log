@@ -21249,3 +21249,36 @@ Request URL: /MoDACA/js/progressbar.min.js.map
 Stack Trace:
 #0 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-01-31 19:47:17 Error: [MissingActionException] Action StudentsController::addEvaluationCheckpoints() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'addEvaluationCheckpoints',
+)
+Request URL: /MoDACA/students/addEvaluationCheckpoints
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-31 19:47:32 Error: [MissingActionException] Action StudentsController::addEvaluationIndicators() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'addEvaluationIndicators',
+)
+Request URL: /MoDACA/students/addEvaluationIndicators
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-31 19:47:45 Error: [MissingActionException] Action StudentsController::evaluateProgram() could not be found.
+Exception Attributes: array (
+  'controller' => 'StudentsController',
+  'action' => 'evaluateProgram',
+)
+Request URL: /MoDACA/students/evaluateProgram
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(StudentsController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

@@ -1919,6 +1919,24 @@ class StudentsController extends AppController {
 
         $this->set(compact('student'));
     }
+
+    public function addEvaluationCheckpoints() {
+        $student = $this->getLoggedStudent();
+
+        $this->set(compact('student'));
+    }
+
+    public function addEvaluationIndicators() {
+        $student = $this->getLoggedStudent();
+
+        $this->set(compact('student'));
+    }
+
+    public function evaluateProgram() {
+        $student = $this->getLoggedStudent();
+
+        $this->set(compact('student'));
+    }
     
     
     
