@@ -11,8 +11,8 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2>Field Group</h2>
-        <h4 class="page-subheader">Manage details about your Field Group</h4>
+        <h2>Program Evaluation Indicators</h2>
+        <h4 class="page-subheader">Add Evaluation Indicators as a guideline to evaluate your Health Promotion Programs progress.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
