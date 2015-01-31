@@ -73,7 +73,9 @@
                         <?php foreach($event['EventPhoto'] as $photo): ?>
                             <div class="col-xs-6 col-md-4">
                                 <a href="#" class="thumbnail"  data-toggle="modal" data-target="#myModal<?php echo $ctr; ?>">
-                                    <img src="/MoDACA/uploads/event_photos/<?php echo $photo['image'] ?>" alt="...">
+                                    <?php 
+                                        echo $this->Html->image('../uploads/event_photos/'. $photo['image']);                                        
+                                    ?>
                                 </a>
                             </div>           
                             <!-- IMAGE MODAL -->
@@ -87,7 +89,11 @@
                                             <h3 style="margin: -5px 5px;"><?php echo $event['Event']['title'] ?></h3>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="img-responsive" src="/MoDACA/uploads/event_photos/<?php echo $photo['image'] ?>">
+                                            <?php 
+                                                echo $this->Html->image('../uploads/event_photos/'. $photo['image'], array(
+                                                    'class' => 'img-responsive')
+                                                );                                        
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

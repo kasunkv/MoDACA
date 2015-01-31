@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Create Community Activity</h2>
+        <h2>Create Community Activity</h2>
         <h4 class="page-subheader">Create Community Activity to involve the community members in the health promotion process and interact with them.</h4>
     </div>
 </div>
@@ -162,9 +162,11 @@
                     map.addMarker({
                        lat: lat,
                        lng: lng,
+                       animation: google.maps.Animation.DROP,
+                        draggable: true,
                        infoWindow: {
                            content: '<p>' + title + '</p>'
-                       }
+                       },
                     });
                 }
             }

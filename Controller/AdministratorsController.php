@@ -305,7 +305,56 @@ class AdministratorsController extends AppController {
     public function viewProfile() {
         $this->set('administrator', $this->getLoggedAdmin());
     }
-    
+
+    public function addAdministrator() {
+        $this->set('administrator', $this->getLoggedAdmin());
+
+        if($this->request->is('post')) {
+            if ($this->uploadPhoto($this->request->data['Administrator']['profile_photo'])) {
+                $user['User']['role'] = 'Admin';
+                $user['User']['username'] = $this->request->data['Administrator']['username'];
+                $user['User']['password'] = $this->request->data['Administrator']['password'];
+                $user['User']['approved'] = 1;
+
+                $this->Administrator->User->create();
+                $user = $this->Administrator->User->save($user);
+
+                $this->request->data['Administrator']['user_id'] = $user['User']['id'];
+
+                $this->Administrator->create();
+                $admin = $this->Administrator->save($this->request->data);
+
+                if ($user != null && $admin != null) {
+                    $this->Session->setFlash(__('Administrator Profile created successfully!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('Oopz! Failed to create Administrator Profile'), 'flashError');
+                    return $this->redirect(array('action' => 'index'));
+                }
+            } else {
+                $this->Session->setFlash(__('Oopz! Failed to create Administrator Profile. Unable to Upload the Photo.'), 'flashError');
+                //return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private function getLoggedAdmin() {
         $user = AuthComponent::user();
         if ($user['role'] == 'Admin') {
@@ -316,6 +365,12 @@ class AdministratorsController extends AppController {
         }
     }
 
+
+
+
+
+
+
     public function uploadPhoto($data) {
         $file = $data;
 
@@ -323,12 +378,12 @@ class AdministratorsController extends AppController {
             $folderName = APP.'webroot'.DS.'uploads'.DS.'admins';
             $folder = new Folder($folderName, true, 0777);
 
-//            if($id!=null){
-//                if(file_exists($folderName.DS.$id)){
-//                    chmod($folderName.DS.$id,0755);
-//                    unlink($folderName.DS.$id);
-//                }
-//            }
+            if($id!=null){
+                if(file_exists($folderName.DS.$id)){
+                    chmod($folderName.DS.$id,0755);
+                    unlink($folderName.DS.$id);
+                }
+            }
 
             $id = String::uuid();
 

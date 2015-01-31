@@ -23,15 +23,8 @@
     </div>    
 </div>
 <div class="row">
-    <div class="col-md-4 col-sm-12 col-xs-12">
-        <h3 style="margin-top: -5px;">Directions</h3>
-        <hr />
-        <div>
-            <button class="btn btn-info">Get Directions</button>
-        </div>
-    </div>
     <div class="col-md-8 col-sm-12 col-xs-12">
-        <div class="panel panel-success panel-shadow">
+        <div class="panel panel-default panel-shadow">
             <div class="panel-heading">
                 <b>Location of House</b>
             </div>
@@ -40,11 +33,34 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <h3 style="margin-top: -5px;">Directions</h3>
+        <hr />
+        <div>
+            <button class="btn btn-info" id="btn-get-directions">Get Directions</button>
+            <div class="btn-group hide" id="btn-grp-navigate">                
+                <button class="btn btn-success" id="btn-backward">
+                    <i class="fa fa-caret-left"></i>
+                </button>
+                <button class="btn btn-success" id="btn-forward">
+                    <i class="fa fa-caret-right"></i>
+                </button>
+            </div>
+        </div>
+        <br />
+        <div class="navigation-details">
+            <ul class="list-group" id="steps">
+                
+            </ul>
+        </div>
+    </div>
+    
+    
 </div>
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="panel panel-success panel-shadow">
+        <div class="panel panel-default panel-shadow">
             <div class="panel-heading">
                 <b>Basic Details</b>
             </div>
@@ -94,7 +110,7 @@
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success panel-shadow">
+        <div class="panel panel-default panel-shadow">
             <div class="panel-heading">
                 <b>Family Members</b>
             </div>
@@ -220,7 +236,7 @@
         </div>
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success panel-shadow">
+        <div class="panel panel-default panel-shadow">
             <div class="panel-heading">
                 <b>Sugar & Salt Consumption (g/month)</b>
             </div>
@@ -233,7 +249,7 @@
 
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-success panel-shadow">
+        <div class="panel panel-default panel-shadow">
             <div class="panel-heading">
                 <b>Oil Consumption (ml/month)</b>
             </div>
@@ -263,7 +279,7 @@
     /**************** GOOGLE MAP *******************/
     map = new GMaps({
         el: '#area-map',
-        zoom: 16,
+        zoom: 15,
         lat: <?php echo $house['Household']['gps_latitude']; ?>,
         lng: <?php echo $house['Household']['gps_longitude']; ?>,
         mapTypeControlOptions: {
@@ -278,6 +294,7 @@
         
     });
     
+    // HouseHold
     map.addMarker({
         lat: <?php echo $house['Household']['gps_latitude']; ?>,
         lng: <?php echo $house['Household']['gps_longitude']; ?>,
@@ -285,7 +302,17 @@
         infoWindow: {
             content: '<p><?php echo $house["Household"]["leader_name"] . "\'s Place"; ?></p>'
         },        
-    });   
+    });  
+
+    //Faculty
+    map.addMarker({
+        lat: 8.3538938,
+        lng: 80.5033636,
+        title: 'Click to View Details',
+        infoWindow: {
+            content: '<p>Faculty of Applied Sciences</p>'
+        },        
+    });
     map.setMapTypeId('roadmap');
     
     
@@ -342,6 +369,42 @@
         hideHover: 'auto',
         resize: true,
         behaveLikeLine: false
+    });
+    
+    var route;
+    
+    $('#btn-get-directions').click(function(e) {
+        e.preventDefault();
+        map.getRoutes({
+            origin: [map.markers[map.markers.length - 1].getPosition().lat(), map.markers[map.markers.length - 1].getPosition().lng()],
+            destination: [map.markers[0].getPosition().lat(), map.markers[0].getPosition().lng()],
+            callback: function(e) {
+                route = new GMaps.Route({
+                    map: map, 
+                    route: e[0],
+                    strokeColor: '#e4201a',
+                    strokeOpacity: 0.7,
+                    strokeWeight: 8
+                });
+                $('#btn-grp-navigate').removeClass('hide');
+            } 
+        });
+        
+        $('#btn-forward').click(function(e) {
+            e.preventDefault();
+            route.forward();
+            
+            if(route.step_count < route.steps_length)
+                $('#steps').append('<li class="list-group-item list-group-item-default">' + route.steps[route.step_count].instructions + '</li>');
+        });
+        
+        $('#btn-backward').click(function(e) {
+            e.preventDefault();
+            route.back();
+            
+            if(route.step_count >= 0)
+                $('#steps').find('li').last().remove();
+        });
     });
     
 

@@ -16,34 +16,37 @@
     ?>
 </li>
 <li>
-    <a class="" href="/MoDACA/Staffs/index"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+    <a class="" href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'index')); ?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
 </li>
 <li>
-    <a href="/MoDACA/Staffs/search"><i class="fa fa-search fa-3x"></i> Search</a>
+    <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'search')); ?>"><i class="fa fa-search fa-3x"></i> Search</a>
 </li>
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i>Student Groups<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/Staffs/viewFieldGroups">View Groups</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewFieldGroups')); ?>">View Groups</a>
         </li>
         <li>
-            <a href="/MoDACA/Staffs/trackGroup">Track Group</a>
-        </li>                          
+            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'trackGroup')); ?>">Track Group</a>
+        </li>  
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'setConditions')); ?>">Checkpoints & Criteria</a>
+        </li>  
     </ul>
 </li>
 <li>
-    <a href="/MoDACA/Staffs/trackStudents"><i class="fa fa-location-arrow fa-3x"></i> &nbsp;Track Students</a>
+    <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'trackStudents')); ?>"><i class="fa fa-location-arrow fa-3x"></i> &nbsp;Track Students</a>
 </li>
 
 <li>
     <a href="#"><i class="fa fa-check fa-3x"></i> Student Progress<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/Staffs/studentProgress">Individual Progress</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'studentProgress')); ?>">Individual Progress</a>
         </li>
         <li>
-            <a href="/MoDACA/Staffs/groupProgress">Group Progress</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'groupProgress')); ?>">Group Progress</a>
         </li>  
     </ul>
 </li>               

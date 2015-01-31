@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Field Group</h2>
+        <h2>Field Group</h2>
         <h4 class="page-subheader">Manage details about your Field Group</h4>
     </div>
 </div>

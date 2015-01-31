@@ -5,16 +5,28 @@ App::uses('RestHelper', 'Lib');
 class WHRsController extends AppController {
 
 
-	public $components = array('Paginator');
+    public $components = array('Paginator', 'Session', 'Security');
+
+    public function beforeFilter() {
+        $this->Security->csrfCheck = false;
+        $this->Security->unlockedActions = array('ajax_action');
+        $this->Security->validatePost = false;
+    }
 
 
 	public function getAll() {
-            $this->autoRender = false;
+        $this->response->header(array(
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Headers' => 'Content-Type'
+            )
+        );
+
+        $this->autoRender = false;
             
             if ($this->request->is('post')) {
                 $response = array();
                 
-                $results = $this->WHR->find('all');
+                $results = $this->WHR->find('all', array('recursive' => -1));
                 $whrs = array();
                 foreach ($results as $res) {
                     array_push($whrs, $res['WHR']);
@@ -32,6 +44,12 @@ class WHRsController extends AppController {
 	}
 
 	public function getByID($id=NULL) {
+        $this->response->header(array(
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Headers' => 'Content-Type'
+            )
+        );
+
         $this->autoRender = false;
 
         if ($this->request->is('post')) {
@@ -67,7 +85,28 @@ class WHRsController extends AppController {
 
 
 	public function save() {
-            $this->autoRender = false;
+        $this->response->header(array(
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Headers' => 'Content-Type'
+            )
+        );
+        $this->autoRender = false;
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+            $temp['WHR']['family_member_id'] = $data['family_member_id'];
+            $temp['WHR']['date'] = $data['date'];
+            $temp['WHR']['value'] = $data['value'];
+
+            $this->loadModel('WHR');
+            $this->WHR->create();
+            if($this->WHR->save($temp)) {
+                $response = RestHelper::createResponseMessage('success', array('data' => null, 'message' => 'WHR data was saved.'));
+                echo json_encode($response);
+            } else {
+                $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Failed to save WHR data.'));
+                echo json_encode($response);
+            }
+        }
             
 	}
 

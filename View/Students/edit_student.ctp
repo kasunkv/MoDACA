@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Edit Profile</h2>
+        <h2>Edit Profile</h2>
         <h4 class="page-subheader">Edit your student profile information.</h4>
     </div>
 </div>
@@ -237,6 +237,9 @@
         showUpload: false,
         showCaption: true,
 	showRemove: false,
+        browseClass: "btn btn-success",
+	browseLabel: " Pick Image",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
         allowedFileTypes: ['image']
     });    
 </script>

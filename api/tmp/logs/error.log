@@ -610,3 +610,287 @@ Stack Trace:
 #3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-01-27 12:59:14 Error: [MissingActionException] Action OilUsagesController::getAll() could not be found.
+Exception Attributes: array (
+  'controller' => 'OilUsagesController',
+  'action' => 'getAll',
+)
+Request URL: /MoDACA/api/oilusages/getAll
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(OilUsagesController), Object(CakeRequest))
+#2 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-01-27 13:04:38 Error: Fatal Error (1): Class 'RestHelper' not found in [D:\wamp\www\MoDACA\api\Controller\SaltUsagesController.php, line 47]
+2015-01-27 13:04:38 Error: [FatalErrorException] Class 'RestHelper' not found
+Request URL: /MoDACA/api/SaltUsages/getUsage/3
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-27 13:05:21 Error: Fatal Error (1): Class 'RestHelper' not found in [D:\wamp\www\MoDACA\api\Controller\SaltUsagesController.php, line 47]
+2015-01-27 13:05:21 Error: [FatalErrorException] Class 'RestHelper' not found
+Request URL: /MoDACA/api/SaltUsages/getUsage/3
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'RestHelp...', 'D:\\wamp\\www\\MoD...', 47, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-01-27 13:08:36 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/Households/getByID/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(242): SecurityComponent->blackHole(Object(HouseholdsController), 'csrf')
+#1 [internal function]: SecurityComponent->startup(Object(HouseholdsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-27 13:09:15 Error: [MissingControllerException] Controller class HouseholdController could not be found.
+Exception Attributes: array (
+  'class' => 'HouseholdController',
+  'plugin' => NULL,
+)
+Request URL: /MoDACA/api/Household/getByID/2
+Stack Trace:
+#0 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-27 13:09:31 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/Households/getByID/2
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(242): SecurityComponent->blackHole(Object(HouseholdsController), 'csrf')
+#1 [internal function]: SecurityComponent->startup(Object(HouseholdsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(HouseholdsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:33:27 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:40:49 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:41:23 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:41:48 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:44:19 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:46:38 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:46:50 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:46:59 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:47:08 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:47:43 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:48:26 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:49:12 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:54:05 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:57:16 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 06:59:57 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-28 07:02:22 Error: [BadRequestException] The request has been black-holed
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Controller\Component\SecurityComponent.php(239): SecurityComponent->blackHole(Object(BMIsController), 'auth')
+#1 [internal function]: SecurityComponent->startup(Object(BMIsController))
+#2 D:\wamp\www\CakePHP\lib\Cake\Utility\ObjectCollection.php(129): call_user_func_array(Array, Array)
+#3 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#4 D:\wamp\www\CakePHP\lib\Cake\Event\CakeEventManager.php(244): call_user_func(Array, Object(CakeEvent))
+#5 D:\wamp\www\CakePHP\lib\Cake\Controller\Controller.php(675): CakeEventManager->dispatch(Object(CakeEvent))
+#6 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(187): Controller->startupProcess()
+#7 D:\wamp\www\CakePHP\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(BMIsController), Object(CakeRequest))
+#8 D:\wamp\www\MoDACA\api\webroot\index.php(99): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2015-01-31 05:32:45 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [xdebug://debug-eval, line 1]
+2015-01-31 05:32:45 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /MoDACA/api/BMIs/save
+Stack Trace:
+#0 D:\wamp\www\CakePHP\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'xdebug://debug-...', 1)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'xdebug://debug-...', 1, Array)
+#2 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'xdebug://debug-...', 1, Array)
+#3 D:\wamp\www\CakePHP\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

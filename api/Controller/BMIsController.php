@@ -7,10 +7,11 @@ class BMIsController extends AppController {
 
 	public $components = array('Paginator', 'Session', 'Security');
 
-        public function beforeFilter() {
-           // $this->Auth->allow();
-            $this->Security->csrfCheck = false;
-        }
+    public function beforeFilter() {
+        $this->Security->csrfCheck = false;
+        $this->Security->unlockedActions = array('ajax_action');
+        $this->Security->validatePost = false;
+    }
 
 
 	public function getAll() {
@@ -83,7 +84,27 @@ class BMIsController extends AppController {
 
 
 	public function save() {
-            $this->autoRender = false;
+        $this->response->header(array(
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Headers' => 'Content-Type'
+            )
+        );
+        $this->autoRender = false;
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $temp = $this->BMI->createDataArray($data);
+
+            $this->loadModel('BMI');
+            $this->BMI->create();
+            if($this->BMI->save($temp)) {
+                $response = RestHelper::createResponseMessage('success', array('data' => null, 'message' => 'BMI data was saved.'));
+                echo json_encode($response);
+            } else {
+                $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Failed to save BMI data.'));
+                echo json_encode($response);
+            }
+        }
             
 	}
 

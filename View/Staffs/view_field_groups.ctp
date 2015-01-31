@@ -35,7 +35,7 @@
                     <?php foreach($groups as $group): ?>
                         <li class="list-group-item">
                           <span class="badge custom-list-batch badge-green"><i class="fa fa-user"></i> <?php echo $group['FieldGroup']['no_of_members']; ?></span>
-                          <a class="custom-list-link" href="/MoDACA/Staffs/viewGroup/<?php echo $group['FieldGroup']['id']; ?>">
+                          <a class="custom-list-link" href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewGroup', $group['FieldGroup']['id'])); ?>">
                               <h4 class="custom-list-header"><?php echo $group['FieldGroup']['name']; ?></h4>
                           </a>
                         </li>
@@ -47,6 +47,6 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php echo var_dump($groups); ?>
+        <?php //echo var_dump($groups); ?>
     </div>
 </div>

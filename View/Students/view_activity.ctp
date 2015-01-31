@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Community Activities</h2>
+        <h2>Community Activities</h2>
         <h4 class="page-subheader">View details about the completed Community Activity.</h4>
     </div>
 </div>
@@ -72,8 +72,14 @@
                         <?php $ctr = 0; ?>
                         <?php foreach($event['EventPhoto'] as $photo): ?>
                             <div class="col-xs-6 col-md-4">
-                                <a href="#" class="thumbnail"  data-toggle="modal" data-target="#myModal<?php echo $ctr; ?>">
-                                    <img src="/MoDACA/uploads/event_photos/<?php echo $photo['image'] ?>" alt="...">
+                                <a href="#" class="thumbnail"  data-toggle="modal" data-target="#myModal<?php echo $ctr; ?>">                                    
+                                    <?php
+                                        echo $this->Html->image('../uploads/event_photos/'. $photo['image'], array(
+                                            'alt' => '...',
+                                            'class' => '',
+                                            )
+                                        );
+                                    ?>
                                 </a>
                             </div>           
                             <!-- IMAGE MODAL -->
@@ -86,8 +92,14 @@
                                           </button> 
                                             <h3 style="margin: -5px 5px;"><?php echo $event['Event']['title'] ?></h3>
                                         </div>
-                                        <div class="modal-body">
-                                            <img class="img-responsive" src="/MoDACA/uploads/event_photos/<?php echo $photo['image'] ?>">
+                                        <div class="modal-body">                                            
+                                            <?php
+                                                echo $this->Html->image('../uploads/event_photos/'. $photo['image'], array(
+                                                    'alt' => '...',
+                                                    'class' => 'img-responsive',
+                                                    )
+                                                );
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

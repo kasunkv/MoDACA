@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Complete Community Activities</h2>
+        <h2>Complete Community Activities</h2>
         <h4 class="page-subheader">Complete the Community Activity by adding the results of the Activity.</h4>
     </div>
 </div>
@@ -245,7 +245,11 @@
         showUpload: false,
         showCaption: true,
 	showRemove: false,
-        allowedFileTypes: ['image']
+        browseClass: "btn btn-success",
+	browseLabel: " Pick Images",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        allowedFileTypes: ['image'],
+        maxFileSize: 1024,        
     });
     
    // google map

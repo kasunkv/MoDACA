@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | View Member Profile</h2>
+        <h2>View Member Profile</h2>
         <h4>View your group member <i><?php echo $groupStudent['Student']['first_name'] . " " . $groupStudent['Student']['last_name'] . "'s"; ?></i> profile.</h4>
     </div>
 </div>
@@ -59,8 +59,6 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <br />
-<!--                            <label class="profile-view-heading">Photo</label>
-                            <br /><br />-->
                              <?php 
                                 echo $this->Html->image('../uploads/students/'.$groupStudent['Student']['profile_photo'], array(
                                     'width' => 200,
@@ -70,7 +68,7 @@
                             ?>
                         </div>
                         <p class="profile-view-heading">Biography</p>
-                        <P class="profile-view-info profile-view-bio"><?php echo $groupStudent['Student']['bio']; ?></P>
+                        <P class="profile-view-info profile-view-bio"><?php echo nl2br($groupStudent['Student']['bio']); ?></P>
                     </div>
                 </div>
             </div>             
@@ -80,4 +78,13 @@
 
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>" class="back-link">
+            <i class="fa fa-reply back-link-icon"></i>
+            Back to Group Members
+        </a>
+    </div>
+</div>
+<br /><br />
 <!-- /. ROW  -->

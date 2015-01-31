@@ -53,7 +53,7 @@
                     <p class="profile-view-info"><?php echo $fieldCommunity['FieldCommunity']['village_name']; ?></p>
                     
                     <br /><br />
-                    <a class="btn btn-primary btn-lg" href="/MoDACA/Staffs/viewFieldCommunityStats/<?php echo $fieldCommunity['FieldCommunity']['id']; ?>">Field Community Statistics</a>
+                    <a class="btn btn-primary btn-lg" href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewFieldCommunityStats', $fieldCommunity['FieldCommunity']['id'])); ?>">Field Community Statistics</a>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                 <?php else: ?>
                     <?php foreach ($groupMembers as $member): ?>
                         <div class="col-md-2 col-sm-6 col-xs-6">
-                            <a href="/MoDACA/Staffs/viewGroupMember/<?php echo $member['Student']['field_group_id']; ?>/<?php echo $member['Student']['id']; ?>">
+                            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewGroupMember', $member['Student']['field_group_id'], $member['Student']['id'])); ?>">
                                 <?php 
                                     echo $this->Html->image('../uploads/students/'. $member['Student']['profile_photo'], array(
                                         'alt' => 'Profile Image',
@@ -112,7 +112,7 @@
                                         <?php $ctr++; ?>
                                         <div class="activity-noti shadow">
                                             <div class="activity-noti-header">
-                                                <a href="/MoDACA/Staffs/viewCompletedActivity/<?php echo $member['Student']['field_group_id']; ?>/<?php echo $event['Event']['id']; ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
+                                                <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewCompletedActivity', $member['Student']['field_group_id'], $event['Event']['id'])); ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
                                                 <?php if(!empty($event['EventFeedback'])): ?>
                                                     <span class="badge badge-green">
                                                         <i class="fa fa-comment"></i>
@@ -152,7 +152,7 @@
                                         <?php $ctr++; ?>
                                         <div class="activity-noti shadow">
                                             <div class="activity-noti-header">
-                                                <a href="/MoDACA/Staffs/viewPendingActivity/<?php echo $member['Student']['field_group_id']; ?>/<?php echo $event['Event']['id']; ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
+                                                <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewPendingActivity', $member['Student']['field_group_id'], $event['Event']['id'])); ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
                                                 <?php if(!empty($event['EventFeedback'])): ?>
                                                     <span class="badge badge-red">
                                                         <i class="fa fa-comment"></i>

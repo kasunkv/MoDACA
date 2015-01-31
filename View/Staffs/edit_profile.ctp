@@ -227,6 +227,9 @@
         showUpload: false,
         showCaption: true,
 	showRemove: false,
+        browseClass: "btn btn-success",
+	browseLabel: " Pick Image",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
         allowedFileTypes: ['image']
     });    
 </script>

@@ -21,4 +21,16 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+    public function createDataArray($ary = null) {
+        if(!empty($ary)) {
+            $data = [];
+            foreach($ary as $key => $value) {
+                $data[get_class($this)][$key] = $value;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
 }

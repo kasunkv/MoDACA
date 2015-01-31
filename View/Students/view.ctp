@@ -11,7 +11,7 @@
 ?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | View Profile</h2>
+        <h2>View Profile</h2>
         <h4 class="page-subheader">View your current student profile.</h4>
     </div>
 </div>
@@ -57,14 +57,20 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <br />
-                            <!--<label class="profile-view-heading">Photo</label>
-                            <br /><br />-->
-                            <?php 
-                                echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
-                                    'width' => 200,
-                                    'height' => 200,
-                                    'class' => 'profile-image shadow')
-                                );                                        
+                            <?php
+                                if(!empty($student['Student']['profile_photo'])) {
+                                    echo $this->Html->image('../uploads/students/'.$student['Student']['profile_photo'], array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    );         
+                                } else {
+                                    echo $this->Html->image('../uploads/default_user.png', array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    ); 
+                                }
                             ?>
                         </div>
                         <p class="profile-view-heading">Biography</p>
@@ -88,6 +94,11 @@
     </div>
     <div class="col-md-2">
 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php echo var_dump($student); ?>
     </div>
 </div>
 <!-- /. ROW  -->

@@ -23,6 +23,103 @@
 
 /* My Styles */
 
+.dash-box {
+    padding: 15px 0px; 
+}
+
+    .dash-box.border-green{
+        border-top: 2px solid #00900D;
+    }
+    
+    .dash-box.border-dark-red{
+        border-top: 2px solid #bf3a2b;
+    }
+    
+    .dash-box.border-dark-blue{
+        border-top: 2px solid #2d3e50;
+    }
+    
+    
+    .dash-box .dash-box-header {
+        padding-left: 15px;
+        position: relative;
+        padding-bottom: 20px;
+    }
+    .dash-box .dash-box-header-text {
+        padding-left: 10px;
+        font-size: 2em;
+    }
+    
+    .dash-box .btn-link {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding-top: 5px;
+        padding-right: 20px;
+        color: black;
+        text-align: right;
+    }
+    
+
+.dash-box-activity {
+    
+}
+
+
+
+.progressbar-text {
+    font-size: 5em;
+}
+
+.line-progress .progressbar-text {
+    font-size: 1em;
+    padding-top: 15px;
+    position: relative;
+}
+
+.back-link {
+    font-size: 1.3em;
+    color: #39b3d7;
+    text-decoration: none;
+    margin-left: 15px;
+}
+    .back-link:hover {
+        text-decoration: none;
+    }
+
+.back-link-icon {
+    color: #39b3d7;
+}
+
+.panel-title a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+.multiple-item-box {
+    padding: 10px;
+    margin: 5px;
+    /*border-radius: 5px;*/  
+    /*border: 1px solid rgba(0,0,0,0.1);*/ 
+    -vendor-animation-duration: 0.5s;
+    -vendor-animation-delay: 0s;
+    
+}
+
+.related-task-links {
+    margin-left: 20px;
+    display: block;
+}
+
+.related-task-links a {
+    padding: 10px;
+    margin-bottom: -35px;
+    display: block;
+}
+
+.form-add-more {
+    margin: 10px 5px;
+}
+
 
 .user-image-container{
     height: 170px;
@@ -135,6 +232,11 @@
 
 .bg-color-lightblue-1 {
     background-color: #39b3d7;
+    color: #fff;
+}
+
+.bg-color-lightblue-2 {
+    background-color: #3598dc;
     color: #fff;
 }
 
@@ -253,6 +355,8 @@
     .activity-noti-header .title {
         font-weight: bold;
         font-size: 1.7em;
+        overflow: hidden;
+        white-space: nowrap;
     }
     
     .activity-noti-header .green {
@@ -262,6 +366,10 @@
     .activity-noti-header .red {
         color: rgba(255, 0, 0, 0.8);
     }
+    
+    .activity-noti-header .blue {
+        color: #347dbc;
+    }    
     
     .activity-noti-header .badge {
         position: absolute;
@@ -454,7 +562,7 @@ font-weight: 300;
 text-align: center;
 }
  .main-temp-back .text-temp {
-font-size: 4em;
+    font-size: 3em;
 }
 .back-dash {
     padding:20px;

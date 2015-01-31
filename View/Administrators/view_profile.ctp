@@ -21,7 +21,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <?php echo $this->Session->flash(); ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default shadow">
             <div class="panel-heading">
                 Details
             </div>
@@ -49,22 +49,32 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <br />
-                            <?php 
-                                echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
-                                    'width' => 200,
-                                    'height' => 200,
-                                    'class' => 'profile-image')
-                                );                                        
+                            <?php         
+                                if(!empty($administrator['Administrator']['profile_photo'])) {
+                                    echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive shadow',
+                                        )
+                                    );         
+                                } else {
+                                    echo $this->Html->image('../uploads/default_user.png', array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive shadow',
+                                        )
+                                    ); 
+                                }                                               
                             ?>
                         </div>
 
                         <p class="profile-view-heading">Biography</p>
-                        <P class="profile-view-info profile-view-bio"><?php echo $administrator['Administrator']['bio']; ?></P>
+                        <P class="profile-view-info profile-view-bio"><?php echo nl2br($administrator['Administrator']['bio']); ?></P>
                     </div>
                     <br /><br />
                 </div> 
             </div>
-            <div class="panel panel-default">
+            
+        </div>
+        <div class="panel panel-default shadow">
                 <div class="panel-heading">
                     Tasks
                 </div>
@@ -73,9 +83,9 @@
                         <a href="editAdminProfile" class="btn btn-primary btn-sm">Edit Profile</a>   
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
+
 
 

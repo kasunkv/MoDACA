@@ -373,10 +373,28 @@
     });
     map.setMapTypeId('roadmap');
     
-    $('#save_chart').click(function (){
-        $('#bar-age').find('svg').toImage();      
-        
-    });
-        
+   <?php if(!empty($mapPoints)): ?>
+        var path = [];
+        <?php foreach ($mapPoints as $point): ?>
+            var temp = [];
+            temp.push(parseFloat(<?php echo $point['FieldMapPoint']['point_lat']; ?>));
+            temp.push(parseFloat(<?php echo $point['FieldMapPoint']['point_lng']; ?>));
+            path.push(temp);
+        <?php endforeach; ?>
+
+        map.drawPolygon({
+            paths: path,
+            strokeColor: '#39b3d7',
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: '#39b3d7',
+            fillOpacity: 0.2,
+            geodesic: true,
+
+        });
+    <?php endif; ?> 
+    
+    
+   
         
 </script>    

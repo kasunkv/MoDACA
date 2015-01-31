@@ -65,16 +65,19 @@
                         ?>
                         
                         <!-- Gender -->
-                        <div class="form-group input-group-lg">
-                            <lable>Select Gender</lable>
-                            <?php 
-                                $options = array('Male' => 'Male', 'Female' => 'Female');
-                                $attributes = array(
-                                    'class' => 'form-group',
-                                    ); 
-                                echo $this->Form->select('gender', $options, $attributes);
-                            ?>                           
-                        </div>
+                        <?php 
+                            $options = array('' => 'Select Gender...',  'Male' => 'Male', 'Female' => 'Female');
+
+                            echo $this->Form->input('gender', array(
+                                'class' => 'form-control',
+                                'placeholder' => 'Select Gender...',
+                                'type' => 'select',
+                                'div' => array (
+                                    'class' => 'form-group input-group-lg'
+                                ),
+                                'options' => $options
+                            ));
+                        ?>    
                         
                         <!-- Email -->
                         <?php 
@@ -117,7 +120,7 @@
                     <div class="col-md-6">
                         <div class="form-group input-group-lg">
                             <label>Upload Photo</label>
-                            <?php echo $this->Form->file('profile_photo'); ?>
+                            <?php echo $this->Form->file('profile_photo', array('multiple' => false)); ?>
                         </div>
                         <div class="form-group">
                             <label>Biography</label>                            
@@ -127,7 +130,7 @@
                                     'class' => 'form-control',
                                     'placeholder' => 'Enter your biography here...', 
                                     'type' => 'textarea',
-                                    'rows' => '14',                          
+                                    'rows' => '17',                          
                                     'div' => array (
                                         'class' => 'form-group'
                                     )
@@ -198,3 +201,14 @@
     </div>
 </div>
 
+<script>
+    $("#StaffProfilePhoto").fileinput({
+        showUpload: false,
+        showCaption: true,
+	showRemove: false,
+        browseClass: "btn btn-success",
+	browseLabel: " Pick Image",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        allowedFileTypes: ['image']
+    });    
+</script>

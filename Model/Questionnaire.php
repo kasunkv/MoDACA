@@ -1,40 +1,27 @@
 <?php
 App::uses('AppModel', 'Model');
-
+/**
+ * Questionnaire Model
+ *
+ * @property Legend $Legend
+ * @property Determinant $Determinant
+ * @property Score $Score
+ * @property FamilyMemberKnowledge $FamilyMemberKnowledge
+ * @property Legend $Legend
+ * @property PregnantMotherKnowledge $PregnantMotherKnowledge
+ * @property QuestionnaireFeedback $QuestionnaireFeedback
+ * @property Question $Question
+ */
 class Questionnaire extends AppModel {
 
-	public $validate = array(
-		'id' => array(
-			'blank' => array(
-				'rule' => array('blank'),
-				'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'no_of_questions' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Number of questions must not be empty.',
-			),
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Number of questions must be a number.',
-			),
-		),
-		'description' => array(
-			'custom' => array(
-				'rule' => array('custom'),
-				'rule' => '/([\w\d\W\s][^<>{}\[\]\(\)])+/',
-				'message' => 'Description must not be invalid.',
-			),
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Description must not be empty.',
-			),
-		),
-	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
 	public $belongsTo = array(
 		'Legend' => array(
 			'className' => 'Legend',
@@ -43,29 +30,28 @@ class Questionnaire extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'HealthIssue' => array(
-			'className' => 'HealthIssue',
-			'foreignKey' => 'health_issue_id',
+		'Determinant' => array(
+			'className' => 'Determinant',
+			'foreignKey' => 'determinant_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Score' => array(
+			'className' => 'Score',
+			'foreignKey' => 'score_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
 
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
 	public $hasMany = array(
-		'Determinant' => array(
-			'className' => 'Determinant',
-			'foreignKey' => 'questionnaire_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'FamilyMemberKnowledge' => array(
 			'className' => 'FamilyMemberKnowledge',
 			'foreignKey' => 'questionnaire_id',
@@ -94,6 +80,19 @@ class Questionnaire extends AppModel {
 		),
 		'PregnantMotherKnowledge' => array(
 			'className' => 'PregnantMotherKnowledge',
+			'foreignKey' => 'questionnaire_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'QuestionnaireFeedback' => array(
+			'className' => 'QuestionnaireFeedback',
 			'foreignKey' => 'questionnaire_id',
 			'dependent' => false,
 			'conditions' => '',

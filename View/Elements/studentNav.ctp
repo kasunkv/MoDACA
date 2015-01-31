@@ -20,44 +20,137 @@
 
 <!-- Dashboard -->
 <li>
-    <a class="" href="/MoDACA/students/index"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>    
+    <a class="" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'index')); ?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>     
+</li>
+<!-- Group Tasks -->
+<li>    
+    <a href="#"><i class="fa fa-tasks fa-3x"></i> Group Tasks<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">                
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'setFieldCommunityArea')); ?>"> Field Community Area</a>
+        </li>
+        <li><a href="#">Initial Data<span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addPopulationDistribution')); ?>"> Population Distribution</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addAgeDistribution')); ?>"> Age Distribution</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addEducationLevel')); ?>"> Education Level</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addFamilyIncome')); ?>"> Family Income</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addOccupationDistribution')); ?>"> Occupation Distribution</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addHealthIssues')); ?>"> Health Issues</a>
+        </li>
+        
+        <li><a href="#">Community Objectives<span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addGeneralObjectives')); ?>"> General Objectives</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addSpecificObjectives')); ?>"> Specific Objectives</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Determinants & Indicators<span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addDeterminants')); ?>"> Determinants</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addInputIndicators')); ?>"> Input Indicators</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addProcessIndicators')); ?>"> Process Indicators</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addOutputIndicators')); ?>"> Output Indicators</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addOutcomeIndicators')); ?>"> Outcome Indicators</a>
+                </li>
+            </ul>
+        </li>        
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'createQuestionnaires')); ?>"> Create Questionnaires</a>
+        </li>
+    </ul>
+</li>
+<!-- Field Community -->
+<li><a href="#">&nbsp;&nbsp;<i class="fa fa-map-marker fa-3x"></i> &nbsp;&nbsp;&nbsp;Field Community<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'fieldCommunityOverview', $student['FieldGroup']['field_community_id'])); ?>"> Overview</a>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewFieldCommunity', $student['FieldGroup']['field_community_id'])); ?>"> Community Details</a>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewCommunityProgress')); ?>"> Community Progress</a>
+        </li>
+    </ul>
 </li>
 <!-- Field Groups -->
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
+        
         <li>
-            <a href="/MoDACA/students/viewFieldGroup"> Group Details</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>"> Group Members</a>
         </li>
         <li>
-            <a href="/MoDACA/students/viewGroupMembers/<?php echo $student['Student']['field_group_id'] ?>"> Group Members</a>
-        </li>
-        <li>
-            <a href="/MoDACA/students/viewGroupProgress"> Group Progress</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupProgress')); ?>"> Group Progress</a>
         </li>  
     </ul>
 </li>
 
-<!-- Activities -->
+<!-- Program Evaluation -->
+<li>
+    <a href="#"><i class="fa fa-check-square-o fa-3x"></i> Program Evaluation<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>"> Group Members</a>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupProgress')); ?>"> Group Progress</a>
+        </li>  
+    </ul>
+</li>
+
+<!-- Community Activities -->
 <li>
     <a href="#"><i class="fa fa-calendar fa-3x"></i> Community Activities<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="/MoDACA/students/createActivity"> Create Activity</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'createActivity')); ?>"> Create Activity</a>
         </li>
         <li>
-            <a href="/MoDACA/students/allActivity"> All Activities</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'allActivity')); ?>"> All Activities</a>
         </li>
     </ul>
 </li>
 
-<!-- Progress -->
+<!-- Individual Progress -->
 <li>
-    <a href="/MoDACA/students/viewProgress"><i class="fa fa-signal fa-3x"></i> Progress</a>     
-</li> 
-
-<!-- Reports -->
-<li>
-    <a href="#"><i class="fa fa-file fa-3x"></i> Reports</a>                        
+    <a href="#"><i class="fa fa-signal fa-3x"></i> Individual Progress<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'progressOverview', $student['Student']['id'])); ?>"> Overview</a>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewProgress', $student['Student']['field_group_id'], $student['Student']['id'])); ?>"> Peer Assessment</a>     
+        </li>        
+    </ul>
 </li>
-     
+ 

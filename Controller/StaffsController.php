@@ -14,7 +14,7 @@ class StaffsController extends AppController
     public $components = array('Paginator', 'Session', 'Auth');
 
     public function beforeFilter() {
-        //$this->Auth->allow();
+        $this->Auth->allow('register');
     }
 
     /**
@@ -273,6 +273,15 @@ class StaffsController extends AppController
                 $this->set('incomeDistribution', $incomeDist);
 
 
+                $this->loadModel('FieldMapPoint');
+                $mapPoints = $this->FieldMapPoint->find('all', array(
+                    'conditions' => array(
+                        'FieldMapPoint.field_community_id' => $id,
+                    ),
+                    'recursive' => -1,
+                ));
+                $this->set('mapPoints', $mapPoints);
+
                 $this->set('community', $community);
             }
 
@@ -417,6 +426,47 @@ class StaffsController extends AppController
             $this->Session->setFlash(__('Community Activity not Found!'), 'flashError');
             $this->redirect(array('action' => 'viewGroup', $grpId));
         }
+    }
+
+    public function setConditions() {
+        if($this->request->is('post')) {
+
+            if(!empty($this->request->data['AssesmentCheckpoint'])) {
+                $this->loadModel('AssesmentCheckpoint');
+                $this->AssesmentCheckpoint->create();
+                if($this->AssesmentCheckpoint->save($this->request->data)) {
+                    $this->Session->setFlash(__('Review Checkpoint successfully added!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'setConditions'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add the Review Checkpoint!'), 'flashErrors');
+                    return $this->redirect(array('action' => 'setConditions'));
+                }
+            }
+
+            if(!empty($this->request->data['AssesmentCriteria'])) {
+                $this->loadModel('AssesmentCriteria');
+                $this->AssesmentCriteria->create();
+                if($this->AssesmentCriteria->save($this->request->data)) {
+                    $this->Session->setFlash(__('Evaluation Criteria successfully added!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'setConditions'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add the Evaluation Criteria!'), 'flashErrors');
+                    return $this->redirect(array('action' => 'setConditions'));
+                }
+            }
+
+
+        } else {
+            $this->loadModel('AssesmentCheckpoint');
+            $checkpoints = $this->AssesmentCheckpoint->find('all');
+
+            $this->loadModel('AssesmentCriteria');
+            $criterias = $this->AssesmentCriteria->find('all');
+
+            $this->set('staff', $this->getLoggedStaff());
+            $this->set(compact('checkpoints', 'criterias'));
+        }
+
     }
 
 

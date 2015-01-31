@@ -9,14 +9,18 @@ class StudentsController extends AppController {
 
     public function beforeFilter() {
         //$this->Auth->allow('register');
-        $this->Auth->allow();
+        $this->Auth->allow('register');
     }
 
     public function index() {
         // set the student in the view
-        $logged = AuthComponent::user();
-        $student = $this->getLoggedStudent($logged['id']);
-        $this->set('student', $student );
+        $student = $this->getLoggedStudent();
+
+        $activities = [];
+        $activities['completed'] = 0;
+        $activities['uncompleted'] = 0;
+        $activities['evaluated'] = 0;
+        $activities['count'] = 0;
 
         // Set the field community
         $fieldCommunityId = $student['FieldGroup']['field_community_id'];
@@ -32,27 +36,46 @@ class StudentsController extends AppController {
         $totalFeedback = $this->EventFeedback->find('all', array(
             'conditions' => array(
                 'EventFeedback.field_group_id' => $student['FieldGroup']['id'],
+                'EventFeedback.seen' => 0,
+            ),
+            'recursive' => -1,
+        ));
+        $activities['unread_comments'] = count($totalFeedback);
+
+
+        $this->loadModel('Event');
+        $events = $this->Event->find('all', array(
+            'conditions' => array(
+                'Event.field_group_id' => $student['FieldGroup']['id'],
             ),
             'recursive' => -1,
         ));
 
-        $unseen = 0;
-        foreach($totalFeedback as $feedback) {
-            if($feedback['EventFeedback']['seen'] == 0){
-                $unseen++;
+        $activities['count'] = count($events);
+
+        foreach($events as $event) {
+            if($event['Event']['complete'] == 0) {
+                $activities['uncompleted'] += 1;
+            } else {
+                $activities['completed'] += 1;
+            }
+
+            if(!empty($event['Event']['score_id'])) {
+                $activities['evaluated'] += 1;
             }
         }
 
-
-        $this->set(compact('fieldCommunity', 'unseen'));
+        if($activities['count'] != 0)
+            $activities['percentage'] = round(($activities['completed'] / $activities['count']) * 100, 1);
+        else {
+            $activities['percentage'] = 0;
+        }
+        $this->set(compact('student', 'fieldCommunity', 'activities'));
 
     }
 
-    public function view($id = null) {
-        if ($id == null) {
-            throw new NotFoundException(__('Invaild UserID, NULL Passed'));
-        }       
-        $this->set('student',  $this->getLoggedStudent($id));
+    public function view() {
+        $this->set('student',  $this->getLoggedStudent());
     }
 
     public function register() {
@@ -86,13 +109,13 @@ class StudentsController extends AppController {
     }
 
     public function editStudent($id = null) {
-        if (!$this->Student->exists($id)) {
-            throw new NotFoundException(__('Invalid student'));
-        }
-        
-        
-        $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
-        $std = $this->Student->find('first', $options);
+//        if (!$this->Student->exists($id)) {
+//            throw new NotFoundException(__('Invalid student'));
+//        }
+//
+//
+//        $options = array('conditions' => array('Student.' . $this->Student->primaryKey => $id));
+//        $std = $this->Student->find('first', $options);
         
         // get the logged in user for redirection
         $loggedStudent = AuthComponent::user();
@@ -260,30 +283,30 @@ class StudentsController extends AppController {
     // View Student Group Members
     
     public function viewGroupMembers($grp_id = null) {
-        $message = null;
-        $element = null;
-        
         // set the student in the view
-        $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
-        
-        if (!$grp_id) {            
-            $message = 'Something went wrong, Can not find field group members';
-            $element = 'flashError';
-            $this->Session->setFlash(__($message), $element);
+        if ($grp_id != null) {
+            $this->set('student',  $this->getLoggedStudent());
+
+            $options = array('conditions' => array('Student.' . 'field_group_id' => $grp_id));
+            $this->set('grpStudents', $this->Student->find('all', $options));
+
+            $this->loadModel('AssesmentCheckpoint');
+            $checkpoints = $this->AssesmentCheckpoint->find('all');
+
+
+            $this->set(compact('checkpoints'));
+
+        } else {
+            $this->Session->setFlash(__('Something went wrong, Can not find field group members'), 'flashError');
             return;
         }
-        
-        $options = array('conditions' => array('Student.' . 'field_group_id' => $grp_id));
-        $this->set('grpStudents', $this->Student->find('all', $options));
     }
     
     // View Student Group Members Profile
     
     public function viewMemberProfile($id = null) {
         // set the student in the view
-        $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
+        $this->set('student',  $this->getLoggedStudent());
         
         $message = null;
         $element = null;
@@ -304,19 +327,100 @@ class StudentsController extends AppController {
     
     // View Field Group Progress
     
-    public function viewGroupProgress(){
+    public function viewProgress($grpId = null, $stdId = null) {
         // set the student in the view
-        $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
+        $this->set('student',  $this->getLoggedStudent());
+
+        if($grpId != null && $stdId != null) {
+            $this->loadModel('AssesmentCheckpoint');
+            $checkpoints = $this->AssesmentCheckpoint->find('all', array('recursive' => -1));
+
+            $this->loadModel('AssesmentCriteria');
+            $criterias = $this->AssesmentCriteria->find('all', array('recursive' => -1));
+
+            $this->loadModel('PeerAssesment');
+            $assesments = $this->PeerAssesment->find('all', array(
+                'conditions' => array(
+                    'PeerAssesment.student_id' => $stdId,
+                    'PeerAssesment.field_group_id' => $grpId,
+                ),
+                'recursive' => -1
+            ));
+
+            $result = $this->getAveragePeerAssesment($checkpoints, $criterias, $assesments, $stdId);
+
+            $assesmentByCriteria = $this->getAveragePeerAssesmentByCriteria($result, $criterias);
+
+            $this->set(compact('assesments', 'result', 'assesmentByCriteria', 'criterias'));
+
+        } else {
+
+        }
     }
+
+
+    private function getAveragePeerAssesment($checkpoints, $criterias, $assesments, $stdId) {
+        $result = [];
+        $criteriasForCheckpoint = [];
+        foreach($checkpoints as $checkpoint) {
+            foreach($criterias as $criteria) {
+
+                $total = 0;
+                $members = 0;
+                foreach ($assesments as $assesment) {
+                    if($assesment['PeerAssesment']['assesment_checkpoint_id'] == $checkpoint['AssesmentCheckpoint']['id'] &&
+                        $assesment['PeerAssesment']['assesment_criteria_id'] == $criteria['AssesmentCriteria']['id'] &&
+                        $assesment['PeerAssesment']['student_id'] == $stdId) {
+
+                        $members++;
+                        $total += intval($assesment['PeerAssesment']['score']);
+
+                    }
+                }
+
+                if($total != 0 && $members != 0) {
+                    $avgRating = $total / $members;
+                    $temp['Checkpoint'] = $checkpoint['AssesmentCheckpoint']['checkpoint'];
+                    $temp['Criteria'] = $criteria['AssesmentCriteria']['criteria'];
+                    $temp['Score'] = $avgRating;
+
+                    array_push($criteriasForCheckpoint, $temp);
+                } else {
+                    break;
+                }
+            }
+            array_push($result, $criteriasForCheckpoint);
+            $criteriasForCheckpoint = [];
+        }
+
+        return $result;
+    }
+
+    private function getAveragePeerAssesmentByCriteria($result, $criteriaList) {
+        $finalList = [];
+        $ary = [];
+        foreach($criteriaList as $criteria) {
+            foreach($result as $res) {
+                foreach($res as $r) {
+                    if($criteria['AssesmentCriteria']['criteria'] === $r['Criteria']) {
+                        $temp['Checkpoint'] = $r['Checkpoint'];
+                        $temp['Score'] = $r['Score'];
+                        array_push($ary, $temp);
+                    }
+                }
+            }
+            $finalList[$criteria['AssesmentCriteria']['id']] = $ary;
+            $ary = [];
+        }
+
+        return $finalList;
+    }
+
+
     
-    // View My Progress
-    
-    public function viewProgress() {
+    public function viewCommunityProgress() {
         // set the student in the view
-        $logged = AuthComponent::user();
-        $student = $this->getLoggedStudent($logged['id']);
-        $this->set('student', $student );
+        $student = $this->getLoggedStudent();
 
         // Set the field community
         $fieldCommunityId = $student['FieldGroup']['field_community_id'];
@@ -329,14 +433,22 @@ class StudentsController extends AppController {
             'recursive' => -1
         ));
 
-        $this->set('households', $households);
+        $this->loadModel('FieldMapPoint');
+        $mapPoints = $this->FieldMapPoint->find('all', array(
+            'conditions' => array(
+                'FieldMapPoint.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+
+        $this->set(compact('student', 'households', 'mapPoints'));
     }
 
     public function viewHousehold($id = null) {
         // set the student in the view
         if($id != null) {
-            $logged = AuthComponent::user();
-            $student = $this->getLoggedStudent($logged['id']);
+            $student = $this->getLoggedStudent();
             $this->set('student', $student );
 
             $this->loadModel('Household');
@@ -362,8 +474,7 @@ class StudentsController extends AppController {
 
     public function viewFamilyMember($id = null) {
         if($id != null) {
-            $logged = AuthComponent::user();
-            $student = $this->getLoggedStudent($logged['id']);
+            $student = $this->getLoggedStudent();
             $this->set('student', $student );
 
             $this->loadModel('FamilyMember');
@@ -433,8 +544,7 @@ class StudentsController extends AppController {
 
     public function viewFieldGroup(){
         // set the student in the view
-        $logged = AuthComponent::user();
-        $student =  $this->getLoggedStudent($logged['id']);
+        $student =  $this->getLoggedStudent();
         $this->set('student', $student);
 
 
@@ -445,8 +555,7 @@ class StudentsController extends AppController {
     public function viewFieldCommunity($id = null) {
         if($id) {
             // set the student in the view
-            $logged = AuthComponent::user();
-            $student =  $this->getLoggedStudent($logged['id']);
+            $student =  $this->getLoggedStudent();
             $this->set('student', $student);
 
 
@@ -481,6 +590,16 @@ class StudentsController extends AppController {
                 // Load Income Distribution Data
                 $incomeDist = $this->getIncomeDistribution($id);
                 $this->set('incomeDistribution', $incomeDist);
+
+                $this->loadModel('FieldMapPoint');
+                $mapPoints = $this->FieldMapPoint->find('all', array(
+                    'conditions' => array(
+                        'FieldMapPoint.field_community_id' => $id,
+                    ),
+                    'recursive' => -1,
+                ));
+                $this->set('mapPoints', $mapPoints);
+
 
 
                 $this->set('community', $community);
@@ -720,8 +839,7 @@ class StudentsController extends AppController {
     
     public function generateReports() {
         // set the student in the view
-        $logged = AuthComponent::user();
-        $this->set('student',  $this->getLoggedStudent($logged['id']));
+        $this->set('student',  $this->getLoggedStudent());
     }
     
     public function trackStudents() {
@@ -742,12 +860,12 @@ class StudentsController extends AppController {
             $folderName = APP.'webroot'.DS.'uploads'.DS.'students';
             $folder = new Folder($folderName, true, 0777);
 
-            if($id!=null){
-                if(file_exists($folderName.DS.$id)){
-                    chmod($folderName.DS.$id,0755);
-                    unlink($folderName.DS.$id);
-                }
-            }
+//            if($id!=null){
+//                if(file_exists($folderName.DS.$id)){
+//                    chmod($folderName.DS.$id,0755);
+//                    unlink($folderName.DS.$id);
+//                }
+//            }
 
             $id = String::uuid();
 
@@ -817,11 +935,127 @@ class StudentsController extends AppController {
             return false;
     }
 
+    public function viewCheckpoint($grpId = null, $checkId = null) {
+        if($grpId != null && $checkId != null) {
+            $student =  $this->getLoggedStudent();
 
-    private function getLoggedStudent($id) {
+            $this->loadModel('AssesmentCheckpoint');
+            $checkpoint = $this->AssesmentCheckpoint->find('first', array(
+                'conditions' => array(
+                    'AssesmentCheckpoint.id' => $checkId,
+                ),
+                'recursive' => -1
+            ));
+
+            $this->loadModel('AssesmentCriteria');
+            $criterias = $this->AssesmentCriteria->find('all');
+
+
+            $this->set(compact('student', 'criterias', 'checkpoint', 'grpId', 'checkId'));
+        } else {
+            $this->Session->setFlash(__('Checkpoint could not be loaded'), 'flashError');
+            return $this->redirect(array('action' => 'index'));
+        }
+    }
+
+    public function reviewGroupMembers($grpId = null, $checkId = null, $criteriaId = null) {
+        if($grpId != null && $checkId != null && $criteriaId != null) {
+            $student =  $this->getLoggedStudent();
+
+            // redirect user if already rated.
+            $this->loadModel('CompletePeerAssesment');
+            $check = $this->CompletePeerAssesment->find('all', array(
+                'conditions' => array(
+                    'CompletePeerAssesment.student_id' => $student['Student']['id'],
+                    'CompletePeerAssesment.assesment_checkpoint_id' => $checkId,
+                    'CompletePeerAssesment.assesment_criteria_id' => $criteriaId,
+                ),
+                'recursive' => -1
+            ));
+
+            if(!empty($check)) {
+                $this->Session->setFlash(__('You have already reviewed your group members for this checkpoint and criteria.'), 'flashInfo');
+                return $this->redirect(array('action' => 'viewCheckpoint', $grpId, $checkId));
+            }
+
+            // save the rating..
+            if($this->request->is('post')) {
+                $data = $this->request->data;
+                $ary = [];
+                if(!empty($data['PeerAssesment']) && !empty($data['PeerAssesment']['Student'])) {
+                    foreach($data['PeerAssesment']['Student'] as $std) {
+                        $temp['PeerAssesment']['field_group_id'] = $data['PeerAssesment']['field_group_id'];
+                        $temp['PeerAssesment']['assesment_criteria_id'] = $data['PeerAssesment']['assesment_criteria_id'];
+                        $temp['PeerAssesment']['assesment_checkpoint_id'] = $data['PeerAssesment']['assesment_checkpoint_id'];
+                        $temp['PeerAssesment']['student_id'] = $std['id'];
+                        $temp['PeerAssesment']['score'] = $std['score'];
+
+                        array_push($ary, $temp);
+                    }
+
+                    $this->loadModel('PeerAssesment');
+                    $res = $this->PeerAssesment->saveMany($ary);
+
+                    $assesmentRecord = [];
+                    $this->loadModel('CompletePeerAssesment');
+                    $assesmentRecord['CompletePeerAssesment']['student_id'] = $student['Student']['id'];
+                    $assesmentRecord['CompletePeerAssesment']['field_group_id'] = $grpId;
+                    $assesmentRecord['CompletePeerAssesment']['assesment_checkpoint_id'] = $checkId;
+                    $assesmentRecord['CompletePeerAssesment']['assesment_criteria_id'] = $criteriaId;
+
+                    $this->CompletePeerAssesment->create();
+                    $res2 = $this->CompletePeerAssesment->save($assesmentRecord);
+
+
+                    if($res && $res2) {
+                        $this->Session->setFlash(__('Evaluation Successful!'), 'flashSuccess');
+                        return $this->redirect(array('action' => 'viewCheckpoint', $grpId, $checkId));
+                    } else {
+                        $this->Session->setFlash(__('Failed to save Evaluation Data!'), 'flashError');
+                        return $this->redirect(array('action' => 'viewCheckpoint',  $grpId, $checkId));
+                    }
+
+                 }
+
+            }
+
+            $this->loadModel('AssesmentCheckpoint');
+            $checkpoint = $this->AssesmentCheckpoint->find('first', array(
+                'conditions' => array(
+                    'AssesmentCheckpoint.id' => $checkId,
+                ),
+                'recursive' => -1
+            ));
+
+            $this->loadModel('Student');
+            $students = $this->Student->find('all', array(
+                'conditions' => array(
+                    'Student.field_group_id' => $grpId,
+                ),
+                'recursive' => -1
+            ));
+
+            $this->loadModel('AssesmentCriteria');
+            $criteria = $this->AssesmentCriteria->find('first', array(
+                'conditions' => array(
+                    'AssesmentCriteria.id' => $criteriaId,
+                ),
+            ));
+
+
+            $this->set(compact('student', 'students', 'criteria', 'checkpoint', 'grpId', 'checkId'));
+
+        } else {
+            $this->Session->setFlash(__('Assessment Criteria could not be loaded'), 'flashError');
+            return $this->redirect(array('action' => 'index'));
+        }
+    }
+
+
+    private function getLoggedStudent() {
             $user = AuthComponent::user();
             if ($user['role'] == 'Student') {
-                $options = array('conditions' => array('Student.user_id' => $id));
+                $options = array('conditions' => array('Student.user_id' => $user['id']));
                 return $loggedstudent = $this->Student->find('first', $options);
             } else {
                 return $this->redirect(array( 'controller' => 'users', 'action' => 'redirectLoggedUser'));
@@ -832,8 +1066,7 @@ class StudentsController extends AppController {
     // Activity Related
 
     public function createActivity() {
-        $logged = AuthComponent::user();
-        $student = $this->getLoggedStudent($logged['id']);
+        $student = $this->getLoggedStudent();
         $this->set('student', $student );
 
         if($this->request->is('post')) {
@@ -855,8 +1088,7 @@ class StudentsController extends AppController {
     }
 
     public function allActivity() {
-        $logged = AuthComponent::user();
-        $student = $this->getLoggedStudent($logged['id']);
+        $student = $this->getLoggedStudent();
 
         $this->loadModel('Event');
         $allEvents = $this->Event->find('all', array(
@@ -894,8 +1126,7 @@ class StudentsController extends AppController {
 
     public function completeActivity($id = null) {
         if($id != null) {
-            $logged = AuthComponent::user();
-            $student = $this->getLoggedStudent($logged['id']);
+            $student = $this->getLoggedStudent();
 
             $this->loadModel('Event');
             $event = $this->Event->find('first', array(
@@ -968,8 +1199,7 @@ class StudentsController extends AppController {
 
     public function viewActivity($id = null) {
         if($id != null) {
-            $logged = AuthComponent::user();
-            $student = $this->getLoggedStudent($logged['id']);
+            $student = $this->getLoggedStudent();
 
             $this->loadModel('Event');
             $event = $this->Event->find('first', array(
@@ -1000,11 +1230,695 @@ class StudentsController extends AppController {
         }
     }
 
+    public function progressOverview($id = null) {
+        if($id != null) {
+            $student = $this->getLoggedStudent();
+
+
+
+
+
+            $this->set(compact('student', 'event', 'eventFeedbacks'));
+        }else {
+            $this->Session->setFlash(__('Can not find student!'), 'flashError');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
+
+    public function addGeneralObjectives() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('HealthIssue');
+        $healthIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('GeneralObjective');
+        $objectives = $this->GeneralObjective->find('all', array(
+            'conditions' => array(
+                'GeneralObjective.field_group_id' =>  $student['Student']['field_group_id'],
+            ),
+            //'recursive' => -1,
+        ));
+
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $objectives = [];
+            if(!empty($data) && !empty($data['GeneralObjectives'])) {
+                foreach($data['GeneralObjectives'] as $issue) {
+                    $temp['GeneralObjective']['health_issue_id'] = $issue['GeneralObjective']['health_issue_id'];
+                    $temp['GeneralObjective']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+                    $temp['GeneralObjective']['field_group_id'] = $student['Student']['field_group_id'];
+                    $temp['GeneralObjective']['objective'] = $issue['GeneralObjective']['objective'];
+                    $temp['GeneralObjective']['percentage'] = $issue['GeneralObjective']['percentage'];
+
+                    array_push($objectives, $temp);
+                }
+
+                $this->loadModel('GeneralObjective');
+                if($this->GeneralObjective->saveMany($objectives)) {
+                    $this->Session->setFlash(__('General Objectives added successfully!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'addGeneralObjectives'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add General Objectives'), 'flashError');
+                    return $this->redirect(array('action' => 'addGeneralObjectives'));
+                }
+            }
+        }
+
+
+        $this->set(compact('student', 'healthIssues', 'objectives'));
+    }
+
+    public function addSpecificObjectives() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('GeneralObjective');
+        $generalObjectives = $this->GeneralObjective->find('all', array(
+            'conditions' => array(
+                'GeneralObjective.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('SpecificObjective');
+        $specificObjectives = $this->SpecificObjective->find('all', array(
+            'conditions' => array(
+                'SpecificObjective.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+            ),
+            //'recursive' => -1,
+        ));
+
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $objectives = [];
+            if(!empty($data) && !empty($data['SpecificObjectives'])) {
+                foreach($data['SpecificObjectives'] as $obj) {
+                    $temp['SpecificObjective']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+                    $temp['SpecificObjective']['general_objective_id'] = $obj['SpecificObjective']['general_objective_id'];
+                    $temp['SpecificObjective']['objective'] = $obj['SpecificObjective']['objective'];
+                    $temp['SpecificObjective']['percentage'] = $obj['SpecificObjective']['percentage'];
+
+                    array_push($objectives, $temp);
+                }
+
+                $this->loadModel('SpecificObjective');
+                if($this->SpecificObjective->saveMany($objectives)) {
+                    $this->Session->setFlash(__('Specific Objectives added successfully!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'addSpecificObjectives'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add Specific Objectives'), 'flashError');
+                    return $this->redirect(array('action' => 'addSpecificObjectives'));
+                }
+            }
+        }
+
+
+        $this->set(compact('student', 'generalObjectives', 'specificObjectives'));
+    }
+
+    public function addHealthIssues() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('HealthIssue');
+        $currentIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1
+        ));
+
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $issues = [];
+            if(!empty($data) && !empty($data['HealthIssues'])) {
+                foreach($data['HealthIssues'] as $issue) {
+                    $temp['HealthIssue']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+                    $temp['HealthIssue']['issue_name'] = $issue['HealthIssue']['issue_name'];
+                    $temp['HealthIssue']['description'] = $issue['HealthIssue']['description'];
+
+                    array_push($issues, $temp);
+                }
+
+                $this->loadModel('HealthIssue');
+                if($this->HealthIssue->saveMany($issues)) {
+                    $this->Session->setFlash(__('Health Issues added successfully!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'addHealthIssues'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add Health Issues'), 'flashError');
+                    return $this->redirect(array('action' => 'addHealthIssues'));
+                }
+            }
+
+
+        }
+
+        $this->set(compact('student', 'currentIssues'));
+    }
+
+
+    public function addDeterminants() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('HealthIssue');
+        $healthIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1
+        ));
+
+        $this->loadModel('Determinant');
+        $determinants = $this->Determinant->find('all', array(
+            'conditions' => array(
+                'Determinant.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1
+        ));
+
+        if($this->request->is('post')) {
+            $data = $this->request->data;
+
+            $issues = [];
+            if(!empty($data) && !empty($data['Determinants'])) {
+                foreach($data['Determinants'] as $determinant) {
+                    $temp['Determinant']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+                    $temp['Determinant']['field_group_id'] = $student['Student']['field_group_id'];
+                    $temp['Determinant']['health_issue_id'] = $determinant['Determinant']['health_issue_id'];
+                    $temp['Determinant']['title'] = $determinant['Determinant']['title'];
+                    $temp['Determinant']['description'] = $determinant['Determinant']['description'];
+
+                    array_push($issues, $temp);
+                }
+
+                $this->loadModel('Determinant');
+                if($this->Determinant->saveMany($issues)) {
+                    $this->Session->setFlash(__('Determinants added successfully!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'addDeterminants'));
+                } else {
+                    $this->Session->setFlash(__('Failed to add Determinants'), 'flashError');
+                    return $this->redirect(array('action' => 'addDeterminants'));
+                }
+            }
+
+
+        }
+
+        $this->set(compact('student', 'healthIssues', 'determinants'));
+    }
+
+    public function setFieldCommunityArea() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('FieldCommunity');
+        $community = $this->FieldCommunity->find('first', array(
+            'conditions' => array(
+                'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('FieldMapPoint');
+        $pts = $this->FieldMapPoint->find('all', array(
+            'conditions' => array(
+                'FieldMapPoint.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        if(!empty($community) && !empty($pts)) {
+            $this->Session->setFlash(__('<b>Important!</b> You have already added the details for your <b>Field Community</b>. That information is not allowed to add again.'), 'flashInfo');
+            return $this->redirect(array('action' => 'index'));
+        }
+
+
+
+        if($this->request->is('post')) {
+            $points = $this->request->data['FieldCommunity']['map_points'];
+            $coords = explode('|', $points);
+
+            $coordAry = [];
+            foreach($coords as $coord) {
+                if(!empty($coord)) {
+                    $latLng = explode(',', $coord);
+                    $temp['FieldMapPoint']['field_community_id'] = $student['FieldGroup']['field_community_id'];
+                    $temp['FieldMapPoint']['point_lat']  = floatval($latLng[0]);
+                    $temp['FieldMapPoint']['point_lng']  = floatval($latLng[1]);
+
+                    array_push($coordAry, $temp);
+                }
+            }
+
+            $this->loadModel('FieldMapPoint');
+            $rtn = $this->FieldMapPoint->saveMany($coordAry);
+
+            unset($this->request->data['FieldCommunity']['map_points']);
+            $this->request->data['FieldCommunity']['field_group_id'] = $student['FieldGroup']['id'];
+
+            $this->loadModel('FieldCommunity');
+            $this->FieldCommunity->create();
+            $res = $this->FieldCommunity->save($this->request->data);
+
+            if($rtn  && $res) {
+                $this->Session->setFlash(__('Field Community Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Field Community Details'), 'flashError');
+                return $this->redirect(array('action' => 'index'));
+            }
+        }
+
+        $this->set(compact('student'));
+    }
+
+    public function addPopulationDistribution() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('FieldMapPoint');
+        $mapPoints = $this->FieldMapPoint->find('all', array(
+            'conditions' => array(
+                'FieldMapPoint.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+        $this->loadModel('FieldCommunity');
+        $fieldCommunity = $this->FieldCommunity->find('first', array(
+            'conditions' => array(
+                'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'fields'=>array('village_name', 'title'),
+            'recursive' => -1,
+        ));
+
+        if($this->request->is(array('post', 'put'))) {
+
+            $this->loadModel('InitPopulation');
+            if(!empty($this->request->data['InitPopulation']['id']))
+                $this->InitPopulation->create();
+
+            if($this->InitPopulation->save($this->request->data)) {
+                $this->Session->setFlash(__('Population Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Population Details'), 'flashError');
+                return $this->redirect(array('action' => 'index'));
+            }
+
+        } else {
+            $this->loadModel('InitPopulation');
+            $population = $this->InitPopulation->find('first', array(
+                'conditions' => array(
+                    'InitPopulation.field_community_id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            if(!empty($population)) {
+                $this->request->data = $population;
+            }
+        }
+
+        $this->set(compact('student', 'mapPoints', 'fieldCommunity'));
+    }
+
+    public function addAgeDistribution() {
+
+        if($this->request->is(array('post', 'put'))) {
+
+            $this->loadModel('InitAgeDistribution');
+            $this->InitAgeDistribution->create();
+            if($this->InitAgeDistribution->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Age Group Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addAgeDistribution'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Age Group Details'), 'flashError');
+                return $this->redirect(array('action' => 'addAgeDistribution'));
+            }
+
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('InitAgeDistribution');
+            $ageGroups = $this->InitAgeDistribution->find('all', array(
+                'conditions' => array(
+                    'InitAgeDistribution.field_community_id' => $student['FieldGroup']['field_community_id'],
+                ),
+                //'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+
+            $this->set(compact('student', 'fieldCommunity', 'ageGroups'));
+        }
+    }
+
+    public function addEducationLevel() {
+        if($this->request->is(array('post', 'put'))) {
+
+            $this->loadModel('InitEducationLevel');
+            $this->InitEducationLevel->create();
+            if($this->InitEducationLevel->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Education Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addEducationLevel'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Education Details'), 'flashError');
+                return $this->redirect(array('action' => 'addEducationLevel'));
+            }
+
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('InitEducationLevel');
+            $eduLevels = $this->InitEducationLevel->find('all', array(
+                'conditions' => array(
+                    'InitEducationLevel.field_community_id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+
+            $this->set(compact('student', 'fieldCommunity', 'eduLevels'));
+        }
+
+    }
+
+    public function addFamilyIncome() {
+        if($this->request->is(array('post', 'put'))) {
+
+            $this->loadModel('InitIncome');
+            $this->InitIncome->create();
+            if($this->InitIncome->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Income Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addFamilyIncome'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Income Details'), 'flashError');
+                return $this->redirect(array('action' => 'addFamilyIncome'));
+            }
+
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('InitIncome');
+            $incomeRanges = $this->InitIncome->find('all', array(
+                'conditions' => array(
+                    'InitIncome.field_community_id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+
+            $this->set(compact('student', 'fieldCommunity', 'incomeRanges'));
+        }
+    }
+
+    public function addOccupationDistribution() {
+        if($this->request->is(array('post', 'put'))) {
+
+            $this->loadModel('InitOccupation');
+            $this->InitOccupation->create();
+            if($this->InitOccupation->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Occupation Details was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addOccupationDistribution'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Occupation Details'), 'flashError');
+                return $this->redirect(array('action' => 'addOccupationDistribution'));
+            }
+
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('InitOccupation');
+            $occupations = $this->InitOccupation->find('all', array(
+                'conditions' => array(
+                    'InitOccupation.field_community_id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+
+            $this->set(compact('student', 'fieldCommunity', 'occupations'));
+        }
+    }
     
     
-    
-    
-    
+    public function addInputIndicators() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('InputIndicator');
+            if($this->InputIndicator->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Input Indicators was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addInputIndicators'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Input Indicators'), 'flashError');
+                return $this->redirect(array('action' => 'addInputIndicators'));
+            }
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('GeneralObjective');
+            $generalObjectives = $this->GeneralObjective->find('all', array(
+                'conditions' => array(
+                    'GeneralObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+                    'GeneralObjective.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('InputIndicator');
+            $indicators = $this->InputIndicator->find('all', array(
+                'conditions' => array(
+                    'InputIndicator.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student', 'generalObjectives', 'fieldCommunity', 'indicators'));
+        }
+    }
+
+    public function addProcessIndicators() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('ProcessIndicator');
+            if($this->ProcessIndicator->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Process Indicators was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addProcessIndicators'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Process Indicators'), 'flashError');
+                return $this->redirect(array('action' => 'addProcessIndicators'));
+            }
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('GeneralObjective');
+            $generalObjectives = $this->GeneralObjective->find('all', array(
+                'conditions' => array(
+                    'GeneralObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+                    'GeneralObjective.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('ProcessIndicator');
+            $indicators = $this->ProcessIndicator->find('all', array(
+                'conditions' => array(
+                    'ProcessIndicator.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student', 'generalObjectives', 'fieldCommunity', 'indicators'));
+        }
+    }
+
+    public function addOutputIndicators() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('OutputIndicator');
+            if($this->OutputIndicator->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Output Indicators was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addOutputIndicators'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Output Indicators'), 'flashError');
+                return $this->redirect(array('action' => 'addOutputIndicators'));
+            }
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('GeneralObjective');
+            $generalObjectives = $this->GeneralObjective->find('all', array(
+                'conditions' => array(
+                    'GeneralObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+                    'GeneralObjective.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('OutputIndicator');
+            $indicators = $this->OutputIndicator->find('all', array(
+                'conditions' => array(
+                    'OutputIndicator.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student', 'generalObjectives', 'fieldCommunity', 'indicators'));
+        }
+    }
+
+    public function addOutcomeIndicators() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('OutcomeIndicator');
+            if($this->OutcomeIndicator->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Outcome Indicators was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addOutcomeIndicators'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Outcome Indicators'), 'flashError');
+                return $this->redirect(array('action' => 'addOutcomeIndicators'));
+            }
+
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldCommunity');
+            $fieldCommunity = $this->FieldCommunity->find('first', array(
+                'conditions' => array(
+                    'FieldCommunity.id' => $student['FieldGroup']['field_community_id'],
+                ),
+                'fields'=>array('village_name', 'title'),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('GeneralObjective');
+            $generalObjectives = $this->GeneralObjective->find('all', array(
+                'conditions' => array(
+                    'GeneralObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+                    'GeneralObjective.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('OutcomeIndicator');
+            $indicators = $this->OutcomeIndicator->find('all', array(
+                'conditions' => array(
+                    'OutcomeIndicator.field_group_id' => $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student', 'generalObjectives', 'fieldCommunity', 'indicators'));
+        }
+    }
+
+    public function fieldCommunityOverview() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('HealthIssue');
+        $healthIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('GeneralObjective');
+        $generalObjectives = $this->GeneralObjective->find('all', array(
+            'conditions' => array(
+                'GeneralObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('SpecificObjective');
+        $specificObjectives = $this->SpecificObjective->find('all', array(
+            'conditions' => array(
+                'SpecificObjective.field_community_id' => $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->set(compact('student', 'healthIssues', 'generalObjectives', 'specificObjectives'));
+    }
+
+    public function viewGroupProgress() {
+        $student = $this->getLoggedStudent();
+
+        $this->set(compact('student'));
+    }
     
     
     

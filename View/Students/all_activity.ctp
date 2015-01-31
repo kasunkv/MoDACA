@@ -4,10 +4,14 @@
     echo $this->element('studentNav');
     $this->end();
 ?>
-
+<?php
+    $this->start('logout');
+    echo $this->element('logoutBtn');
+    $this->end();
+?>
 <div class="row">
     <div class="col-md-12">
-        <h2><?php echo $student['Student']['first_name'] . " " . $student['Student']['last_name']; ?> | Community Activities</h2>
+        <h2>Community Activities</h2>
         <h4 class="page-subheader">All Community Activities created by your group.</h4>
     </div>
 </div>
@@ -36,7 +40,7 @@
                             <?php $ctr++; ?>
                             <div class="activity-noti shadow">
                                 <div class="activity-noti-header">
-                                    <a href="/MoDACA/students/viewActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
+                                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewActivity', $event['Event']['id'])); ?>" ><h3 class="title green"><?php echo $event['Event']['title']; ?></h3></a>
                                     <?php if(!empty($event['EventFeedback'])): ?>
                                             <?php 
                                                 $newComment = 0;
@@ -87,7 +91,7 @@
                                 <?php $ctr++; ?>
                                 <div class="activity-noti shadow">
                                     <div class="activity-noti-header">
-                                        <a href="/MoDACA/students/completeActivity/<?php echo $event['Event']['id']; ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
+                                        <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'completeActivity', $event['Event']['id'])); ?>" ><h3 class="title red"><?php echo $event['Event']['title']; ?></h3></a>
                                         <?php if(!empty($event['EventFeedback'])): ?>
                                             <?php 
                                                 $newComment = 0;

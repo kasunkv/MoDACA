@@ -51,14 +51,20 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group input-group-lg">
                             <br />
-                            <!--<label class="profile-view-heading">Photo</label>
-                            <br /><br />-->
-                            <?php 
-                                echo $this->Html->image('../uploads/staffs/'. $staff['Staff']['profile_photo'], array(
-                                    'width' => 200,
-                                    'height' => 200,
-                                    'class' => 'profile-image shadow')
-                                );                                        
+                            <?php         
+                                if(!empty($staff['Staff']['profile_photo'])) {
+                                    echo $this->Html->image('../uploads/staffs/'. $staff['Staff']['profile_photo'], array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    );         
+                                } else {
+                                    echo $this->Html->image('../uploads/default_user.png', array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    ); 
+                                }      
                             ?>
                         </div>
                         <p class="profile-view-heading">Biography</p>

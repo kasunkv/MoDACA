@@ -27,7 +27,7 @@
 <!-- MAP OF AREA -->
 <div class="row">
     <div class="col-md-12 col-xs-12 col-sm-12">
-        <div id="area-map" class="shadow" style="height: 300px;" ></div>
+        <div id="area-map" class="shadow" style="height: 400px;" ></div>
     </div>
 </div>
 <br />
@@ -40,7 +40,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-5">
-                    <div id="donut-population"></div>
+                    <div class="chart" id="donut-population"></div>
                 </div>
 <!--                <div class="col-md-1"></div>-->
                 <div class="col-md-6">
@@ -101,13 +101,12 @@
             <div class="panel-body">
                 <div class="col-md-6">
                     <div class="row">
-                        <div id="bar-age"></div>
+                        <div class="chart" id="bar-age"></div>
                         <center><h5><strong>Age Distribution (Male & Female)</strong></h5></center>
-                    </div>
-                    <button class="btn btn-info btn-xs" id="save_chart">Save Chart</button>
+                    </div>                    
                 </div>
                 <div class="col-md-6">
-                    <div id="donut-age"></div>
+                    <div class="chart" id="donut-age"></div>
                     <center><h5><strong>Age Distribution (Total)</strong></h5></center>
                 </div>                
             </div>
@@ -126,11 +125,11 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-6">
-                    <div id="donut-education"></div>
+                    <div class="chart" id="donut-education"></div>
                     <center><h5><strong>Education Level Distribution (Total)</strong></h5></center>
                 </div> 
                 <div class="col-md-6">
-                     <div id="bar-education"></div>
+                     <div class="chart" id="bar-education"></div>
                      <center><h5><strong>Education Level Distribution (Male/Female)</strong></h5></center>
                 </div>
             </div>
@@ -148,11 +147,11 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-6">
-                     <div id="bar-occupation"></div>
+                     <div class="chart" id="bar-occupation"></div>
                      <center><h5><strong>Occupation Type Distribution (Male/Female)</strong></h5></center>
                 </div>
                 <div class="col-md-6">
-                    <div id="donut-occupation"></div>
+                    <div class="chart" id="donut-occupation"></div>
                     <center><h5><strong>Occupation Type Distribution (Total)</strong></h5></center>
                 </div>
             </div>
@@ -169,19 +168,38 @@
                 <b>Income Distribution</b>
             </div>
             <div class="panel-body">
-                <div id="donut-income"></div>
+                <div class="chart" id="donut-income"></div>
                 <center><h5><strong>Income Distribution (Families)</strong></h5></center>
             </div>
         </div>        
     </div>  
 </div>
-
+<hr />
 <div class="row">
-<!--    <div style="height: 50px; width: 150px; border: gray 2px solid; border-radius: 5px;">
-        <h5><?php //echo $chartPopulation['title']; ?>: <?php //echo $chartPopulation['village_name']; ?></h5>
-        <p>The field area consists of <?php //echo $chartPopulation['families']; ?> families with a population of <?php //echo $chartPopulation['total_population']; ?> people.</p>
-    </div>-->
+    <div class="col-md-12">
+        <h3>Tasks</h3>
+        <button class="btn btn-md btn-primary" id="btn-save">Convert Charts to Images</button>
+        <br /><br />
+        <div id="save-alart" class="alert alert-info animated zoomIn hide" role="alert">
+<!--            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+            <h4>A Word of Warning</h4>
+            <p>Once you convert the charts to images the charts will no longer be interactive. You can then right click on the charts and select <b>Save image as...</b>
+                and save the image. If you want to re interact with the charts, please refresh the page.
+            </p>
+            <p>
+                <button type="button" id="btn-continue" class="btn btn-info">Continue</button>
+                <button type="button" id="btn-close-alart" class="btn btn-default">Cancel</button>
+            </p>
+        </div>
+    </div>
+    
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <?php //echo var_dump($mapPoints); ?>
+    </div>
+</div>
+
 
 <script>
     //colors: ['#428bca', '#39b3d7', '#6DD1EF', '#47a447', '#25A325', '#8CF58C', '#ed9c28', '#d58512', '#d2322d', '#ac2925']
@@ -369,18 +387,62 @@
         mapTypeControl: true
         
     });
-    map.addMarker({
-        lat: 8.370422,
-        lng: 80.516138,
-        title: 'Field Community Area (Click for More Information)',
-        infoWindow: {
-            content: '<p>The field area consists of <?php echo $chartPopulation["families"]; ?> families with a population of <?php echo $chartPopulation["total_population"]; ?> people.</p>'
-        }
-    });
-    map.setMapTypeId('roadmap');
+//    map.addMarker({
+//        lat: 8.370422,
+//        lng: 80.516138,
+//        title: 'Field Community Area (Click for More Information)',
+//        infoWindow: {
+//            content: '<p>The field area consists of <?php //echo $chartPopulation["families"]; ?> families with a population of <?php //echo $chartPopulation["total_population"]; ?> people.</p>'
+//        }
+//    });
+    map.setMapTypeId('hybrid');
     
-    $('#save_chart').click(function (){
-        $('#bar-age').find('svg').toImage();      
+    <?php if(!empty($mapPoints)): ?>
+        var path = [];
+        <?php foreach ($mapPoints as $point): ?>
+            var temp = [];
+            temp.push(parseFloat(<?php echo $point['FieldMapPoint']['point_lat']; ?>));
+            temp.push(parseFloat(<?php echo $point['FieldMapPoint']['point_lng']; ?>));
+            path.push(temp);
+        <?php endforeach; ?>
+
+        map.drawPolygon({
+            paths: path,
+            strokeColor: '#39b3d7',
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: '#39b3d7',
+            fillOpacity: 0.2,
+            geodesic: true,
+
+        });
+    <?php endif; ?>
+    //console.log(path);
+    
+    
+    
+    
+    
+    $('#btn-save').click(function (){
+        $('#save-alart').removeClass('hide');
+        
+        
+        $('#btn-continue').click(function (){
+            $('.chart').each(function(i) {
+                $(this).find('svg').toImage();   
+            });  
+            
+
+        });
+        
+        $('#btn-close-alart').click(function (){
+            $('#save-alart').addClass('hide');
+        });
+        
+        
+    });
+    
+    $('#save-alart').on('closed.bs.alert', function () {
         
     });
         

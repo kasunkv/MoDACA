@@ -9,14 +9,22 @@ App::uses('RestHelper', 'Lib');
  * @property SessionComponent $Session
  */
 class HouseholdsController extends AppController {
-    
 
-	public $components = array('Paginator', 'Session');
 
-        public function beforeFilter() {
-           // $this->Auth->allow();
-        }
+    public $components = array('Paginator', 'Session', 'Security');
+
+    public function beforeFilter() {
+        $this->Security->csrfCheck = false;
+        $this->Security->unlockedActions = array('ajax_action');
+        $this->Security->validatePost = false;
+    }
+
         public function getAll() {
+            $this->response->header(array(
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Headers' => 'Content-Type'
+                )
+            );
             
             $this->autoRender = false;
             
@@ -44,6 +52,11 @@ class HouseholdsController extends AppController {
         }
         
         public function getByID($id=NULL) {
+            $this->response->header(array(
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Headers' => 'Content-Type'
+                )
+            );
             $this->autoRender = false;
             
             if ($this->request->is('post')) {
@@ -58,7 +71,8 @@ class HouseholdsController extends AppController {
                 $results = $this->Household->find('first', array(
                     'conditions' => array(
                         'Household.id' => $id,
-                    )
+                    ),
+                    'recursive' => -1
                 ));
 
                 if (count($results) > 0) {
@@ -75,40 +89,30 @@ class HouseholdsController extends AppController {
         
         
         public function save() {
+            $this->response->header(array(
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Headers' => 'Content-Type'
+                )
+            );
             $this->autoRender = false;
-            
-            if ($this->request->is('post')) {
-                $response = array();               
+            if($this->request->is('post')) {
+                $data = $this->request->data;
 
-                $temp = json_decode($this->request->data, true);
-                if(!empty($temp['id']))
-                    $temp['id'] = '';
+                $temp = $this->Household->createDataArray($data);
 
-                $this->request->data = $this->populateRequest($temp, 'BMI');
-
+                $this->loadModel('Household');
                 $this->Household->create();
-                if ($this->Household->save($this->request->data)) {
-                    $response = RestHelper::createResponseMessage('success', array('data' => null, 'message' => 'Record saved to the database.'));
+                if($this->Household->save($temp)) {
+                    $response = RestHelper::createResponseMessage('success', array('data' => null, 'message' => 'Household data was saved.'));
                     echo json_encode($response);
                 } else {
-                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Failed to save the record to database.'));
+                    $response = RestHelper::createResponseMessage('error', array('data' => null, 'message' => 'Failed to save Household data.'));
                     echo json_encode($response);
                 }
             }
         }
 
-        private function populateRequest($ary = array(), $model) {
-            $data = array();
 
-            foreach($ary as $key => $value) {
-                $data[$model][$key] = $value;
-            }
-
-            return $data;
-        }
-        
-
-        
 	public function delete($id = null) {
 		$this->Household->id = $id;
 		if (!$this->Household->exists()) {

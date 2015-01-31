@@ -127,15 +127,23 @@
                         <div class="form-group input-group-lg">
                             <label>Photo</label>
                             <br />
-                            <?php 
-                                echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
-                                    'width' => 200,
-                                    'height' => 200,
-                                    'class' => 'profile-image')
-                                );                                        
+                            <?php         
+                                if(!empty($administrator['Administrator']['profile_photo'])) {
+                                    echo $this->Html->image('../uploads/admins/'. $administrator['Administrator']['profile_photo'], array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    );         
+                                } else {
+                                    echo $this->Html->image('../uploads/default_user.png', array(
+                                        'alt' => 'Profile Image',
+                                        'class' => 'user-image img-responsive',
+                                        )
+                                    ); 
+                                }                                               
                             ?>
                             <br /><br />
-                            <?php echo $this->Form->file('profile_photo'); ?>
+                            <?php echo $this->Form->file('profile_photo', array('multiple' => false)); ?>
                         </div>
                         <!--Bio-->
                         <?php 
@@ -179,3 +187,14 @@
 
     </div>
 </div>
+<script>
+    $("#AdministratorProfilePhoto").fileinput({
+        showUpload: false,
+        showCaption: true,
+	showRemove: false,
+        browseClass: "btn btn-success",
+	browseLabel: " Pick Image",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        allowedFileTypes: ['image']
+    });    
+</script>
