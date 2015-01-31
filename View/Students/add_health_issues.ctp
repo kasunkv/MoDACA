@@ -42,12 +42,7 @@
                         ),
                     ));
                     ?>
-                    <div class="form-add-more">
-                        <button class="btn btn-success btn-sm" id="btn-add-field">
-                            <i class="fa fa-plus"></i> Add More...
-                        </button>
-                    </div>
-                    
+                                        
                     <div class="multiple-input-wrapper">
                         <div class="multiple-item-box">
                             <div class="form-group input-group-lg">
@@ -56,14 +51,19 @@
                             <div class="form-group">
                                 <textarea name="data[HealthIssues][0][HealthIssue][description]" class="form-control" placeholder="Description goes here..." rows="3" cols="30" id="HealthIssueDescription1"></textarea>
                             </div> 
-                        </div>   
+                        </div>
+                        <div class="form-add-more">
+                            <button class="btn btn-success btn-sm" id="btn-add-field" style="margin-left: 12px; margin-top: -20px;">
+                                <i class="fa fa-plus"></i> Add More...
+                            </button>
+                        </div>
                     </div>
                     <hr />
                     
                     <?php 
                         $form_end_options = array(
                             'label' => 'Add Health Issues', 
-                            'class' => 'btn btn-md btn-primary ',                                
+                            'class' => 'btn btn-lg btn-primary ',                                
                         );
                         echo $this->Form->end($form_end_options);
                     ?>
@@ -108,7 +108,7 @@
     $('#btn-add-field').click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed           
-            $('.multiple-input-wrapper').append('<div class="multiple-item-box animated zoomIn"><div class="form-group input-group-lg required"><input name="data[HealthIssues]['+ x +'][HealthIssue][issue_name]" class="form-control" placeholder="Health Issue" required="required" type="text" id="HealthIssueIssueName'+ x +'"></div><div class="form-group required"><textarea name="data[HealthIssues]['+ x +'][HealthIssue][description]" class="form-control" placeholder="Description goes here..." rows="3" required="required" cols="30" id="HealthIssueDescription'+ x +'"></textarea></div><button href="" class="btn btn-danger btn-xs btn-remove-field"><i class="fa fa-minus"></i> &nbsp; Remove</button></div>'); //add input box
+            $('.multiple-input-wrapper').append('<div class="multiple-item-box animated zoomIn"><hr /><div class="form-group input-group-lg required"><input name="data[HealthIssues]['+ x +'][HealthIssue][issue_name]" class="form-control" placeholder="Health Issue" required="required" type="text" id="HealthIssueIssueName'+ x +'"></div><div class="form-group required"><textarea name="data[HealthIssues]['+ x +'][HealthIssue][description]" class="form-control" placeholder="Description goes here..." rows="3" required="required" cols="30" id="HealthIssueDescription'+ x +'"></textarea></div><button href="" class="btn btn-danger btn-xs btn-remove-field"><i class="fa fa-minus"></i> &nbsp; Remove</button></div>'); //add input box
             x++; //text box increment
         }
     });
