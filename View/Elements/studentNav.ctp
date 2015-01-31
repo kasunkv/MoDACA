@@ -118,13 +118,19 @@
 <li>
     <a href="#"><i class="fa fa-check-square-o fa-3x"></i> Program Evaluation<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
-        
+        <li><a href="#">Evaluation Setup<span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addEvaluationCheckpoints')); ?>"> Add Evaluation Checkpoints</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addEvaluationIndicators')); ?>"> Add Evaluation Indicators</a>
+                </li> 
+            </ul>
+        </li>   
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>"> Group Members</a>
-        </li>
-        <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupProgress')); ?>"> Group Progress</a>
-        </li>  
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evaluateProgram')); ?>"> Evaluate Program</a>
+        </li>          
     </ul>
 </li>
 
