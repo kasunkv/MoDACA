@@ -32,6 +32,8 @@ class AppController extends Controller {
                                         )
                                     ),
                                 ));
+
+    public $helpers = array('Js');
         
         //'DebugKit.Toolbar', 
         

@@ -23,6 +23,33 @@
 
 /* My Styles */
 
+/*************** BACKGROUND COLORS *****************/
+
+.bg-turquosie { background-color: #19bd9b; }
+.bg-emerald { background-color: #2ecd71; }
+.bg-peter-river { background-color: #3598dc; }
+.bg-amrthyst { background-color: #9a59b5; }
+.bg-wet-asphalt { background-color: #34495e; }
+.bg-green-sea { background-color: #17a086; }
+.bg-nephritis { background-color: #27ae5f; }
+.bg-belize-hole { background-color: #2a80b9; }
+.bg-wisteria { background-color: #8f44ad; }
+.bg-midnight-blue { background-color: #2d3e50; }
+.bg-sunflower { background-color: #f2c40f; }
+.bg-carrot { background-color: #e77e22; }
+.bg-alizarin { background-color: #e84c3d; }
+.bg-clouds { background-color: #ecf0f1; }
+.bg-concrete { background-color: #95a4a7; }
+.bg-orange { background-color: #f39c11; }
+.bg-pumpkin { background-color: #d25400; }
+.bg-pomegranate { background-color: #bf3a2b; }
+.bg-silver { background-color: #bec3c7; }
+.bg-asbestos { background-color: #7e8c8d; }
+
+
+/**************************************************/
+
+
 .dash-box {
     padding: 15px 0px; 
 }
@@ -37,6 +64,18 @@
     
     .dash-box.border-dark-blue{
         border-top: 2px solid #2d3e50;
+    }
+    
+    .dash-box.border-orange{
+        border-top: 2px solid #d25400;
+    }
+    
+    .dash-box.border-blue{
+        border-top: 2px solid #2a80b9;
+    }
+    
+    .dash-box.border-green-sea{
+        border-top: 2px solid #17a086;
     }
     
     
@@ -288,11 +327,11 @@
     }
     
 .main-dash-noti-box-bg-blue {
-    background-color: #428bca;
+    background-color: #3598dc;
 }
 
 .main-dash-noti-box-bg-orange {
-    background-color: #ed9c28;
+    background-color: #f39c11;
 }
 
 .main-dash-noti-box-bg-red {
@@ -494,10 +533,11 @@ p {
     background-color:#F8F8F8;
 
 }
-   .noti-box {
-min-height: 100px;
-padding: 20px;
-overflow: hidden;
+.noti-box {
+    min-height: 100px;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 0px;
 }
 
     .noti-box .icon-box {

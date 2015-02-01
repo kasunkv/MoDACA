@@ -33,7 +33,7 @@
                 <span class="dash-box-header-text">Field Group</span>            
             </div>
             <div class="col-md-4 col-sm-6 col-xs-6">
-                <div class="panel noti-box main-dash-noti-box-bg-blue panel-shadow">            
+                <div class="panel noti-box main-dash-noti-box-bg-blue">            
                     <div class="main-dash-noti-box">
                         <span class="icon-bottom-right">
                             <i class="fa fa-location-arrow main-dash-noti-box-fa-color-blue"></i>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="col-md-4 col-sm-6 col-xs-6">
-                <div class="panel noti-box main-dash-noti-box-bg-orange panel-shadow">            
+                <div class="panel noti-box bg-orange">            
                     <div class="main-dash-noti-box">
                         <span class="icon-bottom-right">
                             <i class="fa fa-users main-dash-noti-box-fa-color-orange"></i>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-md-4 col-sm-6 col-xs-6">
-                <div class="panel noti-box main-dash-noti-box-bg-red panel-shadow">            
+                <div class="panel noti-box main-dash-noti-box-bg-red">            
                     <div class="main-dash-noti-box">
                         <span class="icon-bottom-right">
                             <i class="fa fa-signal main-dash-noti-box-fa-color-red"></i>

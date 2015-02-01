@@ -121,10 +121,10 @@
         <li><a href="#">Evaluation Setup<span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 <li>
-                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addEvaluationCheckpoints')); ?>"> Add Evaluation Checkpoints</a>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evalCheckpoints')); ?>"> Add Evaluation Checkpoints</a>
                 </li>
                 <li>
-                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'addEvaluationIndicators')); ?>"> Add Evaluation Indicators</a>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evalIndicators')); ?>"> Add Evaluation Indicators</a>
                 </li> 
             </ul>
         </li>   

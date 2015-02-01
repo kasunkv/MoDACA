@@ -40,9 +40,20 @@
                     ?>
                     
                     <div class="multiple-input-wrapper">
-                        <div class="multiple-item-box">
-                            <input type="hidden" name="data[0][ProgramEvalCheckpoint][determinant_id]" value="" />
-                            <input type="hidden" name="data[0][ProgramEvalCheckpoint][health_issue_id]" value="" />
+                        <div class="multiple-item-box">                            
+                            <div class="form-group input-group-lg">
+                                <select name="data[0][ProgramEvalCheckpoint][health_issue_id]" class="form-control" id="ProgramEvalCheckpointHealthIssueId0">
+                                    <option value="" selected="">Select Health Issue...</option> 
+                                    <?php foreach ($healthIssues as $issue): ?>
+                                        <option value="<?php echo $issue['HealthIssue']['id']; ?>"><?php echo $issue['HealthIssue']['issue_name']; ?></option>  
+                                    <?php endforeach; ?>
+                                </select>                                
+                            </div>
+                            <div class="form-group input-group-lg">
+                                <select name="data[0][ProgramEvalCheckpoint][determinant_id]" class="form-control" id="ProgramEvalCheckpointDeterminantId0">
+                                    <option value="" selected="">Select Determinant...</option>                                     
+                                </select>                                
+                            </div>
                             <input type="hidden" name="data[0][ProgramEvalCheckpoint][field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />
                             <div class="form-group input-group-lg">
                                 <input name="data[0][ProgramEvalCheckpoint][checkpoint]" class="form-control" placeholder="Checkpoint Name..." type="text">
@@ -99,8 +110,32 @@
         <?php //echo var_dump($student); ?>
     </div>
 </div>
-
+<?php
+if (class_exists('JsHelper') && method_exists($this->Js, 'writeBuffer')) echo $this->Js->writeBuffer();
+// Writes cached scripts
+?>
+<?php
+        $this->Js->get('#ProgramEvalCheckpointHealthIssueId0')->event('change', 
+        $this->Js->request(array(
+            'controller'=>'determinants',
+            'action'=>'getByHealthIssue'
+            ), array(
+                'update'=>'#ProgramEvalCheckpointDeterminantId0',
+                'async' => true,
+                'method' => 'post',
+                'dataExpression'=>true,
+                'data'=> $this->Js->serializeForm(array(
+                    'isForm' => true,
+                    'inline' => true
+                    )
+                )
+            ))
+        );
+    ?>
 <script>
+    
+    
+    
     
     $('.custom-date').datetimepicker();    
 
