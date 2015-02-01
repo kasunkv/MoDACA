@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property HealthIssue $HealthIssue
  * @property Determinant $Determinant
+ * @property ProgramEvalIndicatorGroup $ProgramEvalIndicatorGroup
  * @property FieldGroup $FieldGroup
  * @property ProgramEvalIndicatorScore $ProgramEvalIndicatorScore
  */
@@ -29,6 +30,13 @@ class ProgramEvalIndicator extends AppModel {
 		'Determinant' => array(
 			'className' => 'Determinant',
 			'foreignKey' => 'determinant_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'ProgramEvalIndicatorGroup' => array(
+			'className' => 'ProgramEvalIndicatorGroup',
+			'foreignKey' => 'program_eval_indicator_group_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

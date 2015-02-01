@@ -14,7 +14,7 @@ class QuestionnaireFeedback extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'questionnaire_feedback';
+	public $useTable = 'questionnaire_feedbacks';
 
 /**
  * Validation rules

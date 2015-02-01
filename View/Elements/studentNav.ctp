@@ -124,6 +124,9 @@
                     <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evalCheckpoints')); ?>"> Add Evaluation Checkpoints</a>
                 </li>
                 <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evalIndicatorGroups')); ?>"> Add Evaluation Indicators Groups</a>
+                </li> 
+                <li>
                     <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'evalIndicators')); ?>"> Add Evaluation Indicators</a>
                 </li> 
             </ul>

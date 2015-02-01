@@ -1945,6 +1945,12 @@ class StudentsController extends AppController {
         $this->set(compact('student'));
     }
 
+    public function evalIndicatorGroups() {
+        $student = $this->getLoggedStudent();
+
+        $this->set(compact('student'));
+    }
+
     public function evaluateProgram() {
         $student = $this->getLoggedStudent();
 
