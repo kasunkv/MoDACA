@@ -6,6 +6,7 @@ class StudentsController extends AppController {
     //public $components = array('Auth');
     public $components = array('HighCharts.HighCharts');
 
+    public $helpers = array('Js');
 
     public function beforeFilter() {
         //$this->Auth->allow('register');
@@ -1920,10 +1921,39 @@ class StudentsController extends AppController {
         $this->set(compact('student'));
     }
 
+    public function evalCheckpoints() {
+        $student = $this->getLoggedStudent();
+
+        $this->loadModel('HealthIssue');
+        $healthIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->loadModel('ProgramEvalCheckpoint');
+        $checkPoints = $this->ProgramEvalCheckpoint->find('all', array(
+            'conditions' => array(
+                'ProgramEvalCheckpoint.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->set(compact('student','healthIssues', 'checkPoints'));
+    }
+
     public function addEvaluationCheckpoints() {
 
         if($this->request->is(array('post', 'put'))) {
-
+            $this->loadModel('ProgramEvalCheckpoint');
+            if($this->ProgramEvalCheckpoint->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Evaluation Checkpoints was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addEvaluationCheckpoints'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Evaluation Checkpoints'), 'flashError');
+                return $this->redirect(array('action' => 'addEvaluationCheckpoints'));
+            }
         } else {
             $student = $this->getLoggedStudent();
 
@@ -1935,27 +1965,97 @@ class StudentsController extends AppController {
                 'recursive' => -1,
             ));
 
-            $this->set(compact('student', 'healthIssues'));
+            $this->loadModel('ProgramEvalCheckpoint');
+            $checkPoints = $this->ProgramEvalCheckpoint->find('all', array(
+                'conditions' => array(
+                    'ProgramEvalCheckpoint.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student','healthIssues', 'checkPoints'));
         }
+
     }
 
     public function addEvaluationIndicators() {
-        $student = $this->getLoggedStudent();
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('ProgramEvalIndicator');
+            $this->ProgramEvalIndicator->create();
+            if($this->ProgramEvalIndicator->save($this->request->data)) {
+                $this->Session->setFlash(__('Evaluation Indicator was successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addEvaluationIndicators'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Evaluation Indicator'), 'flashError');
+                return $this->redirect(array('action' => 'addEvaluationIndicators'));
+            }
+        } else {
+            $student = $this->getLoggedStudent();
 
-        $this->set(compact('student'));
+            $this->loadModel('HealthIssue');
+            $this->loadModel('ProgramEvalIndicatorGroup');
+            $this->loadModel('ProgramEvalIndicator');
+
+            $healthIssues = $this->HealthIssue->find('all', array(
+                'conditions' => array(
+                    'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $categories = $this->ProgramEvalIndicatorGroup->find('all', array(
+                'conditions' => array(
+                    'ProgramEvalIndicatorGroup.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $indicators = $this->ProgramEvalIndicator->find('all', array(
+                'conditions' => array(
+                    'ProgramEvalIndicator.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student','healthIssues', 'categories', 'indicators'));
+        }
     }
 
-    public function evalIndicatorGroups() {
-        $student = $this->getLoggedStudent();
+    public function addEvaluationIndicatorGroups() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('ProgramEvalIndicatorGroup');
+            if($this->ProgramEvalIndicatorGroup->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Evaluation Indicator Groups were successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'addEvaluationIndicatorGroups'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Evaluation Indicator Groups'), 'flashError');
+                return $this->redirect(array('action' => 'addEvaluationIndicatorGroups'));
+            }
+        } else {
+            $student = $this->getLoggedStudent();
 
-        $this->set(compact('student'));
+            $this->loadModel('HealthIssue');
+            $healthIssues = $this->HealthIssue->find('all', array(
+                'conditions' => array(
+                    'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->loadModel('ProgramEvalIndicatorGroup');
+            $categories = $this->ProgramEvalIndicatorGroup->find('all', array(
+                'conditions' => array(
+                    'ProgramEvalIndicatorGroup.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            $this->set(compact('student','healthIssues', 'categories'));
+        }
     }
 
     public function evaluateProgram() {
-        $student = $this->getLoggedStudent();
 
-
-        $this->set(compact('student'));
     }
     
     

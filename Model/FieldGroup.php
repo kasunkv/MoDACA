@@ -4,12 +4,13 @@ App::uses('AppModel', 'Model');
  * FieldGroup Model
  *
  * @property Score $Score
+ * @property FieldCommunity $FieldCommunity
+ * @property TaskAssigner $TaskAssigner
  * @property CompletePeerAssesment $CompletePeerAssesment
  * @property DeterminantFeedback $DeterminantFeedback
  * @property Determinant $Determinant
  * @property EventFeedback $EventFeedback
  * @property Event $Event
- * @property FieldCommunity $FieldCommunity
  * @property FieldGroupProgress $FieldGroupProgress
  * @property GeneralObjective $GeneralObjective
  * @property GroupFeedback $GroupFeedback
@@ -19,9 +20,12 @@ App::uses('AppModel', 'Model');
  * @property OutputIndicator $OutputIndicator
  * @property PeerAssesment $PeerAssesment
  * @property ProcessIndicator $ProcessIndicator
+ * @property ProgramEvalCheckpoint $ProgramEvalCheckpoint
+ * @property ProgramEvalIndicatorGroup $ProgramEvalIndicatorGroup
+ * @property ProgramEvalIndicatorScore $ProgramEvalIndicatorScore
+ * @property ProgramEvalIndicator $ProgramEvalIndicator
  * @property QuestionnaireFeedback $QuestionnaireFeedback
  * @property Student $Student
- * @property TaskAssigner $TaskAssigner
  */
 class FieldGroup extends AppModel {
 
@@ -64,7 +68,6 @@ class FieldGroup extends AppModel {
             ),
         ),
     );
-
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -287,6 +290,58 @@ class FieldGroup extends AppModel {
 		),
 		'ProcessIndicator' => array(
 			'className' => 'ProcessIndicator',
+			'foreignKey' => 'field_group_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ProgramEvalCheckpoint' => array(
+			'className' => 'ProgramEvalCheckpoint',
+			'foreignKey' => 'field_group_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ProgramEvalIndicatorGroup' => array(
+			'className' => 'ProgramEvalIndicatorGroup',
+			'foreignKey' => 'field_group_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ProgramEvalIndicatorScore' => array(
+			'className' => 'ProgramEvalIndicatorScore',
+			'foreignKey' => 'field_group_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ProgramEvalIndicator' => array(
+			'className' => 'ProgramEvalIndicator',
 			'foreignKey' => 'field_group_id',
 			'dependent' => false,
 			'conditions' => '',

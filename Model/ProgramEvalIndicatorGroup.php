@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * ProgramEvalIndicatorGroup Model
  *
  * @property HealthIssue $HealthIssue
+ * @property FieldGroup $FieldGroup
  * @property ProgramEvalIndicator $ProgramEvalIndicator
  */
 class ProgramEvalIndicatorGroup extends AppModel {
@@ -20,6 +21,13 @@ class ProgramEvalIndicatorGroup extends AppModel {
 		'HealthIssue' => array(
 			'className' => 'HealthIssue',
 			'foreignKey' => 'health_issue_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'FieldGroup' => array(
+			'className' => 'FieldGroup',
+			'foreignKey' => 'field_group_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

@@ -19,13 +19,6 @@ class ProgramEvalCheckpoint extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Determinant' => array(
-			'className' => 'Determinant',
-			'foreignKey' => 'determinant_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'HealthIssue' => array(
 			'className' => 'HealthIssue',
 			'foreignKey' => 'health_issue_id',

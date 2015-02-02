@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Program Evaluation Checkpoints</h2>
-        <h4 class="page-subheader">Add Evaluation Checkpoints to evaluate your Health Promotion Programs progress.</h4>
+        <h4 class="page-subheader">Add Evaluation Indicator Categories to group your Program Evaluation Indicators in to related groups.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
@@ -27,14 +27,14 @@
 <div class="row">
     <div class="col-md-12">        
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3>Add Evaluation Checkpoints</h3>
+            <h3>Evaluation Indicator Group</h3>
             <br />
             <div class="panel panel-default panel-shadow">
                 <div class="panel-heading">
-                    Add Evaluation Checkpoints
+                    Add Evaluation Indicator Group
                 </div>
                 <div class="panel-body">
-                    <?php echo $this->Form->create('ProgramEvalCheckpoint', array(
+                    <?php echo $this->Form->create('ProgramEvalIndicatorGroup', array(
                         'inputDefaults' => array(
                             'label' => false,
                         ),
@@ -44,22 +44,18 @@
                     <div class="multiple-input-wrapper">
                         <div class="multiple-item-box">                                                        
                             <div class="form-group input-group-lg">
-                                <select name="data[0][ProgramEvalCheckpoint][health_issue_id]" class="form-control" id="ProgramEvalCheckpointDeterminantId0">
+                                <select name="data[0][ProgramEvalIndicatorGroup][health_issue_id]" class="form-control">
                                     <option value="" selected="">Select Health Issue...</option>
                                     <?php foreach ($healthIssues as $issue): ?>
                                         <option value="<?php echo $issue['HealthIssue']['id']; ?>"><?php echo $issue['HealthIssue']['issue_name']; ?></option>  
                                     <?php endforeach; ?>
                                 </select>                                
-                            </div>
-                            <input type="hidden" name="data[0][ProgramEvalCheckpoint][field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />
+                            </div>        
+                            <input type="hidden" name="data[0][ProgramEvalIndicatorGroup][field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />
                             <div class="form-group input-group-lg">
-                                <input name="data[0][ProgramEvalCheckpoint][checkpoint]" class="form-control" placeholder="Checkpoint Name..." type="text">
-                            </div>
-                            <div class="form-group input-group-lg">
-                                <input name="data[0][ProgramEvalCheckpoint][date]" data-date-format="YYYY-MM-DD" class="form-control custom-date" placeholder="YYYY-MM-DD" type="text">                                
-                            </div>                            
-                        </div>
-                        
+                                <input name="data[0][ProgramEvalIndicatorGroup][category]" class="form-control" placeholder="Indicator Category..." type="text">
+                            </div>                           
+                        </div>                        
                         <div class="form-add-more">
                             <button class="btn btn-success btn-sm" id="btn-add-field" style="margin-left: 12px; margin-top: -20px;">
                                 <i class="fa fa-plus"></i> Add More...
@@ -70,7 +66,7 @@
                     
                     <?php 
                         $form_end_options = array(
-                            'label' => 'Add Checkpoints', 
+                            'label' => 'Add Categories', 
                             'class' => 'btn btn-lg btn-primary ',                                
                         );
                         echo $this->Form->end($form_end_options);
@@ -80,7 +76,7 @@
             </div>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3>Current Evaluation Checkpoints</h3>
+            <h3>Current Evaluation Indicator Categories</h3>
             <br />
             <?php if(!empty($healthIssues)): ?>                        
                 <div class="panel-group" id="accordion">
@@ -89,22 +85,21 @@
                     <div class="panel panel-default panel-shadow">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>" class=""><strong class="text-primary"><?php echo $healthIssue['HealthIssue']['issue_name']; ?></strong></a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>" class=""><strong class="text-primary" style="font-size: 1.5em;"><?php echo $healthIssue['HealthIssue']['issue_name']; ?></strong></a>
                             </h4>
                         </div>
                         <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse <?php echo $i == 1 ? 'in' : ''; ?>" style="height: auto;">
                             <div class="panel-body">
                                 <div class="panel-group" id="accordion">
-                                    <?php if(empty($checkPoints)): ?>
-                                        <p class="text-muted">No Program Evaluation Checkpoints Added Yet.</p>
+                                    <?php if(empty($categories)): ?>
+                                        <p class="text-muted">No Evaluation Indicator Categories Added Yet.</p>
                                     <?php else: ?> 
-                                        <?php foreach($checkPoints as $checkPoint): ?>
-                                            <?php if($checkPoint['ProgramEvalCheckpoint']['health_issue_id'] == $healthIssue['HealthIssue']['id']): ?>
+                                        <?php foreach($categories as $category): ?>
+                                            <?php if($category['ProgramEvalIndicatorGroup']['health_issue_id'] == $healthIssue['HealthIssue']['id']): ?>
                                             <div class="activity-noti panel-shadow">
                                                 <div class="activity-noti-header">  
-                                                    <h3 class="title blue"><?php echo $checkPoint['ProgramEvalCheckpoint']['checkpoint']; ?></h3>
-                                                </div>
-                                                <h5><strong><?php echo $checkPoint['ProgramEvalCheckpoint']['date']; ?></strong></h5>
+                                                    <h3 class="title green" style="font-size: 1.2em;"><?php echo $category['ProgramEvalIndicatorGroup']['category']; ?></h3>
+                                                </div>                                                
                                             </div>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
@@ -133,10 +128,7 @@
 
 <script>
     
-    
-    
-    
-    $('.custom-date').datetimepicker();    
+      
 
     var max_fields      = 5; //maximum input boxes allowed
     
@@ -146,24 +138,21 @@
         if(x < max_fields){ //max input box allowed           
             $('.multiple-input-wrapper').append('<div class="multiple-item-box animated zoomIn"><hr />\
                             <div class="form-group input-group-lg">\
-                                <select name="data[' + x + '][ProgramEvalCheckpoint][health_issue_id]" class="form-control">\
+                                <select name="data[' + x + '][ProgramEvalIndicatorGroup][health_issue_id]" class="form-control">\
                                     <option value="" selected="">Select Health Issue...</option>\
                                     <?php foreach ($healthIssues as $issue): ?>\
                                         <option value="<?php echo $issue['HealthIssue']['id']; ?>"><?php echo $issue['HealthIssue']['issue_name']; ?></option>\
                                     <?php endforeach; ?>\
                                 </select>\
                             </div>\
-                            <input type="hidden" name="data[' + x + '][ProgramEvalCheckpoint][field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />\
+                            <input type="hidden" name="data[' + x + '][ProgramEvalIndicatorGroup][field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />\
                             <div class="form-group input-group-lg">\
-                                <input name="data[' + x + '][ProgramEvalCheckpoint][checkpoint]" class="form-control" placeholder="Checkpoint Name..." type="text">\
+                                <input name="data[' + x + '][ProgramEvalIndicatorGroup][category]" class="form-control" placeholder="Indicator Category..." type="text">\
                             </div>\
-                            <div class="form-group input-group-lg">\
-                                <input name="data[' + x + '][ProgramEvalCheckpoint][date]" data-date-format="YYYY-MM-DD" class="form-control custom-date" placeholder="YYYY-MM-DD" type="text" >\
-                            </div><button href="" class="btn btn-danger btn-xs btn-remove-field"><i class="fa fa-minus"></i> &nbsp; Remove</button>\
+                            <button href="" class="btn btn-danger btn-xs btn-remove-field"><i class="fa fa-minus"></i> &nbsp; Remove</button>\
                         </div>'); //add input box
             x++; //text box increment
         }
-        $('.custom-date').datetimepicker();    
     });
     
     $('.multiple-input-wrapper').on("click",".btn-remove-field", function(e){ //user click on remove text

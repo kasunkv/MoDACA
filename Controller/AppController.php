@@ -33,8 +33,7 @@ class AppController extends Controller {
                                     ),
                                 ));
 
-    public $helpers = array('Js');
-        
+
         //'DebugKit.Toolbar', 
         
 //        public $components = array('DebugKit.Toolbar', 'Session', 'Paginator', 'Auth' => array(

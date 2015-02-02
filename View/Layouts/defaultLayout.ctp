@@ -13,11 +13,7 @@
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <!-- SCRIPTS -->
     <?php echo $this->Html->script(array('jquery-1.10.2', 'moment.min', 'bootstrap.min', 'jquery.metisMenu', 'custom', 'morris', 'raphael-2.1.0.min', 'gmaps', 'canvg', 'rgbcolor', 'StackBlur', 'canvas2image', 'script', 'bootstrap-datetimepicker', 'fileinput.min', 'star-rating.min', 'progressbar.min')); ?>
-    <style>
-      
-        
-    </style>
-        
+    
 </head>
 <body>
     <div id="wrapper">
@@ -64,7 +60,11 @@
     </div>
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-
+    <?php echo $this->fetch('script'); ?>
+    <?php
+        if (class_exists('JsHelper') && method_exists($this->Js, 'writeBuffer')) echo $this->Js->writeBuffer();
+    // Writes cached scripts
+    ?>
 
 </body>
 </html>
