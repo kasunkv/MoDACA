@@ -2055,7 +2055,17 @@ class StudentsController extends AppController {
     }
 
     public function evaluateProgram() {
+        $student = $this->getLoggedStudent();
 
+        $this->loadModel('HealthIssue');
+        $healthIssues = $this->HealthIssue->find('all', array(
+            'conditions' => array(
+                'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->set(compact('student', 'healthIssues'));
     }
     
     
