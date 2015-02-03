@@ -32,29 +32,48 @@
            Evaluation Checkpoints to evaluate your progress in the Field Community.</p>
             <br />
             <?php if(empty($healthIssues)): ?>
-            <p style="margin-top: -30px; margin-left: 15px; font-size: 1.3em;" ><strong>No Health Issues Added.</strong></p>
-            <?php else: ?>
-                <?php foreach($healthIssues as $issue): ?>
-                    <div class="activity-noti panel-shadow">
-                        <div class="activity-noti-header health-issue"> 
-                            <a href="#">
-                                <input type="hidden" class="ajax-data" name="data[health_issue_id]" value="<?php echo $issue['HealthIssue']['id']; ?>" />
-                                <h3 class="title green"><?php echo $issue['HealthIssue']['issue_name']; ?></h3>
-                            </a>
-                        </div>                                                
-                        <p class="activity-noti-desc text-muted"><?php echo $issue['HealthIssue']['description']; ?></p>
+                <p class="text-muted">No Health Issues Added Yet.</p>
+            <?php else: ?>  
+                <div class="panel-group" id="accordion">
+                <?php $i = 1; ?>
+                <?php foreach($healthIssues as $healthIssue): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>" class=""><strong class="text-primary"><?php echo $healthIssue['HealthIssue']['issue_name']; ?></strong></a>
+                            </h4>
+                        </div>
+                        <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse <?php echo $i == 1 ? 'in' : ''; ?>" style="height: auto;">
+                            <div class="panel-body">
+                                <?php foreach($checkPoints as $checkPoint): ?>
+                                    <?php if($checkPoint['ProgramEvalCheckpoint']['health_issue_id'] == $healthIssue['HealthIssue']['id']): ?>                                        
+                                        <a class="container-link eval-checkpoint" href="#">
+                                            <input type="hidden" class="ajax-data-issue" name="data[health_issue_id]" value="<?php echo $healthIssue['HealthIssue']['id']; ?>" />
+                                            <input type="hidden" class="ajax-data-group" name="data[field_group_id]" value="<?php echo $student['FieldGroup']['id']; ?>" />
+                                            <input type="hidden" class="ajax-data-checkpont" name="data[checkpoint_id]" value="<?php echo $checkPoint['ProgramEvalCheckpoint']['id']; ?>" />
+                                            <h3 class="title green" style="margin-bottom: -10px;"><strong class="text-success"><?php echo $checkPoint['ProgramEvalCheckpoint']['checkpoint']; ?></strong></h3>                                            
+                                            <h5><strong style="color: black;;"><?php echo $checkPoint['ProgramEvalCheckpoint']['date']; ?></strong></h5>
+                                        </a>                                        
+                                    <?php endif; ?>                                
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
-                <?php endforeach;  ?>            
-            <?php endif; ?>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
+                </div>
+            <?php endif; ?>             
+            
         </div>
+        
+        
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3>Available Checkpoints</h3>
-            <p class="text-muted">Click on a Checkpoint to evaluate Health Promotion Program. Note that evaluation is available only after the
-            date is expired.</p>
+            <h3>Evaluation Category</h3>
+            <p class="text-muted">Click on a Evaluation Category to evaluate Health Promotion Program. </p>
             <br />
             <div class="panel panel-default">
-                <div class="panel-body" id="eval-checkpoints">
-                    <p style="margin-top: 0px; margin-left: 15px; font-size: 1.3em;" ><strong>Please Select a Health Issue.</strong></p>
+                <div class="panel-body" id="indi-groups">
+                    <p style="margin-top: 0px; margin-left: 15px; font-size: 1.3em;" ><strong>Please Select a Checkpoint.</strong></p>
                 </div>
             </div>
             
@@ -64,16 +83,16 @@
 
 <script>
 
-    $('.health-issue').bind('click', function (evt) {
+    $('.eval-checkpoint').bind('click', function (evt) {
         $.ajax({
             async: true,
-            data: 'health_issue_id=' +  $(this).find('.ajax-data').val(),
+            data: 'health_issue_id=' +  $(this).find('.ajax-data-issue').val() + '&field_group_id=' + $(this).find('.ajax-data-group').val() + '&checkpoint_id=' + $(this).find('.ajax-data-checkpont').val(),
             dataType: 'html', 
             success: function(data, status) {
-                $('#eval-checkpoints').html(data);
+                $('#indi-groups').html(data);
             },
             type: 'post',
-            url: '/MoDACA/ProgramEvalCheckpoints/getByIssueId'
+            url: '/MoDACA/ProgramEvalIndicatorGroups/getIndicatorGroups'
         });
         return false;
     });

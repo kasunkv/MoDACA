@@ -43,4 +43,27 @@ class ProgramEvalIndicatorGroupsController extends AppController {
         $this->layout = 'ajax';
     }
 
+    public function getIndicatorGroups() {
+        if($this->request->is(array('post', 'put'))) {
+            if(!empty($this->request->data['health_issue_id']) && !empty($this->request->data['field_group_id']) && !empty($this->request->data['checkpoint_id'])) {
+                $indicatorGroups = $this->ProgramEvalIndicatorGroup->find('all', array(
+                    'conditions' => array(
+                        'ProgramEvalIndicatorGroup.health_issue_id' => $this->request->data['health_issue_id'],
+                        'ProgramEvalIndicatorGroup.field_group_id' => $this->request->data['field_group_id'],
+                    ),
+                    'fields' => array('id', 'category', 'health_issue_id'),
+                    'recursive' => -1
+                ));
+
+                $checkpointId = $this->request->data['checkpoint_id'];
+
+                $this->set(compact('indicatorGroups', 'checkpointId'));
+            }
+        }
+
+        $this->layout = 'ajax';
+    }
+
+
+
 }

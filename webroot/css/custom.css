@@ -53,6 +53,39 @@
     text-decoration: none;
 }
 
+.calender-legand {
+    margin-top: 20px;
+}
+.calender-event-type {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: -15px;
+    text-align: center;
+    line-height: 15px;
+}
+
+.calender-legand-color {
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+}
+
+.calender-legand-color.blue {
+    background-color: #3598dc;
+}
+
+.calender-legand-color.red {
+    background-color: #e84c3d;
+}
+
+.calender-legand-color.green {
+    background-color: #2ecd71;
+}
+
+.calender-legand-color.orange {
+    background-color: #f39c11;
+}
+
 .dash-box {
     padding: 15px 0px; 
 }

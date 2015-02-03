@@ -16,6 +16,12 @@ class StudentsController extends AppController {
     public function index() {
         // set the student in the view
         $student = $this->getLoggedStudent();
+        $calenderEvents = [];
+
+        $this->loadModel('FieldCommunity');
+        $this->loadModel('EventFeedback');
+        $this->loadModel('Event');
+        $this->loadModel('ProgramEvalCheckpoint');
 
         $activities = [];
         $activities['completed'] = 0;
@@ -25,7 +31,6 @@ class StudentsController extends AppController {
 
         // Set the field community
         $fieldCommunityId = $student['FieldGroup']['field_community_id'];
-        $this->loadModel('FieldCommunity');
         $fieldCommunity = $this->FieldCommunity->find('first', array(
             'conditions' => array(
                 'id' => $fieldCommunityId
@@ -33,7 +38,7 @@ class StudentsController extends AppController {
             'recursive' => -1,
         ));
 
-        $this->loadModel('EventFeedback');
+
         $totalFeedback = $this->EventFeedback->find('all', array(
             'conditions' => array(
                 'EventFeedback.field_group_id' => $student['FieldGroup']['id'],
@@ -44,7 +49,23 @@ class StudentsController extends AppController {
         $activities['unread_comments'] = count($totalFeedback);
 
 
-        $this->loadModel('Event');
+
+        $evalCheckpoints = $this->ProgramEvalCheckpoint->find('all', array(
+            'conditions' => array(
+                'ProgramEvalCheckpoint.field_group_id' => $student['FieldGroup']['id'],
+            ),
+//            'recursive' => -1,
+        ));
+
+        foreach($evalCheckpoints as $evalCheckpoint) {
+            $evlChk[0] = date('d/m/Y', strtotime($evalCheckpoint['ProgramEvalCheckpoint']['date']));
+            $evlChk[1] = $evalCheckpoint['HealthIssue']['issue_name'] . ': ' .$evalCheckpoint['ProgramEvalCheckpoint']['checkpoint'];
+            $evlChk[2] = Router::url(array('controller' => 'students', 'action' => 'evaluateProgram'));
+            $evlChk[3] = '#e84c3d';
+
+            array_push($calenderEvents, $evlChk);
+        }
+
         $events = $this->Event->find('all', array(
             'conditions' => array(
                 'Event.field_group_id' => $student['FieldGroup']['id'],
@@ -54,9 +75,20 @@ class StudentsController extends AppController {
 
         $activities['count'] = count($events);
 
+
+
         foreach($events as $event) {
             if($event['Event']['complete'] == 0) {
                 $activities['uncompleted'] += 1;
+
+                $communityEvent[0] = date('d/m/Y', strtotime($event['Event']['date']));
+                $communityEvent[1] = $event['Event']['title'];
+                $communityEvent[2] = Router::url(array('controller' => 'students', 'action' => 'completeActivity', $event['Event']['id']));
+                $communityEvent[3] = '#3598dc';
+//                $communityEvent[4] = $event['Event']['description'];
+
+                array_push($calenderEvents, $communityEvent);
+
             } else {
                 $activities['completed'] += 1;
             }
@@ -71,9 +103,14 @@ class StudentsController extends AppController {
         else {
             $activities['percentage'] = 0;
         }
-        $this->set(compact('student', 'fieldCommunity', 'activities'));
+
+
+
+        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents'));
 
     }
+
+
 
     public function view() {
         $this->set('student',  $this->getLoggedStudent());
@@ -2058,6 +2095,8 @@ class StudentsController extends AppController {
         $student = $this->getLoggedStudent();
 
         $this->loadModel('HealthIssue');
+        $this->loadModel('ProgramEvalCheckpoint');
+
         $healthIssues = $this->HealthIssue->find('all', array(
             'conditions' => array(
                 'HealthIssue.field_community_id' =>  $student['FieldGroup']['field_community_id'],
@@ -2065,9 +2104,89 @@ class StudentsController extends AppController {
             'recursive' => -1,
         ));
 
-        $this->set(compact('student', 'healthIssues'));
+        $checkPoints = $this->ProgramEvalCheckpoint->find('all', array(
+            'conditions' => array(
+                'ProgramEvalCheckpoint.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $this->set(compact('student', 'healthIssues', 'checkPoints'));
     }
-    
+
+    public function evaluateCategory($issueId = null, $categoryId = null, $checkpointId = null) {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('ProgramEvalIndicatorValue');
+            if($this->ProgramEvalIndicatorValue->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Evaluation successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'evaluateProgram'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Evaluation'), 'flashError');
+                return $this->redirect(array('action' => 'evaluateProgram'));
+            }
+        } else {
+            if(empty($issueId) && empty($categoryId) && empty($checkpointId)) {
+                $this->Session->setFlash(__('Failed to find Indicator'), 'flashError');
+                return $this->redirect(array('action' => 'evaluateProgram'));
+            } else {
+
+
+
+                $student = $this->getLoggedStudent();
+                $this->loadModel('ProgramEvalCheckpoint');
+
+                $checkpoint = $this->ProgramEvalCheckpoint->find('first', array(
+                    'conditions' => array(
+                        'ProgramEvalCheckpoint.id' =>  $checkpointId,
+                    ),
+                    'recursive' => -1,
+                ));
+
+                $checkpointTime = strtotime($checkpoint['ProgramEvalCheckpoint']['date']);
+                if((time() - $checkpointTime) < 0)  {
+                    $this->Session->setFlash(__('The Evaluation Checkpoint is not yet reached. The system assumes that you are evaluating ahead of time. Please evaluate the Program after the date of the checkpoint.'), 'flashInfo');
+                    return $this->redirect(array('action' => 'evaluateProgram'));
+                }
+
+
+
+
+
+                $this->loadModel('HealthIssue');
+                $this->loadModel('ProgramEvalIndicatorGroup');
+                $this->loadModel('ProgramEvalIndicator');
+
+
+                $healthIssue = $this->HealthIssue->find('first', array(
+                    'conditions' => array(
+                        'HealthIssue.id' =>  $issueId,
+                    ),
+                    'fields' => array('issue_name'),
+                    'recursive' => -1,
+                ));
+
+                $category = $this->ProgramEvalIndicatorGroup->find('first', array(
+                    'conditions' => array(
+                        'ProgramEvalIndicatorGroup.id' =>  $categoryId,
+                    ),
+                    'fields' => array('category'),
+                    'recursive' => -1,
+                ));
+
+
+                $indicators = $this->ProgramEvalIndicator->find('all', array(
+                    'conditions' => array(
+                        'ProgramEvalIndicator.field_group_id' =>  $student['FieldGroup']['id'],
+                        'ProgramEvalIndicator.health_issue_id' =>  $issueId,
+                        'ProgramEvalIndicator.program_eval_indicator_group_id' =>  $categoryId,
+                    ),
+                    'recursive' => -1,
+                ));
+
+                $this->set(compact('student','healthIssue', 'category', 'indicators', 'checkpoint'));
+            }
+        }
+    }
     
     
 }

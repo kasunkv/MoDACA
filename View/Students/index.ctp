@@ -194,9 +194,29 @@
     <div class="col-md-5 col-sm-12 col-xs-12">
         <div class="dash-box border-dark-red">  
             <div class="dash-box-header">
-                <i class="fa fa-line-chart fa-2x"></i>
-                <span class="dash-box-header-text">Individual Progress</span>
-            </div>
+                <i class="fa fa-clock-o fa-2x"></i>
+                <span class="dash-box-header-text">Coming Up</span>
+            </div>            
+            <div class="col-md-12 event-calender"></div>
+            <br />
+                <div class="col-md-12 calender-legand">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="calender-legand-color blue"></div>
+                        <p class="calender-event-type">Community Activity</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="calender-legand-color green"></div>
+                        <p class="calender-event-type">Field Visit</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="calender-legand-color red"></div>
+                        <p class="calender-event-type">Program Evaluation</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="calender-legand-color orange"></div>
+                        <p class="calender-event-type">Other</p>
+                    </div>
+                </div>
         </div>
     </div>
     
@@ -209,6 +229,36 @@
 </div>
 
 <script>
+    
+    theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    theDays = ["S", "M", "T", "W", "T", "F", "S"];
+
+    var evt1 = [];
+    var evt2 = ['8/2/2015','Event', 'http://google.com', 'red', 'Text'];
+    var events = [];
+    <?php if(!empty($calenderEvents)): ?>
+        <?php foreach($calenderEvents as $calenderEvt): ?>
+            var dateString = '<?php echo $calenderEvt[0]; ?>';
+            dateString = dateString.replace(/\/0+/g, '/'); // remove the 0 in months
+             evt1 = [
+                dateString.replace(/\b0+/g, ''), // remove the 0 in day
+                '<?php echo $calenderEvt[1]; ?>',
+                '<?php echo $calenderEvt[2]; ?>',
+                '<?php echo $calenderEvt[3]; ?>'           
+             ]
+             events.push(evt1);
+        <?php endforeach; ?>        
+    <?php endif; ?>
+    
+    console.log(events);
+    
+    
+    $('.event-calender').calendar({
+            months: theMonths,
+            days: theDays,
+            events: events
+    });
+    
     
     <?php if($activities['count'] != 0): ?>
         <?php

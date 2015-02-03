@@ -22,6 +22,21 @@
 <li>
     <a class="" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'index')); ?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>     
 </li>
+
+<!-- Field Groups -->
+<li>
+    <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>"> Group Members</a>
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupProgress')); ?>"> Group Progress</a>
+        </li>  
+    </ul>
+</li>
+
 <!-- Group Tasks -->
 <li>    
     <a href="#"><i class="fa fa-tasks fa-3x"></i> Group Tasks<span class="fa arrow"></span></a>
@@ -100,19 +115,27 @@
         </li>
     </ul>
 </li>
-<!-- Field Groups -->
+
+<!-- Field Visits -->
 <li>
-    <a href="#"><i class="fa fa-users fa-3x"></i> Field Group<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-        
+    <a href="#"><i class="fa fa-bus fa-3x"></i> Field Visits<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">        
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupMembers', $student['Student']['field_group_id'])); ?>"> Group Members</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'planFieldVisit', $student['Student']['field_group_id'])); ?>"> Plan Field Visit</a>
         </li>
-        <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewGroupProgress')); ?>"> Group Progress</a>
-        </li>  
+        <li><a href="#">Attendance<span class="fa arrow"></span></a>
+            <ul class="nav nav-third-level">
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'markYourAttendance')); ?>"> Mark Your Attendance</a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'confirmMembersAttendance')); ?>"> Confirm Members Attendance</a>
+                </li>
+            </ul>
+        </li>         
     </ul>
 </li>
+
 
 <!-- Program Evaluation -->
 <li>
