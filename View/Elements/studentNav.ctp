@@ -121,7 +121,7 @@
     <a href="#"><i class="fa fa-bus fa-3x"></i> Field Visits<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">        
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'planFieldVisit', $student['Student']['field_group_id'])); ?>"> Plan Field Visit</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'planFieldVisit')); ?>"> Plan Field Visit</a>
         </li>
         <li><a href="#">Attendance<span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">

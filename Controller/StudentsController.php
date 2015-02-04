@@ -22,6 +22,7 @@ class StudentsController extends AppController {
         $this->loadModel('EventFeedback');
         $this->loadModel('Event');
         $this->loadModel('ProgramEvalCheckpoint');
+        $this->loadModel('FieldVisit');
 
         $activities = [];
         $activities['completed'] = 0;
@@ -106,11 +107,32 @@ class StudentsController extends AppController {
 
 
 
+        $visits = $this->FieldVisit->find('all', array(
+            'conditions' => array(
+                'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => -1,
+        ));
+
+        $comingVisits = [];
+        foreach($visits as $visit) {
+            if((time() - strtotime($visit['FieldVisit']['date'])) < 0) {
+
+                $comingVisits[0] = date('d/m/Y', strtotime($visit['FieldVisit']['date']));
+                $comingVisits[1] = 'Field Visit on ' . $visit['FieldVisit']['date'];
+                $comingVisits[2] = Router::url(array('controller' => 'students', 'action' => 'completeActivity', $event['Event']['id']));
+                $comingVisits[3] = '#2ecd71';
+                $comingVisits[4] = $visit['FieldVisit']['main_objective'];
+
+                array_push( $calenderEvents, $comingVisits);
+            }
+        }
+
+
         $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents'));
 
     }
-
-
 
     public function view() {
         $this->set('student',  $this->getLoggedStudent());
@@ -396,7 +418,6 @@ class StudentsController extends AppController {
         }
     }
 
-
     private function getAveragePeerAssesment($checkpoints, $criterias, $assesments, $stdId) {
         $result = [];
         $criteriasForCheckpoint = [];
@@ -454,8 +475,6 @@ class StudentsController extends AppController {
         return $finalList;
     }
 
-
-    
     public function viewCommunityProgress() {
         // set the student in the view
         $student = $this->getLoggedStudent();
@@ -578,7 +597,6 @@ class StudentsController extends AppController {
         else
             return 'Severely Underweight';
     }
-
 
     public function viewFieldGroup(){
         // set the student in the view
@@ -1089,7 +1107,6 @@ class StudentsController extends AppController {
         }
     }
 
-
     private function getLoggedStudent() {
             $user = AuthComponent::user();
             if ($user['role'] == 'Student') {
@@ -1283,7 +1300,6 @@ class StudentsController extends AppController {
         }
     }
 
-
     public function addGeneralObjectives() {
         $student = $this->getLoggedStudent();
 
@@ -1420,7 +1436,6 @@ class StudentsController extends AppController {
 
         $this->set(compact('student', 'currentIssues'));
     }
-
 
     public function addDeterminants() {
         $student = $this->getLoggedStudent();
@@ -1744,7 +1759,6 @@ class StudentsController extends AppController {
             $this->set(compact('student', 'fieldCommunity', 'occupations'));
         }
     }
-    
     
     public function addInputIndicators() {
         if($this->request->is(array('post', 'put'))) {
@@ -2129,9 +2143,6 @@ class StudentsController extends AppController {
                 $this->Session->setFlash(__('Failed to find Indicator'), 'flashError');
                 return $this->redirect(array('action' => 'evaluateProgram'));
             } else {
-
-
-
                 $student = $this->getLoggedStudent();
                 $this->loadModel('ProgramEvalCheckpoint');
 
@@ -2147,10 +2158,6 @@ class StudentsController extends AppController {
                     $this->Session->setFlash(__('The Evaluation Checkpoint is not yet reached. The system assumes that you are evaluating ahead of time. Please evaluate the Program after the date of the checkpoint.'), 'flashInfo');
                     return $this->redirect(array('action' => 'evaluateProgram'));
                 }
-
-
-
-
 
                 $this->loadModel('HealthIssue');
                 $this->loadModel('ProgramEvalIndicatorGroup');
@@ -2188,5 +2195,43 @@ class StudentsController extends AppController {
         }
     }
     
-    
+    public function planFieldVisit(){
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('FieldVisit');
+            if($this->FieldVisit->saveMany($this->request->data)) {
+                $this->Session->setFlash(__('Field Visits were successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'planFieldVisit'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Field Visits'), 'flashError');
+                return $this->redirect(array('action' => 'planFieldVisit'));
+            }
+        } else {
+            $student = $this->getLoggedStudent();
+            $visitsAry = [];
+            $visitsAry['Completed'] = [];
+            $visitsAry['Coming'] = [];
+
+            $this->loadModel('FieldVisit');
+
+            $visits = $this->FieldVisit->find('all', array(
+                'conditions' => array(
+                    'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                    'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => -1,
+            ));
+
+            foreach($visits as $visit) {
+                if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                    array_push( $visitsAry['Completed'], $visit);
+                } else {
+                    array_push( $visitsAry['Coming'], $visit);
+                }
+            }
+
+
+
+            $this->set(compact('student','visitsAry'));
+        }
+    }
 }
