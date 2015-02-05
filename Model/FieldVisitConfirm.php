@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * FieldVisitConfirm Model
  *
+ * @property FieldVisitAttendance $FieldVisitAttendance
  * @property FieldVisit $FieldVisit
  * @property FieldGroup $FieldGroup
  */
@@ -17,6 +18,13 @@ class FieldVisitConfirm extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'FieldVisitAttendance' => array(
+			'className' => 'FieldVisitAttendance',
+			'foreignKey' => 'field_visit_attendance_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'FieldVisit' => array(
 			'className' => 'FieldVisit',
 			'foreignKey' => 'field_visit_id',

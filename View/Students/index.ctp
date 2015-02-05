@@ -287,10 +287,17 @@
                           <div class="row">
                             <div class="col-xs-12">
                                 <i class="fa fa-check fa-3x"></i>
-                                <span class="text-temp" style="padding-left: 20px;"> <?php echo $dashFieldVisits['confirm']; ?> </span>
+                                <?php 
+                                    $count = 0;
+                                    foreach ($needsConfirming as $members) {
+                                        if($members['Student']['id'] != $student['Student']['id'])
+                                            $count++;
+                                    }
+                                ?>
+                                <span class="text-temp" style="padding-left: 20px;"> <?php echo $count; ?> </span>
                             </div>
                             <div class="col-xs-12">
-                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'allActivity')) ?>" >Confirm</a>
+                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'confirmMembersAttendance')) ?>" >Confirm</a>
                             </div>
                           </div>
                         </div>
@@ -305,11 +312,11 @@
                         <div class="panel-body">
                           <div class="row">
                             <div class="col-xs-12">
-                                <i class="fa fa-pencil fa-3x"></i>
+                                <i class="fa fa-pencil fa-3x"></i>                                
                                 <span class="text-temp" style="padding-left: 20px;"> <?php echo $dashFieldVisits['unmarked']; ?> </span>
                             </div>
                             <div class="col-xs-12">
-                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'markYourAttendance')) ?>" >Mark Pending</a>
+                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'markYourAttendance')) ?>" >Attend. Pending</a>
                             </div>
                           </div>
                         </div>
@@ -323,7 +330,7 @@
 
 <div id="chart-container" class="row">    
     <div class="col-md-12">
-        <?php //echo var_dump($color); ?>        
+        <?php //echo var_dump($needsConfirming); ?>        
     </div>
 </div>
 

@@ -6,6 +6,7 @@ App::uses('AppModel', 'Model');
  * @property FieldVisit $FieldVisit
  * @property Student $Student
  * @property FieldGroup $FieldGroup
+ * @property FieldVisitConfirm $FieldVisitConfirm
  */
 class FieldVisitAttendance extends AppModel {
 
@@ -40,4 +41,26 @@ class FieldVisitAttendance extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'FieldVisitConfirm' => array(
+			'className' => 'FieldVisitConfirm',
+			'foreignKey' => 'field_visit_attendance_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

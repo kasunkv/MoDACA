@@ -82,7 +82,7 @@
 
 <div id="chart-container" class="row">    
     <div class="col-md-12">
-        <?php echo var_dump($mostRecent, $visits); ?>
+        <?php //echo var_dump($mostRecent, $visits); ?>
     </div>
 </div>
 

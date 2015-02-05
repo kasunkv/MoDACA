@@ -23,6 +23,7 @@ class StudentsController extends AppController {
         $this->loadModel('Event');
         $this->loadModel('ProgramEvalCheckpoint');
         $this->loadModel('FieldVisit');
+        $this->loadModel('FieldVisitAttendance');
 
         $activities = [];
         $activities['completed'] = 0;
@@ -39,7 +40,6 @@ class StudentsController extends AppController {
             'recursive' => -1,
         ));
 
-
         $totalFeedback = $this->EventFeedback->find('all', array(
             'conditions' => array(
                 'EventFeedback.field_group_id' => $student['FieldGroup']['id'],
@@ -48,8 +48,6 @@ class StudentsController extends AppController {
             'recursive' => -1,
         ));
         $activities['unread_comments'] = count($totalFeedback);
-
-
 
         $evalCheckpoints = $this->ProgramEvalCheckpoint->find('all', array(
             'conditions' => array(
@@ -75,8 +73,6 @@ class StudentsController extends AppController {
         ));
 
         $activities['count'] = count($events);
-
-
 
         foreach($events as $event) {
             if($event['Event']['complete'] == 0) {
@@ -104,8 +100,6 @@ class StudentsController extends AppController {
         else {
             $activities['percentage'] = 0;
         }
-
-
 
         $visits = $this->FieldVisit->find('all', array(
             'conditions' => array(
@@ -152,8 +146,6 @@ class StudentsController extends AppController {
                         $dashFieldVisits['unmarked'] += 1;
                     }
                 }
-
-
             }
         }
 
@@ -163,9 +155,31 @@ class StudentsController extends AppController {
             $dashFieldVisits['percentage'] = round($dashFieldVisits['completed'] / count($visits) * 100, 1);
         }
 
+        $needsConfirming = [];
+        $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+            'conditions' => array(
+                'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+                'FieldVisitAttendance.confirmed' =>  0,
+            ),
+            'recursive' => 1,
+        ));
 
+        foreach($visitAttendances as $attendance) {
+            if(empty($attendance['FieldVisitConfirm'])) {
+                array_push($needsConfirming, $attendance);
+            } else {
 
-        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents', 'dashFieldVisits'));
+                if(count($attendance['FieldVisitConfirm']) < 2) {
+                    foreach($attendance['FieldVisitConfirm'] as $confirms) {
+                        if($confirms['confirmer'] != $student['Student']['id']) {
+                            array_push($needsConfirming, $attendance);
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents', 'dashFieldVisits', 'needsConfirming'));
 
     }
 
@@ -2341,7 +2355,99 @@ class StudentsController extends AppController {
     }
 
     public function confirmMembersAttendance() {
+        $student = $this->getLoggedStudent();
 
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('FieldVisitConfirm');
+            $dataAry = [];
+            foreach($this->request->data as $data) {
+                if($data['FieldVisitConfirm']['correct'] == 'on') {
+                    $data['FieldVisitConfirm']['correct'] = 1;
+                }
+                array_push($dataAry, $data);
+            }
+
+            if($this->FieldVisitConfirm->saveAll($dataAry)) {
+
+                $this->loadModel('FieldVisitAttendance');
+                $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+                    'conditions' => array(
+                        'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+                        'FieldVisitAttendance.confirmed' =>  0,
+                    ),
+                    'recursive' => 1,
+                ));
+
+                $modAttendance = [];
+                foreach($visitAttendances as $attendance) {
+                    if(!empty($attendance['FieldVisitConfirm'])) {
+                        if(count($attendance['FieldVisitConfirm']) == 2) {
+                            $temp['FieldVisitAttendance']['id'] = $attendance['FieldVisitAttendance']['id'];
+                            $temp['FieldVisitAttendance']['confirmed'] = 1;
+
+                            array_push($modAttendance, $temp);
+                        }
+                    }
+                }
+
+                $res = false;
+                if(!empty($modAttendance)) {
+                    $res = $this->FieldVisitAttendance->saveAll($modAttendance);
+                }
+
+                if($res) {
+                    $this->Session->setFlash(__('Confirmation successful!'), 'flashSuccess');
+                    return $this->redirect(array('action' => 'index'));
+                }
+
+            } else {
+                $this->Session->setFlash(__('Failed to save Confirmation'), 'flashError');
+                return $this->redirect(array('action' => 'index'));
+            }
+        } else {
+            $needsConfirming = [];
+
+            $this->loadModel('FieldVisitAttendance');
+//            $this->loadModel('FieldVisitConfirm');
+            $this->loadModel('FieldVisit');
+
+            $visits = $this->FieldVisit->find('all', array(
+                'conditions' => array(
+                    'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => 1,
+            ));
+
+
+            $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+                'conditions' => array(
+                    'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+                    'FieldVisitAttendance.confirmed' =>  0,
+                ),
+                'recursive' => 1,
+            ));
+
+            foreach($visitAttendances as $attendance) {
+                if(empty($attendance['FieldVisitConfirm'])) {
+                    array_push($needsConfirming, $attendance);
+                } else {
+
+                    if(count($attendance['FieldVisitConfirm']) < 2) {
+                        foreach($attendance['FieldVisitConfirm'] as $confirms) {
+                            if($confirms['confirmer'] != $student['Student']['id']) {
+                                array_push($needsConfirming, $attendance);
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+            $this->set(compact('student','visitAttendances', 'needsConfirming', 'visits'));
+        }
     }
 
 }
