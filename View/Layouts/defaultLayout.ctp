@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MoDACA | HPT Unit - RUSL</title>
     <!-- BOOTSTRAP STYLES-->
-    <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom', 'morris-0.4.3.min', 'bootstrap-datetimepicker.min', 'fileinput.min', 'star-rating.min', 'animate', 'bootstrap_calendar')); ?>
+    <?php echo $this->Html->css(array('bootstrap', 'font-awesome', 'custom', 'morris-0.4.3.min', 'bootstrap-datetimepicker.min', 'fileinput.min', 'star-rating.min', 'animate', 'bootstrap_calendar', 'bootstrap-toggle.min')); ?>
     
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- GOOGLE MAPS API -->
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <!-- SCRIPTS -->
-    <?php echo $this->Html->script(array('jquery-1.10.2', 'moment.min', 'bootstrap.min', 'jquery.metisMenu', 'custom', 'morris', 'raphael-2.1.0.min', 'gmaps', 'canvg', 'rgbcolor', 'StackBlur', 'canvas2image', 'script', 'bootstrap-datetimepicker', 'fileinput.min', 'star-rating.min', 'progressbar.min', 'bootstrap_calendar.min')); ?>
+    <?php echo $this->Html->script(array('jquery-1.10.2', 'moment.min', 'bootstrap.min', 'jquery.metisMenu', 'custom', 'morris', 'raphael-2.1.0.min', 'gmaps', 'canvg', 'rgbcolor', 'StackBlur', 'canvas2image', 'script', 'bootstrap-datetimepicker', 'fileinput.min', 'star-rating.min', 'progressbar.min', 'bootstrap_calendar.min', 'bootstrap-toggle.min')); ?>
     
 </head>
 <body>

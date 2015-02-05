@@ -222,6 +222,105 @@
     
 </div>
 
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="dash-box border-blue">
+            <div class="dash-box-header">
+                <i class="fa fa-bus fa-2x"></i>
+                <span class="dash-box-header-text">Field Visits</span>
+                <a class="btn-link" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'planFieldVisit')) ?>">
+                    <i class="fa fa-plus fa-2x"></i>
+                </a>
+            </div>   
+            
+            <!-- Top Row -->
+            <div class="row">
+                <!-- Confirm Members -->
+                <div class="col-md-6 col-sm-5 col-xs-5">     
+                    <!-- Completed Field Visits -->
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left: -15px;">           
+                        <div class="panel ">
+                          <div class="main-temp-back bg-color-green">
+                            <div class="panel-body">
+                              <div class="row">
+                                <div class="col-xs-12">
+                                    <i class="fa fa-thumbs-up fa-3x"></i>
+                                    <span class="text-temp" style="padding-left: 10px;"> <?php echo $dashFieldVisits['completed']; ?> </span>
+                                </div>                                
+                              </div>
+                            </div>
+                          </div>          
+                        </div>
+                    </div>
+
+                    <!-- Incomplete Field Visits -->
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left: -15px;">           
+                        <div class="panel ">
+                          <div class="main-temp-back bg-color-red">
+                            <div class="panel-body">
+                              <div class="row">
+                                <div class="col-xs-12">
+                                    <i class="fa fa-thumbs-down fa-3x"></i>
+                                    <span class="text-temp" style="padding-left: 10px;"> <?php echo $dashFieldVisits['up_coming']; ?> </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>          
+                        </div>
+                    </div>
+                </div>
+                <!-- Chart -->
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <center>
+                        <div id="visit-progress" style="margin-top: -10px;"></div>
+                    </center>
+                </div> 
+                <!--<div class="col-md-1 col-sm-1 col-xs-1"></div>-->
+            </div>
+            <!-- Bottom Row -->
+            <div class="row">
+                <!-- Completed Field Visits -->
+                <div class="col-md-6 col-sm-6 col-xs-6">           
+                    <div class="panel ">
+                      <div class="main-temp-back bg-turquosie">
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-xs-12">
+                                <i class="fa fa-check fa-3x"></i>
+                                <span class="text-temp" style="padding-left: 20px;"> <?php echo $dashFieldVisits['confirm']; ?> </span>
+                            </div>
+                            <div class="col-xs-12">
+                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'allActivity')) ?>" >Confirm</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>          
+                    </div>
+                </div>
+            
+                <!-- Mark Attendance -->
+                <div class="col-md-6 col-sm-6 col-xs-6">           
+                    <div class="panel ">
+                      <div class="main-temp-back bg-alizarin">
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-xs-12">
+                                <i class="fa fa-pencil fa-3x"></i>
+                                <span class="text-temp" style="padding-left: 20px;"> <?php echo $dashFieldVisits['unmarked']; ?> </span>
+                            </div>
+                            <div class="col-xs-12">
+                              <a class="notification-link-1" href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'markYourAttendance')) ?>" >Mark Pending</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="chart-container" class="row">    
     <div class="col-md-12">
         <?php //echo var_dump($color); ?>        
@@ -234,7 +333,6 @@
     theDays = ["S", "M", "T", "W", "T", "F", "S"];
 
     var evt1 = [];
-    var evt2 = ['8/2/2015','Event', 'http://google.com', 'red', 'Text'];
     var events = [];
     <?php if(!empty($calenderEvents)): ?>
         <?php foreach($calenderEvents as $calenderEvt): ?>
@@ -279,7 +377,7 @@
                 $color = $colorAry['Red'];
                     
         ?>
-        var finalScore = new ProgressBar.Circle('#activity-progress', {
+        var activityProgress = new ProgressBar.Circle('#activity-progress', {
             color: '#<?php echo $color; ?>',
             strokeWidth: 4,
             trailWidth: 4,
@@ -293,7 +391,48 @@
             }
         });
 
-        finalScore.animate(<?php echo $activities['percentage'] / 100; ?>, {
+        activityProgress.animate(<?php echo $activities['percentage'] / 100; ?>, {
+            easing: "bounce",
+            },function() {
+
+            }
+        );
+    <?php endif; ?>
+        
+    <?php if($dashFieldVisits['count'] != 0): ?>
+        <?php
+            $colorAry = [
+                'Dark Grren' => '#0a870f',
+                'Green' => '#16c41e',
+                'Yellow' => 'f2c40f',
+                'Red' => '#bf3a2b'
+                ];
+            $colorVisit = '#bf3a2b';
+            if($dashFieldVisits['percentage'] > 75)
+                $colorVisit = $colorAry['Dark Grren'];
+            else if($dashFieldVisits['percentage'] <= 75 && $dashFieldVisits['percentage'] > 50)
+                $colorVisit = $colorAry['Grren'];
+            else if($dashFieldVisits['percentage'] <= 50 && $dashFieldVisits['percentage'] > 25)
+                $colorVisit = $colorAry['Yellow'];
+            else
+                $colorVisit = $colorAry['Red'];
+                    
+        ?>
+        var visitsProgress = new ProgressBar.Circle('#visit-progress', {
+            color: '#<?php echo $colorVisit; ?>',
+            strokeWidth: 4,
+            trailWidth: 4,
+            duration: 3000,
+            text: {
+                value: '0',
+
+            },
+            step: function(state, bar) {
+                bar.setText((bar.value() * 100).toFixed(1) + '%');            
+            }
+        });
+
+        visitsProgress.animate(<?php echo $dashFieldVisits['percentage'] / 100; ?>, {
             easing: "bounce",
             },function() {
 

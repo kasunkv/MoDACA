@@ -112,9 +112,16 @@ class StudentsController extends AppController {
                 'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
                 'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
             ),
-            'recursive' => -1,
+            'recursive' => 1,
         ));
 
+        $dashFieldVisits = [];
+        $dashFieldVisits['up_coming'] = 0;
+        $dashFieldVisits['completed'] = 0;
+        $dashFieldVisits['confirm'] = 0;
+        $dashFieldVisits['percentage'] = 0;
+        $dashFieldVisits['count'] = 0;
+        $dashFieldVisits['unmarked'] = 0;
         $comingVisits = [];
         foreach($visits as $visit) {
             if((time() - strtotime($visit['FieldVisit']['date'])) < 0) {
@@ -125,12 +132,40 @@ class StudentsController extends AppController {
                 $comingVisits[3] = '#2ecd71';
                 $comingVisits[4] = $visit['FieldVisit']['main_objective'];
 
+                $dashFieldVisits['up_coming'] += 1;
+
                 array_push( $calenderEvents, $comingVisits);
+
+            } else {
+                $dashFieldVisits['completed'] += 1;
+
+                if(empty($visit['FieldVisitAttendance'])) {
+                    $dashFieldVisits['unmarked'] += 1;
+                } else {
+                    $markred = 0;
+                    foreach($visit['FieldVisitAttendance'] as $attentance) {
+                        if($attentance['student_id'] == $student['Student']['id']) {
+                            $markred++;
+                        }
+                    }
+                    if($markred == 0) {
+                        $dashFieldVisits['unmarked'] += 1;
+                    }
+                }
+
+
             }
         }
 
+        $dashFieldVisits['count'] = count($visits);
 
-        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents'));
+        if($dashFieldVisits['completed'] != 0) {
+            $dashFieldVisits['percentage'] = round($dashFieldVisits['completed'] / count($visits) * 100, 1);
+        }
+
+
+
+        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents', 'dashFieldVisits'));
 
     }
 
@@ -2234,4 +2269,79 @@ class StudentsController extends AppController {
             $this->set(compact('student','visitsAry'));
         }
     }
+
+
+    public function markYourAttendance() {
+        if($this->request->is(array('post', 'put'))) {
+            $this->loadModel('FieldVisitAttendance');
+            $this->FieldVisitAttendance->create();
+            if($this->request->data['FieldVisitAttendance']['attended'] == 'on') {
+                $this->request->data['FieldVisitAttendance']['attended'] = 1;
+            }
+
+            if($this->FieldVisitAttendance->save($this->request->data)) {
+                $this->Session->setFlash(__('Attendance were successfully saved!'), 'flashSuccess');
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('Failed to save Attendance'), 'flashError');
+                return $this->redirect(array('action' => 'index'));
+            }
+        } else {
+            $student = $this->getLoggedStudent();
+
+            $this->loadModel('FieldVisit');
+
+            $visits = $this->FieldVisit->find('all', array(
+                'conditions' => array(
+                    'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                    'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+                ),
+                'recursive' => 1,
+            ));
+
+            $value = 10000000;
+            $temp = 0;
+            $mostRecent = null;
+            foreach($visits as $visit) {
+
+//                if((time() - strtotime($visit['FieldVisit']['date'])) > 0 && (empty($visit['FieldVisitAttendance']) || $visit['FieldVisitAttendance']['student_id'] != $student['Student']['id'])) {
+                if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                    if(empty($visit['FieldVisitAttendance'])) {
+                        $temp = abs(time() - strtotime($visit['FieldVisit']['date']));
+                        if($temp < $value) {
+                            $value = $temp;
+                            $mostRecent = $visit;
+                        }
+                    } else {
+                        $marked = 0;
+                        foreach($visit['FieldVisitAttendance'] as $attentance) {
+                            if($attentance['student_id'] == $student['Student']['id']) {
+                                $marked++;
+                            }
+                        }
+                        if($marked == 0) {
+                            $temp = abs(time() - strtotime($visit['FieldVisit']['date']));
+                            if($temp < $value) {
+                                $value = $temp;
+                                $mostRecent = $visit;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            if(empty($mostRecent)) {
+                $this->Session->setFlash(__('There are no unmarked attendance for previous field visits'), 'flashInfo');
+                return $this->redirect(array('action' => 'index'));
+            }
+
+            $this->set(compact('student', 'mostRecent', 'visits'));
+        }
+    }
+
+    public function confirmMembersAttendance() {
+
+    }
+
 }

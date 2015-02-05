@@ -53,6 +53,8 @@
     text-decoration: none;
 }
 
+
+
 .calender-legand {
     margin-top: 20px;
 }
@@ -112,6 +114,10 @@
     
     .dash-box.border-green-sea{
         border-top: 2px solid #17a086;
+    }
+    
+    .dash-box.border-light-green {
+        border-top: 2px solid #2ecd71;
     }
     
     
