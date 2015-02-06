@@ -2444,10 +2444,88 @@ class StudentsController extends AppController {
                 }
             }
 
-
-
             $this->set(compact('student','visitAttendances', 'needsConfirming', 'visits'));
         }
+    }
+
+    public function viewAttendanceProgress() {
+        $student = $this->getLoggedStudent();
+        $attendanceData = [];
+
+        $this->loadModel('FieldVisit');
+        $this->loadModel('FieldVisitAttendance');
+
+        $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+            'conditions' => array(
+                'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+//                'FieldVisitAttendance.student_id' =>  $student['Student']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $students = $this->Student->find('all', array(
+            'conditions' => array(
+                'Student.field_group_id' => $student['FieldGroup']['id']
+            ),
+            'recursive' => -1
+        ));
+
+
+        $visits = $this->FieldVisit->find('all', array(
+            'conditions' => array(
+                'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        // Calculate Completed Events
+        $completedVisitCount = 0;
+        foreach($visits as $visit) {
+            if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                $completedVisitCount++;
+            }
+        }
+
+        $attendanceData['completed_visits'] = $completedVisitCount;
+        $attendanceData['total_visits'] = count($visits);
+
+
+        $currentStdAttendance = 0;
+        $grpStdCount = count($students);
+        $attendanceData['VisitTable'] = [];
+        foreach($visitAttendances as $attendance) {
+            if($attendance['FieldVisitAttendance']['student_id'] == $student['Student']['id']) {
+                if($attendance['FieldVisitAttendance']['confirmed'] == 1) {
+                    $visitRecord['date'] = $attendance['FieldVisit']['date'];
+                    $visitRecord['status'] = $attendance['FieldVisitAttendance']['attended'] == 1 ? 'Attended' : 'Absent';
+
+                    if($attendance['FieldVisitAttendance']['attended'] == 1) {
+                        $currentStdAttendance++;
+                    }
+
+                    $grpCount = 0;
+                    foreach($visitAttendances as $attendance2) {
+                        if($attendance2['FieldVisitAttendance']['field_visit_id'] == $attendance['FieldVisitAttendance']['field_visit_id']) {
+                            if($attendance2['FieldVisitAttendance']['confirmed'] == 1 && $attendance2['FieldVisitAttendance']['attended'] == 1) {
+                                $grpCount++;
+                            }
+                        }
+                    }
+                    $visitRecord['group_attendance'] =  round(($grpCount / $grpStdCount) * 100, 2);
+                    array_push($attendanceData['VisitTable'], $visitRecord);
+                }
+            }
+        }
+
+
+        if($completedVisitCount != 0) {
+            $attendanceData['percentage'] = round(($currentStdAttendance / $completedVisitCount) * 100, 2);
+        } else {
+            $attendanceData['percentage'] = 0;
+        }
+
+        $this->set(compact('student', 'visitAttendances', 'attendanceData'));
     }
 
 }

@@ -9,17 +9,28 @@
     echo $this->element('logoutBtn');
     $this->end();
 ?>
+<style>
+    @media (max-width: 767px) {
+        .progressbar-text {
+            font-size: 3.7em;
+            margin-top: -10px;
+        }
+    
+    }
+    
+    
+</style>
 <div class="row">
     <div class="col-md-12">
-        <h2>Individual Progress</h2>
-        <h4 class="page-subheader">Your individual progress and performance is listed here which includes your peer evaluation and lecturers assessment.</h4>
+        <h2>Peer Assessment</h2>
+        <h4 class="page-subheader">Your individual Peer Assessment score can be used to evaluate your strengths and weaknesses on Field Visits and Community Activities.</h4>
     </div>
 </div>
 <!-- /. ROW  -->
 <hr />
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>Peer Assessment</h3>
+        <!--<h3>Peer Assessment</h3>-->
         <h4 class="page-subheader text-muted">
             The evaluation of your performance, contribution and behavior in the community done by your group members.
             The evaluation criteria is set by the lecturers and measured by set time intervals predefined by the lecturers.

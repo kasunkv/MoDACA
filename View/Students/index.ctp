@@ -370,14 +370,14 @@
             $colorAry = [
                 'Dark Grren' => '#0a870f',
                 'Green' => '#16c41e',
-                'Yellow' => 'f2c40f',
+                'Yellow' => '#f2c40f',
                 'Red' => '#bf3a2b'
                 ];
             $color = '#bf3a2b';
             if($activities['percentage'] > 75)
                 $color = $colorAry['Dark Grren'];
             else if($activities['percentage'] <= 75 && $activities['percentage'] > 50)
-                $color = $colorAry['Grren'];
+                $color = $colorAry['Green'];
             else if($activities['percentage'] <= 50 && $activities['percentage'] > 25)
                 $color = $colorAry['Yellow'];
             else
@@ -385,7 +385,7 @@
                     
         ?>
         var activityProgress = new ProgressBar.Circle('#activity-progress', {
-            color: '#<?php echo $color; ?>',
+            color: '<?php echo $color; ?>',
             strokeWidth: 4,
             trailWidth: 4,
             duration: 3000,
@@ -411,14 +411,14 @@
             $colorAry = [
                 'Dark Grren' => '#0a870f',
                 'Green' => '#16c41e',
-                'Yellow' => 'f2c40f',
+                'Yellow' => '#f2c40f',
                 'Red' => '#bf3a2b'
                 ];
             $colorVisit = '#bf3a2b';
             if($dashFieldVisits['percentage'] > 75)
                 $colorVisit = $colorAry['Dark Grren'];
             else if($dashFieldVisits['percentage'] <= 75 && $dashFieldVisits['percentage'] > 50)
-                $colorVisit = $colorAry['Grren'];
+                $colorVisit = $colorAry['Green'];
             else if($dashFieldVisits['percentage'] <= 50 && $dashFieldVisits['percentage'] > 25)
                 $colorVisit = $colorAry['Yellow'];
             else
@@ -426,9 +426,9 @@
                     
         ?>
         var visitsProgress = new ProgressBar.Circle('#visit-progress', {
-            color: '#<?php echo $colorVisit; ?>',
-            strokeWidth: 4,
-            trailWidth: 4,
+            color: '<?php echo $colorVisit; ?>',
+            strokeWidth: 6,
+            trailWidth: 6,
             duration: 3000,
             text: {
                 value: '0',

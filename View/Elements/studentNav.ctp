@@ -182,7 +182,10 @@
         </li>
         <li>
             <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewProgress', $student['Student']['field_group_id'], $student['Student']['id'])); ?>"> Peer Assessment</a>     
-        </li>        
+        </li>
+        <li>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewAttendanceProgress')); ?>"> Attendance</a>     
+        </li>
     </ul>
 </li>
  
