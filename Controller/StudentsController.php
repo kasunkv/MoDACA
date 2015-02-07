@@ -13,6 +13,9 @@ class StudentsController extends AppController {
         $this->Auth->allow('register');
     }
 
+    /**
+     *
+     */
     public function index() {
         // set the student in the view
         $student = $this->getLoggedStudent();
@@ -24,6 +27,8 @@ class StudentsController extends AppController {
         $this->loadModel('ProgramEvalCheckpoint');
         $this->loadModel('FieldVisit');
         $this->loadModel('FieldVisitAttendance');
+        $this->loadModel('AssesmentCheckpoint');
+        $this->loadModel('AssesmentCriteria');
 
         $activities = [];
         $activities['completed'] = 0;
@@ -69,7 +74,7 @@ class StudentsController extends AppController {
             'conditions' => array(
                 'Event.field_group_id' => $student['FieldGroup']['id'],
             ),
-            'recursive' => -1,
+            'recursive' => 1,
         ));
 
         $activities['count'] = count($events);
@@ -179,7 +184,161 @@ class StudentsController extends AppController {
             }
         }
 
-        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents', 'dashFieldVisits', 'needsConfirming'));
+        // getting performance (NEEDS MAJOR REFACTORING)
+
+        $groupProgressData = [];
+        $groupProgressData['Members'] = [];
+        $groupProgressData['Final Scores'] = [];
+
+        $groupMembers = $this->Student->find('all', array(
+            'conditions' => array(
+                'Student.field_group_id' => $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+            'conditions' => array(
+                'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+//                'FieldVisitAttendance.student_id' =>  $student['Student']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $visits = $this->FieldVisit->find('all', array(
+            'conditions' => array(
+                'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $events = $this->Event->find('all', array(
+            'conditions' => array(
+                'Event.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'Event.field_group_id' =>  $student['FieldGroup']['id'],
+                'Event.complete' =>  1,
+            ),
+            'recursive' => 1,
+        ));
+
+        $currentMembersPerf = [];
+        foreach($groupMembers as $member) {
+
+            $grpMemberData = [];
+            $grpMemberData['Scores'] = [];
+            $grpMemberData['Student ID'] = $member['Student']['id'];
+            $grpMemberData['Student Name'] = $member['Student']['first_name'] . ' ' . $member['Student']['last_name'];
+            $grpMemberData['Student Photo'] = $member['Student']['profile_photo'];
+            $completedVisitCount = 0;
+            foreach($visits as $visit) {
+                if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                    $completedVisitCount++;
+                }
+            }
+
+            $currentStdAttendance = 0;
+            foreach($visitAttendances as $attendance) {
+                if($attendance['FieldVisitAttendance']['student_id'] == $member['Student']['id']) {
+                    if($attendance['FieldVisitAttendance']['confirmed'] == 1) {
+                        if($attendance['FieldVisitAttendance']['attended'] == 1) {
+                            $currentStdAttendance++;
+                        }
+                    }
+                }
+            }
+
+            if($completedVisitCount != 0) {
+                $grpMemberData['Scores']['Field Visit Attendance'] = round(($currentStdAttendance / $completedVisitCount) * 100, 1);
+                if($member['Student']['id'] === $student['Student']['id']) {
+                    $currentMembersPerf['Field Visit Attendance'] = round(($currentStdAttendance / $completedVisitCount) * 100, 1);
+                }
+            } else {
+                $grpMemberData['Scores']['Field Visit Attendance'] = 0;
+                if($member['Student']['id'] === $student['Student']['id']) {
+                    $currentMembersPerf['Field Visit Attendance'] =  0;
+                }
+            }
+
+            /* END OF ATTENDANCE % */
+
+            $grpMemberData['Scores']['Peer Review Score'] = 0;
+
+            $checkpoints = $this->AssesmentCheckpoint->find('all', array('recursive' => -1));
+            $criterias = $this->AssesmentCriteria->find('all', array('recursive' => -1));
+
+            $this->loadModel('PeerAssesment');
+            $assesments = $this->PeerAssesment->find('all', array(
+                'conditions' => array(
+                    'PeerAssesment.student_id' => $member['Student']['id'],
+                    'PeerAssesment.field_group_id' => $member['FieldGroup']['id'],
+                ),
+                'recursive' => -1
+            ));
+
+            $result = $this->getAveragePeerAssesment($checkpoints, $criterias, $assesments, $member['Student']['id']);
+            $assesmentByCriteria = $this->getAveragePeerAssesmentByCriteria($result, $criterias);
+
+            $totlaCriterias = count($assesmentByCriteria);
+
+            $totalAverage = 0; // store the sum of avaerage
+
+            foreach($assesmentByCriteria as $byCriteria) {
+                $totalPerCriteria = 0;
+                foreach($byCriteria as $values) {
+                    $totalPerCriteria += $values['Score'];
+                }
+
+                if(!count($byCriteria) == 0) {
+                    $totalAverage += $totalPerCriteria / count($byCriteria);
+                } else {
+                    $totalAverage += 0;
+                }
+
+            }
+
+            $grpMemberData['Scores']['Peer Review Score'] = round($totalAverage / $totlaCriterias, 1);
+            if($member['Student']['id'] === $student['Student']['id']) {
+                $currentMembersPerf['Peer Review Score'] = round($totalAverage / $totlaCriterias, 1);
+            }
+
+            array_push($groupProgressData['Members'], $grpMemberData);
+        }
+
+
+        // Calculate Completed Events
+        $totalCompletedEventCount = count($events);
+        $totalEventScore = 0;
+        foreach($events as $event) {
+            $totalEventScore += $event['Score']['mark'];
+        }
+        if($totalCompletedEventCount != 0) {
+            $groupProgressData['Final Scores']['Group Community Activity Score'] = round($totalEventScore / $totalCompletedEventCount, 1);
+        } else {
+            $groupProgressData['Final Scores']['Group Community Activity Score'] = 0;
+        }
+
+        $grpMemberCount = count($groupProgressData['Members']);
+        $grTotalAttendance = 0;
+        $grpTotalPeerReview = 0;
+        foreach($groupProgressData['Members'] as $grpMember) {
+            $grTotalAttendance += $grpMember['Scores']['Field Visit Attendance'];
+            $grpTotalPeerReview += $grpMember['Scores']['Peer Review Score'];
+        }
+
+        $groupProgressData['Final Scores']['Group Attendance Score'] = round( $grTotalAttendance / $grpMemberCount, 1);
+        $groupProgressData['Final Scores']['Group Peer Assessment Score'] = round( $grpTotalPeerReview / $grpMemberCount, 1);
+
+        $finalTotal = 0;
+        foreach($groupProgressData['Final Scores'] as $key => $value) {
+            $finalTotal += $value;
+        }
+
+        $groupProgressData['Score'] = round($finalTotal / count($groupProgressData['Final Scores']), 1);
+
+        //$this->set(compact('student', 'groupProgressData'));
+
+        $this->set(compact('student', 'fieldCommunity', 'activities', 'calenderEvents', 'dashFieldVisits', 'needsConfirming', 'groupProgressData', 'currentMembersPerf'));
 
     }
 
@@ -436,7 +595,7 @@ class StudentsController extends AppController {
     
     // View Field Group Progress
     
-    public function viewProgress($grpId = null, $stdId = null) {
+    public function viewPeerReviewProgress($grpId = null, $stdId = null) {
         // set the student in the view
         $this->set('student',  $this->getLoggedStudent());
 
@@ -1334,19 +1493,97 @@ class StudentsController extends AppController {
         }
     }
 
-    public function progressOverview($id = null) {
-        if($id != null) {
-            $student = $this->getLoggedStudent();
+    public function progressOverview() {
+        $student = $this->getLoggedStudent();
+        $attendanceData = [];
 
+        $this->loadModel('FieldVisit');
+        $this->loadModel('FieldVisitAttendance');
+        $this->loadModel('AssesmentCheckpoint');
+        $this->loadModel('AssesmentCriteria');
 
+        $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+            'conditions' => array(
+                'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+//                'FieldVisitAttendance.student_id' =>  $student['Student']['id'],
+            ),
+            'recursive' => 1,
+        ));
 
+        $visits = $this->FieldVisit->find('all', array(
+            'conditions' => array(
+                'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
 
-
-            $this->set(compact('student', 'event', 'eventFeedbacks'));
-        }else {
-            $this->Session->setFlash(__('Can not find student!'), 'flashError');
-            $this->redirect(array('action' => 'index'));
+        // Calculate Completed Events
+        $completedVisitCount = 0;
+        foreach($visits as $visit) {
+            if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                $completedVisitCount++;
+            }
         }
+
+        $currentStdAttendance = 0;
+        foreach($visitAttendances as $attendance) {
+            if($attendance['FieldVisitAttendance']['student_id'] == $student['Student']['id']) {
+                if($attendance['FieldVisitAttendance']['confirmed'] == 1) {
+                    if($attendance['FieldVisitAttendance']['attended'] == 1) {
+                        $currentStdAttendance++;
+                    }
+                }
+            }
+        }
+
+        if($completedVisitCount != 0) {
+            $attendanceData['Field Visit Attendance'] = round(($currentStdAttendance / $completedVisitCount) * 100, 1);
+        } else {
+            $attendanceData['Field Visit Attendance'] = 0;
+        }
+
+        /* END OF ATTENDANCE % */
+
+        $attendanceData['Peer Review Score'] = 0;
+
+        $checkpoints = $this->AssesmentCheckpoint->find('all', array('recursive' => -1));
+        $criterias = $this->AssesmentCriteria->find('all', array('recursive' => -1));
+
+        $this->loadModel('PeerAssesment');
+        $assesments = $this->PeerAssesment->find('all', array(
+            'conditions' => array(
+                'PeerAssesment.student_id' => $student['Student']['id'],
+                'PeerAssesment.field_group_id' => $student['FieldGroup']['id'],
+            ),
+            'recursive' => -1
+        ));
+
+        $result = $this->getAveragePeerAssesment($checkpoints, $criterias, $assesments, $student['Student']['id']);
+        $assesmentByCriteria = $this->getAveragePeerAssesmentByCriteria($result, $criterias);
+
+        $totlaCriterias = count($assesmentByCriteria);
+
+        $totalAverage = 0; // store the sum of avaerage
+
+        foreach($assesmentByCriteria as $byCriteria) {
+            $totalPerCriteria = 0;
+            foreach($byCriteria as $values) {
+                $totalPerCriteria += $values['Score'];
+            }
+
+            if(count($byCriteria) != 0) {
+                $totalAverage += $totalPerCriteria / count($byCriteria);
+            } else {
+                $totalAverage += 0;
+            }
+
+        }
+
+        $attendanceData['Peer Review Score'] = round($totalAverage / $totlaCriterias, 1);
+
+
+        $this->set(compact('student', 'attendanceData'));
     }
 
     public function addGeneralObjectives() {
@@ -2018,7 +2255,159 @@ class StudentsController extends AppController {
     public function viewGroupProgress() {
         $student = $this->getLoggedStudent();
 
-        $this->set(compact('student'));
+        $groupProgressData = [];
+        $groupProgressData['Members'] = [];
+        $groupProgressData['Final Scores'] = [];
+
+        $this->loadModel('Event');
+        $this->loadModel('FieldVisit');
+        $this->loadModel('FieldVisitAttendance');
+        $this->loadModel('AssesmentCheckpoint');
+        $this->loadModel('AssesmentCriteria');
+
+        $groupMembers = $this->Student->find('all', array(
+            'conditions' => array(
+                'Student.field_group_id' => $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $visitAttendances = $this->FieldVisitAttendance->find('all', array(
+            'conditions' => array(
+                'FieldVisitAttendance.field_group_id' =>  $student['FieldGroup']['id'],
+//                'FieldVisitAttendance.student_id' =>  $student['Student']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $visits = $this->FieldVisit->find('all', array(
+            'conditions' => array(
+                'FieldVisit.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'FieldVisit.field_group_id' =>  $student['FieldGroup']['id'],
+            ),
+            'recursive' => 1,
+        ));
+
+        $events = $this->Event->find('all', array(
+            'conditions' => array(
+                'Event.field_community_id' =>  $student['FieldGroup']['field_community_id'],
+                'Event.field_group_id' =>  $student['FieldGroup']['id'],
+                'Event.complete' =>  1,
+            ),
+            'recursive' => 1,
+        ));
+
+        foreach($groupMembers as $member) {
+
+            $grpMemberData = [];
+            $grpMemberData['Scores'] = [];
+            $grpMemberData['Student ID'] = $member['Student']['id'];
+            $grpMemberData['Student Name'] = $member['Student']['first_name'] . ' ' . $member['Student']['last_name'];
+            $grpMemberData['Student Photo'] = $member['Student']['profile_photo'];
+            $completedVisitCount = 0;
+            foreach($visits as $visit) {
+                if((time() - strtotime($visit['FieldVisit']['date'])) > 0) {
+                    $completedVisitCount++;
+                }
+            }
+
+            $currentStdAttendance = 0;
+            foreach($visitAttendances as $attendance) {
+                if($attendance['FieldVisitAttendance']['student_id'] == $member['Student']['id']) {
+                    if($attendance['FieldVisitAttendance']['confirmed'] == 1) {
+                        if($attendance['FieldVisitAttendance']['attended'] == 1) {
+                            $currentStdAttendance++;
+                        }
+                    }
+                }
+            }
+
+            if($completedVisitCount != 0) {
+                $grpMemberData['Scores']['Field Visit Attendance'] = round(($currentStdAttendance / $completedVisitCount) * 100, 1);
+            } else {
+                $grpMemberData['Scores']['Field Visit Attendance'] = 0;
+            }
+
+            /* END OF ATTENDANCE % */
+
+            $grpMemberData['Scores']['Peer Review Score'] = 0;
+
+            $checkpoints = $this->AssesmentCheckpoint->find('all', array('recursive' => -1));
+            $criterias = $this->AssesmentCriteria->find('all', array('recursive' => -1));
+
+            $this->loadModel('PeerAssesment');
+            $assesments = $this->PeerAssesment->find('all', array(
+                'conditions' => array(
+                    'PeerAssesment.student_id' => $member['Student']['id'],
+                    'PeerAssesment.field_group_id' => $member['FieldGroup']['id'],
+                ),
+                'recursive' => -1
+            ));
+
+            $result = $this->getAveragePeerAssesment($checkpoints, $criterias, $assesments, $member['Student']['id']);
+            $assesmentByCriteria = $this->getAveragePeerAssesmentByCriteria($result, $criterias);
+
+            $totlaCriterias = count($assesmentByCriteria);
+
+            $totalAverage = 0; // store the sum of avaerage
+
+            foreach($assesmentByCriteria as $byCriteria) {
+                $totalPerCriteria = 0;
+                foreach($byCriteria as $values) {
+                    $totalPerCriteria += $values['Score'];
+                }
+
+                if(count($byCriteria) != 0) {
+                    $totalAverage += $totalPerCriteria / count($byCriteria);
+                } else {
+                    $totalAverage += 0;
+                }
+
+            }
+
+            if($totlaCriterias != 0) {
+                $grpMemberData['Scores']['Peer Review Score'] = round($totalAverage / $totlaCriterias, 1);
+            } else {
+                $grpMemberData['Scores']['Peer Review Score'] = 0;
+            }
+
+            array_push($groupProgressData['Members'], $grpMemberData);
+        }
+
+
+        // Calculate Completed Events
+        $totalCompletedEventCount = count($events);
+        $totalEventScore = 0;
+        foreach($events as $event) {
+            $totalEventScore += $event['Score']['mark'];
+        }
+
+        if($totalCompletedEventCount != 0) {
+            $groupProgressData['Final Scores']['Group Community Activity Score'] = round($totalEventScore / $totalCompletedEventCount, 1);
+        } else {
+            $groupProgressData['Final Scores']['Group Community Activity Score'] = 0;
+        }
+
+
+        $grpMemberCount = count($groupProgressData['Members']);
+        $grTotalAttendance = 0;
+        $grpTotalPeerReview = 0;
+        foreach($groupProgressData['Members'] as $grpMember) {
+            $grTotalAttendance += $grpMember['Scores']['Field Visit Attendance'];
+            $grpTotalPeerReview += $grpMember['Scores']['Peer Review Score'];
+        }
+
+        $groupProgressData['Final Scores']['Group Attendance Score'] = round( $grTotalAttendance / $grpMemberCount, 1);
+        $groupProgressData['Final Scores']['Group Peer Assessment Score'] = round( $grpTotalPeerReview / $grpMemberCount, 1);
+
+        $finalTotal = 0;
+        foreach($groupProgressData['Final Scores'] as $key => $value) {
+            $finalTotal += $value;
+        }
+
+        $groupProgressData['Score'] = round($finalTotal / count($groupProgressData['Final Scores']), 1);
+
+        $this->set(compact('student', 'groupProgressData'));
     }
 
     public function evalCheckpoints() {

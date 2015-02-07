@@ -178,10 +178,10 @@
     <a href="#"><i class="fa fa-signal fa-3x"></i> Individual Progress<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'progressOverview', $student['Student']['id'])); ?>"> Overview</a>
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'progressOverview')); ?>"> Overview</a>
         </li>
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewProgress', $student['Student']['field_group_id'], $student['Student']['id'])); ?>"> Peer Assessment</a>     
+            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewPeerReviewProgress', $student['Student']['field_group_id'], $student['Student']['id'])); ?>"> Peer Assessment</a>     
         </li>
         <li>
             <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'viewAttendanceProgress')); ?>"> Attendance</a>     

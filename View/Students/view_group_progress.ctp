@@ -9,7 +9,17 @@
     echo $this->element('logoutBtn');
     $this->end();
 ?>
-
+<style>
+    .main-chart .progressbar-text {
+        font-size: 5.8em;
+        margin-top: -10px;
+    }
+    
+    .progressbar-text {
+        font-size: 3em;
+        margin-top: -10px;
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <h2>Group Progress</h2>
@@ -26,138 +36,199 @@
 
 <div class="row">
     <div class="col-md-12">       
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3><?php echo $fieldCommunity['FieldCommunity']['title']; ?> | <?php echo $fieldCommunity['FieldCommunity']['village_name']; ?></h3>
+        <div class="col-md-3 col-sm-12 col-xs-12"></div>
+        <div class="col-md-6 col-sm-12 col-xs-12 main-chart">
+            <h3><center><strong>Final Group Performance</strong></center></h3>
             <br />
-            <div class="panel panel-default panel-shadow">
-                <div class="panel-heading">
-                    Add Population Distribution
-                </div>
-                <div class="panel-body" >
-                    
-                        <?php echo $this->Form->create('InitAgeDistribution', array(
-                            'inputDefaults' => array(
-                                //'label' => false,
-                            ),
-                        ));
-                        ?>
-                        <div class="multiple-input-wrapper">
-                            <div class="multi-item-wrapper">
-                                <input type="hidden" name="data[0][InitAgeDistribution][field_community_id]" value="<?php echo $student['FieldGroup']['field_community_id']; ?>" />
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group input-group-lg">
-                                        <label>Age Group</label>
-                                        <input name="data[0][InitAgeDistribution][age_group]" class="form-control" type="text">
-                                    </div>                        
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group input-group-lg">
-                                        <label>Male</label>
-                                        <input name="data[0][InitAgeDistribution][male]" class="form-control" type="text">
-                                    </div>                        
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group input-group-lg">
-                                        <label>Female</label>
-                                        <input name="data[0][InitAgeDistribution][female]" class="form-control" type="text">
-                                    </div>                        
-                                </div>
-                                <div class="form-add-more">
-                                    <button class="btn btn-success btn-sm" id="btn-add-field" style="margin-left: 10px;">
-                                        <i class="fa fa-plus"></i> Add More...
-                                    </button>
-                                    <hr />
-                                </div>
-                            </div>                             
-                        </div>                                              
-                        <?php 
-                            $form_end_options = array(
-                                'label' => 'Save Details', 
-                                'class' => 'btn btn-lg btn-primary ',                                
-                            );
-                            echo $this->Form->end($form_end_options);
-                        ?>
-                </div>
-            </div>
+            <div id="prog-final-perf" ></div>
+            <br />
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <h3>Current Age Groups</h3>
-             <?php if(empty($ageGroups)): ?>
-                <p class="text-muted">No Age Groups Added Yet.</p>
-            <?php else: ?>
-                <div class="table-responsive panel-shadow">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th><h4>Age Group</h4></th>
-                                <th><h4>Male</h4></th>
-                                <th><h4>Female</h4></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($ageGroups as $groups): ?>
-                                <tr>
-                                    <td><span class="text-center"><strong><?php echo $groups['InitAgeDistribution']['age_group']; ?></strong></span></td>
-                                    <td><span class="text-success text-center"><strong><?php echo $groups['InitAgeDistribution']['male']; ?></strong></span></td>
-                                    <td><span class="text-danger text-center"><strong><?php echo $groups['InitAgeDistribution']['female']; ?></strong></span></td>
-                                </tr>
-                            <?php endforeach; ?> 
-                        </tbody>
-                    </table>
-                </div>
-             <?php endif; ?>
-        </div>        
+        <div class="col-md-3 col-sm-12 col-xs-12"></div>            
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">       
+        <hr />       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php $i = 1; ?>
+        <?php foreach($groupProgressData['Final Scores'] as $key => $value): ?>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <br />
+                <div id="chart-<?php echo $i; ?>" ></div>
+                <h5><center><strong><?php echo $key; ?></strong></center></h5>
+                <br />
+            </div> 
+            <?php $i++; ?>
+        <?php endforeach; ?>         
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">       
+        <hr />       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3><stron>Your Group Member's Performance During Your Field Work</stron></h3>
+        <p class="text-muted" style="margin-top: -30px;">&nbsp;&nbsp;This is how your group members have performed during the field visits.</p>
+        <br />
+        <?php $ctr = 1; ?>
+        <?php foreach ($groupProgressData['Members'] as $member): ?>
+            <div class="col-md-3 col-sm-6 col-xs-6 line-progress">
+                <?php 
+                    echo $this->Html->image('../uploads/students/'. $member['Student Photo'], array(
+                        'alt' => 'Profile Image',
+                        'class' => 'img-responsive img-circle shadow',
+                        )
+                    );
+                ?>
+                <h5 class="profile-image-name text-muted"><?php echo $member['Student Name']; ?></h5>
+                <hr />     
+                <?php foreach($member['Scores'] as $key => $value): ?>
+                <h5 style="margin-top: 15px;"><strong><?php echo $key; ?></strong></h5>
+                    <div id="member-prog<?php echo $ctr; ?>"></div>
+                    <?php $ctr++; ?>
+                <?php endforeach; ?>
+                <br /><br />
+            </div>        
+        <?php endforeach; ?>        
     </div>
 </div>
 
 <div id="chart-container" class="row">    
-    <?php //echo var_dump($ageGroups); ?>
+    <div class="col-md-12">
+        <?php //var_dump($groupProgressData); ?>
+    </div>
 </div>
 
 <script>
-    
-    var max_fields      = 5; //maximum input boxes allowed
-    
-    var x = 1; //initlal text box count
-    $('#btn-add-field').click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed           
-            $('.multiple-input-wrapper').append('<div class="multi-item-wrapper animated zoomIn">\
-                                <input type="hidden" name="data['+ x +'][InitAgeDistribution][field_community_id]" value="<?php echo $student['FieldGroup']['field_community_id']; ?>" />\
-                                <div class="col-md-4 col-sm-4 col-xs-4">\
-                                    <div class="form-group input-group-lg">\
-                                        <label>Age Group</label>\
-                                        <input name="data['+ x +'][InitAgeDistribution][age_group]" class="form-control" type="text">\
-                                    </div>                        \
-                                </div>\
-                                <div class="col-md-4 col-sm-4 col-xs-4">\
-                                    <div class="form-group input-group-lg">\
-                                        <label>Male</label>\
-                                        <input name="data['+ x +'][InitAgeDistribution][male]" class="form-control" type="text">\
-                                    </div>                        \
-                                </div>\
-                                <div class="col-md-4 col-sm-4 col-xs-4">\
-                                    <div class="form-group input-group-lg">\
-                                        <label>Female</label>\
-                                        <input name="data['+ x +'][InitAgeDistribution][female]" class="form-control" type="text">\
-                                    </div>                        \
-                                </div>\
-                                <div class="col-md-12">\
-                                    <button href="" class="btn btn-danger btn-xs btn-remove-field">\
-                                        <i class="fa fa-minus"></i> &nbsp; Remove\
-                                    </button>  \
-                                    <hr />\
-                                </div> \
-                            </div>'); //add input box
-            x++; //text box increment
-        }
-    });
-    
-    $('.multiple-input-wrapper').on("click",".btn-remove-field", function(e){ //user click on remove text
-        e.preventDefault(); 
-        $(this).parent('div').parent('div').remove();
-        x--;
-        
-    });
-   
+    <?php
+        $colorAry = [
+            'Dark Grren' => '#0a870f',
+            'Green' => '#16c41e',
+            'Yellow' => '#f2c40f',
+            'Red' => '#bf3a2b'
+            ];
+    ?>
+       <?php    
+                            
+                $mainChartColor = '#bf3a2b';
+                if($groupProgressData['Score'] > 75)
+                    $mainChartColor = $colorAry['Dark Grren'];
+                else if($groupProgressData['Score'] <= 75 && $groupProgressData['Score'] > 50)
+                    $mainChartColor = $colorAry['Green'];
+                else if($groupProgressData['Score'] <= 50 && $groupProgressData['Score'] > 25)
+                    $mainChartColor = $colorAry['Yellow'];
+                else
+                    $mainChartColor = $colorAry['Red'];
+
+            ?>
+       
+       var finalScore = new ProgressBar.Circle('#prog-final-perf', {
+            color: '<?php echo $mainChartColor; ?>',
+            strokeWidth: 10,
+            trailWidth: 10,
+            duration: 3000,
+            text: {
+                value: '0',
+
+            },
+            step: function(state, bar) {
+                bar.setText((bar.value() * 100).toFixed(1) + '%');            
+            }
+        });
+
+        finalScore.animate(<?php echo $groupProgressData['Score'] / 100; ?>, {
+            easing: "bounce",
+            },function() {
+
+            }
+        );
+       
+       
+       
+        <?php $i = 1; ?>
+        <?php foreach($groupProgressData['Final Scores'] as $key => $value): ?>
+            <?php    
+                
+                $chartColor = '#bf3a2b';
+                if($value > 75)
+                    $chartColor = $colorAry['Dark Grren'];
+                else if($value <= 75 && $value > 50)
+                    $chartColor = $colorAry['Green'];
+                else if($value <= 50 && $value > 25)
+                    $chartColor = $colorAry['Yellow'];
+                else
+                    $chartColor = $colorAry['Red'];
+
+            ?>
+                var indiScore<?php echo $i; ?> = new ProgressBar.Circle('#chart-<?php echo $i; ?>', {
+                    color: '<?php echo $chartColor; ?>',
+                    strokeWidth: 6,
+                    trailWidth: 6,
+                    duration: 3000,
+                    text: {
+                        value: '0',
+
+                    },
+                    step: function(state, bar) {
+                        bar.setText((bar.value() * 100).toFixed(1) + '%');            
+                    }
+                });
+
+                indiScore<?php echo $i; ?>.animate(<?php echo $value / 100; ?>, {
+                    easing: "bounce",
+                    },function() {
+
+                    }
+                );
+            <?php $i++; ?>
+        <?php endforeach; ?>
+            
+        <?php $a = 1; ?>
+        <?php foreach($groupProgressData['Members'] as $grpMember): ?>
+            <?php foreach($grpMember['Scores'] as $key => $value): ?>
+                
+                <?php    
+                
+                    $chColor = '#bf3a2b';
+                    if($value > 75)
+                        $chColor = $colorAry['Dark Grren'];
+                    else if($value <= 75 && $value > 50)
+                        $chColor = $colorAry['Green'];
+                    else if($value <= 50 && $value > 25)
+                        $chColor = $colorAry['Yellow'];
+                    else
+                        $chColor = $colorAry['Red'];
+
+                ?>
+                
+                var line<?php echo $a; ?> = new ProgressBar.Line('#member-prog<?php echo $a; ?>', {
+                    color: '<?php echo $chColor; ?>',
+                    strokeWidth: 9,
+                    trailWidth: 9,
+                    duration: 3000,
+                    text: {
+                        value: '0',
+
+                    },
+                    step: function(state, bar) {
+                        bar.setText((bar.value() * 100).toFixed(1) + '%');            
+                    }
+                });
+
+                line<?php echo $a; ?>.animate(<?php echo $value / 100; ?>, {
+                    easing: "bounce",
+                    },function() {
+
+                    }
+                );
+                    
+                <?php $a++; ?>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+            
 </script>
