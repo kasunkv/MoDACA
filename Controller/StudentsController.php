@@ -127,7 +127,7 @@ class StudentsController extends AppController {
 
                 $comingVisits[0] = date('d/m/Y', strtotime($visit['FieldVisit']['date']));
                 $comingVisits[1] = 'Field Visit on ' . $visit['FieldVisit']['date'];
-                $comingVisits[2] = Router::url(array('controller' => 'students', 'action' => 'completeActivity', $event['Event']['id']));
+                $comingVisits[2] = '#';
                 $comingVisits[3] = '#2ecd71';
                 $comingVisits[4] = $visit['FieldVisit']['main_objective'];
 
@@ -326,8 +326,15 @@ class StudentsController extends AppController {
             $grpTotalPeerReview += $grpMember['Scores']['Peer Review Score'];
         }
 
-        $groupProgressData['Final Scores']['Group Attendance Score'] = round( $grTotalAttendance / $grpMemberCount, 1);
-        $groupProgressData['Final Scores']['Group Peer Assessment Score'] = round( $grpTotalPeerReview / $grpMemberCount, 1);
+        if($grpMemberCount != 0) {
+            $groupProgressData['Final Scores']['Group Attendance Score'] = round( $grTotalAttendance / $grpMemberCount, 1);
+            $groupProgressData['Final Scores']['Group Peer Assessment Score'] = round( $grpTotalPeerReview / $grpMemberCount, 1);
+        } else {
+            $groupProgressData['Final Scores']['Group Attendance Score'] = 0;
+            $groupProgressData['Final Scores']['Group Peer Assessment Score'] = 0;
+        }
+
+
 
         $finalTotal = 0;
         foreach($groupProgressData['Final Scores'] as $key => $value) {
@@ -1822,7 +1829,8 @@ class StudentsController extends AppController {
             $this->request->data['FieldCommunity']['field_group_id'] = $student['FieldGroup']['id'];
 
             $this->loadModel('FieldCommunity');
-            $this->FieldCommunity->create();
+            //$this->FieldCommunity->create();
+            $this->request->data['FieldCommunity']['id'] = $student['FieldGroup']['id'];
             $res = $this->FieldCommunity->save($this->request->data);
 
             if($rtn  && $res) {

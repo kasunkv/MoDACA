@@ -113,13 +113,18 @@
         </div>
     </div>
     <div class="col-md-4 col-sm-12 col-xs-12">
-            <h1 class="display-value"><?php //echo array_values($familyMemberBmi)[0]['BMI']['value']; ?> (<?php //echo $firstBmiCat; ?>) </h1>
+            <h1 class="display-value"><?php echo array_values($familyMemberWhr)[0]['WHR']['value']; ?></h1>
             <p class="profile-view-heading">Starting WHR Category</p>
             <?php //$temp = array_values($familyMemberBmi); ?>
-            <h1 class="display-value"><?php //echo end($temp)['BMI']['value']; ?> (<?php //echo $lastBmiCat; ?>) </h1>
+            <h1 class="display-value"><?php echo end($familyMemberWhr)['WHR']['value']; ?></h1>
             <p class="profile-view-heading">Current WHR Category</p>
     </div>
     
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php //var_dump($familyMemberBmi); ?>
+    </div>
 </div>
 
 

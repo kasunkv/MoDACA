@@ -19,7 +19,7 @@
     <a class="" href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'index')); ?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
 </li>
 <li>
-    <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'search')); ?>"><i class="fa fa-search fa-3x"></i> Search</a>
+    <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'searchStudents')); ?>"><i class="fa fa-search fa-3x"></i> Search</a>
 </li>
 <li>
     <a href="#"><i class="fa fa-users fa-3x"></i>Student Groups<span class="fa arrow"></span></a>
@@ -27,9 +27,9 @@
         <li>
             <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'viewFieldGroups')); ?>">View Groups</a>
         </li>
-        <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'trackGroup')); ?>">Track Group</a>
-        </li>  
+<!--        <li>
+            <a href="<?php // echo $this->Html->url(array('controller' => 'staffs', 'action' => 'trackGroup')); ?>">Track Group</a>
+        </li>  -->
         <li>
             <a href="<?php echo $this->Html->url(array('controller' => 'staffs', 'action' => 'setConditions')); ?>">Checkpoints & Criteria</a>
         </li>  

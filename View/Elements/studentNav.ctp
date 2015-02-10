@@ -96,9 +96,13 @@
                 </li>
             </ul>
         </li>        
+<!--        <li>
+            <a href="<?php //echo $this->Html->url(array('controller' => 'students', 'action' => 'createQuestionnaires')); ?>"> Create Questionnaires</a>
+        </li>-->
         <li>
-            <a href="<?php echo $this->Html->url(array('controller' => 'students', 'action' => 'createQuestionnaires')); ?>"> Create Questionnaires</a>
+            <a href="http://localhost/FileUpload/" target="_blank"> Upload Files</a>
         </li>
+        
     </ul>
 </li>
 <!-- Field Community -->

@@ -387,6 +387,11 @@
     opacity: 0.7;
 }
 
+.main-dash-noti-box-fa-color-white {
+    color: white    ;
+    opacity: 0.5;
+}
+
 .main-dash-noti-box-fa-color-orange {
     color: #b4761d;
     opacity: 0.7;

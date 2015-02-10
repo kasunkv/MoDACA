@@ -98,7 +98,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php echo var_dump($student); ?>
+        <?php //echo var_dump($student); ?>
     </div>
 </div>
 <!-- /. ROW  -->

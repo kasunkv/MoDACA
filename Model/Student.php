@@ -2,7 +2,20 @@
 App::uses('AppModel', 'Model');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 App::uses('Folder','Utility');
-
+/**
+ * Student Model
+ *
+ * @property User $User
+ * @property FieldGroup $FieldGroup
+ * @property Score $Score
+ * @property CompletePeerAssesment $CompletePeerAssesment
+ * @property FieldVisitAttendance $FieldVisitAttendance
+ * @property PeerAssesment $PeerAssesment
+ * @property StudentFeedback $StudentFeedback
+ * @property StudentLocation $StudentLocation
+ * @property StudentProgress $StudentProgress
+ * @property TaskAssigner $TaskAssigner
+ */
 class Student extends AppModel {
 
         public function beforeSave($options = array()) {
@@ -28,7 +41,6 @@ class Student extends AppModel {
 			),
 		),
 	);
-
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
@@ -50,6 +62,13 @@ class Student extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Score' => array(
+			'className' => 'Score',
+			'foreignKey' => 'score_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -59,6 +78,71 @@ class Student extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'CompletePeerAssesment' => array(
+			'className' => 'CompletePeerAssesment',
+			'foreignKey' => 'student_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'FieldVisitAttendance' => array(
+			'className' => 'FieldVisitAttendance',
+			'foreignKey' => 'student_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PeerAssesment' => array(
+			'className' => 'PeerAssesment',
+			'foreignKey' => 'student_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'StudentFeedback' => array(
+			'className' => 'StudentFeedback',
+			'foreignKey' => 'student_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'StudentLocation' => array(
+			'className' => 'StudentLocation',
+			'foreignKey' => 'student_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'StudentProgress' => array(
 			'className' => 'StudentProgress',
 			'foreignKey' => 'student_id',
@@ -86,7 +170,5 @@ class Student extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-        
-        
-        
+
 }

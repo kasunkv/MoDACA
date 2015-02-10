@@ -37,7 +37,7 @@
                     <p class="text-muted">No Data for Group Performance.</p>
                 <?php else: ?>
                     <div id="group-perf"></div>
-                    <h5 style="margin-top: 0px;"><center><strong>Group Performance</strong></center></h5>
+                    <h5 style="margin-top: 10px;"><center><strong>Group Performance</strong></center></h5>
                 <?php endif; ?>                
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -45,7 +45,7 @@
                     <p class="text-muted">No Data for Individual Performance.</p>
                 <?php else: ?>
                     <div id="indi-perf"></div>
-                    <h5 style="margin-top: 0px;"><center><strong>Your Performance</strong></center></h5>
+                    <h5 style="margin-top: 10px;"><center><strong>Your Performance</strong></center></h5>
                 <?php endif; ?>
                 
             </div>
@@ -61,7 +61,7 @@
                 <div class="panel noti-box main-dash-noti-box-bg-blue">            
                     <div class="main-dash-noti-box">
                         <span class="icon-bottom-right">
-                            <i class="fa fa-location-arrow main-dash-noti-box-fa-color-blue"></i>
+                            <i class="fa fa-location-arrow main-dash-noti-box-fa-color-white"></i>
                         </span>
                         <p class="main-dash-noti-box-title"><?php echo $fieldCommunity['FieldCommunity']['title'] ?></p>
                         <p class="">
@@ -78,7 +78,7 @@
                 <div class="panel noti-box bg-orange">            
                     <div class="main-dash-noti-box">
                         <span class="icon-bottom-right">
-                            <i class="fa fa-users main-dash-noti-box-fa-color-orange"></i>
+                            <i class="fa fa-users main-dash-noti-box-fa-color-white"></i>
                         </span>
                         <p class="main-dash-noti-box-title"><?php echo $student['FieldGroup']['no_of_members']; ?> Members</p>
                         <p class="">

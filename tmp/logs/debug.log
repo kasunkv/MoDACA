@@ -1,0 +1,180 @@
+2015-02-08 08:57:46 Debug: Notice (8): Undefined index: InitPopulation in [D:\wamp\www\MoDACA\Controller\StudentsController.php, line 893]
+Trace:
+StudentsController::getPopulationInfo() - APP\Controller\StudentsController.php, line 893
+StudentsController::viewFieldCommunity() - APP\Controller\StudentsController.php, line 846
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 191
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 08:57:46 Debug: Notice (8): Undefined index: InitPopulation in [D:\wamp\www\MoDACA\Controller\StudentsController.php, line 894]
+Trace:
+StudentsController::getPopulationInfo() - APP\Controller\StudentsController.php, line 894
+StudentsController::viewFieldCommunity() - APP\Controller\StudentsController.php, line 846
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 191
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 08:57:46 Debug: Notice (8): Undefined index: InitPopulation in [D:\wamp\www\MoDACA\Controller\StudentsController.php, line 895]
+Trace:
+StudentsController::getPopulationInfo() - APP\Controller\StudentsController.php, line 895
+StudentsController::viewFieldCommunity() - APP\Controller\StudentsController.php, line 846
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 191
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 08:57:46 Debug: Notice (8): Undefined index: InitPopulation in [D:\wamp\www\MoDACA\Controller\StudentsController.php, line 917]
+Trace:
+StudentsController::getPopulationInfo() - APP\Controller\StudentsController.php, line 917
+StudentsController::viewFieldCommunity() - APP\Controller\StudentsController.php, line 846
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 191
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 10:32:09 Debug: Notice (8): Undefined index: WHR in [D:\wamp\www\MoDACA\View\Students\view_family_member.ctp, line 116]
+Trace:
+include - APP\View\Students\view_family_member.ctp, line 116
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 10:32:09 Debug: Notice (8): Undefined index: WHR in [D:\wamp\www\MoDACA\View\Students\view_family_member.ctp, line 119]
+Trace:
+include - APP\View\Students\view_family_member.ctp, line 119
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 10:33:52 Debug: Notice (8): Undefined index: WHR in [D:\wamp\www\MoDACA\View\Students\view_family_member.ctp, line 116]
+Trace:
+include - APP\View\Students\view_family_member.ctp, line 116
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 10:33:52 Debug: Notice (8): Undefined index: WHR in [D:\wamp\www\MoDACA\View\Students\view_family_member.ctp, line 119]
+Trace:
+include - APP\View\Students\view_family_member.ctp, line 119
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:58 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\studentNav.ctp, line 32]
+Trace:
+include - APP\View\Elements\studentNav.ctp, line 32
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 4
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:58 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\studentNav.ctp, line 112]
+Trace:
+include - APP\View\Elements\studentNav.ctp, line 112
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 4
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:58 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\studentNav.ctp, line 115]
+Trace:
+include - APP\View\Elements\studentNav.ctp, line 115
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 4
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:59 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\studentNav.ctp, line 188]
+Trace:
+include - APP\View\Elements\studentNav.ctp, line 188
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 4
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:59 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\studentNav.ctp, line 188]
+Trace:
+include - APP\View\Elements\studentNav.ctp, line 188
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 4
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+
+2015-02-08 14:48:59 Debug: Notice (8): Undefined variable: student in [D:\wamp\www\MoDACA\View\Elements\logoutBtn.ctp, line 24]
+Trace:
+include - APP\View\Elements\logoutBtn.ctp, line 24
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::_renderElement() - CORE\Cake\View\View.php, line 1213
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Students\confirm_members_attendance.ctp, line 9
+View::_evaluate() - CORE\Cake\View\View.php, line 948
+View::_render() - CORE\Cake\View\View.php, line 910
+View::render() - CORE\Cake\View\View.php, line 471
+Controller::render() - CORE\Cake\Controller\Controller.php, line 954
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 198
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 165
+[main] - APP\webroot\index.php, line 99
+

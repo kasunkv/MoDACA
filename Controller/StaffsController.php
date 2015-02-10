@@ -12,6 +12,7 @@ App::uses('Folder','Utility');
 class StaffsController extends AppController
 {
     public $components = array('Paginator', 'Session', 'Auth');
+    public $helpers = array('Js');
 
     public function beforeFilter() {
         $this->Auth->allow('register');
@@ -23,7 +24,67 @@ class StaffsController extends AppController
      * @return void
      */
     public function index() {
+        $this->loadModel('Student');
+        $this->loadModel('Event');
+        $this->loadModel('FieldGroup');
+        $this->loadModel('EventFeedback');
+
+
+        // HOLD data to for dash
+        $indexData = [];
+
+        // get the students and the student count
+        $students = $this->Student->find('all', array('recursive' => -1));
+        $indexData['student_count'] = !empty($students) ? count($students) : 0;
+
+        // get FieldGrp count
+        $fieldGroups = $this->FieldGroup->find('all', array('recursive' => -1));
+        $indexData['group_count'] = !empty($fieldGroups) ? count($fieldGroups) : 0;
         $this->set('staff', $this->getLoggedStaff());
+
+        // get Community Activity Details
+        $events = $this->Event->find('all', array());
+        $indexData['event_count'] = !empty($events) ? count($events) : 0;
+
+        // default values
+        $indexData['event_completed'] = 0;
+        $indexData['event_incomplete'] = 0;
+        $indexData['event_feedback_given'] = 0;
+        $indexData['event_feedback_pending'] = 0;
+        $indexData['event_evaluated'] = 0;
+        $indexData['event_evaluate_pending'] = 0;
+
+
+        foreach($events as $event) {
+            // get completed events
+            if($event['Event']['complete'] == 1) {
+                $indexData['event_completed'] += 1;
+            } else {
+                $indexData['event_incomplete'] += 1;
+            }
+
+            // get evaluated events
+            if($event['Event']['score_id'] == null) {
+                $indexData['event_evaluate_pending'] += 1;
+            } else {
+                $indexData['event_evaluated'] += 1;
+            }
+
+            // get event feedbacks
+            if(empty($event['EventFeedback'])) {
+                $indexData['event_feedback_pending'] += 1;
+            } else {
+                $indexData['event_feedback_given'] += 1;
+            }
+        }
+
+
+
+
+
+
+        $this->set(compact('indexData'));
+
     }
 
 
@@ -715,12 +776,12 @@ class StaffsController extends AppController
             $folderName = APP.'webroot'.DS.'uploads'.DS.'staffs';
             $folder = new Folder($folderName, true, 0777);
 
-            if($id!=null){
-                if(file_exists($folderName.DS.$id)){
-                    chmod($folderName.DS.$id,0755);
-                    unlink($folderName.DS.$id);
-                }
-            }
+//            if($id!=null){
+//                if(file_exists($folderName.DS.$id)){
+//                    chmod($folderName.DS.$id,0755);
+//                    unlink($folderName.DS.$id);
+//                }
+//            }
 
             $id = String::uuid();
 
@@ -736,6 +797,106 @@ class StaffsController extends AppController
             return true;
         }
         return false;
+    }
+
+    public function searchStudents() {
+        $this->set('staff', $this->getLoggedStaff());
+    }
+
+    public function searchStudentsByType() {
+        if($this->request->is(array('post', 'put'))) {
+            if(!empty($this->request->data['Student']['search_by']) && !empty($this->request->data['Student']['term'])) {
+                $result = null;
+
+                if($this->request->data['Student']['search_by'] == 'name') {
+                    $result = $this->getStudentsByName($this->request->data['Student']['term']);
+                } else {
+                    $result = $this->getStudentsByIndex($this->request->data['Student']['term']);
+                }
+
+                $this->set(compact('result'));
+            }
+        }
+
+        $this->layout = 'ajax';
+    }
+
+
+    private function getStudentsByName($term = null) {
+        $this->loadModel('Student');
+        $conditions = array('OR' => array( "Student.first_name LIKE '%$term%'", "Student.last_name LIKE '%$term%'"));
+        $res = $this->Student->find('all', array(
+            'conditions' => $conditions,
+            'recursive' => -1,
+        ));
+
+        return $res;
+    }
+
+    private function getStudentsByIndex($term = null) {
+        $this->loadModel('Student');
+        $conditions = array('OR' => array( "Student.index_no LIKE '%$term%'"));
+        $res = $this->Student->find('all', array(
+            'conditions' => $conditions,
+            'recursive' => -1,
+        ));
+
+        return $res;
+    }
+
+    public function trackStudents() {
+        $this->set('staff', $this->getLoggedStaff());
+    }
+
+    public function getTrackedStudent() {
+        if($this->request->is(array('post', 'put'))) {
+            if(!empty($this->request->data['Student']['search_by']) && !empty($this->request->data['Student']['term'])) {
+                $result = null;
+
+                if($this->request->data['Student']['search_by'] == 'name') {
+                    $result = $this->getStudentsByName($this->request->data['Student']['term']);
+                } else {
+                    $result = $this->getStudentsByIndex($this->request->data['Student']['term']);
+                }
+
+                $this->set(compact('result'));
+            }
+        }
+
+        $this->layout = 'ajax';
+    }
+
+    public function getMapPointsForGroup($id = null) {
+
+    }
+
+    public function getLocationForStudent() {
+        $this->autoRender = false;
+
+        if($this->request->is(array('post', 'put'))) {
+            if(!empty($this->request->data['student-id'])) {
+                $this->loadModel('StudentLocation');
+
+                $locations = $this->StudentLocation->find('all', array(
+                    'conditions' => array(
+                        'StudentLocation.student_id' => $this->request->data['student-id'],
+                    ),
+                    'recursive' => -1
+                ));
+
+                $recentLocation = array_pop($locations);
+                if($recentLocation != null) {
+                    $ary = [];
+                    $ary['lat'] = $recentLocation['StudentLocation']['latitude'];
+                    $ary['lng'] = $recentLocation['StudentLocation']['longitude'];
+                    $ary['timestamp'] = $recentLocation['StudentLocation']['created'];
+
+                    echo json_encode($ary);
+                } else {
+                    echo null;
+                }
+            }
+        }
     }
 
 }
